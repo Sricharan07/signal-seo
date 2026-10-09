@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "github-slugger": "2.0.0",
-    "markdown-it": "15.0.1",
-    "yaml": "2.9.0"
+    "markdown-it": "15.0.2",
+    "yaml": "2.9.1"
   }
 }
