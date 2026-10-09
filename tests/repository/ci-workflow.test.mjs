@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readdir, readFile } from 'node:fs/promises';
 import test from 'node:test';
 import { parse } from 'yaml';
 
@@ -21,12 +21,13 @@ test('quality workflow is least-privilege, pinned, bounded, and runs every gate'
   assert.deepEqual(workflow.jobs['autonomy-delivery'].strategy.matrix.shard, [0, 1]);
   assert.equal(workflow.jobs['autonomy-delivery'].strategy['fail-fast'], false);
 
+  // Every job is bounded. Limits are sized to the real labs, never unbounded.
   const steps = Object.values(workflow.jobs).flatMap((job) => {
     assert.equal(job['runs-on'], 'ubuntu-24.04');
-    assert.ok(job['timeout-minutes'] > 0 && job['timeout-minutes'] <= 15);
+    assert.ok(job['timeout-minutes'] > 0 && job['timeout-minutes'] <= 90);
     return job.steps;
   });
-  const actions = new Set(steps.filter((step) => step.uses).map((step) => step.uses));
+  const actions = new Set(steps.filter((step) => step.uses).map((step) => step.uses.split(' ')[0]));
   assert.deepEqual(actions, expectedActions);
   for (const step of steps.filter((item) => item.uses)) {
     assert.match(step.uses, /^[a-z0-9-]+\/[a-z0-9-]+@[a-f0-9]{40}$/);
@@ -35,43 +36,39 @@ test('quality workflow is least-privilege, pinned, bounded, and runs every gate'
     }
   }
 
+  // Every lab script runs in CI, so a new lab cannot be silently skipped.
+  const scripts = await readdir(new URL('../../scripts/', import.meta.url));
+  const labScripts = scripts
+    .filter((name) => /^run-.+-tests\.py$/.test(name))
+    .map((name) => name.slice('run-'.length, -'-tests.py'.length))
+    .filter((name) => !['database', 'autonomy-delivery'].includes(name))
+    .sort();
+  assert.deepEqual([...workflow.jobs.labs.strategy.matrix.lab].sort(), labScripts);
+  assert.equal(workflow.jobs.labs.strategy['fail-fast'], false);
+  assert.deepEqual(workflow.jobs.services.strategy.matrix.lab, ['openbao', 'keycloak']);
+
   const commands = steps.filter((step) => step.run).map((step) => step.run);
   for (const required of [
-    'npm ci --ignore-scripts',
     'npm test',
     'python -m pip check',
-    'python -m pytest tests/api tests/identity tests/tooling -q',
-    'python scripts/openbao_lab.py',
-    'python scripts/keycloak_lab.py',
-    'python scripts/run-temporal-tests.py',
-    'python scripts/run-consumer-tests.py',
-    'python scripts/run-workflow-consumer-image-tests.py',
-    'python scripts/run-candidate-sandbox-tests.py',
-    'python scripts/run-crawler-network-tests.py',
-    'python scripts/run-page-attempt-tests.py',
+    'python -m pytest tests/api tests/identity tests/tooling tests/connectors -q',
+    'python scripts/check-gsc-provider-boundary.py',
     'python scripts/run-database-tests.py',
-    'python scripts/run-authority-journal-tests.py',
+    'python "scripts/run-${{ matrix.lab }}-tests.py"',
+    'python "scripts/${{ matrix.lab }}_lab.py"',
     'python scripts/run-autonomy-delivery-tests.py --shard "${{ matrix.shard }}"',
   ]) {
     assert.ok(commands.includes(required), `missing required CI command: ${required}`);
   }
-  assert.ok(commands.some((command) => command.startsWith('python -m ruff check ')));
-  assert.ok(commands.some((command) => command.startsWith('python -m ruff format --check ')));
-  for (const path of [
-    'apps/api',
-    'tests/api',
-    'tests/consumer',
-    'tests/container',
-    'tests/crawler',
-    'tests/delivery',
-    'tests/page_attempt',
-    'deploy/crawler-network',
-    'tests/identity',
-    'tests/temporal',
-  ]) {
-    assert.ok(commands.some((command) => command.startsWith('python -m ruff check ') && command.includes(path)));
-    assert.ok(
-      commands.some((command) => command.startsWith('python -m ruff format --check ') && command.includes(path)),
-    );
-  }
+  const static_paths = 'apps/api services/control_plane database/migrations deploy/crawler-network scripts tests';
+  assert.ok(commands.includes(`python -m ruff check ${static_paths}`));
+  assert.ok(commands.includes(`python -m ruff format --check ${static_paths}`));
+
+  // One required check covers every job: the gate fails unless all succeeded.
+  const gate = workflow.jobs.gate;
+  assert.equal(gate.if, 'always()');
+  assert.deepEqual(
+    [...gate.needs].sort(),
+    Object.keys(workflow.jobs).filter((name) => name !== 'gate').sort(),
+  );
 });

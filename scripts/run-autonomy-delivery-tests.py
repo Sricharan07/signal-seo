@@ -20,6 +20,7 @@ from database_lab import (
     summarize_junit,
 )
 from lab_runtime import runtime_root
+from signal_core.candidate_build import NODE_IMAGE
 
 
 def delivery_source_hashes():
@@ -40,6 +41,8 @@ def main() -> int:
     # A fresh checkout (CI or a clean worktree) has no Temporal SDK cache yet.
     temporal_cache = runtime_root(ROOT) / "temporal-tests/sdk-cache"
     temporal_cache.mkdir(parents=True, exist_ok=True)
+    # Candidate builds run in the pinned Node image; a fresh host has not pulled it yet.
+    subprocess.run(["docker", "pull", NODE_IMAGE], check=True, timeout=600)
     hashes = delivery_source_hashes()
     with (
         isolated_postgres() as (admin_dsn, common),

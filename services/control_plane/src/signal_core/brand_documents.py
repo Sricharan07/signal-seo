@@ -143,7 +143,10 @@ def extract_document(body: bytes, filename: str, *, timeout_seconds: float = 12)
             command = [*launcher, str(Path(sys.executable).resolve()), str(worker), str(path), kind]
         elif sys.platform.startswith("linux") and shutil.which("bwrap"):
             launcher = ["bwrap", "--unshare-net", "--die-with-parent", "--tmpfs", "/"]
-            for directory_name in ("/usr", "/lib", "/lib64", "/bin"):
+            # The parser needs only the interpreter's standard library, which lives
+            # outside /usr when Python comes from a venv-style or toolcache install.
+            interpreter = str(Path(sys.base_prefix).resolve())
+            for directory_name in ("/usr", "/lib", "/lib64", "/bin", interpreter):
                 if Path(directory_name).exists():
                     launcher.extend(("--ro-bind", directory_name, directory_name))
             launcher.extend(
