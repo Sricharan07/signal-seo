@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "slice": "0156",
+  "classification": "security-critical",
+  "base": "856a996",
+  "migration": {"revision": "0095", "down_revision": "0094", "new_tables": 0, "merge_train": "train 5; slice qualified as 0090 after 0089"},
+  "production_authority": false,
+  "qualification": "TARGETED_LOCAL_PASS",
+  "full_gate": "NOT_EXECUTED_BY_REQUEST",
+  "temporal_started": false,
+  "live_webflow": "NOT_EXECUTED",
+  "live_customer_wordpress": "NOT_EXECUTED",
+  "runtime_composition": "NOT_EXECUTED",
+  "browser_screenshots": {
+    "status": "NOT_EXECUTED",
+    "reason": "Headless browser did not complete; computer-use returned no enabled browser. SSR tests and static design checks do not establish desktop/mobile visual qualification."
+  },
+  "visual_detector": {"findings": 0, "log_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"},
+  "deliver": {"unchanged_from_main": true, "sha256": "21700f2d762fb4838bd70d7bbf151a73e90e75d8284255bf5e60c36535a550a1"},
+  "staged_gitleaks": {
+    "command": "gitleaks git --staged --config /tmp/signal-0156-main-gitleaks.toml --redact --no-banner .",
+    "config_source": "git show main:.gitleaks.toml",
+    "config_sha256": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346",
+    "exit_code": 0,
+    "leaks": 0
+  },
+  "commands": [
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "exit_code": 0,
+      "passed": 2886,
+      "failed": 0,
+      "warnings": 2,
+      "log_sha256": "ee734114dc2e236be417be57b0b78a108508e89835120e14ffe384fd44317e3e"
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "exit_code": 0,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "exit_code": 0,
+      "files": 638,
+      "log_sha256": "c036330d7fb972a1074660e7f6e9a56a34e591a0ef07c4a4b2f02967749c5599"
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "repository_passed": 46,
+      "dashboard_passed": 274,
+      "documentation": "PASS",
+      "typecheck": "PASS",
+      "build": "PASS",
+      "design_guards_unchanged": true,
+      "log_sha256": "260cb994e7942530c5f7d69a233b82aaf3122306b47d4f80c436faf55fa69fd0"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py --shards 3",
+      "exit_code": 0,
+      "passed": 1226,
+      "failed": 0,
+      "skipped": 0,
+      "recorded_at": "2026-10-04T16:06:02.313577+00:00",
+      "report": ".runtime/database-tests/latest.json",
+      "report_sha256": "88bbb9a4c630bfda680b78febf7093c04aef4e2d3597fd20b25dfe23fdf4a91b"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-webflow-tests.py",
+      "exit_code": 0,
+      "passed": 60,
+      "failed": 0,
+      "recorded_at": "2026-10-04T16:02:21.147173+00:00",
+      "report": ".runtime/webflow/latest.json",
+      "report_sha256": "93e8cf7e3b231d806126e6c6aa6a1d8d3d50c283dcedb3e931ccb2412ca5cea6",
+      "provider": "DOUBLE",
+      "postgresql": "REAL_DISPOSABLE",
+      "independent_journal": "REAL_DISPOSABLE",
+      "openbao": "REAL_DISPOSABLE_TLS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-wordpress-draft-tests.py",
+      "exit_code": 0,
+      "passed": 35,
+      "failed": 0,
+      "recorded_at": "2026-10-04T16:01:35.098097+00:00",
+      "report": ".runtime/wordpress-drafts/latest.json",
+      "report_sha256": "e91313c5bdb205ec76b0907d4f5f652eff34e078f742f1fb9d602dde904bb90c",
+      "provider": "DOUBLE",
+      "postgresql": "REAL_DISPOSABLE",
+      "independent_journal": "REAL_DISPOSABLE",
+      "temporal": "NOT_STARTED"
+    },
+    {
+      "command": "npm run test:wordpress",
+      "exit_code": 0,
+      "passed": 21,
+      "failed": 0,
+      "report": ".runtime/wordpress-feasibility/latest.json",
+      "report_sha256": "3edb288ab00e41aa8b43b976208c33caf9461981c3cb67e363af03119ba077ae",
+      "provider": "REAL_DISPOSABLE_WORDPRESS_STACK"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "exit_code": 0,
+      "passed": 45,
+      "failed": 0,
+      "recorded_at": "2026-10-04T15:54:44.157316+00:00",
+      "report": ".runtime/openbao-tests/latest.json",
+      "report_sha256": "84dfb1afe0ef61ea0cccca9a48632b1a39a9dcea41c037c465f23220639e9083",
+      "provider": "REAL_DISPOSABLE_TLS_OPENBAO"
+    }
+  ],
+  "coverage": {
+    "positive": ["current owner OAuth through API, PostgreSQL and shared egress", "provider mapping validation and OpenBao-only token storage", "exact approved article seal and replay, separate CMS Inbox review", "named current WordPress bindings and reviewable drafts"],
+    "negative": ["browser mutation proof, wrong role/site and stale or primary MFA", "unapproved article or wrong digest", "unknown or credential-bearing fields, duplicate callback context and unsafe redirects", "owner egress rejects item writes/listing, unrelated origins/routes and robots queries", "lab-only deliver remains unavailable"],
+    "failure": ["upstream/OpenBao errors are redacted", "pending restriction durability is not reported as durable", "unavailable upstream egress cannot prevent local revocation or OpenBao cleanup", "unknown CMS outcomes remain quarantined without blind retries"]
+  },
+  "corrected_attempts": [
+    {"command": "database lab", "passed": 1219, "failed": 7, "reason": "Head upgrade assertions still expected 0089; advanced exact head expectations to 0090 without weakening data preservation or downgrade checks. Full rerun passed."},
+    {"command": "owner OAuth journey", "reason": "Shared robots admission lacked the exact api.webflow.com robots GET. Added only that endpoint with allow/deny tests; full 60-case rerun passed."},
+    {"command": "dashboard tests", "passed": 273, "failed": 1, "reason": "Stale-binding copy moved to Technical details; retained the existing copy assertion and revocation action. Final 274-case and root reruns passed."}
+  ],
+  "operational_discipline": {"disk_checked_before_heavy_labs": true, "unowned_containers_stopped": false, "images_pruned": false, "external_test_services_exposed": false},
+  "source_sha256": {
+    "apps/api/src/signal_api/main.py": "d9580bf43dd3fe322660dac5f23c12a7c36369c206772f2b77de8b8c14fd1064",
+    "apps/api/src/signal_api/webflow_owner.py": "6aa90b36a7eeda0bf89defdce856edb771454559c00b9aae62d74341f8b198b5",
+    "apps/api/src/signal_api/webflow_routes.py": "b1cb31c2ce2f52a63d32fb403da3b0140826d077a76e76d87f13af54bb50332e",
+    "apps/dashboard/app/actions/webflow/options/route.ts": "379d89180462e63cb29d758c9c99896052929c04023084576caff6c859488fd4",
+    "apps/dashboard/app/auth/webflow/callback/route.ts": "3fb27915ec1352b6e96d282f350d9a6866f6e973baa673c4e100a480e959fef3",
+    "apps/dashboard/app/auth/webflow/route.ts": "75440f12827d238069cdb70dc219c3d6e6e91df34dac65640a91503810dc4b88",
+    "apps/dashboard/components/dashboard-view.tsx": "ae458f5152a9c7f41fdcbdbbb946b97a20c68498a4acc9dd2aca403ced4df30a",
+    "apps/dashboard/components/webflow-connection.tsx": "33b0e69519923836fa0dcb462bbd1a8671e9fbe35bdd25bcb2c4ad4df37c2a3c",
+    "apps/dashboard/components/webflow-inbox.tsx": "66d5e3f047bf411710058dcad34a24f61a6422150d499208bed726019cd97d02",
+    "apps/dashboard/components/wordpress-delivery.tsx": "f8c36e8cba91c5fd65155d7d35d27bfc392f8850984e0665d5054005a12dcda1",
+    "apps/dashboard/lib/webflow-owner-api.ts": "91b233bffe84a21c3cccddc5784a78ad97da33d548e5ce79fefcfec90e43d6b1",
+    "apps/dashboard/lib/wordpress-api.ts": "d0fba533b42f4dcdf4dab427d82e306cc6ddec2b3d346d6c076ed48270907c2c",
+    "apps/dashboard/tests/publishing-owner.test.tsx": "069eadaadc19dfad12aee92fe767da838aa1bed1ec2fafbce6d423c4575ef348",
+    "database/migrations/versions/0095_publishing_owner_paths.py": "5453614c7327b6ac49c92f0001fe5654be91b97447111bd8a26bb697523d830f",
+    "database/migrations/versions/0095_publishing_owner_paths.sql": "8df165a5b45b5479def09019c27ffbb816a42b4b9c4b2bf4b98dc9d37b5ada2e",
+    "scripts/run-wordpress-draft-tests.py": "8c318386ef063c0c86a12919820aff942af7034071fd237feb70c4b057e17596",
+    "services/control_plane/src/signal_core/egress_profiles.py": "3196d0b745acdcc3f48b7275d92d4d7e3a3d5bc313b1c42f0e6cd61fcf056eba",
+    "services/control_plane/src/signal_core/owner_connector_egress.py": "992c48c61a6f4d80bde4ea1adfc1f2e2c8f07254b212e5bbc3e18fd496f30602",
+    "services/control_plane/src/signal_core/webflow_service.py": "47abd0ab19b65636a709c356689320bca858dcd398536dd6722417ae88fc8a93",
+    "services/control_plane/src/signal_core/wordpress_service.py": "c8eb29abacec818931055cc574f93b9bf413563f6e5f3f983a3e9359c20c0903",
+    "tests/api/test_api.py": "608da9a7a77202aacfbc1bdb062c0307680451958d0601a25c685f6fc64740b0",
+    "tests/api/test_webflow.py": "60781092986faf0ea2f85d736ba1d4c4f6e0aa4956bddfad257d1f32c60d5a30",
+    "tests/control_plane/test_database.py": "d5d98bd29d901dab893c40e7ae325427970cb1332b0e20b3d0d1f0ca32fe4753",
+    "tests/delivery/test_wordpress_drafts.py": "fa75a6184b2fc70641a5336023094978030bc168408c3795deca0e16547c89b6",
+    "tests/tooling/test_webflow_owner_egress.py": "03692a46cf23ab54c34e98a149cb507cbc5ca84988b52c45923d27ec0b781e15",
+    "tests/webflow/test_owner_paths.py": "6a01a3a2efda39c8e89b9ea3ffcb0c2cfd85a84adf00e59346cb4220766e1178",
+    "tests/webflow/test_webflow.py": "74e8b9ecc83e865ca9583f85347836d740a758a260fb6c2e5b645635b484bc69"
+  }
+}

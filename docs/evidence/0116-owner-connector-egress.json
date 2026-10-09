@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "slice": "0116",
+  "classification": "security-critical",
+  "production_authority": false,
+  "deployment": "NOT_EXECUTED",
+  "focused_postgresql_initial": {"passed": 9},
+  "initial_full_postgresql_regression": {"passed": 854, "failed": 2, "repairs": ["expected forced-RLS table count includes the new table", "fixture waits through existing shared transport backoff"]},
+  "expanded_postgresql_regression": {"passed": 856, "failed": 0, "elapsed_seconds": 422.69, "owner_connector_cases": 19},
+  "api_identity_tooling_regression": {"passed": 1366},
+  "real_pinned_network_regression": {"passed": 14},
+  "repository_checks": {"repository_cases": 38, "dashboard_cases": 148, "typescript": "PASS", "next_build": "PASS", "ruff": "PASS", "diff_check": "PASS"},
+  "provider_connector_qualification": "NOT_EXECUTED",
+  "owner_integration_request_complete": false
+}

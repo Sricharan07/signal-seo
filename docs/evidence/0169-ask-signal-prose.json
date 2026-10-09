@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "slice": "0169",
+  "base": "b7a084f",
+  "recorded_at": "2026-10-06",
+  "classification": "security-critical",
+  "status": "LOCALLY_CORRECTION_QUALIFIED_INTEGRATED_GATE_PENDING",
+  "adr": "0176",
+  "migration": {"revision": "0103", "down_revision": "0102", "new_tables": 0, "merge_train": "written as 0102 after 0101; renumbered so it patches 0170's fail-closed budget functions"},
+  "production_writes_enabled": false,
+  "live_providers": "NOT_EXECUTED",
+  "deployment": "NOT_EXECUTED",
+  "focused_checks": [
+    {
+      "command": ".venv/bin/python -m pytest tests/connectors/test_ask_signal_domain.py tests/api/test_ask_signal.py -q",
+      "passed": 60,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-ask-signal-tests.py",
+      "passed": 35,
+      "failed": 0,
+      "provider_mode": "synthetic doubles behind shared egress",
+      "database": "real disposable PostgreSQL 17.11"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "passed": 3843,
+      "failed": 0,
+      "warnings": 2,
+      "detail": "Existing dependency deprecation warnings. Corrected question-shape/polarity regression included."
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "status": "PASS",
+      "files_already_formatted": 707
+    }
+  ],
+  "development_database_run": {
+    "command": ".venv/bin/python scripts/run-database-tests.py --shards 3",
+    "passed": 1491,
+    "failed": 7,
+    "qualification": false,
+    "detail": "Existing crawl/front-matter paths reported RobotsSnapshotUnavailable in shard 0. No gate or fixture was weakened.",
+    "isolation_comparison": {"migration_0101_passed": 10, "migration_0102_passed": 10, "failed": 0}
+  },
+  "full_gate": {
+    "status": "FAILED_BEFORE_FOCUSED_CORRECTION",
+    "invocations": 1,
+    "command": ".venv/bin/python scripts/run-full-gate.py --range main..HEAD --jobs 3 --docker-jobs 1 --database-shards 3",
+    "passed_steps": 26,
+    "failed_steps": 1,
+    "not_executed_steps": 0,
+    "seconds": 5653.439,
+    "original_summary": ".runtime/full-gate/run-_rchw7h0/summary.json",
+    "correction": {
+      "cause": "entailment_packet used false_criterion instead of the serialized question's criteria.false; Ask Signal had 20 passed and 15 failed cases.",
+      "fix": "Use criteria.false and add a direct shared-question shape regression. Final review explicitly mapped the unsupported-content diagnostic's inverse polarity to the positive entailment output.",
+      "affected_reruns": "Ask Signal 35 passed; API/identity/tooling/connectors 3843 passed; focused Ask API/domain 60 passed; final Ruff checks passed.",
+      "later_gate_database": "1518 passed with the corrected field lookup; final polarity clarification does not change database behavior.",
+      "full_gate_rerun": "NOT_EXECUTED; owner requested one invocation. Original result is not claimed green."
+    },
+    "steps": [
+      {"name": "npm", "command": "npm test", "passed": 412, "failed": 0, "count_kind": "test_cases"},
+      {"name": "pytest", "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q", "passed": 3842, "failed": 0, "count_kind": "test_cases"},
+      {"name": "ruff-check", "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "passed": 1, "failed": 0, "count_kind": "checks"},
+      {"name": "ruff-format", "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "passed": 1, "failed": 0, "count_kind": "checks"},
+      {"name": "pip-check", "command": ".venv/bin/python -m pip check", "passed": 1, "failed": 0, "count_kind": "checks"},
+      {"name": "autonomy-delivery-0", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 0", "passed": 63, "failed": 0, "count_kind": "test_cases"},
+      {"name": "autonomy-delivery-1", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 1", "passed": 62, "failed": 0, "count_kind": "test_cases"},
+      {"name": "ai-answers", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-ai-answers-tests.py", "passed": 61, "failed": 0, "count_kind": "test_cases_from_log"},
+      {"name": "ask-signal", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-ask-signal-tests.py", "passed": 20, "failed": 15, "count_kind": "test_cases_from_log", "status": "FAIL_BEFORE_CORRECTION"},
+      {"name": "authority-journal", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-authority-journal-tests.py", "passed": 19, "failed": 0, "count_kind": "checks"},
+      {"name": "browser-worker", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-browser-worker-tests.py", "passed": 35, "failed": 0, "count_kind": "test_cases"},
+      {"name": "candidate-sandbox", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-candidate-sandbox-tests.py", "passed": 34, "failed": 0, "count_kind": "test_cases"},
+      {"name": "consumer", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-consumer-tests.py", "passed": 3, "failed": 0, "count_kind": "test_cases"},
+      {"name": "crawler-network", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-crawler-network-tests.py", "passed": 14, "failed": 0, "count_kind": "test_cases"},
+      {"name": "database", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-database-tests.py --shards 3 --repeat-brain 5", "passed": 1518, "failed": 0, "count_kind": "test_cases", "includes_repeated_brain_cases": 20},
+      {"name": "indexnow", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-indexnow-tests.py", "passed": 21, "failed": 0, "count_kind": "test_cases"},
+      {"name": "page-attempt", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-page-attempt-tests.py", "passed": 1, "failed": 0, "count_kind": "test_cases"},
+      {"name": "self-host", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-self-host-tests.py", "passed": 16, "failed": 0, "count_kind": "test_cases"},
+      {"name": "team-invitation", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-team-invitation-tests.py", "passed": 150, "failed": 0, "count_kind": "test_cases_from_log"},
+      {"name": "temporal", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-temporal-tests.py", "passed": 11, "failed": 0, "count_kind": "test_cases"},
+      {"name": "webflow", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-webflow-tests.py", "passed": 60, "failed": 0, "count_kind": "test_cases"},
+      {"name": "wordpress-draft", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-wordpress-draft-tests.py", "passed": 35, "failed": 0, "count_kind": "test_cases_from_log"},
+      {"name": "workflow-consumer-image", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-workflow-consumer-image-tests.py", "passed": 6, "failed": 0, "count_kind": "test_cases"},
+      {"name": "openbao", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/openbao_lab.py", "passed": 45, "failed": 0, "count_kind": "test_cases"},
+      {"name": "keycloak", "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/keycloak_lab.py", "passed": 5, "failed": 0, "count_kind": "test_cases"},
+      {"name": "gsc-boundary", "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py", "passed": 1, "failed": 0, "count_kind": "checks"},
+      {"name": "gitleaks", "command": "gitleaks git --config=.runtime/full-gate/run-_rchw7h0/main-gitleaks.toml --log-opts=main..HEAD .", "passed": 1, "failed": 0, "count_kind": "checks", "range": "EMPTY_BEFORE_COMMITS; staged scans and actual post-commit range scan required before PR publication"}
+    ]
+  },
+  "cleanup": {
+    "gate_process_cleanup": "completed for all 27 steps",
+    "gate_artifact_cleanup": "completed for invocation-owned temporary work",
+    "final_ask_lab_project": "no remaining invocation-owned containers or lab processes",
+    "other_tracks_resources": "untouched"
+  },
+  "documentation_precommit_checks": [
+    {"command": "npm run check:docs", "status": "PASS", "markdown_files": 362},
+    {"command": "npm run test:repo", "passed": 46, "failed": 0}
+  ],
+  "first_live_run_inputs": [
+    "Operator-provisioned model credentials and model/price configuration",
+    "Private site-scoped shared-egress runtime",
+    "Owner-approved monthly model cap",
+    "Current authorized owner session and committed site records"
+  ]
+}

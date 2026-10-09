@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "slice": "0138",
+  "classification": "H2 tooling",
+  "date": "2026-10-03",
+  "status": "LOCALLY_QUALIFIED",
+  "base_revision": "775474608f2f75e21838c079e655e3336f1fad3e",
+  "migrations": [],
+  "new_dependencies": [],
+  "production_authority": false,
+  "baseline": {
+    "source": "Immutable archive of base revision, shared existing dependency installations",
+    "summary": ".runtime/0138-before-complete/summary.json",
+    "seconds": 2736.128,
+    "passed_steps": 19,
+    "failed_steps": 0,
+    "test_cases": 3238,
+    "checks": 20,
+    "database_cases": 962,
+    "database_seconds": 613.775,
+    "delivery_cases": 40,
+    "delivery_seconds": 1580.705
+  },
+  "after": {
+    "command": ".venv/bin/python scripts/run-full-gate.py --range main..HEAD",
+    "summary": ".runtime/full-gate/run-ttcabcfs/summary.json",
+    "seconds": 1189.925,
+    "passed_steps": 20,
+    "failed_steps": 0,
+    "skipped_cases": 0,
+    "not_executed_steps": 0,
+    "test_cases": 3308,
+    "checks": 20,
+    "jobs": 4,
+    "docker_jobs": 2,
+    "database_shards": 3,
+    "minimum_free_bytes": 4294967296,
+    "python_command_prefix": ".venv/bin/python",
+    "steps": [
+      {
+        "name": "npm",
+        "command": "npm test",
+        "passed": 243,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "pytest",
+        "command": "-m pytest tests/api tests/identity tests/tooling tests/connectors -q --junitxml={owned-work}/pytest.xml",
+        "passed": 1941,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "ruff-check",
+        "command": "-m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks"
+      },
+      {
+        "name": "ruff-format",
+        "command": "-m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks"
+      },
+      {
+        "name": "pip-check",
+        "command": "-m pip check",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks"
+      },
+      {
+        "name": "autonomy-delivery-0",
+        "command": "scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 0",
+        "passed": 20,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "autonomy-delivery-1",
+        "command": "scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 1",
+        "passed": 20,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "authority-journal",
+        "command": "scripts/gate_lab_worker.py scripts/run-authority-journal-tests.py",
+        "passed": 15,
+        "failed": 0,
+        "count_kind": "checks"
+      },
+      {
+        "name": "candidate-sandbox",
+        "command": "scripts/gate_lab_worker.py scripts/run-candidate-sandbox-tests.py",
+        "passed": 11,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "consumer",
+        "command": "scripts/gate_lab_worker.py scripts/run-consumer-tests.py",
+        "passed": 3,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "crawler-network",
+        "command": "scripts/gate_lab_worker.py scripts/run-crawler-network-tests.py",
+        "passed": 14,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "database",
+        "command": "scripts/gate_lab_worker.py scripts/run-database-tests.py --shards 3 --repeat-brain 5",
+        "passed": 983,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "indexnow",
+        "command": "scripts/gate_lab_worker.py scripts/run-indexnow-tests.py",
+        "passed": 17,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "page-attempt",
+        "command": "scripts/gate_lab_worker.py scripts/run-page-attempt-tests.py",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "temporal",
+        "command": "scripts/gate_lab_worker.py scripts/run-temporal-tests.py",
+        "passed": 10,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "workflow-consumer-image",
+        "command": "scripts/gate_lab_worker.py scripts/run-workflow-consumer-image-tests.py",
+        "passed": 6,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "openbao",
+        "command": "scripts/gate_lab_worker.py scripts/openbao_lab.py",
+        "passed": 34,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "keycloak",
+        "command": "scripts/gate_lab_worker.py scripts/keycloak_lab.py",
+        "passed": 5,
+        "failed": 0,
+        "count_kind": "test_cases"
+      },
+      {
+        "name": "gsc-boundary",
+        "command": "scripts/check-gsc-provider-boundary.py",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks"
+      },
+      {
+        "name": "gitleaks",
+        "command": "gitleaks git --config=.runtime/full-gate/run-ttcabcfs/main-gitleaks.toml --log-opts=main..HEAD .",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks"
+      }
+    ]
+  },
+  "timing": {
+    "elapsed_reduction_percent": 56.5,
+    "controlled_benchmark": false,
+    "context": "Shared macOS/Docker Desktop machine; other tracks active; warm caches"
+  },
+  "focused": {
+    "tooling": {
+      "passed": 49,
+      "failed": 0
+    },
+    "database": {
+      "suite_passed": 963,
+      "additional_extraction_cases": 20,
+      "passed": 983,
+      "failed": 0,
+      "seconds": 268.319,
+      "gate_execution_seconds": 263.477,
+      "shards": 3,
+      "assignment": "Sorted full pytest node identity, index modulo N; manifests validated exact-once",
+      "workers_exited_zero": 3
+    },
+    "brain_extraction": {
+      "consecutive_file_runs": 5,
+      "cases_per_run": 14,
+      "expanded_origin_scope_regression_file_passed": 15,
+      "additional_target_runs_in_gate": 5,
+      "cases_per_target_run": 4,
+      "assertions_unchanged": true
+    },
+    "disk_guard": {
+      "command": ".venv/bin/python scripts/run-full-gate.py --range main..HEAD --minimum-free-gib 64",
+      "exit_code": 1,
+      "failed_preflight": 1,
+      "not_executed_steps": 20
+    }
+  },
+  "repaired_attempt": {
+    "pytest_passed": 1918,
+    "pytest_failed": 12,
+    "pytest_errors": 9,
+    "cancelled": true,
+    "cause": "Repository-local pytest temporary roots correctly rejected by existing recovery-material safety checks",
+    "repair": "Exclusively created private system temporary roots outside repository; no safety assertion changed",
+    "owned_logged_projects": 4,
+    "remaining_containers_or_networks": 0
+  },
+  "cleanup": {
+    "all_steps_process_and_artifact_cleanup": "completed",
+    "bulk_work_directories_remaining": 0,
+    "explicitly_logged_projects_audited": 13,
+    "remaining_logged_containers_or_networks": 0,
+    "foreign_resources_untouched": true
+  },
+  "secret_scanning": {
+    "configuration": "git show main:.gitleaks.toml",
+    "gate_range": "main..HEAD",
+    "gate_range_empty_before_commit": true,
+    "staged_scan": "PASS_ZERO_FINDINGS",
+    "committed_range_scan": "NOT_EXECUTED_AT_PRECOMMIT_RECORD",
+    "allowlist_changed": false
+  },
+  "not_executed": [
+    "live provider calls",
+    "deployed workflows",
+    "production release admission",
+    "remote CI observation"
+  ],
+  "owner_inputs": {
+    "local_gate": "none",
+    "first_live_run": "Owning capability's dedicated environment, explicit authorized resource scope, credentials and separate positive/negative/failure qualification"
+  },
+  "train_3_lab_integration": {
+    "reason": "Train 2 added labs after the runner's reviewed base; integrate their invocation-private artifacts and exact JUnit counts",
+    "labs": ["browser-worker", "self-host", "webflow"],
+    "focused_runner_tests_passed": 37,
+    "standalone_paths_unchanged": true,
+    "tests_and_safety_limits_unchanged": true,
+    "real_labs": "FINAL_TIP_PENDING"
+  },
+  "train_3_absolute_entrypoint_fix": {
+    "reason": "The inherited browser lab correctly hashes repository-relative absolute source paths; the runpy wrapper passed a relative __file__",
+    "regression_before_fix": "relative entrypoint fails; absolute entrypoint passes",
+    "runner_sharding_tests_passed": 58,
+    "arguments_and_exit_status_preserved": true,
+    "graceful_cancellation_and_safety_limits_unchanged": true,
+    "original_full_gate_receipt": ".runtime/full-gate/run-758p8a7f/summary.json",
+    "unchanged_lab_results": "Retained; rerun browser and affected static checks on restacked final tip"
+  },
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 39,
+    "migration": null,
+    "down_revision": null,
+    "inherited_head": "0079",
+    "app_tables": 154,
+    "fast_checks": {
+      "python": 2283,
+      "database": 1047,
+      "repository": 46,
+      "dashboard": 227
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "slice": "0109",
+  "classification": "security-critical operational qualification",
+  "date": "2026-09-30",
+  "owner_approval": "Explicit exact download/private-storage, sole Google test user and one-repository read-only GitHub installation approval",
+  "google": {
+    "project": "integration-test",
+    "web_clients": 2,
+    "exact_separate_redirects": "PASS: official downloaded JSON validated before storage",
+    "javascript_origins": "NONE",
+    "audience": "Testing; 1 test user, 0 other users; exact owner email readback",
+    "client_configuration_imports": "PASS: google-login and gsc on real persistent OpenBao",
+    "account_authorization": "NOT_EXECUTED",
+    "gsc_property_binding": "NOT_EXECUTED",
+    "gmail_api_and_mailbox_scopes": "NOT_ENABLED"
+  },
+  "github": {
+    "app_id": 1234567,
+    "installation_id": 123456789,
+    "selected_repository": "example-owner/integration-test",
+    "selected_repository_count": 1,
+    "permissions_readback": "Read access to code and metadata; all-repositories unselected",
+    "public_repository_note": "GitHub UI also notes standard read-only public-repository access; future Signal binding remains one-repository",
+    "private_key": "PASS: owner-generated, private download confirmed and audited OpenBao import/ACL/revocation checked; API acceptance NOT_EXECUTED",
+    "runtime_api_qualification": "NOT_EXECUTED"
+  },
+  "private_store": {
+    "positive": "Both real Google configurations, owner-generated GitHub App key and owner-entered Slack configuration stored at generation 1 under audited private TLS",
+    "negative": "Reader write/delete/other-path/token creation, revoked reader and repeated sign-in import denied",
+    "secrets_in_output_arguments_or_git": "NONE",
+    "new_encrypted_backup": "CAPTURED after Slack import; older model, Google and GitHub pairs each preserved together",
+    "new_backup_restore": "NOT_EXECUTED"
+  },
+  "slack": {
+    "redirect": "Exact approved redirect saved previously",
+    "client_configuration": "PASS: owner approved private storage and entered existing secrets locally; generation 1, strict schema, audit, CAS, reader denial and revocation independently verified",
+    "scope": "chat:write only",
+    "provider_secret_acceptance": "NOT_EXECUTED",
+    "installation_and_binding": "NOT_EXECUTED"
+  },
+  "regression": {
+    "python": "PASS: 89 focused cases",
+    "ruff": "PASS",
+    "npm_test": "PASS: 28 repository cases, 224 Markdown files, 148 dashboard cases, typecheck and build"
+  },
+  "mac_alias_cleanup": {
+    "owner_action": "Owner completed the exact retired-alias sudo removal",
+    "readback": "PASS: ifconfig en0 inet6 shows retired alias absent and approved secured source unchanged",
+    "fresh_ssh": "PASS: new connection bound to approved source, BatchMode and pinned StrictHostKeyChecking",
+    "administrative_access_expansion": "NONE"
+  },
+  "public_callbacks": "NOT_EXECUTED: application and HTTPS ingress are not deployed",
+  "production_and_external_writes": "DISABLED"
+}

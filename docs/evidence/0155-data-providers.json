@@ -1,0 +1,73 @@
+{
+  "slice": "0155",
+  "classification": "security-critical",
+  "base": "1923beb",
+  "branch": "slice/0155-data-providers",
+  "migration": {"revision": "0098", "down_revision": "0097", "app_tables": 179, "merge_train": "train 5; slice qualified as 0093 after 0092 with 178 app tables"},
+  "qualification": [
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q --junitxml=.runtime/0155-fast.xml",
+      "passed": 2972, "failed": 0, "warnings": 2,
+      "report": ".runtime/0155-fast.xml"
+    },
+    {
+      "command": ".venv/bin/python scripts/provider_data_lab.py",
+      "passed": 83, "failed": 0,
+      "coverage": "Real disposable PostgreSQL: DataForSEO, Bing binding/pages, Strategy, keyword topics, weekly skills and new dual-budget provider cases; synthetic HTTP through real shared egress."
+    },
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 1345, "failed": 0, "shards": 3, "database": "17.11",
+      "seconds": 600.463, "report": ".runtime/database-tests/run-eo7erpkh/",
+      "stable_source": true, "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 45, "failed": 0, "provider": "OpenBao v2.6.1",
+      "report": ".runtime/openbao-tests/latest.json", "cleanup": "completed"
+    },
+    {
+      "command": "npm test", "repository_passed": 46, "dashboard_passed": 285,
+      "failed": 0, "markdown_files": 336, "typecheck": "PASS", "build": "PASS",
+      "dashboard_repository_guards": "UNCHANGED"
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps/api services/control_plane scripts tests",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane scripts tests",
+      "status": "PASS", "formatted_files": 558
+    },
+    {"command": ".venv/bin/python -m ruff check .", "status": "PASS"}
+  ],
+  "broader_format_check": {
+    "command": ".venv/bin/python -m ruff format --check .",
+    "status": "FAIL_PREEXISTING_SPECIFICATION_EXAMPLES", "formatted_files": 984,
+    "unformatted": ["Signal_Production_Engineering_Specification_Corrected.md", "Signal_Production_Engineering_Specification_Final.md", "Signal_Production_Engineering_Specification_Revision_3_2.md"],
+    "disposition": "Left byte-for-byte unchanged; the required Python-directory format check passes."
+  },
+  "development_failures": "Initial runs found a missing exact paid robots route, owner versus weekly handle foreign-key mismatch, a concurrent site-lock upgrade deadlock, two duplicate-active-grant fixtures and the legacy Bing fetcher lacking page rows. Corrected and requalified against stable source; the earlier source-changed/failed run is not claimed as passing.",
+  "full_gate": "NOT_EXECUTED_OWNER_DIRECTED_DEFERRED_TO_MERGE_TRAIN",
+  "temporal": "NOT_STARTED",
+  "live_dataforseo": "NOT_EXECUTED",
+  "live_bing": "NOT_EXECUTED",
+  "dedicated_deployment": "NOT_EXECUTED",
+  "production_authority": false,
+  "credentials": "Existing OpenBao namespaces; synthetic credentials only in local labs.",
+  "egress": "Existing profiles unchanged; new exact uncredentialed DataForSEO robots profile; closed paid/Bing connector entries.",
+  "holds": "Unknown requests keep both reservations. Identical unresolved queries cannot be retried through a new intent, rotated credentials or month change.",
+  "integration": "Optional deployment injection; unconfigured services remain visibly unavailable.",
+  "staged_gitleaks": {
+    "status": "PASS", "configuration": "main:.gitleaks.toml", "leaks": 0,
+    "configuration_sha256": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346"
+  },
+  "visual": {
+    "status": "INSPECTED", "synthetic": true, "viewports": [1440, 390],
+    "surfaces": ["Connections", "Strategy"], "screenshots": ".runtime/0155-visual/",
+    "horizontal_page_overflow": false, "detector_findings": 0,
+    "method": "Playwright screenshots of server-rendered fixtures with incumbent CSS; not an authenticated owner journey.",
+    "live_journey": "NOT_EXECUTED"
+  },
+  "handoff": {"rebase": "WAITING_FOR_TRAIN_4_MERGE", "pr": "NOT_OPENED", "main_push": false}
+}

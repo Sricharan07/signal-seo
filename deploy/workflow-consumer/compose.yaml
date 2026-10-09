@@ -1,0 +1,90 @@
+name: signal-workflow-consumer
+
+services:
+  workflow-consumer:
+    image: "${SIGNAL_WORKFLOW_CONSUMER_REPOSITORY:?set the image repository}@sha256:${SIGNAL_WORKFLOW_CONSUMER_DIGEST:?set the 64-character image digest}"
+    pull_policy: always
+    user: "10001:10001"
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 128
+    mem_limit: 384m
+    cpus: 1.0
+    restart: "on-failure:5"
+    stop_signal: SIGTERM
+    stop_grace_period: 90s
+    environment:
+      SIGNAL_SCHEDULER_DSN_FILE: /run/secrets/scheduler_dsn
+      SIGNAL_WORKFLOW_DSN_FILE: /run/secrets/workflow_dsn
+      SIGNAL_TEMPORAL_ADDRESS: "${SIGNAL_TEMPORAL_ADDRESS:?set the private Temporal host and port}"
+      SIGNAL_TEMPORAL_NAMESPACE: "${SIGNAL_TEMPORAL_NAMESPACE:?set the Temporal namespace}"
+      SIGNAL_TEMPORAL_SERVER_NAME: "${SIGNAL_TEMPORAL_SERVER_NAME:?set the TLS server name}"
+      SIGNAL_TEMPORAL_ROOT_CA_FILE: /run/secrets/temporal_root_ca
+      SIGNAL_TEMPORAL_CLIENT_CERT_FILE: /run/secrets/temporal_client_cert
+      SIGNAL_TEMPORAL_CLIENT_KEY_FILE: /run/secrets/temporal_client_key
+      SIGNAL_WORKFLOW_CONSUMER_KEY: "${SIGNAL_WORKFLOW_CONSUMER_KEY:?set a unique worker key}"
+      SIGNAL_WORKFLOW_HEALTH_PORT: "8081"
+      SIGNAL_WORKFLOW_HEALTH_STALE_SECONDS: "15"
+    secrets:
+      - source: scheduler_dsn
+        target: scheduler_dsn
+        uid: "10001"
+        gid: "10001"
+        mode: 0400
+      - source: workflow_dsn
+        target: workflow_dsn
+        uid: "10001"
+        gid: "10001"
+        mode: 0400
+      - source: temporal_root_ca
+        target: temporal_root_ca
+        uid: "10001"
+        gid: "10001"
+        mode: 0444
+      - source: temporal_client_cert
+        target: temporal_client_cert
+        uid: "10001"
+        gid: "10001"
+        mode: 0444
+      - source: temporal_client_key
+        target: temporal_client_key
+        uid: "10001"
+        gid: "10001"
+        mode: 0400
+      - source: database_root_ca
+        target: database_root_ca
+        uid: "10001"
+        gid: "10001"
+        mode: 0444
+    networks:
+      - signal-control
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "5"
+
+networks:
+  signal-control:
+    external: true
+    name: "${SIGNAL_CONTROL_NETWORK:?set the private control network}"
+
+secrets:
+  scheduler_dsn:
+    file: "${SIGNAL_SCHEDULER_DSN_FILE:?set the scheduler DSN secret file}"
+  workflow_dsn:
+    file: "${SIGNAL_WORKFLOW_DSN_FILE:?set the workflow DSN secret file}"
+  temporal_root_ca:
+    file: "${SIGNAL_TEMPORAL_ROOT_CA_FILE:?set the Temporal CA file}"
+  temporal_client_cert:
+    file: "${SIGNAL_TEMPORAL_CLIENT_CERT_FILE:?set the Temporal client certificate}"
+  temporal_client_key:
+    file: "${SIGNAL_TEMPORAL_CLIENT_KEY_FILE:?set the Temporal client key}"
+  database_root_ca:
+    file: "${SIGNAL_DATABASE_ROOT_CA_FILE:?set the database CA file}"

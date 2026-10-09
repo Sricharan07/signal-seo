@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-09T20:51:27Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "framework": "Next.js 16.3.4",
+  "database": {
+    "engine": "PostgreSQL 17.11",
+    "image": "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+    "recorded_at": "2026-09-09T20:32:27.340403+00:00",
+    "cleanup": "completed"
+  },
+  "source_sha256": {
+    "database/migrations/versions/0025_tenant_site_directory.py": "24c88e822b211ce119555d9b02bcc9adcabfeaf5b914f72f364a0e364d3543e6",
+    "database/migrations/versions/0025_tenant_site_directory.sql": "b95f83bf29c02aa2280b1d1b2695e5b025c56a67d139fbc3d3578d1113d36c0f",
+    "services/control_plane/src/signal_core/session_management.py": "076e16226ab8e5cc3e8a31ab43a94e172af12cd0aa1c1b6fa2c8abdbf6481ae0",
+    "apps/api/src/signal_api/authentication.py": "db12ea948124d0368d94697ae1042bc7faae795998dfffb66d8a99dad886aecd",
+    "apps/api/src/signal_api/main.py": "0dc534ee10392ab6d7ceab26716e59874d69b492988b1a57f34b67748a68b882",
+    "apps/api/src/signal_api/session_contracts.py": "6accb735d4097dbf1758e5324b5056d63a5a0fc60d3cb44f561e9cdd6b3a3930",
+    "apps/dashboard/app/globals.css": "f6371e2d037d38122c18f17b456ffa2c259150277393db6e9c1a9256efbd0a6f",
+    "apps/dashboard/app/page.tsx": "878453ca7bc553695614b1956bccf4f2813af5c0e272dc708c313be9bd8b65da",
+    "apps/dashboard/components/dashboard-view.tsx": "c5f659cacbbe830b31f7e22a111d69878320c3d98f1bfd53404e9a51aba71c42",
+    "apps/dashboard/lib/site-api.ts": "a172729338cec613133d7c54239790a085a235a15469d497e0ba853b337eefa6",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "a1f477d280e128591224bd17be94700cb1a1ad83564e8a6f00e71374574e0763",
+    "apps/dashboard/tests/site-api.test.ts": "2a24f71008291983b4e174fd44a5c26603219b02a1f77c1eb7f4b6d60c5a56f1",
+    "tests/control_plane/test_database.py": "4d9d062c31773590302cace150545e5b7808de9570af6a02f5603055f7e9b09b",
+    "tests/control_plane/test_site_directory.py": "715c0b3dd6bcb3cca5c61b1b6eb55e6d8ec22e4a4191fa35b81a7d132a9e019e",
+    "tests/api/test_api.py": "cf0315220a827350415f4b0d4e38c75b03114ae737ec7cd281fda5776f11e819",
+    "tests/api/test_authentication.py": "459761352a36648736a20bb52ad5c5bb05c1fdce55292f148c77205e94d608bc",
+    "tests/api/test_session_lifecycle.py": "5a93d57bbc31a30a2ed292711cfd9d715deefd0d966598fb78540d0aaa20c5e0",
+    "tests/repository/dashboard.test.mjs": "99c5405de09b34e0c677032ee4fc3a8fb2cf803cac4da748cab3401caf276af7",
+    "docs/adr/0042-hash-bound-site-directory.md": "ee57d9331d5fe79871acf0db2a1ff089b314ca0ce0d60698d8caa9c1f610c76e",
+    "DESIGN.md": "41beabf41ca02ed3fb7c3fc5ebf797e9dfa185952f4bc90a0f1480dd6156509f",
+    ".impeccable/design.json": "9860c5e7b3db9e8ddcef9c836c9bc028e671bcc17146bf2e05bb7a4ca50b9219"
+  },
+  "tests": [
+    {
+      "name": "real PostgreSQL migration and authority regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 492,
+      "status": "PASS"
+    },
+    {
+      "name": "API identity and tooling regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+      "passed": 637,
+      "status": "PASS"
+    },
+    {
+      "name": "API contracts",
+      "command": ".venv/bin/python -m pytest tests/api -q",
+      "passed": 184,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard site/session/status/rendering contracts",
+      "command": "npm run test:dashboard",
+      "passed": 25,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard TypeScript contract",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production build",
+      "command": "npm run build:dashboard",
+      "routes": ["/", "/_not-found"],
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 19,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "markdown_files": 116,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and format",
+      "commands": [
+        ".venv/bin/python -m ruff check apps/api services/control_plane scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+        ".venv/bin/python -m ruff format --check apps/api services/control_plane scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling"
+      ],
+      "formatted_files": 125,
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        ".venv/bin/python -m pip check",
+        "npm audit --omit=dev"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 5,
+      "reviewed_false_positives": "five source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "signed-out desktop overview",
+      "viewport": "1440x900",
+      "status": "PASS"
+    },
+    {
+      "name": "signed-out mobile overview",
+      "viewport": "390x844",
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic authenticated two-site desktop overview",
+      "viewport": "1280x720",
+      "site_rows": 2,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic authenticated two-site mobile overview",
+      "viewport": "390x844",
+      "site_rows": 2,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    }
+  ],
+  "browser_fixture": {
+    "kind": "temporary source fixture",
+    "removed_before_final_build": true,
+    "customer_data": false,
+    "credential": false,
+    "production_authority": false
+  },
+  "remote_ci": {
+    "status": "NOT_EXECUTED",
+    "reason": "GitHub account billing or Actions spending state blocks jobs before checkout"
+  },
+  "raw_session_recorded": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "production_authority": false
+}

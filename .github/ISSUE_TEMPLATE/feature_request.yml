@@ -1,0 +1,30 @@
+name: Feature request
+description: Suggest a capability or improvement.
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Who is affected and what they cannot do today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should Signal do? Include examples if you can.
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Authority and safety
+      description: |
+        Does this change what Signal may do on its own, which systems it writes to,
+        or which data it reads? Signal never merges, deploys, pushes to a default
+        branch, deletes content or reads repository secrets.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

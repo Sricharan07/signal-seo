@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-13T00:15:13Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "framework": "Next.js 16.3.4",
+  "source_sha256": {
+    ".impeccable/design.json": "bff9ae37a32839d0c84b63f3f71c08f55161e0bab6474cf8f8cc3198b58e3210",
+    "CHANGELOG.md": "d85413152226abd9b99a934db700e41043f7b9201c3a6de09109dcb5a40de997",
+    "DESIGN.md": "618037cc33ee0ced9975753b37593e218041aa3ec7ccc8eb412e8667172e26cc",
+    "README.md": "0bf730f8b394d74d736305ea6521f3c44eac14bb71b6839c7b8872dcaf7e0386",
+    "apps/dashboard/README.md": "a9932ced7e786f3fd6548245824789fee315c363652218a794c32ab033596adf",
+    "apps/dashboard/app/globals.css": "96b40639b6d79d0b52f01ebc1fc7cbaab1e288722fbdf7a05081f643e3a955b0",
+    "apps/dashboard/app/auth/origin-challenge/route.ts": "12aefa0f568bbd22d2c66bb4cdac0c25c8df18d77b4d7c4d30919fea08911394",
+    "apps/dashboard/app/auth/verify-origin/route.ts": "01d8026890406ffa4a99b75fb35474caa290bef964200919f54df3e425cdff3d",
+    "apps/dashboard/components/dashboard-view.tsx": "803c3be3c53b7ba699983fc10e2dd4c04095abf1948a564879f74adf47920cee",
+    "apps/dashboard/components/origin-verification.tsx": "6dc6e9992bf5c0f0758c09c543c0135ae02c614cf783af0cddf39b3d9c90d845",
+    "apps/dashboard/lib/browser-auth.ts": "2601afa4966e0c137b8ff5662fbf75f5a12ecdad85a85dec79bcc4043b7c0d8c",
+    "apps/dashboard/lib/origin-verification-api.ts": "628db0499fb361780cd495e1d794e8bbc48cd70287170089259292ab4a4f8438",
+    "apps/dashboard/lib/origin-verification-route.ts": "7bfe022db2e69cb6cea4c6cdc5eac265dbe07405778f891d1a67c6918bc1ba5f",
+    "apps/dashboard/lib/site-api.ts": "d0e49dc5c6bf44990695da3ef0a507647cb81b1f7a265a7e7a0175404af9e14a",
+    "apps/dashboard/package.json": "331c53a0ef9cdb1a7f53f5ac0f9318f521bd74e93aa263c329073c0c699f4926",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "6b30f60f876c0d36dce16ce020058c472d8bbcfa87368dff670932d594d59f3a",
+    "apps/dashboard/tests/origin-verification-api.test.ts": "a691b791a5b9125d5f8d27f77885122a507350097a96256bad91af0a8e31ac1e",
+    "apps/dashboard/tests/origin-verification-route.test.ts": "3a75820c64623513822e42bb4efaeb09aa19a0d64bb0d4af53d184e95e772fe9",
+    "apps/dashboard/tests/site-api.test.ts": "1cbfa15a4a01a71cb015a2545ea6c95e6a2f7a3d47fbb3087e60404905393635",
+    "docs/README.md": "27090336348652c3d93da0d50e6060e4974810c2129ad14419ef4599a0122bd0",
+    "docs/adr/README.md": "352cc813ff9f8dbc797dc0734a7ae8e53975adccf25eeb06a78ab7c18b2854f3",
+    "docs/adr/0049-same-origin-dashboard-verification-bff.md": "c71633413a8bd0329dd81970ec1b96675b92839cf830d2b986f1e80f3687922f",
+    "docs/implementation/0049-dashboard-origin-verification.md": "238f2898fea2696f1dfdd2cd2550c2692172394e65f2dd2c1af8b6b7a3456a60",
+    "docs/implementation/core-v1-roadmap.md": "b2f713e0133e8169618815835ed7fae1928c412281a5c6d03769e6d58c4ae44f",
+    "docs/implementation/status.md": "70052adaf6496cfcd6c36d602a8306052cc8ddac5c668f82c7fd3fa40093c000",
+    "docs/runbooks/origin-verification.md": "2ffda13ddddc7bcd36f2e2f5b840b7bca859618c80d6c0f963f030a287e25293",
+    "tests/repository/dashboard.test.mjs": "833143ba0288ce1119d33154f4214228893fce47763be1335b24476a1a4fb826"
+  },
+  "tests": [
+    {
+      "name": "aggregate repository, documentation, dashboard, type, and production build gate",
+      "command": "npm test",
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard origin, rendering, and boundary contracts",
+      "command": "npm run test:dashboard",
+      "passed": 73,
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 21,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard TypeScript contract",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production build",
+      "command": "npm run build:dashboard",
+      "routes": [
+        "/",
+        "/_not-found",
+        "/[section]",
+        "/auth/callback",
+        "/auth/clear-browser-state",
+        "/auth/create-site",
+        "/auth/login",
+        "/auth/logout",
+        "/auth/origin-challenge",
+        "/auth/select-organization",
+        "/auth/select-site",
+        "/auth/verify-origin"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "static dashboard design audit",
+      "command": "node <impeccable-skill>/scripts/detect.mjs --json apps/dashboard/app/globals.css apps/dashboard/components/dashboard-view.tsx apps/dashboard/components/origin-verification.tsx",
+      "findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        "npm ci --ignore-scripts",
+        "npm audit --omit=dev",
+        ".venv/bin/python -m pip check"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 5,
+      "reviewed_false_positives": "five source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "optimized production overview",
+      "viewport": "1440x900",
+      "document_width": 1440,
+      "horizontal_overflow": false,
+      "gradients": 0,
+      "console_warnings_or_errors": 0,
+      "evidence_empty_chart_present": true,
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production mobile overview",
+      "viewport": "390x844",
+      "document_width": 390,
+      "navigation_width": 288,
+      "navigation_top": 60,
+      "navigation_height": 784,
+      "navigation_links": 15,
+      "horizontal_overflow": false,
+      "gradients": 0,
+      "console_warnings_or_errors": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "all fourteen dashboard destinations",
+      "viewport": "1440x900",
+      "horizontal_overflow": false,
+      "gradients": 0,
+      "missing_headings": 0,
+      "visible_framework_errors": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "mobile application and navigation",
+      "viewport": "390x844",
+      "document_width": 390,
+      "navigation_width": 288,
+      "navigation_top": 60,
+      "navigation_height": 784,
+      "navigation_destinations": 14,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "origin verification initial and rejected states",
+      "desktop_viewport": "1000x800",
+      "desktop_panel_width": 952,
+      "mobile_viewport": "390x844",
+      "mobile_panel_width": 366,
+      "mobile_button_width": 334,
+      "horizontal_overflow": false,
+      "temporary_fixture_removed": true,
+      "status": "PASS"
+    }
+  ],
+  "resolved_qualification_findings": [
+    {
+      "finding": "The site-directory validator accepted only the pre-verification ownership state.",
+      "resolution": "Accept the exact three-state backend projection and reject unknown values and non-HTTPS origins."
+    },
+    {
+      "finding": "The mobile navigation was fixed inside a backdrop-filtered sticky ancestor and collapsed to a 48-pixel strip.",
+      "resolution": "Anchor the disclosure panel to the toolbar, assign the exact remaining viewport height, and verify all destinations at 390x844."
+    },
+    {
+      "finding": "A custom icon fork and permanently disabled search control weakened familiar interaction semantics.",
+      "resolution": "Use the pinned Lucide vocabulary directly and remove the inert control until a real scoped contract exists."
+    }
+  ],
+  "challenge_persisted_in_browser_storage": false,
+  "raw_session_recorded": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "external_write": false,
+  "production_authority": false
+}

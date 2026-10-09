@@ -1,0 +1,5 @@
+# Browser-only dependency graph. The control plane does not import Playwright.
+playwright==1.63.0
+pyee==13.0.0
+greenlet==3.5.5
+typing_extensions==4.16.0

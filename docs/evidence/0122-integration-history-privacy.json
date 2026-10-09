@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "slice": "0122-publication-privacy-correction",
+  "classification": "security-critical",
+  "recorded_at": "2026-10-03T02:29:39.840915+00:00",
+  "base_commit": "404eeb9",
+  "status": "SCRUBBED_HISTORY_AND_DEDICATED_TEST_REDEPLOY_QUALIFIED",
+  "identifier_audit": {
+    "target_values": 22,
+    "categories": {
+      "email": {
+        "inventoried_values": 2,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "google_client": {
+        "inventoried_values": 2,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "slack_team": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "slack_channel": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "slack_client": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "github_app": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "github_installation": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "google_project_number": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "vm_ipv4": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "verification_file": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "home_path": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "ipv6": {
+        "inventoried_values": 2,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "environment_uuid": {
+        "inventoried_values": 4,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "identity_created_timestamp": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "escaped_email": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      },
+      "owner_handle": {
+        "inventoried_values": 1,
+        "staged_matches": 0,
+        "history_matches": 0,
+        "metadata_matches": 0
+      }
+    },
+    "staged_matches": 0,
+    "new_history": "PASS_NONEMPTY_PATCH_AND_METADATA_SCAN",
+    "unchanged_baseline_paths_not_rewritten": true,
+    "history_matches": 0,
+    "metadata_matches": 0,
+    "commits_audited_before_this_record": 2
+  },
+  "gitleaks": {
+    "main_configuration_unchanged": true,
+    "staged_findings": 0,
+    "range_404eeb9_to_head": {
+      "findings": 0,
+      "commits_scanned_before_this_record": 2,
+      "final_record_range_scan_required_before_push": true
+    },
+    "main_configuration_sha256": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346"
+  },
+  "lab_gate": [
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 36,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 10,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 874,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 23,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/keycloak_lab.py",
+      "passed": 5,
+      "exit_code": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "passed": 1,
+      "exit_code": 0,
+      "cleanup": "not_applicable"
+    }
+  ],
+  "lab_checks_passed": 994,
+  "other_gates": [
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "passed": 1659
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps services scripts tests",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps services scripts tests",
+      "files": 354,
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "status": "PASS"
+    },
+    {
+      "command": "npm test",
+      "repository_passed": 43,
+      "dashboard_passed": 154,
+      "markdown_files": 246,
+      "typecheck": "PASS",
+      "production_build": "PASS"
+    }
+  ],
+  "additional_private_synthetic_connector_acl_lab": "PASS_REAL_TLS_RAFT_ACL_CAS_SEAL_OWNED_CLEANUP",
+  "live": {
+    "replacement_images_deployed": {
+      "api": "sha256:72c9a95e93bea1c027866ed2e64ddfb5cf1e29c724cc6ac1a1ed7f6f75cac022",
+      "dashboard": "sha256:4d869561770ec01c3bda704369a1d3f94f44909a0d0087419b63a3d2d700a3da"
+    },
+    "deployed_at": "2026-10-03T02:14:58.613991+00:00",
+    "protected_scope_installed": true,
+    "signal_and_google_proof_handlers_preserved": true,
+    "database_identity_tls_accounts_and_session_material_preserved": true,
+    "database_migration": "0062",
+    "migrations_0061_and_0062": "ALREADY_APPLIED_NUMBERS_RETAINED_NOT_REAPPLIED",
+    "approved_private_recovery": {
+      "started_at": "2026-10-03T02:13:29.847306+00:00",
+      "permission_expansion": false,
+      "api_paused_before_recovery": true,
+      "existing_seven_role_policy_exact_match": true,
+      "operator_provider_reads_and_authority_expansion_denied": 6,
+      "operator_lease_seconds": 3600,
+      "temporary_root": "REVOKED_DENIED_403",
+      "secure_listener_restored_byte_for_byte": true,
+      "private_recovery_endpoint": "DISABLED_405",
+      "secure_listener_sha256": "e18e7713446fc88f1a34eb3033c167ad3fbf01ed09ce0a9a0771e91dc65b67f4",
+      "completed_at": "2026-10-03T02:13:47.312582+00:00"
+    },
+    "initial_recovery_attempt": {
+      "outcome": "CONFIG_PERMISSION_ERROR_SAFELY_RESTORED_NO_ROOT_ISSUED",
+      "api_remained_paused": true,
+      "private_recovery_endpoint_after_restore": "DISABLED_405",
+      "correction": "EXISTING_CONTAINER_UID_100_GID_1000_OWNER_ONLY_MODE_0400"
+    },
+    "fresh_existing_one_use_workload_credentials": 7,
+    "credential_free_runtime": {
+      "broker_completion_routes_and_missing_state": "PASS",
+      "human_google_mfa_and_owner_session": "PENDING",
+      "pkce_start_and_callback_rejection": "PASS",
+      "private_tls_readiness": "PASS",
+      "protected_site_routes": "PASS",
+      "public_private_port_isolation": "PASS",
+      "public_tls_login_and_private_route_isolation": "PASS",
+      "same_origin_web_relay": "PASS",
+      "slack_installation_gsc_binding_github_runtime": "NOT_EXECUTED",
+      "unqualified_providers_and_work": "INTERNAL_ONLY_TEST_CONNECTORS_WORK_DISABLED",
+      "untrusted_ca_and_wrong_hostname": "REJECTED"
+    },
+    "human_owner_mfa_session": "PASS_EXISTING_NORMAL_SESSION_PRESERVED_NOT_A_FRESH_LOGIN",
+    "owner_session_expires_utc": "2026-10-03T06:25:09.690052+00:00",
+    "session_or_account_reset": false,
+    "private_port_ipv4_closed": 8,
+    "private_port_ipv6_closed_from_authorized_mac_source": 8,
+    "github_exact_protected_read_binding": "PASS_PRESERVED_AND_FRESH_APPLICATION_INSPECTION",
+    "github_fresh_ui_inspection": "PASS_REPOSITORY_ACCESS_VERIFIED_3_PROVIDER_3_ROBOTS",
+    "provider_receipt_readback": {
+      "migration": "0062",
+      "github_new_provider": 3,
+      "github_new_provider_statuses": [
+        "201",
+        "200",
+        "200"
+      ],
+      "github_new_robots": 3,
+      "github_provider_total": 12,
+      "github_robots_total": 12,
+      "slack_completed_callback_success_receipts": 1,
+      "slack_new_provider_after_redeployment": 0
+    },
+    "slack_oauth_callback_and_bot_binding": "PASS_HISTORICAL_REAL_SUCCESS_PRESERVED_EXACT_A0_BINDING_AND_PRIVATE_BOT_READ",
+    "slack_callback_negative_checks": "PASS_FRESH_MISSING_STATE_REJECTION_NO_IDENTITY_COOKIE_CLEAR",
+    "fresh_slack_oauth_consent_or_exchange": "NOT_EXECUTED_OWNER_CONSENT_NOT_CLICKED",
+    "slack_consumed_attempt_readback": {
+      "remaining_consumed_attempts": 0,
+      "reason": "CONFIRM_SLACK_OAUTH_DELETES_THE_CONSUMED_ATTEMPT_AFTER_SUCCESSFUL_BINDING"
+    },
+    "qualified_existing_readers": [
+      "slack-connector",
+      "github-reader",
+      "gsc-connector"
+    ],
+    "one_use_replay_rejections": 3,
+    "cross_provider_authority_and_policy_denials": 9,
+    "temporary_readers_revoked_denied_403": 3,
+    "encrypted_raft_backup": "PASS_RESTORE_NOT_EXECUTED",
+    "deployment_operator": "REVOKED_DENIED_403",
+    "post_operator_retirement_api_health": "PASS",
+    "private_recovery_endpoint_after_operator_retirement": "DISABLED_405",
+    "application_restarts_after_recreation": 0,
+    "forced_rls_tables": 116,
+    "standing_authorizations": 0,
+    "google_oauth_audience": "TESTING_APPROVED_OWNER_SOLE_TEST_USER_CURRENT_READONLY_SAFARI_CHECK",
+    "google_consent_clicked_or_credentials_entered": false,
+    "gsc_consent_and_binding": "PENDING_OWNER_CONNECTORS_GOOGLE_SEARCH_CONSOLE_CONNECT_SEARCH_CONSOLE",
+    "slack_interactivity": "NOT_QUALIFIED",
+    "same_four_api_provider_hosts_renewed": true,
+    "network_expiry_armed_before_admission": true,
+    "provider_window_expires_utc": "2026-10-03T03:15:14+00:00",
+    "production_writes_enabled": false
+  },
+  "history_and_publication": {
+    "new_branch": "slice/0105-dedicated-integration",
+    "approved_git_name": "Sricharan07",
+    "approved_git_email": "90236368+Sricharan07@users.noreply.github.com",
+    "approved_author_and_committer_before_this_record": 2,
+    "metadata_identity_mismatches": 0,
+    "old_local_branch": "slice/0104-autonomy-delivery-integration",
+    "old_branch_retirement": "RESET_AND_VERIFIED_AT_ORIGIN_404eeb9_AFTER_NONEMPTY_HISTORY_PROOF",
+    "refs_containing_retired_unpublished_tip": 0,
+    "main_rewritten_merged_or_pushed": false,
+    "publication": "FINAL_RECORD_COMMIT_AND_RANGE_SCAN_PRECEDE_BRANCH_ONLY_PUSH_AND_PR; FINAL_HEAD_AND_PR_REPORTED_IN_GITHUB_METADATA"
+  },
+  "source_sha256": {
+    "services/control_plane/src/signal_core/integration_scope.py": "7a4865ec6d2d89b4569c8d0e177be708c7593ad3ccc89e945eaeaf2dae6dc951",
+    "apps/api/src/signal_api/integration_runtime.py": "4f7622423db19395062d69bb1b3c8776d6f84c48a4568c2e23c5cf3eaa37361c",
+    "apps/api/src/signal_api/integration_connectors.py": "7b3b7fcc5b7aa052bbd92830f091589abdc60df66f3d8c0a95e8fc95c0d5899d",
+    "apps/api/src/signal_api/owner_connector_http.py": "64ab643465e38f3ac8c125638c2485fcb239b15f846169ba744ff5ba2050add0",
+    "apps/api/src/signal_api/test_identity_proof.py": "d6605543df0ae0450ca94c2217c41e970b77ba43f33afc20aadefcefd696b9ff",
+    "apps/dashboard/lib/owner-connectors-api.ts": "8d1a7ee285218c82df550e65f57aca3debc999b01ce82ad18154235738c825c9",
+    "deploy/integration-test/application/dashboard-server-options.mjs": "9e7238c564299863b579d013695dd6b7096ec3643b8c20bff485cd92371d5c46",
+    "deploy/integration-test/application/compose.yaml": "58a5605b2eae279e7f11535fdfc36d7d76e8b549aafefc608a7761b4d6558c9b",
+    "deploy/integration-test/identity/compose.yaml": "a8f12bd1346135e7daf45cac924824594c8aaabd67b89ba1afa3de0882651e5d",
+    "deploy/integration-test/identity/realm.json": "65a3b3649c4c4610266ccc5ebaf0ac11c5e9a085f4b8d991c64c0f836ceaef8e",
+    "scripts/integration_environment.py": "842f55a3da3fb278b53bca6539fddefde36529d88a5a0edf320b6ce12b2a4c09",
+    "scripts/integration_connector_secrets.py": "db2d628a8510aeac40d35a99973a76810b9ad0e2332584042298c2d8d5af6feb",
+    "scripts/integration_identity.py": "076f09e2547027a6f51110bddcfc34e893f55879a26f5fe824deec97a01c0039",
+    "scripts/integration_application.py": "00aa5201b39dac050b84d7675c2a6b1cbe80353f0540d1d4f688e2f3ba76c417",
+    "scripts/qualify_integration_application.py": "c71d90af7628f6ceeb9838a8b67dad2903d687791b568e94d0ed49ba873e8aa3",
+    "scripts/qualify_integration_identity.py": "54679af8cd69f1aa3dff381eede6389b1e4acd95615908cf9b683814ee83991f",
+    "tests/conftest.py": "93592431c3b0bc1f4e4c54019c67ba8551f6191d779b7373738faa90bf064ded",
+    "tests/tooling/test_integration_environment.py": "124a98f6f4d6c195372c3d224e4cad5cc30cd32443ce9c2a41638bc41a119f8b",
+    "tests/repository/integration-application.test.mjs": "07ee42206f9b509fd6ebb512f80bd7fc4d01700041a9d19e3b7a68f7bbcc5c14"
+  },
+  "resolved_gate_environment_issue": "Ignored synchronized duplicate generated Next type files quarantined without deleting user source; npm test rerun passed.",
+  "gate_provenance": {
+    "digest_bearing_lab_reports": 10,
+    "lab_source_digests_checked": 1297,
+    "lab_source_digest_mismatches": 0,
+    "built_runtime_files_checked": 201,
+    "built_runtime_file_mismatches": 0,
+    "all_requested_labs_completed_on_replacement_branch": true,
+    "all_started_local_lab_resources_cleaned_up": true,
+    "other_worktree_resources_stopped": false,
+    "pytest_1659_ruff_354_pip_and_npm_rerun_after_commits": true
+  },
+  "sanitized_record_sha256": {
+    "docs/evidence/0105-closed-development-base-vm.json": "5c5d1c6fa416f2ebaec4b19646da11d626583a3a9be03fc548d42e67ef56c492",
+    "docs/evidence/0106-owner-approved-integration-test-scope.json": "a75a8fe852ab1e45d36631001e9fb95d75f36f061062a341bc299833f915856c",
+    "docs/evidence/0107-private-integration-secret-store.json": "7c98e8a4befe7c892ba09f6058765bbd7d07028930afcdb69d171352bab7777c",
+    "docs/evidence/0108-private-connector-configuration.json": "c6663599497000039458fd1d35a48b22cfae3c0350330dd7ba463a5dfa2e143f",
+    "docs/evidence/0109-test-provider-registration.json": "b7756af84cb046212deb6888349b99a0d41091599513a128b7ee1626973535eb",
+    "docs/evidence/0110-private-test-identity.json": "40a0ea6ccc9c3acda0f9188f54e5f16176cd59ec511c7a9685d028af17be4f94",
+    "docs/evidence/0111-dedicated-test-login-ingress.json": "331534861162f5725d5e77590df713b07b944ccd579f8cb0270bdb783b35d46e",
+    "docs/evidence/0112-incomplete-test-identity-recovery.json": "4b2912dbd312fca370d100adccf045931d0377c7f88ae93ea8fa5861ba489aaf",
+    "docs/evidence/0113-private-test-owner-bootstrap.json": "b7f312097f8fc1dc4d4ffbf4634c1ddd431dd24dc01f40d2ca01d23bcfbca7c6",
+    "docs/evidence/0114-dedicated-test-site-onboarding.json": "3d2094fca626e1e991e77a37ff0e5e1479326f837d7b2ccee30d7d03ae893ddb",
+    "docs/evidence/0115-dedicated-test-origin-proof.json": "dcf1a5776541ada2b67e6488469a3b7cadc32ef9d18a0182ed171a6741d976c2",
+    "docs/evidence/0116-owner-connector-egress.json": "1fda2080a3f52b9ff289030a37fabd2cf294d75fa70da6bcabfaa2a0034423d2",
+    "docs/evidence/0117-dedicated-connector-composition.json": "26f0a7251b2a9dce0dc917fed56b921e27295229a21547f5826d2735c7a001c3",
+    "docs/evidence/0118-owner-connector-browser-flows.json": "c3d83696829eb04ed6361c76a2ede8bb0d1870b4eee1c84f684d606f7cf9790c",
+    "docs/evidence/0119-private-connector-deployment-preparation.json": "ffe05821838eef0f79c323a13475be3c12f686f082091b8566d6fb4e6a994a92",
+    "docs/evidence/0120-live-test-connector-runtime.json": "d53a9a1522c6827f58d61b7581e1faf21ee34260c056170eb8e20b5a5d78337d",
+    "docs/evidence/0121-test-callback-metadata-and-binding-failure.json": "a188e68192504dcdd41ab22cbda582db824469781c159b98ad9b65e197360c12",
+    "docs/evidence/0122-dedicated-provider-callback-qualification.json": "9ad67cb77357eeed1ce2dd1c30463149e37c5bac591a46191f1d09965712cdbd",
+    "docs/implementation/0105-closed-development-base-vm.md": "716f5f03f0e7f81d8d9ac559a1fa6bb8f0e7942eb03946eab6e9d2ff5a22b8c1",
+    "docs/implementation/0106-owner-approved-integration-test-scope.md": "f78fe6f2e78802800281a8a1b2595dc8727e504dca4c207670eef89eeef4ab76",
+    "docs/implementation/0107-private-integration-secret-store.md": "bf2d79f89b95ea0e4edf50ea97a585700e97510c88b3c48c4f46032eeff6ab81",
+    "docs/implementation/0108-private-connector-configuration.md": "6dc5da097b51b5ec5ee0f68cfbaf2603055bfc02eaae0d6045e9dd9ad9e9b3a4",
+    "docs/implementation/0109-test-provider-registration.md": "cb295488b85298cf2a608f9b25e55a392ab8e62a159bc1948e1659748d215ccd",
+    "docs/implementation/0110-private-test-identity.md": "439094df398666f7ec3205d2a6bd092bbf31380fe7c0675f1eb25b4f35e1622f",
+    "docs/implementation/0111-dedicated-test-login-ingress.md": "52beed201d54f5b0e3ab7ef9f199dc9988bb7fb25a2ad8793455ff4cffa82823",
+    "docs/implementation/0112-incomplete-test-identity-recovery.md": "edc2c2d844fdd533d4a335fb79194b16f67d371c674d1cd8cd6274818381da72",
+    "docs/implementation/0113-private-test-owner-bootstrap.md": "03450a960b292c306a2eb14d9047cc0ea96885d35b31d4fed7078d101ef2d579",
+    "docs/implementation/0114-dedicated-test-site-onboarding.md": "8ac92ce6c7f1de094ef98484f0071a88fd89132029915ac027485587881c8686",
+    "docs/implementation/0115-dedicated-test-origin-proof.md": "6e6058e1140e36e0d2ae9d526f80247f0aab080181002bf6766a72918b5ad55d",
+    "docs/implementation/0116-owner-connector-egress.md": "b8a549134b4fdff0c56370e10f77f78cca120189617f291a92b0c24444c079fb",
+    "docs/implementation/0117-dedicated-connector-composition.md": "1f50252182858454943f27129d6342a07f75c75b8220a4d0cff2aeecd1ff3af6",
+    "docs/implementation/0118-owner-connector-browser-flows.md": "2a5670e4cfc9cffb00024af5594041f13694c8a3c23b349d0936054d0e6d1321",
+    "docs/implementation/0119-private-connector-deployment-preparation.md": "1c2974b216ae0b8f11c70064e0467408175ccb485e8f878e519a878c1e7e1298",
+    "docs/implementation/0120-live-test-connector-runtime.md": "a3aac2d8ff20d27e0a6aedd53d65f8d85394950951e988c2732c07d2d923bfcc",
+    "docs/implementation/0121-test-callback-metadata-and-binding-failure.md": "629ceb4b93093171f6952ff628a3eee8fc183c36d98917e1e958418159855121",
+    "docs/implementation/0122-dedicated-provider-callback-qualification.md": "35b17d44e64c06d563dc27bc4590ddb278edeef9cec212d31554d69389e26e76",
+    "docs/runbooks/integration-environment.md": "8cf5d76ba2caa66fbf639acf86a91c49a3f3e37396d602b40ac330b93cc936d8"
+  }
+}

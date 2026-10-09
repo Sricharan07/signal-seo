@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "slice": "0128",
+  "classification": "security-critical",
+  "base_commit": "4f3aca5efdf31117f5794fe525b937eddd06e3c6",
+  "migration": "0083",
+  "down_revision": "0082",
+  "status": "LOCAL_REGRESSION_QUALIFIED_NOT_DEPLOYED",
+  "recorded_date": "2026-10-03",
+  "provider_testing": "Synthetic doubles behind the actual shared gateway; real disposable PostgreSQL and TLS OpenBao",
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "status": "PASS",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "status": "PASS",
+      "passed": 36,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "status": "PASS",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "status": "PASS",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "status": "PASS",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "status": "PASS",
+      "passed": 893,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "status": "PASS",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "status": "PASS",
+      "passed": 7,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "status": "PASS",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "status": "PASS",
+      "passed": 27,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "status": "PASS",
+      "checks_passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "status": "PASS",
+      "passed": 1715,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling tests/connectors tests/delivery tests/page_attempt",
+      "status": "PASS",
+      "checks_passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling tests/connectors tests/delivery tests/page_attempt",
+      "status": "PASS",
+      "files": 425,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "status": "PASS",
+      "checks_passed": 1,
+      "failed": 0
+    },
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "repository_passed": 43,
+      "dashboard_passed": 162,
+      "failed": 0,
+      "markdown_files": 249,
+      "typecheck": "PASS",
+      "production_build": "PASS"
+    }
+  ],
+  "full_gate": {
+    "commands_passed": 16,
+    "commands_failed": 0,
+    "automated_cases_passed": 2931,
+    "automated_cases_failed": 0,
+    "integration_report_source_hashes_match": true,
+    "invocation_owned_cleanup": "completed"
+  },
+  "secret_scan": {
+    "staged_diff": "PASS; zero leaks with unchanged main configuration",
+    "post_commit_required_command": "gitleaks git --log-opts=main..HEAD --config .runtime/0128-main-gitleaks.toml --redact --no-banner",
+    "post_commit_result_record": "PR body; required before push"
+  },
+  "source_checksums": [
+    {
+      "path": "services/control_plane/src/signal_core/pagespeed.py",
+      "sha256": "7d405514e9b33a43ad74c95ff0ad2b8674a45c9f38abc927f506380db999e6ee"
+    },
+    {
+      "path": "services/control_plane/src/signal_core/pagespeed_collection.py",
+      "sha256": "735465b2a2bc749856f6766489d2c04af31e0d5384d6475f4a4498e77e32eb49"
+    },
+    {
+      "path": "services/control_plane/src/signal_core/pagespeed_credentials.py",
+      "sha256": "8b574518193aff9d50d157065d756d7b9b25dbec8d36642c88b300cdbf4acb1f"
+    },
+    {
+      "path": "services/control_plane/src/signal_core/egress_profiles.py",
+      "sha256": "7b5bc7237f91b823268c5c6b94c52183a57191e0aa70b375b5b5bb01ba4f73bd"
+    },
+    {
+      "path": "services/control_plane/src/signal_core/shared_egress.py",
+      "sha256": "a18cf365d32a74bb9ae9b298184e2cd36b0c6cab1367b8a824c018a65f66621b"
+    },
+    {
+      "path": "services/control_plane/src/signal_core/owner_connector_egress.py",
+      "sha256": "ee2a32bd1b1ef10538f139c04ff730f79f4b00c042b1c22a5350d66ccc9704f3"
+    },
+    {
+      "path": "database/migrations/versions/0083_pagespeed.py",
+      "sha256": "c47b42de40928efa4512c2c1618ea3d60ba28a5b551265021bccffdfd65b3b93"
+    },
+    {
+      "path": "database/migrations/versions/0083_pagespeed.sql",
+      "sha256": "0d5c1a6a08d3c31799baf3f26e65b87774bac8c917f9f70fe8f4260522a472d4"
+    },
+    {
+      "path": "scripts/openbao_lab.py",
+      "sha256": "af8325e746a2ee4b2ad61f9975d9409ef1e6de0e92462d29515f72cea1f540c8"
+    },
+    {
+      "path": "apps/api/src/signal_api/pagespeed_routes.py",
+      "sha256": "5c2ccaade5f49a71ccb89bfbbbeffe9e98414a980c1309c0d59bcae96130e58c"
+    },
+    {
+      "path": "apps/dashboard/components/pagespeed.tsx",
+      "sha256": "dd2f7ee6f0d9e96110d307bcfd365979fb93a71f22f68afd06afa1a021d0214d"
+    },
+    {
+      "path": "apps/dashboard/lib/pagespeed-api.ts",
+      "sha256": "6ea00564ec408426154a76a42e540f1bd370229c425ae005881bf596a4f2cb14"
+    }
+  ],
+  "observed_toolchain": {
+    "python": "3.12.14",
+    "node": "22.22.3",
+    "postgresql": "17.11",
+    "openbao": "2.6.1",
+    "next_installed": "16.3.4",
+    "next_declared": "16.3.8",
+    "shared_dependencies_modified": false
+  },
+  "pre_final_repairs": [
+    "Corrected migration parent and SQL CASE parsing before qualification",
+    "Updated expected head/table counts and made parametrized synthetic OAuth state unique (initial full database run: 882 passed, 9 failed)",
+    "Source-change detection invalidated an in-progress lab; full stable-source gate rerun rather than weakening the guard",
+    "Fixed one Ruff exception-chaining error with from None; all gates rerun against that final source"
+  ],
+  "not_executed": [
+    "Live PSI v5 keyless and keyed requests",
+    "Production deployment and unattended timer composition",
+    "Local Lighthouse inside the browser sandbox (unavailable)"
+  ],
+  "production_authority": false,
+  "external_writes": false,
+  "secret_material_recorded": false,
+  "specification_revisions_modified": false,
+  "ui_review": {
+    "status": "SHIP_AT_REVIEWED_UI_SCOPE",
+    "desktop_width": 1440,
+    "mobile_width": 390,
+    "synthetic_fixture": true,
+    "horizontal_overflow": false,
+    "lab_field_sections": 3,
+    "native_evidence_disclosure": "qualified",
+    "hydrated_interactions": {
+      "synthetic": true,
+      "passed": 6,
+      "failed": 0,
+      "checks": [
+        "initial read",
+        "keyboard refresh and focus",
+        "keyboard evidence disclosure",
+        "failed refresh clears stale data",
+        "retry recovery",
+        "keyed site change isolation"
+      ]
+    },
+    "desktop_capture": "docs/evidence/0128-pagespeed-desktop.png",
+    "mobile_capture": "docs/evidence/0128-pagespeed-mobile.png",
+    "incumbent_design_files": "unchanged; existing detector/design drift not repaired"
+  },
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 31,
+    "migration": "0083",
+    "down_revision": "0082",
+    "app_tables": 160,
+    "fast_checks": {
+      "python": 2586,
+      "database": 1083,
+      "repository": 46,
+      "dashboard": 242
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false
+  }
+}

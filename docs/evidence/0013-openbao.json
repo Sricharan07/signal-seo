@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-08T08:13:02.548627+00:00",
+  "provider": "OpenBao v2.6.1 (ba7ad8861d0578cd4da4f7b9e5a6756d30484f8f), committed 2026-07-22T14:22:33Z",
+  "image": "ghcr.io/openbao/openbao:2.6.1@sha256:5b2486ab0fb90bbc788cc345b0a08616dfb375873ee8be5df3a2fd4d378a67e0",
+  "python": "3.12.14",
+  "source_sha256": {
+    "requirements.txt": "d28d6a008537cba43ce801520add2c8e4767ce5a4dd86fac09354ac73f42a08d",
+    "scripts/openbao_lab.py": "614ed0d56eeb84994a9f555f9d25468c9b691d72802c94e1405e4bab24101641",
+    "services/control_plane/src/signal_core/openbao_http.py": "43d25a3001213cdb32e903c84737621fddbc00ebe0f81fb50d8ffa91ff04e55f",
+    "services/control_plane/src/signal_core/pkce_secrets.py": "baa6cb57476dfa9e17dbddbad57d21e65837b77ddf3b6b253add6fb24eefa769",
+    "services/control_plane/src/signal_core/recovery_authority.py": "0f9dc727cd0f0bf4083ae9fbb5eb0a52ecfbf3c627bb784818d600dcbe75edf1",
+    "tests/identity/test_pkce_secrets.py": "06b8741093f75b6461153e3a7117b76e7b8081aee21e3196068e78172b0bc83e",
+    "tests/identity/test_recovery_authority.py": "3b8084c52c1b096b6d5975aee4b5df80395a17b812c6b8f4dfac395963e53ccb",
+    "tests/tooling/test_openbao_lab.py": "ef04e812e82a7ef81d745b8b350cbab5c01f32b3ac25597c01c35ba577e049c5"
+  },
+  "tests": [
+    {
+      "name": "TLS KV v2 bounded mount configuration",
+      "status": "PASS"
+    },
+    {
+      "name": "read-only external recovery generation authority",
+      "status": "PASS"
+    },
+    {
+      "name": "recovery authority rejects reader mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "CAS-zero PKCE verifier creation",
+      "status": "PASS"
+    },
+    {
+      "name": "separate writer and consumer ACLs",
+      "status": "PASS"
+    },
+    {
+      "name": "confirmed permanent consume and replay rejection",
+      "status": "PASS"
+    },
+    {
+      "name": "conflicting overwrite rejected and original preserved",
+      "status": "PASS"
+    }
+  ],
+  "passed": 7,
+  "production_authority": false,
+  "synthetic_secrets_only": true,
+  "token_material_recorded": false,
+  "secret_material_recorded": false,
+  "recovery_generation_recorded": false,
+  "transport_security": "OpenBao-generated locally trusted TLS",
+  "cleanup": "completed"
+}

@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29",
+  "classification": "security-critical: standing authority to repository effects",
+  "base_commit": "2e2dd24",
+  "migration": "0060_autonomy_delivery",
+  "down_revision": "0059",
+  "historical_migrations_modified": false,
+  "qualification_status": "PASS_LOCAL",
+  "current_source_fully_qualified": true,
+  "gate_logs": ".runtime/stack-0104-final-rebased",
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 831,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 36,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 0,
+      "full_suite": true
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 23,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling tests/connectors",
+      "passed": 1243,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS",
+      "formatted_files": 368
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "result": "PASS",
+      "repository_passed": 24,
+      "dashboard_passed": 148,
+      "markdown_files": 215,
+      "typecheck": "PASS",
+      "build": "PASS",
+      "failed": 0
+    },
+    {
+      "command": "gitleaks git --log-opts=\"main..HEAD\" .",
+      "result": "PASS",
+      "commits_scanned": 1,
+      "leaks": 0
+    }
+  ],
+  "qualified_artifacts": [
+    {
+      "path": ".runtime/autonomy-delivery/latest.json",
+      "sha256": "61c6cb3c9082a12f8e1d14e32b3b1cb7320aa6b8fdf66909008d56ae8bda89a2",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/database-tests/latest.json",
+      "sha256": "0ed6bdf2fda277606733c22a065ca643592d6758768266adf7da5924739b9658",
+      "cleanup": "completed"
+    }
+  ],
+  "qualification_scope": {
+    "database": "Real disposable PostgreSQL with forced RLS and non-owner runtime roles; physically separate write-intent journal cluster.",
+    "workflow": "Real Temporal, nine worker-context restarts, durable-stage response loss and history replay; not an OS SIGKILL claim.",
+    "github": "Synthetic GitHub provider behind the actual shared-egress gateway and unchanged repository-scoped write profile; no public test service.",
+    "sandbox": "Real disposable non-root, credential-free, no-network candidate build containers.",
+    "slack": "Signed synthetic callback through the existing shared exact-revision owner-decision implementation; replay creates one PR, stale revision creates none.",
+    "editorial": "An independently approved app.content_candidates record is rejected by the technical dispatcher before repository I/O.",
+    "cleanup": "No invocation-owned pilot, server or lab container left running; unrelated containers preserved."
+  },
+  "development_corrections": [
+    "The prior OpenBao pull outage cleared; qualification was not bypassed.",
+    "One 36-pass delivery run was rejected by the unchanged source-integrity guard after a concurrent formatting edit; it is not counted as qualification.",
+    "A subsequent PostgreSQL run found two legacy lease-update failures in the new channel trigger. Exact-record validation now runs on insertion; updates reject changed authority fields without an unrelated forced-RLS lookup. Both original tests and the channel-mutation negative test pass.",
+    "Final full gate rerun against frozen corrected source; no test or safety gate weakened.",
+    "Migration renamed to 0060 after main's 0059; shared UI conflicts retain both Slack and exact-revision navigation.",
+    "Synchronized duplicate copies of task files were preserved in ignored runtime storage rather than committed or treated as additional source."
+  ],
+  "ui_verification": {
+    "scope": "Actual weekly-report component and repository CSS with explicitly synthetic evidence; not a live dashboard qualification.",
+    "desktop": "1440x1000; no horizontal overflow",
+    "mobile": "390x844; no horizontal overflow",
+    "minimum_link_height_px": 24,
+    "screenshots_inspected": true,
+    "channel_contract_and_changes_render_test": "PASS"
+  },
+  "live_qualification_command": {
+    "command": ".venv/bin/python scripts/qualify_weekly_delivery.py",
+    "result": "NOT_EXECUTED",
+    "exit_code": 2,
+    "missing_private_settings": 16
+  },
+  "live_github": "NOT_EXECUTED",
+  "live_site": "NOT_EXECUTED",
+  "live_jev": "NOT_EXECUTED",
+  "live_model": "NOT_EXECUTED",
+  "github_actions": "NOT_EXECUTED_AT_LOCAL_QUALIFICATION",
+  "production_write_authority": false,
+  "delivery_certified": false,
+  "release_admission": false
+}

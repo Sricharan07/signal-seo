@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-13T06:14:11Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "b558fdbcc2e543714e47fb65d3f38be3b50f2ef327aa0440ff751cbf285a6237",
+    "README.md": "998a5125177e89261121400f1a18f106da1fb44e1f2c34c6d2941a7cb336db83",
+    "apps/api/README.md": "343155571b79bcbc657e0528ae8e260c6b6cac6cb40c0925d0fe1379d5b8fb0f",
+    "apps/api/src/signal_api/authentication.py": "dad492f0189ab37b34f3aa3369b8c0afeca5573d8a364b5d102019a8fd834c31",
+    "apps/api/src/signal_api/main.py": "4423effe32d1c44a38e8331e3e4c8479624a7fc8c6f11930c895ecbde2ae1b39",
+    "apps/dashboard/README.md": "8fdfff11e85a14b050bec03016cce81e3c47c069df4f5d340be5ce8cc35bc7f4",
+    "apps/dashboard/app/actions/start-snapshot/route.ts": "bef586ad17010a11212256c5cda50310838d9c2f46af88cf985459772dcac044",
+    "apps/dashboard/app/globals.css": "9a04ed057d42c2a5afc032728ab441093258c0d7d5300116afdd463f773a2bff",
+    "apps/dashboard/components/dashboard-view.tsx": "214e4459d7f4133e9d3b1656f8b5b2f79d9fbc8fa4a11028be95b8dc8cc2ae3e",
+    "apps/dashboard/components/work-refresh.tsx": "18d5f92787e088ac4bc91116f1b50ad38e0aba7ac29faa503822cbee01c39f6a",
+    "apps/dashboard/lib/browser-auth.ts": "712b45a5ae50a6d3196af90803572350533e8651c25ec02e0e0e8fde72e0cd50",
+    "apps/dashboard/lib/dashboard-page.ts": "b55f237b5802ff5e650e5e27ec45d17ff7dc56bac5f450406e0762c8d1ac2bb4",
+    "apps/dashboard/lib/work-api.ts": "319ec68dc8998dd2115879dd9ba81e21c2f73a2b640f851818ae9151317bd793",
+    "apps/dashboard/tests/browser-auth.test.ts": "69e85bd61f31e08e8a0a51022c70bd9809d3c5f8768bd1e17f6aeea2a024f8c2",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "610670726bec07a1ad690264a13fb6f8f2bf4dc81fe24c4389b8f02e2333d6e7",
+    "apps/dashboard/tests/start-snapshot-route.test.ts": "171dd718c6b1da22010818946968d18b50cd1f246382f8245281c5381faa1248",
+    "apps/dashboard/tests/work-api.test.ts": "7528c94a622c88a0f37f6c19b86e6cdfee76f0568e0d2a0c01a83086a2fbb761",
+    "database/README.md": "6426cbdd7e4f55428665655f9098526f7393d7e1dfa7aaf6a892f3f94543653a",
+    "database/migrations/versions/0029_latest_snapshot_command.py": "f4d042b0b49d461ff7190ad32e446635ce53508cb47829045480c6c59ae38844",
+    "database/migrations/versions/0029_latest_snapshot_command.sql": "b2aaab37293901318c6fa7eb8a14527adbb41d72c87fe19d64d0a81e99f9cdaa",
+    "docs/README.md": "6e5781e64c12dd04332dee5162f0ea35d872340b99a69e3abb625325d98bd8ef",
+    "docs/adr/0052-prioritize-a-user-testable-durable-work-flow.md": "83059c647a67094281d201352c655ca8b0e506458972526b3c37ac4362eb7284",
+    "docs/adr/README.md": "196a91a306f8be296050c95f6e7d3bf3c5ed04fc34c79bd450afadd6b4d21be1",
+    "docs/implementation/0052-visible-durable-work-flow.md": "e617fe2d70aed9b5af2df2cbe1c9778504e51805b662f9f3514cd89add248659",
+    "docs/implementation/core-v1-roadmap.md": "1fd4b279c3642005185d2d70e9e2c5605adb9dbb445b5f2ea4b71295f9ba6a34",
+    "docs/implementation/status.md": "d958522c448c615ee95aed29196fdc66f76466526472e5f10d0d060620f70007",
+    "docs/runbooks/local-pilot.md": "6dc7385c1ac193d8cd43f0c706b60e829802fde06a5ebdac79ba8a4046a4833d",
+    "scripts/local_pilot.py": "88bfbbf360bb92c318adfc75ad1134e7f3eda6fd3d96e5b7f034d5ae83d36808",
+    "services/control_plane/README.md": "d6e14c2ffc5ad941bf1547c1aa7b5ac04291bae0cc5bfb393b4aba785fbeb6fd",
+    "services/control_plane/src/signal_core/commands.py": "48dc6e1df66dfd61f83bdffd6b06198b6895be2ea6440bbc7dd74a779bfa2cf5",
+    "tests/api/test_human_commands_http.py": "b5d6e4f1f73da9dd3974cdaa00f3b7e079fca6b21efc5f5fed12641d3ef87cf7",
+    "tests/control_plane/test_database.py": "fbba155b0130dbb059e7fc1216bdfc37a6a49efc7c561b5cce13dedae723957c",
+    "tests/control_plane/test_human_commands.py": "6e0aca4c71951530b354f9ef392975ef68014cc34386bfd3e9e853f20b5ad4c4",
+    "tests/tooling/test_local_pilot.py": "09e6606ea897d0817b7fd5c3b2da6cdad1a355a45d29e58d79c304e3e9640787"
+  },
+  "tests": [
+    {
+      "name": "focused command, API, and pilot boundary",
+      "command": ".venv/bin/pytest -q tests/api/test_human_commands_http.py tests/api/test_authentication.py tests/tooling/test_local_pilot.py",
+      "passed": 82,
+      "status": "PASS"
+    },
+    {
+      "name": "non-database Python regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/connectors tests/identity tests/tooling -q",
+      "passed": 746,
+      "status": "PASS"
+    },
+    {
+      "name": "real PostgreSQL regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 550,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard regression",
+      "command": "npm --workspace @signal/dashboard test",
+      "passed": 86,
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 22,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "markdown_files": 142,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard types and production build",
+      "commands": [
+        "npm --workspace @signal/dashboard run typecheck",
+        "npm --workspace @signal/dashboard run build"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and formatting",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        "npm audit --omit=dev",
+        ".venv/bin/pip check"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 5,
+      "reviewed_false_positives": "five source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real disposable browser Work journey",
+      "command": "npm run pilot",
+      "steps": [
+        "OIDC sign-in through Keycloak",
+        "organization selection through the API and PostgreSQL",
+        "owner site onboarding and active-site projection",
+        "Work action through the same-origin BFF and tenant CSRF",
+        "outbox delivery and real local Temporal workflow execution",
+        "automatic Work refresh to the PostgreSQL terminal manifest"
+      ],
+      "browser_console_warnings_or_errors": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "graceful pilot shutdown and cleanup",
+      "result": "exit 0; ports 3000 and 8000 released; invocation-owned containers removed",
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "browser_origin": "http://localhost:3000",
+  "workflow_provider": "Temporal Server 1.31.2 via Temporal CLI 1.8.3",
+  "identity_provider": "Keycloak 26.7.3",
+  "database": "PostgreSQL 17.11",
+  "secret_service": "OpenBao 2.6.1",
+  "synthetic_identity_only": true,
+  "synthetic_work_result_only": true,
+  "customer_identity": false,
+  "customer_data": false,
+  "customer_origin_network_access": false,
+  "provider_credentials": false,
+  "external_write": false,
+  "production_authority": false,
+  "cleanup": "completed"
+}

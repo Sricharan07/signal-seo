@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/Sricharan07/signal-seo/security/advisories/new
+    about: Never report vulnerabilities in public issues. Use private reporting.
+  - name: Ask a question or share an idea
+    url: https://github.com/Sricharan07/signal-seo/discussions
+    about: Questions, setup help and early ideas belong in Discussions.

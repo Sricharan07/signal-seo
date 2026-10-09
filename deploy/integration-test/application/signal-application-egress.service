@@ -1,0 +1,13 @@
+[Unit]
+Description=Fail-closed Signal test application network boundary
+Requires=docker.service
+After=docker.service
+PartOf=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/signal-integration/application/deny-egress.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=docker.service

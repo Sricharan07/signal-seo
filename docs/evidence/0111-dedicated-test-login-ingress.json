@@ -1,0 +1,49 @@
+{
+  "slice": "0111",
+  "date": "2026-09-30",
+  "classification": "security-critical deployment and identity",
+  "environment": "existing dedicated owner-approved VM; same $24/month capacity",
+  "public_origin": "https://signal-test.example.invalid",
+  "positive": {
+    "public_dns_tls": "PASS: DNS-only exact A record, publicly trusted HTTPS actual Signal page",
+    "private_application": "PASS: persistent PostgreSQL migration 0060, TLS API and Next BFF",
+    "pkce_web_relay": "PASS: durable S256 start, exact issuer/callback, secure binding cookie",
+    "workload_auth": "PASS: three exact-policy single-use AppRoles, periodic renewal, PKCE and recovery operations",
+    "google_identity_network": "PASS: certificate-verified TLS to three fixed screened/pinned public peers",
+    "google_human_checkpoint": "PASS: real chooser, owner-performed passkey, verified first-broker profile step; MFA pending",
+    "required_mfa_configuration": "PASS: required post-Google OTP; actual mapper keys independently verified",
+    "bootstrap_root": "REVOKED; old root request denied",
+    "identity_bootstrap": "DISABLED; old access and fresh password grant denied; enabled=false independently checked",
+    "api_image_id": "sha256:878518932f83f24e71d5cabd1d14da3c37e82116959105917d1b5eb0bffce01e",
+    "dashboard_image_id": "sha256:2605d3019ed001bd442739fd1023cda8adfaf221b4f6d2a474d1b0e5d0393bc8",
+    "ingress_image_id": "sha256:801002cbc3d9cbbe8f4255bf32b0a1c0f36e664e2eb0b8d7057aa802644f7310"
+  },
+  "negative_and_failure": {
+    "private_routes_and_ports": "PASS: public admin/master/token/API/metrics/docs 404; private ports unreachable",
+    "callback_state_code": "PASS: unissued/missing state/code cannot create identity or install Slack",
+    "origin": "PASS: null and foreign Origin rejected; real Safari form works after header correction",
+    "tls": "PASS: untrusted CA and wrong private hostname rejected",
+    "workload_authority": "PASS: SecretID replay, token mint, provider secret read, config writes and revoked token denied",
+    "renewal_failure": "PASS: disables admission without credential fallback",
+    "provider_network": "PASS: unrelated Internet and metadata connections blocked",
+    "unqualified_capabilities": "DISABLED: Slack, GSC, GitHub and command acceptance",
+    "gsc_callback": "UNAVAILABLE: 404; no fake callback readiness",
+    "missing_completed_mfa": "PASS: absent/password-only methods cannot issue session under dedicated policy",
+    "broker_completion_routes": "PASS: two omitted exact paths repaired; missing state rejected by Keycloak with 400; unrelated providers remain 404",
+    "incomplete_test_account": "UNRESOLVED: one unverified user without credentials or federated links; cleanup awaiting approval; no email-only linking"
+  },
+  "regression": {
+    "python_non_database": "PASS: 1246 cases",
+    "postgresql_session": "PASS: 42 cases, real PostgreSQL 17.11",
+    "postgresql_full": "PASS: 832 cases, real PostgreSQL 17.11; invocation-owned cleanup completed",
+    "npm_test": "PASS: 38 repository cases, 230 Markdown files, 148 dashboard cases, typecheck and build",
+    "staged_secret_scan": "PASS: redacted gitleaks staged-patch scan; no findings",
+    "ruff": "PASS"
+  },
+  "temporary_uploads": "REMOVED; runtime tmpfs and protected Mac material retained",
+  "post_retirement_encrypted_snapshot": "CAPTURED; older backups preserved; latest restore NOT_EXECUTED",
+  "google_pins_expire_at_utc": "2026-10-01T02:36:41Z",
+  "human_mfa_owner_application_session": "PENDING",
+  "slack_gsc_github_runtime": "NOT_EXECUTED",
+  "production_and_external_writes": "DISABLED"
+}

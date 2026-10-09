@@ -1,0 +1,38 @@
+{
+  "slice": "0108",
+  "classification": "security-critical operational foundation",
+  "date": "2026-09-30",
+  "scope": "Operator-only dedicated test-app configuration; no connector authority",
+  "python_cases": 50,
+  "checks": {
+    "combined_operator_python_cases": 89,
+    "ruff": "PASS",
+    "npm_test": "PASS: 28 repository, 223 Markdown, 148 dashboard, TypeScript and build",
+    "staged_secret_scan": "PASS"
+  },
+  "real_secret_store": {
+    "provider": "OpenBao 2.6.1",
+    "profile": "Fresh disposable local TLS/Raft/declarative audit container",
+    "data": "Synthetic only; persistent test store untouched",
+    "positive": ["Four exact configuration paths", "Exact read-only verification tokens"],
+    "negative": ["Reader writes and deletion", "Other path and token creation", "Revoked token", "Existing reader policy", "Repeated secret and policy CAS-zero"],
+    "failure": ["Seal denies reads", "Unknown write is not retried", "Reader revoked on verification failure", "Bounded exact KV-v2 readiness"],
+    "qualification_command": ".venv/bin/python scripts/qualify_integration_connector_secrets.py",
+    "qualification": "PASS",
+    "cleanup": "Exact labelled container and anonymous volumes removed"
+  },
+  "registration": {
+    "github": "App configured contents/metadata read-only; exact one-repo installation prepared, not submitted; no private key",
+    "slack": "Exact approved redirect saved; bot chat:write only; not installed or bound",
+    "google": "Search Console Enabled; OAuth branding Testing; sign-in Web client created; download permission pending; second client/test user not created",
+    "gmail": "No API or mailbox scope enabled",
+    "live_oauth_callbacks": "NOT_EXECUTED",
+    "actual_app_secret_import": "NOT_EXECUTED"
+  },
+  "ssh_recovery": {
+    "result": "New-source bound SSH passed; AWS/UFW retain only one new Mac IPv6 /128; old server rule and temporary tunnel removed",
+    "remaining": "Owner must remove temporary old Mac IPv6 alias with sudo"
+  },
+  "production_writes": "DISABLED",
+  "limits": ["No public DNS/HTTPS", "No persistent application/identity/database composition", "No workload authentication", "No authorized provider success"]
+}

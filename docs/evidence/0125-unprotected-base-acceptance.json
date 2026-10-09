@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-02",
+  "classification": "security-critical",
+  "base_commit": "4f3aca5",
+  "migration": "0076",
+  "down_revision": "0075",
+  "historical_migrations_modified": false,
+  "qualification_status": "PASS_LOCAL",
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 885,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/keycloak_lab.py",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "passed": 1668,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "result": "PASS",
+      "repository_passed": 43,
+      "dashboard_passed": 155,
+      "markdown_files": 249,
+      "typecheck": "PASS",
+      "build": "PASS",
+      "failed": 0
+    }
+  ],
+  "gitleaks": {
+    "command": "gitleaks git --pre-commit --staged --config .gitleaks.toml --redact .",
+    "result": "PASS",
+    "leaks": 0,
+    "commit_range": "Run after commit and record the result in the PR; main configuration unchanged"
+  },
+  "qualified_artifacts": [
+    {
+      "path": ".runtime/database-tests/latest.json",
+      "sha256": "7e1d31269e42c1555832d2274c131b67bc0ce713a46ab71e23284f1115232948",
+      "passed": 885,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/autonomy-delivery/latest.json",
+      "sha256": "9ea140eb225c747336245a0507618cf422f0f5a8174f6fa47dccb988fb11435b",
+      "passed": 37,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/candidate-sandbox/latest.json",
+      "sha256": "21f3d7d842560fa083cfd746b98295d20e801993cab6a51cc833326172241c52",
+      "passed": 10,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/consumer-tests/latest.json",
+      "sha256": "13df3275643becfa30c5081bcf48bf9fcfc3bdb5192053ca9898f0254e1af7f8",
+      "passed": 3,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/crawler-network/latest.json",
+      "sha256": "dc6561bd34604397004a377ef83afceb442a3da2f12f52164c0bcdd6f88977a4",
+      "passed": 14,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/page-attempt-tests/latest.json",
+      "sha256": "da32be1047603dd0147201e1c6d59e2985567c8ff5953b39b213091b2cb32372",
+      "passed": 1,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/temporal-tests/latest.json",
+      "sha256": "b2c24c47de06b620077aeff01aef4098c87be7831ef31624a71424e0a48b8c7e",
+      "passed": 7,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/workflow-consumer-image/latest.json",
+      "sha256": "b06f11fdfb53a07c4aa90d65ac178b649588160f375c7fd8c3193904371d0b4f",
+      "passed": 6,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/openbao-tests/latest.json",
+      "sha256": "fc2706432894ec87a39fb3c4a0266b91a6c1fd17b734f2752e639115624f8a5f",
+      "passed": 23,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/keycloak-tests/latest.json",
+      "sha256": "ea7b8d00820e39ef0338778695eec69b09430ce1c89a5940ec454e03f14b1bc6",
+      "passed": 5,
+      "cleanup": "completed"
+    }
+  ],
+  "development_corrections": [
+    "Fixed a new migration function-generation error before qualification.",
+    "Updated exact migration-head and forced-RLS table-count assertions for the new migration; no invariant weakened.",
+    "An initial page-attempt lab failed at Docker setup; the unchanged lab retried successfully with invocation-owned cleanup.",
+    "A source-changing exploratory database run is not counted; the final frozen-source run passed all 885 cases."
+  ],
+  "ui_verification": {
+    "scope": "Actual connector component and repository CSS, synthetic state, not a live dashboard qualification",
+    "desktop": "1440x1000, scrollWidth=1440",
+    "mobile": "390x844, scrollWidth=390",
+    "buttons_minimum_height_px": 44,
+    "risk_consent_preselected": false,
+    "screenshots_inspected": true,
+    "impeccable_detector_findings": 0
+  },
+  "live_github": "NOT_EXECUTED",
+  "live_owner_acceptance": "NOT_EXECUTED",
+  "live_default_branch_change": "NOT_EXECUTED",
+  "production_write_authority": false,
+  "astro_delivery": "UNAVAILABLE",
+  "release_admission": false,
+  "merge_train": {
+    "base": "7754746",
+    "pr": 22,
+    "migration": "0076",
+    "down_revision": "0075",
+    "app_tables": 150,
+    "fast_checks": {
+      "python": 2082,
+      "database": 1005,
+      "repository": 43,
+      "dashboard": 222,
+      "ruff_check": "PASS",
+      "ruff_format": "PASS"
+    },
+    "frozen_migrations": "0001-0070",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "generation_fixture_fix": "9a8a85f71962fe6ff4810635fa3d8b8ece23fcc3",
+    "measurement_fix": "381306fdf83b3b59aa877ac6a76870f836f9f08d",
+    "production_authority": false
+  }
+}

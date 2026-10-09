@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "slice": "0159",
+  "classification": "security-critical",
+  "stacked_on": "0158",
+  "parent_commit": "26c74a23d0d0dd79b198c43c83708ed488dd0364",
+  "migration": "0097",
+  "down_revision": "0096",
+  "merge_train": "train 5; slice qualified as 0091 after 0090",
+  "qualification": "LOCAL_CODE_AND_PROVIDER_LABS_PASSED_NOT_DEPLOYED",
+  "production_authority": false,
+  "live_hydrated_owner_team": "NOT_EXECUTED",
+  "full_gate": "NOT_EXECUTED_OWNER_REQUEST",
+  "temporal": "NOT_STARTED",
+  "source_sha256": {
+    "database/migrations/versions/0097_invitation_revocation.sql": "6466b5e684d26c20fc25ce4b7d720890d54917b1b967e2e7377e898ca9f89efa",
+    "services/control_plane/src/signal_core/team_invitations.py": "1923d32a0826e6d30572c1d7fec8192e1768f9297e714d51d646b8d8286425a8",
+    "services/control_plane/src/signal_core/authority_journal.py": "02ec7ebb8c80fb82a15bdc89af64a5814f195921711b653ea785051f1912b9eb",
+    "apps/api/src/signal_api/team_http.py": "521b90cad306c116cb68569918da987f2ec856dec92a60fe4fcdba16fcf860a0",
+    "apps/api/src/signal_api/authentication.py": "14f1e0535efd0b6dab6e88bf9be6e768fbfb54215e8c29a238519cc15e85d8fc",
+    "apps/dashboard/lib/team-api.ts": "cd13478600ca76632b4ab24652befd33eca945b0cd165551eba02ea9b9d5f23d",
+    "apps/dashboard/components/team-settings.tsx": "dc2fe7dff58019881f2cd2dc523c070d62e7c1507b540eb075c2059390afcd72",
+    "apps/dashboard/components/invitation-revocation.tsx": "a691288bac02af4c68a6652fadd8cc0824be4df44447b494de24d611eaa24471",
+    "apps/dashboard/app/auth/team/revoke/route.ts": "b863f349733ab15a4f66f9c405eb68cf5c191832dc91ae2901fa25f4fb5f4a47",
+    "tests/control_plane/test_invitation_revocation.py": "dfaaab3e2c6765b8cb8e57217869ee4b37c0df66809ad9a4390efecb46275885",
+    "tests/api/test_invitation_revocation.py": "8582e3f8489839385857ad745510d36dda32c00202d0aedfec954ef3697d2a7e",
+    "apps/dashboard/tests/invitation-revocation.test.tsx": "4f5a869bc12b90aa5846e177dc1eab3864dcd680414ed81c4ff2f0bad9b70e33",
+    "scripts/authority_journal_lab.py": "8102f84c1889427eb439461c021541cb5eae1d6989b2a22acae3c1e76a6070ed"
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "result": "PASS",
+      "passed": 2908,
+      "new_revocation_api_cases": 14,
+      "warnings": 2,
+      "report": ".runtime/0159-pytest.log",
+      "report_sha256": "f816cb9a4420255904278ad8c867086e55a26900c730d610ec366b3c877a8191"
+    },
+    {
+      "command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "result": "PASS",
+      "files": 642
+    },
+    {
+      "command": "npm test",
+      "result": "PASS",
+      "repository_passed": 46,
+      "dashboard_passed": 302,
+      "new_revocation_dashboard_cases": 8,
+      "typecheck": "PASS",
+      "production_build": "PASS",
+      "design_guards": "UNCHANGED_PASS",
+      "report": ".runtime/0159-npm-test-final.log",
+      "report_sha256": "fc7ad7261e3d52cdabe65e22a2e430a5649385362e208f03c33e1b731cbec26e"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-team-invitation-tests.py",
+      "result": "PASS",
+      "passed": 149,
+      "new_revocation_postgresql_cases": 22,
+      "database": "17.11",
+      "cleanup": "completed",
+      "recorded_at": "2026-10-04T16:05:56.828074+00:00",
+      "report": ".runtime/team-invitation-tests/latest.json",
+      "report_sha256": "b375f8d89f5ac8939371944cdb0c58c03cdb08d69af3070a0d125ac30b9b2334"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py --shards 3",
+      "result": "PASS",
+      "passed": 1282,
+      "database": "17.11",
+      "cleanup": "completed",
+      "source_hashes_stable": true,
+      "recorded_at": "2026-10-04T16:14:23.182056+00:00",
+      "report": ".runtime/database-tests/latest.json",
+      "report_sha256": "1a1c78b08aa9be25511753936af5f7fd8be373d5b5b1cf2a512676c16b006cd6"
+    },
+    {
+      "command": ".venv/bin/python scripts/keycloak_lab.py",
+      "result": "PASS",
+      "passed": 5,
+      "provider": "Keycloak 26.7.3",
+      "cleanup": "completed",
+      "recorded_at": "2026-10-04T16:07:12.799130+00:00",
+      "report": ".runtime/keycloak-tests/latest.json",
+      "report_sha256": "b3cb6d053d04b091fdd8fae1ef9028f0dae8eddc947c993e5c5b8f2ac56c9796"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "result": "PASS",
+      "passed": 18,
+      "new_invitation_cases": 2,
+      "cleanup": "completed",
+      "real_primary_restore": true,
+      "real_openbao_rotation": true,
+      "report": ".runtime/0159-authority-journal.log",
+      "report_sha256": "34d44ae0a8e0f82d384edcab9a14290b5ea0256c4a3882b6d6655c4b524cf888"
+    }
+  ],
+  "safety_coverage": {
+    "positive": [
+      "pending revocation with immutable canonical hash-chain audit",
+      "revoked acceptance generic denial",
+      "no member added or removed",
+      "typed independent-journal receipt",
+      "pre-revocation snapshot restore remains denied"
+    ],
+    "negative": [
+      "non-owner/admin",
+      "stale/primary MFA",
+      "unverified site",
+      "revoked session or changed recovery generation",
+      "another tenant or site",
+      "accepted, expired and replayed revoke",
+      "runtime UPDATE and resurrection denied",
+      "CSRF/Origin and missing browser proof",
+      "strict identifiers and confirmation",
+      "closed role-free request"
+    ],
+    "failure": [
+      "test-owned PostgreSQL backend terminated",
+      "audit event collision atomic rollback",
+      "real concurrent revoke winner blocks acceptance",
+      "real concurrent acceptance winner blocks revoke",
+      "journal outage retains local pending durability",
+      "OpenBao generation rotation and independent deny-only replay",
+      "unconfirmed or malformed API outcome never shown as success"
+    ]
+  },
+  "superseded_runs": [
+    {
+      "result": "NOT_QUALIFICATION",
+      "notes": "Initial focused test expected OperationalError from a closed client; corrected to terminate only its own backend and assert unchanged invitation state."
+    },
+    {
+      "result": "NOT_QUALIFICATION",
+      "notes": "Initial npm run passed 302 dashboard cases but failed a test-only HeadersInit type; fixed and full npm test subsequently passed."
+    }
+  ],
+  "design_review": {
+    "static_detector": "NO_NEW_FINDINGS; pre-existing shared-CSS warning/advisories at lines <=4985",
+    "reviewer_disposition": "recapture",
+    "required_captures": [
+      "hydrated owner-Team desktop confirmation",
+      "hydrated owner-Team mobile confirmation"
+    ],
+    "documenter": "INCUMBENT_SYSTEM_PRESERVED_NO_NEW_TOKENS",
+    "design_system": "EXISTING_FILES_PRESERVED",
+    "visual_qualification": "UNQUALIFIED"
+  },
+  "staged_secret_scan": {
+    "result": "PASS_NO_LEAKS",
+    "command": "gitleaks git --staged --config .runtime/0159-main-gitleaks.toml --redact --no-banner .",
+    "config_from": "origin/main:856a9963c6350891d4a0162b69965229683bb632:.gitleaks.toml",
+    "config_sha256": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346"
+  }
+}

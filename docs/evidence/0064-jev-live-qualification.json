@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "NOT_EXECUTED",
+  "reason": "No TypeSafe API key has been supplied for live qualification.",
+  "command": "scripts/qualify-jev-provider.sh",
+  "provider": "TypeSafe AI",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "model_requested": "jev-latest",
+  "customer_data": false,
+  "credential_recorded": false,
+  "authority_created": false,
+  "qualified": false
+}

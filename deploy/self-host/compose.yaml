@@ -1,0 +1,297 @@
+name: ${SIGNAL_SELF_HOST_PROJECT:?Use the self-host CLI with private configuration}
+
+x-bounded: &bounded
+  init: true
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 128
+  mem_limit: 512m
+  memswap_limit: 512m
+  cpus: 1.0
+  ulimits: {core: 0}
+  restart: unless-stopped
+  logging:
+    options: {max-size: 10m, max-file: "3"}
+  tmpfs: ["/tmp:rw,noexec,nosuid,nodev,size=64m,mode=1777"]
+
+x-postgres: &postgres
+  <<: *bounded
+  image: postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
+  user: "70:70"
+  command: [postgres, -c, ssl=on, -c, ssl_cert_file=/run/signal-tls/server.pem, -c, ssl_key_file=/run/signal-tls/server-key.pem, -c, hba_file=/run/signal-database/pg_hba.conf, -c, password_encryption=scram-sha-256, -c, max_connections=50, -c, shared_buffers=128MB, -c, log_statement=none, -c, log_min_error_statement=panic]
+  tmpfs:
+    - /tmp:rw,noexec,nosuid,nodev,size=16m,mode=1777
+    - /var/run/postgresql:rw,noexec,nosuid,nodev,size=16m,uid=70,gid=70,mode=0700
+  healthcheck:
+    test: [CMD, pg_isready, -U, postgres]
+    interval: 5s
+    timeout: 3s
+    retries: 20
+
+services:
+  ingress:
+    <<: *bounded
+    image: ${SIGNAL_INGRESS_IMAGE:?Supply the capability-free ingress registry digest}
+    user: "1000:1000"
+    mem_limit: 128m
+    memswap_limit: 128m
+    command: [caddy, run, --config, /run/signal-ingress/Caddyfile, --adapter, caddyfile]
+    ports: ["443:8443"]
+    volumes:
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/ingress
+        target: /run/signal-ingress
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [edge, dashboard, oidc]
+
+  openbao:
+    <<: *bounded
+    image: ghcr.io/openbao/openbao:2.6.1@sha256:5b2486ab0fb90bbc788cc345b0a08616dfb375873ee8be5df3a2fd4d378a67e0
+    user: "100:1000"
+    entrypoint: [bao]
+    command: [server, -config=/openbao/config/server.hcl]
+    environment: {BAO_ADDR: "https://localhost:8200", BAO_CACERT: /openbao/tls/ca.pem}
+    volumes:
+      - ./openbao.hcl:/openbao/config/server.hcl:ro
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/openbao
+        target: /openbao/tls
+        read_only: true
+        bind: {create_host_path: false}
+      - bao-data:/openbao/file
+      - bao-audit:/openbao/logs
+    networks: [secrets]
+    healthcheck:
+      test: [CMD, bao, status, -format=json]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  application-database:
+    <<: *postgres
+    environment:
+      POSTGRES_DB: signal
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/signal-database/postgres-password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=peer
+    volumes:
+      - application-data:/var/lib/postgresql/data
+      - ./initialize-application.sh:/docker-entrypoint-initdb.d/initialize.sh:ro
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/application-database
+        target: /run/signal-database
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/application-database/tls
+        target: /run/signal-tls
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [database]
+
+  identity-database:
+    <<: *postgres
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/signal-database/postgres-password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=peer
+    volumes:
+      - identity-data:/var/lib/postgresql/data
+      - ./initialize-identity.sh:/docker-entrypoint-initdb.d/initialize.sh:ro
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/identity-database
+        target: /run/signal-database
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/identity-database/tls
+        target: /run/signal-tls
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [identity_database]
+
+  temporal-database:
+    <<: *postgres
+    environment:
+      POSTGRES_DB: temporal
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/signal-database/postgres-password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=peer
+    volumes:
+      - temporal-data:/var/lib/postgresql/data
+      - ./initialize-temporal.sh:/docker-entrypoint-initdb.d/initialize.sh:ro
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/temporal-database
+        target: /run/signal-database
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/temporal-database/tls
+        target: /run/signal-tls
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [temporal_database]
+
+  identity:
+    <<: *bounded
+    image: ${SIGNAL_IDENTITY_IMAGE:?Supply the optimized self-host identity registry digest}
+    user: "1000:1000"
+    mem_limit: 1024m
+    memswap_limit: 1024m
+    pids_limit: 256
+    depends_on: {identity-database: {condition: service_healthy}}
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://identity-database:5432/keycloak?sslmode=verify-full&sslrootcert=/run/signal-identity/tls/ca.pem
+      KC_DB_USERNAME: signal_keycloak
+      KC_HOSTNAME: ${SIGNAL_SELF_HOST_ORIGIN:?Exact HTTPS origin required}
+      KC_HOSTNAME_STRICT: "true"
+      KC_HTTP_RELATIVE_PATH: /identity
+      KC_HTTPS_CERTIFICATE_FILE: /run/signal-identity/tls/server.pem
+      KC_HTTPS_CERTIFICATE_KEY_FILE: /run/signal-identity/tls/server-key.pem
+      KC_HTTP_ENABLED: "false"
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "false"
+      KC_CACHE: local
+      KC_LOG_LEVEL: WARN
+      JAVA_OPTS_KC_HEAP: -Xms128m -Xmx640m
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m,mode=1777
+      - /opt/keycloak/data:rw,nosuid,nodev,size=64m,uid=1000,gid=1000,mode=0700
+    volumes:
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/identity
+        target: /run/signal-identity
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/identity/realm.json
+        target: /opt/keycloak/data/import/realm.json
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [identity_database, oidc]
+
+  temporal:
+    <<: *bounded
+    image: temporalio/server:1.30.3@sha256:a3d0f727caad0ecca5dc6e94766135aab448551f2c6c0d33d3c67576458e6a0d
+    user: "1000:1000"
+    mem_limit: 1024m
+    memswap_limit: 1024m
+    entrypoint: [temporal-server]
+    command: [--env, self-host, --config-dir, /run/signal-temporal, start]
+    depends_on: {temporal-database: {condition: service_healthy}}
+    volumes:
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/temporal
+        target: /run/signal-temporal
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [temporal_database, workflows]
+
+  api:
+    <<: *bounded
+    image: ${SIGNAL_API_IMAGE:?Supply the self-host API registry digest}
+    user: "10001:10001"
+    depends_on: {application-database: {condition: service_healthy}}
+    volumes:
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/api
+        target: /run/signal-self-host
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [database, oidc, secrets, api]
+
+  dashboard:
+    <<: *bounded
+    image: ${SIGNAL_DASHBOARD_IMAGE:?Supply the dashboard registry digest}
+    user: "1000:1000"
+    environment:
+      SIGNAL_API_BASE_URL: https://api:8443
+      SIGNAL_DASHBOARD_ORIGIN: ${SIGNAL_SELF_HOST_ORIGIN:?Exact HTTPS origin required}
+      SIGNAL_IDENTITY_PROVIDER_ORIGIN: ${SIGNAL_SELF_HOST_ORIGIN:?Exact HTTPS origin required}
+    volumes:
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/dashboard/tls
+        target: /run/signal-tls
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/dashboard
+        target: /run/signal-config
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [api, dashboard]
+
+  workflow-consumer:
+    <<: *bounded
+    image: ${SIGNAL_WORKFLOW_IMAGE:?Supply the existing workflow consumer registry digest}
+    user: "10001:10001"
+    stop_grace_period: 90s
+    environment:
+      SIGNAL_SCHEDULER_DSN_FILE: /run/signal-worker/scheduler-dsn
+      SIGNAL_WORKFLOW_DSN_FILE: /run/signal-worker/workflow-dsn
+      SIGNAL_TEMPORAL_ADDRESS: temporal:7233
+      SIGNAL_TEMPORAL_NAMESPACE: signal
+      SIGNAL_TEMPORAL_SERVER_NAME: temporal
+      SIGNAL_TEMPORAL_ROOT_CA_FILE: /run/signal-worker/tls/ca.pem
+      SIGNAL_TEMPORAL_CLIENT_CERT_FILE: /run/signal-worker/tls/client.pem
+      SIGNAL_TEMPORAL_CLIENT_KEY_FILE: /run/signal-worker/tls/client-key.pem
+      SIGNAL_WORKFLOW_CONSUMER_KEY: ${SIGNAL_SELF_HOST_PROJECT:?Private project required}
+    volumes:
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/worker
+        target: /run/signal-worker
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [database, workflows]
+
+  bootstrap-job:
+    <<: *bounded
+    image: ${SIGNAL_API_IMAGE:?Supply the self-host API registry digest}
+    user: "10001:10001"
+    profiles: [operator]
+    restart: "no"
+    entrypoint: [python, /app/self_host_jobs.py]
+    volumes:
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/job
+        target: /run/signal-job
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [database, oidc]
+
+  temporal-schema:
+    <<: *bounded
+    image: temporalio/admin-tools:1.30.3@sha256:2c2272b008f1af295b3719963e6feeef64f838d1105d895cf6acfcf96dd31741
+    user: "1000:1000"
+    profiles: [operator]
+    restart: "no"
+    entrypoint: [sh, /run/signal-config/temporal-schema.sh]
+    volumes:
+      - ./temporal-schema.sh:/run/signal-config/temporal-schema.sh:ro
+      - type: bind
+        source: ${SIGNAL_SELF_HOST_RUNTIME:?Private tmpfs required}/temporal
+        target: /run/signal-temporal
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [temporal_database, workflows]
+
+networks:
+  edge: {}
+  dashboard: {internal: true}
+  api: {internal: true}
+  oidc: {internal: true}
+  secrets: {internal: true}
+  database: {internal: true}
+  identity_database: {internal: true}
+  temporal_database: {internal: true}
+  workflows: {internal: true}
+volumes:
+  bao-data:
+  bao-audit:
+  application-data:
+  identity-data:
+  temporal-data:

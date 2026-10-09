@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "slice": "0074",
+  "date": "2026-09-29",
+  "classification": "security-critical",
+  "environment": "disposable local PostgreSQL 17.11, OpenBao 2.6.1, isolated Docker network",
+  "positive_negative_failure": true,
+  "checks": [
+    {"command": ".venv/bin/pytest -q tests/connectors", "passed": 108, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-database-tests.py", "passed": 638, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-authority-journal-tests.py", "passed": 9, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-consumer-tests.py", "passed": 1, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-crawler-network-tests.py", "passed": 13, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-page-attempt-tests.py", "passed": 1, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-temporal-tests.py", "passed": 3, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py", "passed": 6, "failed": 0},
+    {"command": ".venv/bin/python scripts/openbao_lab.py", "passed": 19, "failed": 0},
+    {"command": ".venv/bin/python scripts/check-gsc-provider-boundary.py", "status": "PASS"},
+    {"command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling", "passed": 892, "failed": 0},
+    {"command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network", "failed": 0},
+    {"command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network", "unformatted": 0, "checked_files": 261},
+    {"command": ".venv/bin/pip check", "broken_requirements": 0},
+    {"command": "npm test", "status": "PASS", "repository_tests": 24, "dashboard_tests": 106, "documentation_files": 189, "typecheck": "PASS", "build": "PASS"},
+    {"command": "git diff --cached --check", "status": "PASS"},
+    {"command": "gitleaks git --log-opts=\"5cf0b02..HEAD\" .", "status": "PASS", "findings": 0}
+  ],
+  "live_openai": "NOT_EXECUTED",
+  "live_perplexity": "NOT_EXECUTED",
+  "live_gemini": "NOT_EXECUTED",
+  "production_authority": false,
+  "customer_credentials_used": false
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "slice": "0088",
+  "migration_revision": "0049",
+  "recorded_at": "2026-09-29",
+  "qualification": "internal_only",
+  "commands": {
+    "postgresql": ".venv/bin/python scripts/run-database-tests.py",
+    "authority_journal": ".venv/bin/python scripts/run-authority-journal-tests.py",
+    "consumer": ".venv/bin/python scripts/run-consumer-tests.py",
+    "temporal": ".venv/bin/python scripts/run-temporal-tests.py",
+    "page_attempt": ".venv/bin/python scripts/run-page-attempt-tests.py",
+    "crawler_network": ".venv/bin/python scripts/run-crawler-network-tests.py",
+    "workflow_image": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+    "openbao": ".venv/bin/python scripts/openbao_lab.py",
+    "non_database_python": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+    "ruff_check": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling",
+    "ruff_format": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling",
+    "pip_check": ".venv/bin/python -m pip check",
+    "repository": "npm test",
+    "gitleaks": "gitleaks git --log-opts=\"475c58d..HEAD\" . --config .gitleaks.toml"
+  },
+  "observed": {
+    "postgresql": "632 passed, 0 failed on disposable PostgreSQL 17.11",
+    "authority_journal": "10 passed, 0 failed; independent PostgreSQL and real OpenBao restore/replay",
+    "consumer": "1 passed",
+    "temporal": "3 passed",
+    "page_attempt": "1 passed",
+    "crawler_network": "10 passed",
+    "workflow_image": "6 passed",
+    "openbao": "10 passed, 0 failed",
+    "non_database_python": "893 passed, 0 failed",
+    "ruff_check": "passed",
+    "ruff_format": "232 files already formatted",
+    "pip_check": "no broken requirements",
+    "repository": "24 repository and 109 dashboard tests passed; 184 Markdown files checked; typecheck and production build passed",
+    "gitleaks": "staged scan: 129887 bytes, no leaks; git history range scan required after commit"
+  },
+  "production_authority": false
+}

@@ -1,0 +1,460 @@
+{
+  "slice": "0167",
+  "classification": "security-critical",
+  "base": "bfc84153e7fdb629ecd80191916697ff17ad092c",
+  "migration": null,
+  "existing_test_changes": [],
+  "qualification": "DEFERRED_TO_MERGE_TRAIN (infrastructure: Temporal dev-server startup under parallel load)",
+  "reviewer_disposition": "Reviewer confirmed load-induced startup failures during parallel full gates and nearly full disk, not a refactor failure. Commit and publish the stacked slices after committed-tip sanity checks; reviewer runs the full gate on the merged train. No track full-gate rerun.",
+  "oracle": {
+    "path": "tests/connectors/fixtures/egress_0167_oracle.json",
+    "sha256": "5f50eaa5122da06b12ff57b1c441edd60d1562fd1596fbee03235e2ac212da7b",
+    "profiles": 36,
+    "cases": 541,
+    "allowed": 120,
+    "denied": 421,
+    "captured_existing_test_cases": 253,
+    "before_after_command": ".venv/bin/python scripts/check-egress-equivalence.py --baseline bfc84153e7fdb629ecd80191916697ff17ad092c",
+    "before_passed": 541,
+    "after_passed": 541,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest tests/connectors/test_egress_declarations.py -q",
+      "passed": 583,
+      "failed": 0
+    },
+    {
+      "command": "SIGNAL_DATABASE_LAB=1 .venv/bin/python -m pytest tests/connectors/test_egress_declarations.py tests/control_plane/test_egress_profiles.py tests/api/test_integration_connectors.py tests/tooling/test_webflow_owner_egress.py -q",
+      "passed": 638,
+      "failed": 0
+    },
+    {
+      "command": "gitleaks git --pre-commit --staged --config=<main:.gitleaks.toml> --redact .",
+      "status": "PASS",
+      "leaks": 0
+    }
+  ],
+  "development_notes": [
+    "The initial scanner mistook three matches of the JEV explicit-port URL for generic API keys. Fixture ports are now represented structurally and reconstructed exactly, with all 541 before/after outcomes and 583 tests re-passing. No allowlist change and no credential encoding change."
+  ],
+  "not_executed": [
+    "live providers",
+    "deployment",
+    "production writes",
+    "remaining full-gate labs after infrastructure stop"
+  ],
+  "full_gate": {
+    "command": ".venv/bin/python scripts/run-full-gate.py --range main..HEAD",
+    "runs": 1,
+    "status": "DEFERRED_TO_MERGE_TRAIN (infrastructure: Temporal dev-server startup under parallel load)",
+    "exit_code": 1,
+    "receipt": ".runtime/full-gate/run-ybct6i0l/summary.json",
+    "passed_steps": 7,
+    "failed_steps": 2,
+    "incomplete_steps": 18,
+    "raw_runner_counts": {
+      "passed": 7,
+      "failed": 20,
+      "not_executed": 0
+    },
+    "note": "The runner reports cancelled/not-started steps as FAIL. They are incomplete qualification, not eighteen additional test failures.",
+    "failures": [
+      {
+        "test": "tests/delivery/test_article_delivery.py::test_article_approval_dispatch_replay_and_observation[content_refresh]",
+        "reason": "Temporal dev server startup: localhost connection refused after five seconds.",
+        "stage": "replay_measurement after dispatch, observation and measurement assertions"
+      },
+      {
+        "test": "tests/delivery/test_article_delivery.py::test_article_approval_dispatch_replay_and_observation[new_article]",
+        "reason": "Temporal dev server startup: localhost connection refused after five seconds.",
+        "stage": "replay_measurement after dispatch, observation and measurement assertions"
+      }
+    ],
+    "steps": [
+      {
+        "name": "npm",
+        "status": "PASS",
+        "passed": 409,
+        "failed": 0,
+        "count_kind": "test_cases",
+        "command": [
+          "npm",
+          "test"
+        ],
+        "error": null
+      },
+      {
+        "name": "pytest",
+        "status": "PASS",
+        "passed": 3706,
+        "failed": 0,
+        "count_kind": "test_cases",
+        "command": [
+          ".venv/bin/python",
+          "-m",
+          "pytest",
+          "tests/api",
+          "tests/identity",
+          "tests/tooling",
+          "tests/connectors",
+          "-q",
+          "--junitxml=.runtime/full-gate/run-ybct6i0l/work/pytest/pytest.xml"
+        ],
+        "error": null
+      },
+      {
+        "name": "ruff-check",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "-m",
+          "ruff",
+          "check",
+          "apps/api",
+          "services/control_plane",
+          "database/migrations",
+          "deploy/crawler-network",
+          "scripts",
+          "tests"
+        ],
+        "error": null
+      },
+      {
+        "name": "ruff-format",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "-m",
+          "ruff",
+          "format",
+          "--check",
+          "apps/api",
+          "services/control_plane",
+          "database/migrations",
+          "deploy/crawler-network",
+          "scripts",
+          "tests"
+        ],
+        "error": null
+      },
+      {
+        "name": "pip-check",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "error": null
+      },
+      {
+        "name": "autonomy-delivery-0",
+        "status": "FAIL",
+        "passed": 62,
+        "failed": 1,
+        "count_kind": "test_cases",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-autonomy-delivery-tests.py",
+          "--shard",
+          "0"
+        ],
+        "error": null
+      },
+      {
+        "name": "autonomy-delivery-1",
+        "status": "FAIL",
+        "passed": 61,
+        "failed": 1,
+        "count_kind": "test_cases",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-autonomy-delivery-tests.py",
+          "--shard",
+          "1"
+        ],
+        "error": null
+      },
+      {
+        "name": "ai-answers",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-ai-answers-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "ask-signal",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-ask-signal-tests.py"
+        ],
+        "error": null
+      },
+      {
+        "name": "authority-journal",
+        "status": "PASS",
+        "passed": 19,
+        "failed": 0,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-authority-journal-tests.py"
+        ],
+        "error": null
+      },
+      {
+        "name": "browser-worker",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-browser-worker-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "candidate-sandbox",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-candidate-sandbox-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "consumer",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-consumer-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "crawler-network",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-crawler-network-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "database",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-database-tests.py",
+          "--shards",
+          "3",
+          "--repeat-brain",
+          "5"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "indexnow",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-indexnow-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "page-attempt",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-page-attempt-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "self-host",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-self-host-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "team-invitation",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-team-invitation-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "temporal",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-temporal-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "webflow",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-webflow-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "wordpress-draft",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-wordpress-draft-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "workflow-consumer-image",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/run-workflow-consumer-image-tests.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "openbao",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/openbao_lab.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "keycloak",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/gate_lab_worker.py",
+          "scripts/keycloak_lab.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "gsc-boundary",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          ".venv/bin/python",
+          "scripts/check-gsc-provider-boundary.py"
+        ],
+        "error": "cancelled"
+      },
+      {
+        "name": "gitleaks",
+        "status": "INCOMPLETE",
+        "passed": null,
+        "failed": null,
+        "count_kind": "checks",
+        "command": [
+          "gitleaks",
+          "git",
+          "--config=.runtime/full-gate/run-ybct6i0l/main-gitleaks.toml",
+          "--log-opts=main..HEAD",
+          "."
+        ],
+        "error": "cancelled"
+      }
+    ],
+    "cleanup": "Confirmed own gate processes and PostgreSQL resources stopped. Cancelled browser lab required removal of three exactly identified invocation-owned containers, two networks and its image after creation-time/image/label checks. Other tracks' resources were untouched."
+  }
+}

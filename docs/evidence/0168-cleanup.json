@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "slice": "0168",
+  "base": "a519a65",
+  "status": "FOCUSED_QUALIFICATION_PASSED",
+  "migration": null,
+  "adr": null,
+  "production_writes_enabled": false,
+  "live_providers": "NOT_EXECUTED",
+  "deployment": "NOT_EXECUTED",
+  "full_gate": {
+    "command": ".venv/bin/python scripts/run-full-gate.py --range main..HEAD --jobs 4 --docker-jobs 1 --database-shards 3",
+    "invocations": 1,
+    "passed_steps": 8,
+    "failed_steps": 19,
+    "seconds": 3692.242,
+    "minimum_free_bytes": 4294967296,
+    "checks": [
+      {
+        "name": "npm",
+        "status": "PASS",
+        "passed": 412,
+        "failed": 0,
+        "count_kind": "test_cases",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "pytest",
+        "status": "PASS",
+        "passed": 3113,
+        "failed": 0,
+        "count_kind": "test_cases",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "ruff-check",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "ruff-format",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "pip-check",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "autonomy-delivery-0",
+        "status": "FAIL",
+        "passed": 57,
+        "failed": 6,
+        "count_kind": "test_cases",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "autonomy-delivery-1",
+        "status": "FAIL",
+        "passed": 55,
+        "failed": 7,
+        "count_kind": "test_cases",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "ai-answers",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "ask-signal",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "authority-journal",
+        "status": "PASS",
+        "passed": 19,
+        "failed": 0,
+        "count_kind": "checks",
+        "error": null,
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "browser-worker",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "FileNotFoundError",
+        "process_cleanup": "completed"
+      },
+      {
+        "name": "candidate-sandbox",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "consumer",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "crawler-network",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "database",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "indexnow",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "page-attempt",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "self-host",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "team-invitation",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "temporal",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "webflow",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "wordpress-draft",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "workflow-consumer-image",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "openbao",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "keycloak",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "gsc-boundary",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      },
+      {
+        "name": "gitleaks",
+        "status": "FAIL",
+        "passed": 0,
+        "failed": 1,
+        "count_kind": "checks",
+        "error": "disk_guard",
+        "process_cleanup": "not_started"
+      }
+    ],
+    "status": "DEFERRED_TO_MERGE_TRAIN (infrastructure: disk guard under three parallel tracks)",
+    "rerun": "NOT_EXECUTED; owner runs the full gate on the merged train"
+  },
+  "focused_checks": [
+    {
+      "command": ".venv/bin/python scripts/run-indexnow-tests.py",
+      "passed": 19,
+      "failed": 2,
+      "detail": "New test fixtures mismatched source SHA and returned an invalid empty success receipt. Corrected before full gate."
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/control_plane/test_indexnow.py::test_key_recipe_seals_only_the_exact_completed_static_build tests/control_plane/test_indexnow_owner.py -q",
+      "fixture": "Fresh disposable PostgreSQL from database_lab.isolated_postgres/provision with Alembic head.",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": "npm run test:dashboard",
+      "passed": 366,
+      "failed": 0
+    },
+    {
+      "command": "npm run test:repo",
+      "passed": 46,
+      "failed": 0
+    },
+    {
+      "command": "npm run check:docs",
+      "status": "PASS",
+      "markdown_files": 352
+    },
+    {
+      "command": "gitleaks git --pre-commit --staged --redact --no-banner --config .runtime/full-gate/run-m3l1l9sy/main-gitleaks.toml",
+      "status": "PASS",
+      "leaks": 0
+    },
+    {
+      "command": "Standalone and package imports of tests/delivery/weekly_skill_worker.py",
+      "passed": 2,
+      "failed": 0
+    },
+    {
+      "command": "PYTEST_ADDOPTS=\"-k test_killed_skill_worker_never_reexecutes_unknown_intent_and_stops_new_work\" .venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 12,
+      "failed": 0,
+      "deselected": 113,
+      "seconds": 308.77,
+      "pre_lab_free_bytes": 5388914688,
+      "receipt": ".runtime/autonomy-delivery/latest.json",
+      "cleanup": "completed"
+    },
+    {
+      "command": "PYTEST_ADDOPTS=\"-k horizon_timer_and_reported_state_replay\" .venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "deselected": 8,
+      "seconds": 5.25,
+      "pre_lab_free_bytes": 7252742144,
+      "receipt": ".runtime/temporal-tests/latest.json",
+      "cleanup": "completed"
+    },
+    {
+      "command": "PYTEST_ADDOPTS=\"-k 'renders_real_client_script or worker_rejects_non_allowlisted_actions or worker_step_and_total_time_budgets or real_container_time_budget_exits_and_cleans_up or jev_wait_uses_session_deadline'\" .venv/bin/python scripts/run-browser-worker-tests.py",
+      "passed": 11,
+      "failed": 0,
+      "deselected": 24,
+      "seconds": 34.26,
+      "pre_lab_free_bytes": 7259746304,
+      "receipt": ".runtime/browser-worker/latest.json",
+      "cleanup": "completed"
+    },
+    {
+      "command": "PYTEST_ADDOPTS=\"-k 'key_recipe_seals_only_the_exact_completed_static_build or committed_finding_is_loaded_and_exact_build_is_sealed'\" .venv/bin/python scripts/run-indexnow-tests.py",
+      "passed": 5,
+      "failed": 0,
+      "deselected": 16,
+      "seconds": 323.09,
+      "pre_lab_free_bytes": 7231356928,
+      "receipt": ".runtime/indexnow-tests/latest.json",
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python -c '\nimport subprocess\nimport sys\nfrom pathlib import Path\nsys.path.insert(0, \"scripts\")\nfrom database_lab import ROOT, isolated_postgres, provision, source_hashes, summarize_junit\nbefore = source_hashes()\nreport = Path(\"/private/tmp/signal-0168-focused-database.xml\")\nwith isolated_postgres() as (dsn, common):\n    env, version = provision(dsn, common)\n    subprocess.run([sys.executable, \"-m\", \"alembic\", \"-c\", \"database/alembic.ini\", \"upgrade\", \"head\"], env=env, cwd=ROOT, check=True, timeout=180)\n    result = subprocess.run([sys.executable, \"-m\", \"pytest\", \"tests/control_plane/test_commands.py\", \"tests/control_plane/test_audit_findings.py\", \"tests/control_plane/test_page_observations.py\", \"tests/control_plane/test_proposals.py\", \"tests/control_plane/test_business_brain.py\", \"tests/control_plane/test_indexnow_owner.py\", \"-q\", f\"--junitxml={report}\"], env=env, cwd=ROOT, timeout=600)\nassert before == source_hashes(), \"Source changed during focused qualification\"\nsummary = summarize_junit(report)\nprint(\"Focused database: {}/{} passed; invocation-owned cleanup completed\".format(summary[\"passed\"], len(summary[\"tests\"])))\nsys.exit(result.returncode or int(summary[\"passed\"] != len(summary[\"tests\"])))\n'",
+      "passed": 44,
+      "failed": 0,
+      "seconds": 5.13,
+      "pre_lab_free_bytes": 5862940672,
+      "receipt": "/private/tmp/signal-0168-focused-database.xml",
+      "cleanup": "completed",
+      "detail": "Existing database_lab isolated_postgres/provision, Alembic head; source hashes checked unchanged."
+    }
+  ],
+  "cleanup": {
+    "owned_gate_processes": "completed",
+    "owned_database_container_names_absent": true,
+    "other_tracks_containers": "untouched"
+  },
+  "next": "Owner runs the full gate on the merge train. No local full-gate rerun, shared resource pruning, or deadline/gate weakening. Live providers and deployment remain NOT_EXECUTED.",
+  "prior_gate_failures": [
+    {
+      "kind": "infrastructure",
+      "detail": "Available host disk fell below the unchanged 4 GiB guard. Sixteen steps were not started."
+    },
+    {
+      "kind": "infrastructure",
+      "detail": "Browser lab returned failure before producing a qualification receipt; invocation-owned cleanup attempted.",
+      "resolution": "Focused browser-worker requalification: 11 passed, zero failed, invocation-owned cleanup completed."
+    },
+    {
+      "kind": "infrastructure",
+      "detail": "One delivery fixture could not connect to disposable PostgreSQL within its existing two-second connection deadline."
+    },
+    {
+      "kind": "requalification_required",
+      "detail": "Twelve standalone weekly worker cases failed after moving a test-only helper. Script/package imports are corrected and both smoke checks pass; real PostgreSQL/Temporal requalification remains blocked.",
+      "resolution": "Corrected import; both smoke checks and 12 real PostgreSQL/Temporal worker-loss cases passed."
+    }
+  ],
+  "focused_requalification": {
+    "passed": 75,
+    "failed": 0,
+    "labs_serial": true,
+    "disk_minimum_bytes": 4294967296,
+    "disk_waits": 0
+  },
+  "post_commit_checks": {
+    "commands": [
+      ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "npm test"
+    ],
+    "results": "Reported in the PR after the committed tip is checked once."
+  }
+}

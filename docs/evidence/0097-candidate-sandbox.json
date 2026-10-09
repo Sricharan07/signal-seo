@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-03T01:25:49.597483+00:00",
+  "image": "node:22.18.0-bookworm-slim@sha256:752ea8a2f758c34002a0461bd9f1cee4f9a3c36d48494586f60ffce1fc708e0e",
+  "image_id": "sha256:b35d0f063aed7baa38b82b6678cea9e34aab7c8d3990ab617f34dc58909739ff",
+  "source_sha256": {
+    "scripts/run-candidate-sandbox-tests.py": "8f41cd4a84248dd326c9aa0a52e68c1d8fb9a1de0eaae3ae9bd0e976fea73fb6",
+    "services/control_plane/src/signal_core/candidate_build.py": "571df1ac4f377bd73f9de5830f51be4aabcd4bb1aa06b67f32526004dbe47fe3",
+    "services/control_plane/src/signal_core/candidate_sandbox.py": "acd3146e28fefee2a5fe1d0ecab05f2f1ceebe42b1cb866b91ff3fea7ae772a4",
+    "tests/container/test_candidate_sandbox.py": "3640a1e0732ba982b5962d99427a2bf222ee774cb39a6eeb00ffb401c07672e3",
+    "tests/tooling/test_candidate_build.py": "4b219f3346f7fe986b41438a8afe7d276d0a3262ca78db11c5e51171c9cc15ea"
+  },
+  "tests": 10,
+  "passed": 10,
+  "failed": 0,
+  "cleanup": "completed",
+  "production_authority": false
+}

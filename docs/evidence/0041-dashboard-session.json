@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-09T20:01:18Z",
+  "node": "22.22.3",
+  "framework": "Next.js 16.3.4",
+  "source_sha256": {
+    "apps/dashboard/app/globals.css": "74ccfdd87f0edbdf2db4b4240aa544055fa0490b20db6fc1c52daa2f1b3c3456",
+    "apps/dashboard/app/page.tsx": "df0228fdcdada7f9a9d9d5461395363adf729b08e60918c61d811bf0b33b013d",
+    "apps/dashboard/components/dashboard-view.tsx": "8e6fea27dc4d9aacbd2f0d2a39d3a5bc5b42d0cbf82f49d90b4e8553b853fb5f",
+    "trusted-origin-source": "e34844b0587fec0477fddda530032d7096e3252cf44bc7f6b19f6c4c1f6fa7ad",
+    "capability-client-source": "a70657b8acdd0d5571ad794153036518aec0509a8f066dbf7bbac54d497459bd",
+    "session-client-source": "840fdd6536d0df55028dd2b80459b0dca0c312af96aa571633b9e507633c034a",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "f5c397e92bc2a91c22141b309c5ab87baba69e2c27440884c7bbd9dc2dbcd781",
+    "session-client-tests": "666412bdf6a2b2f1bd79329e65108f69810c1d52262f23a84e5d53a2d8a240eb",
+    "capability-client-tests": "4eb042bcfe4c081ab93ee7d11cf8afa1cf89e10c1a186cec9650ef1553e1f69d",
+    "tests/repository/dashboard.test.mjs": "274c92a42680151bc5c6d519cbffd2856649597b31deb5b83bf77084435287c5",
+    "DESIGN.md": "bec414a5daaf01d1ad9bd399b41e6b6dc94658e6742bf617fd7f8d12dc72dab6",
+    ".impeccable/design.json": "73e99c854e3552c24afd54827f4b0ae95716dd80b21c2ce58b1774ce7d29d65f"
+  },
+  "tests": [
+    {
+      "name": "dashboard session/status/rendering contracts",
+      "command": "npm run test:dashboard",
+      "passed": 17,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard TypeScript contract",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production build",
+      "command": "npm run build:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 19,
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged API identity and tooling regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+      "passed": 624,
+      "status": "PASS"
+    },
+    {
+      "name": "real local API unavailable-session mapping",
+      "command": "node --import tsx --input-type=module -e <session probe>",
+      "result": "unavailable",
+      "status": "PASS"
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "signed-out desktop account state",
+      "viewport": "1440x900",
+      "status": "PASS"
+    },
+    {
+      "name": "signed-out mobile account state",
+      "viewport": "390x844",
+      "horizontal_overflow": false,
+      "status": "PASS"
+    }
+  ],
+  "remote_ci": {
+    "status": "NOT_EXECUTED",
+    "reason": "GitHub account billing or Actions spending state blocks jobs before checkout"
+  },
+  "raw_session_recorded": false,
+  "customer_identity": false,
+  "provider_credentials": false,
+  "production_authority": false
+}

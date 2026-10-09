@@ -1,0 +1,37 @@
+name: signal-integration-application
+services:
+  ingress:
+    image: ${SIGNAL_INGRESS_IMAGE:?Build and bind the capability-free ingress image ID}
+    user: "1000:1000"
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 128m
+    memswap_limit: 128m
+    cpus: 0.5
+    pids_limit: 64
+    ulimits:
+      core: 0
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 1m
+        max-file: "2"
+    command: [caddy, run, --config, /etc/caddy/Caddyfile, --adapter, caddyfile]
+    environment:
+      XDG_DATA_HOME: /data
+      XDG_CONFIG_HOME: /config
+    ports: ["0.0.0.0:80:8080", "0.0.0.0:443:8443"]
+    tmpfs: ["/tmp:rw,noexec,nosuid,nodev,size=8m,mode=1777"]
+    volumes:
+      - /run/signal-application/ingress/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./tls/dashboard/ca.pem:/run/signal-tls/ca.pem:ro
+      - certificates:/data
+      - proxy-config:/config
+    networks: [ingress, oidc, certificate_authority]
+networks:
+  certificate_authority: {}
+volumes:
+  certificates:
+  proxy-config:

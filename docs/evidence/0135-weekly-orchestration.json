@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-04T03:54:22.082505+00:00",
+  "slice": "0135",
+  "classification": "security-critical",
+  "qualification_status": "PASS_LOCAL",
+  "base_commit": "775474608f2f75e21838c079e655e3336f1fad3e",
+  "migration": "0087_weekly_orchestration",
+  "down_revision": "0086",
+  "historical_migrations_modified": false,
+  "production_authority": false,
+  "live_providers": "NOT_EXECUTED",
+  "source_sha256": {
+    "apps/api/src/signal_api/authentication.py": "136e51c59f141e7c566ef75ecaf4791c00b9cefc945afa35a0fbbe5f739e2bcf",
+    "apps/api/src/signal_api/main.py": "70851f66d808ce6171a546688f908b306521f3432c59ee5dcc9f546d77239ca8",
+    "apps/api/src/signal_api/weekly_report_contracts.py": "3a959fd5ce076776b7e7d76cc34b88ea154604380670ede48531bb7143c51da6",
+    "apps/dashboard/components/weekly-report.tsx": "7b4201ddcf72f9bd011dec614a1d709df020fb9b1675e122d7443b4a41216aa7",
+    "apps/dashboard/lib/dashboard-page.ts": "28d094b56471aa1d41933f11c1f84aacaac1b879af5435ba887c1982426f99d7",
+    "apps/dashboard/lib/weekly-report-api.ts": "e6e6b92ce68cb3242290712d4a1dd965da7bdb0f2d00f0b65b2a689c03906b64",
+    "apps/dashboard/tests/weekly-report.test.tsx": "b528529d395faa2900a505225367e2072f6748c74be539cbbec63731fa3d0dd3",
+    "database/migrations/versions/0087_weekly_orchestration.py": "a72d097d70d18db0df459bf819c0201ad80905da2565a4bf3d1cf84010e2f5b2",
+    "database/migrations/versions/0087_weekly_orchestration.sql": "be0000e167f90edb3f357ae6370c6ee303cb7380cd0f113b05efdbf6852e1706",
+    "scripts/qualify_weekly_delivery.py": "8e4305bbd64de88d9a86eeec35b8104d54c055e62d19f954e3a46397372a3def",
+    "services/control_plane/src/signal_core/gsc_binding.py": "83d5c7421d834c52c72021de1aa3d079f57358efc5cd74ca051bc4f3410967c2",
+    "services/control_plane/src/signal_core/weekly_control.py": "a6d3fa8daf67591351fcbec3cfe28c0334c06c7c3dc334b8b3e908964d00a04b",
+    "services/control_plane/src/signal_core/weekly_delivery_runtime.py": "62cf0583b717c5d7a9b18e19862234fe6f3a1acb0d19df3afba79b06c029b100",
+    "services/control_plane/src/signal_core/weekly_loop.py": "13701ca0c6ecedbfa173c5b50c996c1cd8a2837b94be56cf08224801f6014151",
+    "services/control_plane/src/signal_core/weekly_skill_ports.py": "2d22179227983589a9a74e90d5d85742d406e78d4e50f037c5457b55a11620f1",
+    "services/control_plane/src/signal_core/weekly_skills.py": "501a81691b09ad54a2921602a21e51290c07cc64cc1346b4ae4baed25e270f2b",
+    "tests/api/test_weekly_loop.py": "393d439c8505565c9e6c4503f76773c49e3475b24ad457cf1a670eeb913b2981",
+    "tests/control_plane/test_database.py": "7d97f643cc5fb726a8cb45274f11fbbfe74e7fd4a760d8d2cfcf288495e0e61c",
+    "tests/control_plane/test_weekly_skill_providers.py": "1e7f7645a154be210ef1b6e86e8062a7ad46734503d11521a6f62b7cae137ab2",
+    "tests/control_plane/test_weekly_skills.py": "f8e9146867f7bcdab55740403d444ce3030db58f280ff70cf2f36ac8026aac96",
+    "tests/delivery/test_autonomy_delivery.py": "f45188c44ad90be45932521ccfd0af325a488e6061169dfa6d4920455da9cfad",
+    "tests/delivery/test_weekly_skills.py": "f0d784971107d87af16a1254b53e363295dcaf5fc8469284ed526556b818f9dc",
+    "tests/delivery/weekly_skill_worker.py": "b7d4458f04aa3143be526e99a31724ebe08a6d1e513e512b7edf7b6b570d0588",
+    "tests/temporal/test_weekly_loop.py": "f7c56043717fc0885ade85c44f8f962eb544f34e68f60320ec210abdfae741bd"
+  },
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 745.7,
+      "log_sha256": "f647d4a7cf37865b6e629e3dbb79189db44750ac06626feea17b234e97918988",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 1007,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "ae9a6b8b4e30f212656f410f56b489ae42fd10b412bf0e45fe3df69213c3e682"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 15.02,
+      "log_sha256": "ac05908d716fb2c2729a529a1dc0dc342dbbe5433a8295a5c7caa9b89fe228a1",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 15,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 1646.24,
+      "log_sha256": "1769a496e73aefd2827f86130153d8783f26d9634337c9d01256f4343bb26347",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "5d54132b6aa2774e394a8e5c277a6c7e8ecc8b051b0faf28d5980c9a6b7280ef",
+      "full_suite": true
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 40.02,
+      "log_sha256": "eb06884d3caa4c8c8935a2a9a555cd12c488d9a1547fd89a5b101e608348916a",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "3a9c7b2df6e8834b68ebcddb952f6c0188a1f667c4936e08f179f7207c59e5e3"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 10.01,
+      "log_sha256": "66c07946924e3a4e298cfee4aab7af81c9a869c813fe3100201e7d223c2844d0",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "258fb6c4a3c792532a21f88a000281d9fb318317f2c959ffa044b4a3c211626a"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 15.02,
+      "log_sha256": "6a365aa2a2de993d40dccd60bc45e7942e3f7fa4b6d45e83bf563d73085c32a5",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "6d8baf17e1a0397b2506a5a3936473ce19c36c200f48918a5727bd034a02fe64"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 10.01,
+      "log_sha256": "bae3ee52e6805686555c6128d3ed9083f260551dbdc8aa1570c214225190c057",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "66f1641184059e7860e0953a33026db0ec9fc0870ca54568b15ed08ccaa7d996"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 10.01,
+      "log_sha256": "a153300ecdeb358ca6d6ceb28dcf7874f32fd2ab5b404706aca576441365c1ba",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "d1a2c0bce8e3af7e337c3affa680af91788e4a67d02983209326ded46993795a"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 20.01,
+      "log_sha256": "778badaf16ca552fcc456d3afd28bf4f4510e056d09c6ca7547395e767f50f25",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "30356164747c4fd08fc17658a0a7ae4a74745cf3e95c96ecf4e4e9ee019bf802"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-indexnow-tests.py",
+      "exit_code": 0,
+      "elapsed_seconds": 320.21,
+      "log_sha256": "d9d44d905db055b46629e50f646e2f0e03911a032307b2675557a453b867c907",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "03300fd7573458668d52b708325fbfb59bee024f091a901cf2a77e4b6e27c732"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "exit_code": 0,
+      "elapsed_seconds": 5.01,
+      "log_sha256": "0df09ae150b6072109784a60c267d986fa8c6108d4ccd9763222c40b266aeb37",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "receipt_sha256": "c67f73134999feb33478c7d72d82181229265f4c31b5b2ad4887e72738ca16b6"
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "exit_code": 0,
+      "elapsed_seconds": 5.01,
+      "log_sha256": "86ef9b40fe823e3003b27f8580c1c078478cb4048d709a9a305ed1ab5ac24403",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "exit_code": 0,
+      "elapsed_seconds": 40.03,
+      "log_sha256": "fb4e520a9dde3214ef18967417da889b6c3665a6b6e55d9e27f3c50fee1f9393",
+      "disk_stop": false,
+      "result": "PASS",
+      "passed": 1903,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps services scripts tests database/migrations deploy/crawler-network",
+      "exit_code": 0,
+      "elapsed_seconds": 5.01,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "disk_stop": false,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+      "exit_code": 0,
+      "elapsed_seconds": 5.01,
+      "log_sha256": "66709b68398c43c459ca9fcb37ae2edd9f8671b4c36c481036a2d16803ed600a",
+      "disk_stop": false,
+      "result": "PASS",
+      "formatted_files": 484
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "exit_code": 0,
+      "elapsed_seconds": 5.01,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "disk_stop": false,
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "elapsed_seconds": 10.02,
+      "log_sha256": "d5e105a96811bbf7a8700b18fd9947ab45be3ddc82c8e5b34f16e7734930f688",
+      "disk_stop": false,
+      "result": "PASS",
+      "repository_passed": 43,
+      "dashboard_passed": 202,
+      "failed": 0,
+      "typecheck": "PASS",
+      "build": "PASS",
+      "markdown_files": 267
+    }
+  ],
+  "disk_monitor": {
+    "threshold_bytes": 3221225472,
+    "minimum_free_bytes": 30408638464,
+    "stopped": false
+  },
+  "gitleaks_config_sha256": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346",
+  "staged_secret_check": {
+    "command": "gitleaks protect --staged --config .gitleaks.toml --redact --no-banner",
+    "result": "PASS",
+    "leaks": 0
+  },
+  "commit_range_secret_check": {
+    "command": "gitleaks git --config .gitleaks.toml --log-opts=\"main..HEAD\" --redact --no-banner .",
+    "recorded_in": "PR qualification body, after commit and before push"
+  },
+  "ui": {
+    "qualification": "synthetic component preview only",
+    "review": "ship",
+    "desktop_css_width": 1440,
+    "desktop_capture_sha256": "9125f55db9f0ed1f2a1ecdfa17221bfa7def3a642b7b0fdf268510601e16551d",
+    "mobile_css_width": 390,
+    "mobile_capture_sha256": "1de35ad8e593f6f5b5255ce60e6d0ebdffabfd5d3be0a08a498631eed4240e52",
+    "dpr": 2,
+    "overlap_or_clipping": false,
+    "detector_findings": [],
+    "incumbent_product_design_changed": false,
+    "private_capture_artifacts": "cleaned"
+  },
+  "not_executed": [
+    "live GSC/Bing/GA4",
+    "live Jev/OpenAI extraction",
+    "live SMTP delivery",
+    "deployment or production writes",
+    "PSI 0128 registration",
+    "AI-visibility 0131 registration",
+    "chat reports 0133 registration"
+  ],
+  "development_corrections": [
+    "Disk/Docker blockers resolved; no file truncation detected",
+    "GSC worker envelope reduced to existing profile/run limits",
+    "GA4 function-name matching accepts its numeric identifier",
+    "PostgreSQL evidence bounds use length checks and a closed alphabet",
+    "Only stale generated Next output was removed before UI checks"
+  ],
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 36,
+    "migration": "0087",
+    "down_revision": "0086",
+    "app_tables": 173,
+    "fast_checks": {
+      "python": 2732,
+      "database": 1208,
+      "repository": 46,
+      "dashboard": 255
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false,
+    "source_sha256": {
+      "apps/api/src/signal_api/authentication.py": "c673be5c8bb07acaa66c4d450eef63364808ff83a23d43c953b85f94e7125582",
+      "apps/api/src/signal_api/main.py": "2af5353fde8adfd2a6a7ba8b58a1e742079ffa1bc7bdfc402c143ef83fdcd4b9",
+      "apps/api/src/signal_api/weekly_report_contracts.py": "1e42697a28f00e85a0ad5b6e5bcc1a6160e6f3639f12c958a49f35c8ac131c4e",
+      "apps/dashboard/components/weekly-report.tsx": "7b4201ddcf72f9bd011dec614a1d709df020fb9b1675e122d7443b4a41216aa7",
+      "apps/dashboard/lib/dashboard-page.ts": "ff978982605bdba979b9f3d2eff6fcf9961d9549d77b4921debe380631e64564",
+      "apps/dashboard/lib/weekly-report-api.ts": "e6e6b92ce68cb3242290712d4a1dd965da7bdb0f2d00f0b65b2a689c03906b64",
+      "apps/dashboard/tests/weekly-report.test.tsx": "b528529d395faa2900a505225367e2072f6748c74be539cbbec63731fa3d0dd3",
+      "database/migrations/versions/0087_weekly_orchestration.py": "883eff932c64868d24e82dd9c676317a12124e33739502a75768863b08b18170",
+      "database/migrations/versions/0087_weekly_orchestration.sql": "43baf243e64a38a2f6ff8d54716f02d6f7c7a361d27bd72cc985fed0d4ddcb6b",
+      "scripts/qualify_weekly_delivery.py": "8e4305bbd64de88d9a86eeec35b8104d54c055e62d19f954e3a46397372a3def",
+      "services/control_plane/src/signal_core/gsc_binding.py": "83d5c7421d834c52c72021de1aa3d079f57358efc5cd74ca051bc4f3410967c2",
+      "services/control_plane/src/signal_core/weekly_control.py": "a6d3fa8daf67591351fcbec3cfe28c0334c06c7c3dc334b8b3e908964d00a04b",
+      "services/control_plane/src/signal_core/weekly_delivery_runtime.py": "62cf0583b717c5d7a9b18e19862234fe6f3a1acb0d19df3afba79b06c029b100",
+      "services/control_plane/src/signal_core/weekly_loop.py": "13701ca0c6ecedbfa173c5b50c996c1cd8a2837b94be56cf08224801f6014151",
+      "services/control_plane/src/signal_core/weekly_skill_ports.py": "6b7b4094bacd52f0ae45674776c0bac1db2072be9644c7764b2ecf0f3a9de1b7",
+      "services/control_plane/src/signal_core/weekly_skills.py": "63d240f9e70eb84fb8f59326203a562ff35543af662148b27a19ec5a7776beaf",
+      "tests/api/test_weekly_loop.py": "393d439c8505565c9e6c4503f76773c49e3475b24ad457cf1a670eeb913b2981",
+      "tests/control_plane/test_database.py": "97187ea99fa08ed69f480a867d3c738be40384df5b74527019d3e3484b79d299",
+      "tests/control_plane/test_weekly_skill_providers.py": "7220265da6781b715dde4936bae37783b82c891a839e756c7235ed44decf97c1",
+      "tests/control_plane/test_weekly_skills.py": "6e21ce2e2c6579e843eb7235f9c5dc3d1a50a03ee6ec2d5e2d786526b0548b61",
+      "tests/delivery/test_autonomy_delivery.py": "00954486d3e7d60761060d6a3e97cfa8a37cc55c53d7959665b2b7703a6825bb",
+      "tests/delivery/test_weekly_skills.py": "f0d784971107d87af16a1254b53e363295dcaf5fc8469284ed526556b818f9dc",
+      "tests/delivery/weekly_skill_worker.py": "b7d4458f04aa3143be526e99a31724ebe08a6d1e513e512b7edf7b6b570d0588",
+      "tests/temporal/test_weekly_loop.py": "f7c56043717fc0885ade85c44f8f962eb544f34e68f60320ec210abdfae741bd"
+    },
+    "source_hash_scope": "Current merge qualification; top-level hashes are historical pre-merge evidence",
+    "integration_fix": {
+      "reason": "Weekly Brain refresh must satisfy writing-quality monthly budget admission without owner sessions",
+      "model_roles": [
+        "page_type",
+        "fact_extraction"
+      ],
+      "scope_checks": [
+        "admitted source and exact call identity",
+        "current standing authority",
+        "per-source reserved cost ceiling",
+        "owner monthly cap",
+        "no workload cap-setting"
+      ],
+      "original_failure_cases": 4,
+      "new_negative_cases": 9,
+      "authority_enlarged": false
+    },
+    "owned_labs": [
+      {
+        "command": "run-autonomy-delivery-tests.py with -k weekly_skills",
+        "passed": 3,
+        "qualification": "focused",
+        "cleanup": "completed"
+      },
+      {
+        "command": "run-temporal-tests.py with -k weekly_loop",
+        "passed": 4,
+        "qualification": "focused",
+        "cleanup": "completed"
+      }
+    ]
+  }
+}

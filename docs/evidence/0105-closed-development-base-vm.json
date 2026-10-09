@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-30",
+  "classification": "security-critical operational preparation",
+  "base_commit": "404eeb9",
+  "qualification_status": "BASE_ONLY_MANUAL_BOOTSTRAP_RECOVERY",
+  "qualification_scope": "Real AWS resource and restricted administrative boundary; no Signal runtime qualification",
+  "instance": {
+    "name": "integration-test-vm",
+    "region": "us-east-1",
+    "availability_zone": "us-east-1a",
+    "blueprint_id": "ubuntu_24_04",
+    "bundle_id": "medium_ipv6_3_0",
+    "state": "running",
+    "vcpus": 2,
+    "ram_gb": 4,
+    "disk_gb": 80,
+    "public_ipv4": false,
+    "public_ipv6": true,
+    "base_monthly_usd_at_check": 20,
+    "full_stack_capacity_measured": false
+  },
+  "positive_checks": {
+    "aws_create_instance": "Succeeded",
+    "aws_import_public_key": "Succeeded",
+    "ssh_rsa_bits": 4096,
+    "local_private_key_mode": "0600",
+    "ubuntu_public_key_login": "PASS",
+    "guest_cpu_count": 2,
+    "guest_disk_bytes": 85899345920,
+    "ufw_enabled": true,
+    "ufw_default_incoming": "deny",
+    "sshd_configuration_valid": true,
+    "aws_reboot": "Succeeded",
+    "configuration_and_host_pin_survived_reboot": true,
+    "subsequent_boot_cloud_init_status": "done"
+  },
+  "network_and_access": {
+    "aws_firewall_rules": 1,
+    "allowed_tcp_port": 22,
+    "ipv6_source_count": 1,
+    "ipv6_source_prefix_length": 128,
+    "ipv4_sources": 0,
+    "lightsail_connect_aliases": 0,
+    "os_firewall_matches_cloud_source": true,
+    "ssh_allowed_user": "ubuntu",
+    "authentication_methods": "publickey",
+    "password_authentication": false,
+    "keyboard_interactive_authentication": false,
+    "root_login": false,
+    "agent_forwarding": false,
+    "x11_forwarding": false,
+    "tcp_forwarding": "local, 127.0.0.1 destinations only",
+    "host_key_verification": "ED25519 trust on first use at AWS-returned exact IPv6; strict pinned checks thereafter",
+    "aws_host_keys_available": false,
+    "metadata_tokens": "required",
+    "metadata_response_hop_limit": 1,
+    "metadata_state": "applied"
+  },
+  "negative_checks": {
+    "root_login_with_operator_key": {"exit_code": 255, "result": "publickey denied"},
+    "ubuntu_login_without_key": {"exit_code": 255, "result": "publickey denied"},
+    "password_and_keyboard_interactive_only": {"exit_code": 255, "result": "publickey denied; no password supplied"},
+    "metadata_without_token": {"http_status": 401},
+    "tcp_ports_timed_out_from_mac": [80, 443, 3000, 5432, 7233, 8080, 8200],
+    "application_runtime_installed": false
+  },
+  "failure_checks_and_recovery": [
+    {
+      "failure": "AWS rejected base64-wrapped public-key text with InvalidInputException",
+      "recovery": "Confirmed named key absent; imported public OpenSSH file directly with same RSA-4096 key"
+    },
+    {
+      "failure": "AWS rejected firewall replacement while instance was pending",
+      "recovery": "Waited for running; replace-all restricted SSH rule succeeded and readback matched"
+    },
+    {
+      "failure": "Lightsail shell initialization executed cloud-config YAML as shell; initial cloud-init scripts_user failed",
+      "recovery": "Manually installed validated SSH config and UFW restriction through pinned SSH; original logs retained",
+      "unattended_bootstrap_qualified": false
+    }
+  ],
+  "os_maintenance": {
+    "apt_get_update": "PASS",
+    "apt_get_upgrade": "PASS: 56 packages upgraded, no removals",
+    "apt_get_upgrade_with_new_pkgs": "PASS: 3 kernel metapackages upgraded, 6 kernel packages installed, no removals",
+    "post_maintenance_reboot": "Succeeded",
+    "post_reboot_os": "Ubuntu 24.04.5 LTS",
+    "post_reboot_kernel": "7.0.0-1013-aws",
+    "upgradable_packages_remaining_at_check": 0,
+    "post_reboot_ssh_ufw_metadata_runtime_checks": "PASS"
+  },
+  "repository_checks": {
+    "command": "npm test",
+    "result": "PASS",
+    "repository_passed": 24,
+    "dashboard_passed": 148,
+    "markdown_files": 216,
+    "typecheck": "PASS",
+    "build": "PASS",
+    "failed": 0,
+    "skipped": 0
+  },
+  "development_corrections": [
+    "An intermediate npm test rerun failed on duplicate declarations from four additional generated '2.ts' copies in apps/dashboard/.next/types. Those ignored copies were preserved in .runtime/closed-vm-0105-generated-type-copies, not deleted. The full unchanged gate subsequently passed; no source, compiler configuration or test was weakened."
+  ],
+  "secret_scan": {
+    "command": "gitleaks git --pre-commit --staged --redact --no-banner .",
+    "result": "PASS",
+    "leaks": 0
+  },
+  "application_code_changed": false,
+  "database_or_connector_suites_rerun": false,
+  "operator_ips_or_credentials_committed": false,
+  "app_credentials_uploaded": false,
+  "signal_runtime_deployed": false,
+  "public_application_service": false,
+  "dns_changed": false,
+  "tunnel_created": false,
+  "public_test_service_exception_granted": false,
+  "live_providers": "NOT_EXECUTED",
+  "private_pilot_topology_qualified": false,
+  "production_write_authority": false,
+  "release_admission": false
+}

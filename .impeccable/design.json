@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-04T00:00:00Z",
+  "title": "Design System: Signal (Direction C)",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Porcelain Ground",
+        "canonical": "#f2f3ef",
+        "tonalRamp": [
+          "#2c2c2b",
+          "#575756",
+          "#838381",
+          "#b6b6b3",
+          "#f2f3ef",
+          "#f6f7f4",
+          "#fafaf9",
+          "#fdfefd"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#2e2e2e",
+          "#5c5c5c",
+          "#8a8a8a",
+          "#bfbfbf",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff",
+          "#ffffff"
+        ]
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Field",
+        "canonical": "#f7f8f4",
+        "tonalRamp": [
+          "#2c2d2c",
+          "#595958",
+          "#858684",
+          "#b9bab7",
+          "#f7f8f4",
+          "#f9faf7",
+          "#fcfcfb",
+          "#fefefe"
+        ]
+      },
+      "field-strong": {
+        "role": "neutral",
+        "displayName": "Field Strong",
+        "canonical": "#e9ebe5",
+        "tonalRamp": [
+          "#2a2a29",
+          "#545552",
+          "#7e7f7c",
+          "#afb0ac",
+          "#e9ebe5",
+          "#f0f1ed",
+          "#f6f7f5",
+          "#fcfdfc"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#121412",
+        "tonalRamp": [
+          "#030403",
+          "#060706",
+          "#0a0b0a",
+          "#0e0f0e",
+          "#121412",
+          "#595a59",
+          "#a0a1a0",
+          "#e3e3e3"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "#3e433e",
+        "tonalRamp": [
+          "#0b0c0b",
+          "#161816",
+          "#212421",
+          "#2e322e",
+          "#3e433e",
+          "#787b78",
+          "#b2b4b2",
+          "#e8e8e8"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#5c615c",
+        "tonalRamp": [
+          "#111111",
+          "#212321",
+          "#323432",
+          "#454945",
+          "#5c615c",
+          "#8d908d",
+          "#bec0be",
+          "#ebeceb"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "#e3e5df",
+        "tonalRamp": [
+          "#292928",
+          "#525250",
+          "#7b7c78",
+          "#aaaca7",
+          "#e3e5df",
+          "#ebede9",
+          "#f4f5f2",
+          "#fcfcfb"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Line Strong",
+        "canonical": "#cdd1c8",
+        "tonalRamp": [
+          "#252624",
+          "#4a4b48",
+          "#6f716c",
+          "#9a9d96",
+          "#cdd1c8",
+          "#dcdfd8",
+          "#ebede9",
+          "#f9f9f8"
+        ]
+      },
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "#2d5bff",
+        "tonalRamp": [
+          "#08102e",
+          "#10215c",
+          "#18318a",
+          "#2244bf",
+          "#2d5bff",
+          "#6c8cff",
+          "#abbdff",
+          "#e6ebff"
+        ]
+      },
+      "signal-blue-deep": {
+        "role": "primary",
+        "displayName": "Signal Blue Deep",
+        "canonical": "#1f47e0",
+        "tonalRamp": [
+          "#060d28",
+          "#0b1a51",
+          "#112679",
+          "#1735a8",
+          "#1f47e0",
+          "#627ee9",
+          "#a5b5f3",
+          "#e4e9fb"
+        ]
+      },
+      "signal-blue-text": {
+        "role": "primary",
+        "displayName": "Signal Blue Text",
+        "canonical": "#2448d8",
+        "tonalRamp": [
+          "#060d27",
+          "#0d1a4e",
+          "#132775",
+          "#1b36a2",
+          "#2448d8",
+          "#667fe4",
+          "#a7b6ef",
+          "#e5e9fa"
+        ]
+      },
+      "verified-green": {
+        "role": "secondary",
+        "displayName": "Verified Green",
+        "canonical": "#17744b",
+        "tonalRamp": [
+          "#04150e",
+          "#082a1b",
+          "#0c3f28",
+          "#115738",
+          "#17744b",
+          "#5d9e81",
+          "#a2c7b7",
+          "#e3eee9"
+        ]
+      },
+      "caution-amber": {
+        "role": "secondary",
+        "displayName": "Caution Amber",
+        "canonical": "#8a5300",
+        "tonalRamp": [
+          "#190f00",
+          "#321e00",
+          "#4b2d00",
+          "#683e00",
+          "#8a5300",
+          "#ad874c",
+          "#d0ba99",
+          "#f1eae0"
+        ]
+      },
+      "critical-red": {
+        "role": "tertiary",
+        "displayName": "Critical Red",
+        "canonical": "#b4321b",
+        "tonalRamp": [
+          "#200905",
+          "#41120a",
+          "#611b0f",
+          "#872614",
+          "#b4321b",
+          "#ca705f",
+          "#e1ada4",
+          "#f6e6e4"
+        ]
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "#1b1e1b",
+        "tonalRamp": [
+          "#050505",
+          "#0a0b0a",
+          "#0f100f",
+          "#141614",
+          "#1b1e1b",
+          "#5f625f",
+          "#a4a5a4",
+          "#e4e4e4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Page Headline",
+        "purpose": "One Bricolage Grotesque title per screen, clamp(28px, 2.6vw, 38px), weight 600, -0.035em."
+      },
+      "title": {
+        "displayName": "Card Title",
+        "purpose": "Bricolage Grotesque section and card titles at 18-19px, weight 600, -0.02em."
+      },
+      "body": {
+        "displayName": "Working Body",
+        "purpose": "Instrument Sans at 15px for sentences that say what happened and what is needed."
+      },
+      "label": {
+        "displayName": "Mono Label",
+        "purpose": "Geist Mono 11-11.5px uppercase, 0.05em tracking, for navigation group names, tile labels and decision section labels."
+      },
+      "number": {
+        "displayName": "Tile Number",
+        "purpose": "Bricolage Grotesque 40px tabular figures for observed counts on Home tiles only."
+      },
+      "mono": {
+        "displayName": "Exact Identifier",
+        "purpose": "Geist Mono for file paths, page paths, counts in badges and technical identifiers."
+      }
+    },
+    "shadows": {
+      "strategy": "Shadows report layering, never importance. Cards sit one step above the porcelain ground; menus, the account panel and the mobile navigation panel sit one step higher. Two surfaces at the same depth never carry different shadows.",
+      "scale": {
+        "flush": "none",
+        "card": "0 1px 2px rgba(18, 20, 18, 0.05)",
+        "raised": "0 1px 2px rgba(18, 20, 18, 0.05), 0 10px 28px -18px rgba(18, 20, 18, 0.28)",
+        "floating": "0 2px 4px rgba(18, 20, 18, 0.05), 0 24px 56px -24px rgba(18, 20, 18, 0.38)",
+        "recessed": "inset 0 1px 2px rgba(18, 20, 18, 0.05)"
+      },
+      "focusRing": "0 0 0 3px rgba(45, 91, 255, 0.35)"
+    },
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Shared easing for hover, rise and menu entrances."
+      },
+      {
+        "name": "rise",
+        "value": "0.5s",
+        "purpose": "Top-level sections rise in once on page load with 40ms steps."
+      },
+      {
+        "name": "loop-draw",
+        "value": "1.4s",
+        "purpose": "The weekly loop line inks once to the furthest recorded stage."
+      },
+      {
+        "name": "live-beat",
+        "value": "2.2s",
+        "purpose": "The live dot beats only while Signal is actually working."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "With reduced motion there is no movement and no entrance delay."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "560px"
+      },
+      {
+        "name": "mobile-nav",
+        "value": "900px"
+      },
+      {
+        "name": "stack-inbox",
+        "value": "1040px"
+      },
+      {
+        "name": "stack-home",
+        "value": "1180px"
+      }
+    ],
+    "glass": {
+      "strategy": "Blur only where content scrolls behind. Never a finish on resting cards.",
+      "surfaces": [
+        "sticky top bar",
+        "Inbox decision bar",
+        "mobile navigation panel"
+      ],
+      "tokens": {
+        "glass": "rgba(242, 243, 239, 0.86)",
+        "glass-panel": "rgba(255, 255, 255, 0.95)",
+        "decision-bar": "rgba(255, 255, 255, 0.94)",
+        "glass-blur": "saturate(1.8) blur(20px)"
+      },
+      "fallback": "@supports not (backdrop-filter: blur(1px)) restores an opaque canvas (#ffffff) background on all three surfaces."
+    },
+    "iconography": {
+      "source": "lucide-react",
+      "dependency": "lucide-react@1.43.0",
+      "sizes": {
+        "inline": 16,
+        "stateMark": 14,
+        "statusSurface": 18
+      },
+      "color": "always currentColor; never an independent icon colour",
+      "rules": [
+        "A mark reports state, not category; it is absent for neutral facts.",
+        "Navigation uses a small square nav mark, ink-grey at rest and Signal Blue when active, not a per-destination glyph.",
+        "Use Lucide's familiar symbol rather than redrawing a standard control.",
+        "Icon-only controls carry an accessible label."
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Application Frame",
+      "kind": "layout",
+      "refersTo": "app-shell",
+      "description": "The full browser viewport, edge to edge: a sticky glass top bar spanning both columns, a 232px grouped navigation rail on the porcelain ground, and one work column capped at 1320px. No right-hand rail and no outer frame. Under 900px the rail collapses into a menu in the top bar.",
+      "html": "<div class=\"ds-shell\"><header class=\"ds-shell-top\">Signal</header><nav class=\"ds-shell-nav\">Navigation</nav><main class=\"ds-shell-main\">Work</main></div>",
+      "css": ".ds-shell { display: grid; grid-template-columns: 232px minmax(0, 1fr); grid-template-rows: 60px minmax(0, 1fr); width: 100%; min-height: 100vh; background: #f2f3ef; } .ds-shell-top { grid-column: 1 / -1; position: sticky; top: 0; z-index: 30; display: flex; align-items: center; padding: 0 24px 0 16px; background: #ffffff; border-bottom: 1px solid #e3e5df; } .ds-shell-nav { position: sticky; top: 60px; height: calc(100vh - 60px); padding: 16px 12px; overflow-y: auto; background: #f2f3ef; border-right: 1px solid #e3e5df; } .ds-shell-main { width: 100%; min-width: 0; max-width: 1320px; padding: 28px 32px 80px; } @media (max-width: 900px) { .ds-shell { grid-template-columns: minmax(0, 1fr); } .ds-shell-nav { display: none; } .ds-shell-main { padding: 20px 16px 64px; } }"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "topbar",
+      "description": "The sticky 60px glass bar: waveform brand (four ink bars, the tallest in Signal Blue), the current workspace, one honest environment badge, a Working/Idle state that reflects real work, and the account menu. Content scrolls under it, so it is one of the three glass surfaces; where backdrop-filter is unsupported it falls back to opaque white canvas.",
+      "html": "<header class=\"ds-topbar\"><a class=\"ds-brand\" href=\"/\"><span class=\"ds-brand-mark\"><i></i><i></i><i></i><i></i></span>Signal</a><span class=\"ds-env\">Development · External writes off</span><span class=\"ds-run\"><span class=\"ds-dot\"></span>Idle</span></header>",
+      "css": ".ds-topbar { position: sticky; top: 0; z-index: 30; display: flex; height: 60px; align-items: center; gap: 12px; padding: 0 24px 0 16px; background: rgba(242, 243, 239, 0.86); backdrop-filter: saturate(1.8) blur(20px); -webkit-backdrop-filter: saturate(1.8) blur(20px); border-bottom: 1px solid #e3e5df; } @supports not (backdrop-filter: blur(1px)) { .ds-topbar { background: #ffffff; } } .ds-brand { display: inline-flex; align-items: center; gap: 10px; color: #121412; font: 700 22px/1 \"Bricolage Grotesque Variable\", ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.04em; text-decoration: none; } .ds-brand-mark { display: inline-flex; height: 18px; align-items: flex-end; gap: 2.5px; } .ds-brand-mark i { display: block; width: 3.5px; background: #121412; border-radius: 2px; } .ds-brand-mark i:nth-child(1) { height: 7px; } .ds-brand-mark i:nth-child(2) { height: 13px; } .ds-brand-mark i:nth-child(3) { height: 18px; background: #2d5bff; } .ds-brand-mark i:nth-child(4) { height: 10px; } .ds-env, .ds-run { display: inline-flex; height: 32px; align-items: center; gap: 7px; padding: 0 12px; border-radius: 999px; font: 600 12.5px/1 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; color: #3e433e; } .ds-env { margin-left: auto; background: #ffffff; border: 1px solid #e3e5df; } .ds-run { background: #e9ebe5; } .ds-dot { width: 8px; height: 8px; background: #cdd1c8; border-radius: 50%; }"
+    },
+    {
+      "name": "Grouped Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Sidebar destinations grouped Work, Content, Results, Setup under mono uppercase group labels. Only surfaces with real product data are listed. The active item lifts onto a white canvas chip with a hairline and its square mark turns Signal Blue; the Inbox carries a blue count only when decisions are waiting.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-label\">Work</span><a class=\"active\" href=\"/\" aria-current=\"page\"><span class=\"ds-nav-mark\"></span>Home</a><a href=\"/approvals\"><span class=\"ds-nav-mark\"></span>Inbox<span class=\"ds-nav-count\" aria-label=\"3 waiting\">3</span></a></nav>",
+      "css": ".ds-nav { display: flex; flex-direction: column; gap: 2px; } .ds-nav-label { padding: 10px 10px 6px; color: #5c615c; font: 500 11px/1.4 \"Geist Mono Variable\", ui-monospace, monospace; letter-spacing: 0.06em; text-transform: uppercase; } .ds-nav a { display: flex; min-height: 38px; align-items: center; gap: 10px; padding: 0 10px; color: #3e433e; border-radius: 10px; font: 500 15px/1.4 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; text-decoration: none; } .ds-nav a:hover { color: #121412; background: #e9ebe5; } .ds-nav a.active { color: #121412; background: #ffffff; box-shadow: 0 1px 2px rgba(18, 20, 18, 0.08), 0 0 0 1px #e3e5df; font-weight: 600; } .ds-nav-mark { width: 7px; height: 7px; flex: 0 0 7px; background: #cdd1c8; border-radius: 2px; } .ds-nav a.active .ds-nav-mark { background: #2d5bff; } .ds-nav-count { margin-left: auto; padding: 1px 8px; color: #fff; background: #2d5bff; border-radius: 999px; font: 500 11.5px/1.4 \"Geist Mono Variable\", ui-monospace, monospace; }"
+    },
+    {
+      "name": "Account Menu",
+      "kind": "menu",
+      "refersTo": "account-menu",
+      "description": "A pill summary with an ink avatar opens a floating panel: who is signed in, their authority in words, Help, and an explicit Sign out. The panel sits one layer above the page, so it takes the floating shadow; it does not blur because it opens over static content.",
+      "html": "<details class=\"ds-account\"><summary><span class=\"ds-avatar\">J</span>Jev</summary><div class=\"ds-account-panel\"><p><strong>Jev</strong><small>Owner</small></p><a href=\"/help\">Help</a><button type=\"submit\">Sign out</button></div></details>",
+      "css": ".ds-account { position: relative; } .ds-account > summary { display: inline-flex; min-height: 36px; align-items: center; gap: 8px; padding: 0 12px 0 4px; color: #121412; background: #ffffff; border: 1px solid #e3e5df; border-radius: 999px; font: 600 13px/1 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; list-style: none; cursor: pointer; } .ds-account > summary:hover { border-color: #121412; } .ds-avatar { display: grid; width: 28px; height: 28px; place-items: center; color: #fff; background: #121412; border-radius: 50%; font-size: 12px; } .ds-account-panel { position: absolute; top: calc(100% + 8px); right: 0; z-index: 40; display: flex; min-width: 272px; flex-direction: column; gap: 2px; padding: 8px; background: rgba(255, 255, 255, 0.95); border: 1px solid #e3e5df; border-radius: 14px; box-shadow: 0 2px 4px rgba(18, 20, 18, 0.05), 0 24px 56px -24px rgba(18, 20, 18, 0.38); } .ds-account-panel small { display: block; color: #5c615c; font-size: 12px; } .ds-account-panel a, .ds-account-panel button { display: flex; width: 100%; min-height: 38px; align-items: center; padding: 0 10px; color: #121412; background: transparent; border: 0; border-radius: 9px; font: inherit; font-size: 14px; text-align: left; text-decoration: none; cursor: pointer; } .ds-account-panel a:hover, .ds-account-panel button:hover { background: #e9ebe5; }"
+    },
+    {
+      "name": "Autonomy Card",
+      "kind": "card",
+      "refersTo": "autonomy-card",
+      "description": "A night-ink card pinned to the foot of the navigation rail that states, in words, how much Signal may do on its own and links to the policy. It is dark so it reads as a standing fact about Signal, not another destination.",
+      "html": "<a class=\"ds-autonomy\" href=\"/policy\"><span>Autonomy</span><strong>Signal prepares changes; you approve every one.</strong><small>Review limits</small></a>",
+      "css": ".ds-autonomy { display: flex; flex-direction: column; gap: 6px; padding: 14px; color: #eef0ea; background: #121412; border-radius: 14px; text-decoration: none; transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-autonomy:hover { transform: translateY(-2px); } .ds-autonomy span { color: #a3a9a2; font: 500 11.5px/1.4 \"Geist Mono Variable\", ui-monospace, monospace; letter-spacing: 0.05em; text-transform: uppercase; } .ds-autonomy strong { font-size: 14px; font-weight: 600; line-height: 1.35; } .ds-autonomy small { color: #a3a9a2; font-size: 12px; }"
+    },
+    {
+      "name": "Home Tile",
+      "kind": "card",
+      "refersTo": "home-tile",
+      "description": "Four counts of real records: decisions waiting, pull requests open, changes verified live, and this week's loop state. Only the Waiting-on-you tile turns Signal Blue, and only when something waits. An unavailable source shows a dash with the reason in words beneath it, never a bare zero.",
+      "html": "<section class=\"ds-tiles\"><a class=\"ds-tile accent\" href=\"/approvals\"><span>Waiting on you</span><strong>3</strong><small>decisions in your Inbox</small></a><a class=\"ds-tile\" href=\"/changes\"><span>Live and verified</span><strong>—</strong><small>Live checks unavailable</small></a></section>",
+      "css": ".ds-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; } .ds-tile { display: flex; min-height: 148px; flex-direction: column; gap: 4px; padding: 16px; color: #121412; background: #ffffff; border: 1px solid #e3e5df; border-radius: 16px; box-shadow: 0 1px 2px rgba(18, 20, 18, 0.05), 0 10px 28px -18px rgba(18, 20, 18, 0.28); text-decoration: none; transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-tile:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(18, 20, 18, 0.05), 0 24px 56px -24px rgba(18, 20, 18, 0.38); } .ds-tile span { color: #5c615c; font: 500 11.5px/1.4 \"Geist Mono Variable\", ui-monospace, monospace; letter-spacing: 0.05em; text-transform: uppercase; } .ds-tile strong { margin-top: 14px; font: 600 40px/1 \"Bricolage Grotesque Variable\", ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; } .ds-tile small { margin-top: auto; color: #5c615c; font-size: 13px; } .ds-tile.accent { color: #fff; background: #2d5bff; border-color: #2d5bff; } .ds-tile.accent span, .ds-tile.accent small { color: rgba(255, 255, 255, 0.84); } @media (max-width: 1180px) { .ds-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }"
+    },
+    {
+      "name": "Weekly Loop",
+      "kind": "chart",
+      "refersTo": "loop-track",
+      "description": "The signature visual. A U-shaped track through observe, analyze, plan, prepare, check, hand off, verify, measure and report inks once up to the furthest recorded stage. Each stage tag shows its recorded outcome as a coloured dot plus the word in the list below; a stage waiting on the owner is the one blue tag; a stage not reached is dashed. Under 900px the track hides and the list carries everything.",
+      "html": "<div class=\"ds-loop\"><span class=\"ds-stage done\"><i></i>Observe</span><span class=\"ds-stage waiting\"><i></i>Hand off</span><span class=\"ds-stage not-reached\"><i></i>Verify</span></div><ul class=\"ds-loop-list\"><li><span class=\"ds-step\">6</span><strong>Hand off</strong><span class=\"ds-pill accent\">Waiting on you</span></li></ul>",
+      "css": ".ds-loop { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 6px; } .ds-stage { display: inline-flex; height: 30px; align-items: center; gap: 7px; padding: 0 11px; color: #3e433e; background: #ffffff; border: 1px solid #cdd1c8; border-radius: 999px; font: 600 13px/1 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; } .ds-stage i { width: 7px; height: 7px; background: #cdd1c8; border-radius: 50%; } .ds-stage.done { color: #121412; } .ds-stage.done i { background: #17744b; } .ds-stage.waiting { color: #fff; background: #2d5bff; border-color: #2d5bff; } .ds-stage.waiting i { background: #fff; } .ds-stage.failed { color: #b4321b; border-color: #b4321b; } .ds-stage.failed i { background: #b4321b; } .ds-stage.not-reached { color: #5c615c; border-style: dashed; } .ds-loop-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); column-gap: 20px; margin: 8px 0 0; padding: 0; list-style: none; } .ds-loop-list li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 4px 12px; align-items: start; padding: 10px 0; border-top: 1px solid #e3e5df; } .ds-step { display: grid; width: 24px; height: 24px; place-items: center; background: #e9ebe5; border-radius: 50%; font: 11.5px/1 \"Geist Mono Variable\", ui-monospace, monospace; } .ds-loop-list .ds-pill { grid-column: 2; justify-self: start; } .ds-pill { display: inline-flex; height: 24px; align-items: center; gap: 6px; padding: 0 9px; color: #3e433e; background: #eef0ea; border-radius: 999px; font: 600 12.5px/1 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; white-space: nowrap; } .ds-pill.accent { color: #fff; background: #2d5bff; } .ds-pill.positive { color: #17744b; background: #e2f2e6; } .ds-pill.warning { color: #8a5300; background: #fff0cc; } .ds-pill.danger { color: #b4321b; background: #fbe6e0; }"
+    },
+    {
+      "name": "Waiting On You List",
+      "kind": "list",
+      "refersTo": "waiting-panel",
+      "description": "The Home card that answers what Signal needs from the owner. Ink border plus a faint blue halo mark it as the one card that waits on you. Rows are hairline-separated links: a word pill (Fix, Big change, Article), the finding in a sentence, and an arrow that nudges on hover. Empty and unavailable states say so in words; unavailable never reads as approved.",
+      "html": "<section class=\"ds-waiting\"><header><h2>Waiting on you</h2><span class=\"ds-pill accent\">2 open</span></header><ul><li><a href=\"/approvals\"><span class=\"ds-pill\">Fix</span><span><strong>Two pages share one title</strong><small>Search engines may show the wrong page.</small></span><span aria-hidden=\"true\">→</span></a></li></ul></section>",
+      "css": ".ds-waiting { padding: 20px 22px; background: #ffffff; border: 1px solid #121412; border-radius: 16px; box-shadow: 0 0 0 3px rgba(45, 91, 255, 0.16), 0 1px 2px rgba(18, 20, 18, 0.05), 0 10px 28px -18px rgba(18, 20, 18, 0.28); } .ds-waiting header { display: flex; justify-content: space-between; gap: 12px; } .ds-waiting h2 { margin: 0; font: 600 18px/1.2 \"Bricolage Grotesque Variable\", ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.02em; } .ds-waiting ul { margin: 10px 0 0; padding: 0; list-style: none; } .ds-waiting a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: flex-start; padding: 12px 0; color: #121412; border-top: 1px solid #e3e5df; text-decoration: none; } .ds-waiting strong, .ds-waiting small { display: block; } .ds-waiting small { margin-top: 2px; color: #5c615c; font-size: 13px; } .ds-pill { display: inline-flex; height: 24px; align-items: center; gap: 6px; padding: 0 9px; color: #3e433e; background: #eef0ea; border-radius: 999px; font: 600 12.5px/1 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; white-space: nowrap; } .ds-pill.accent { color: #fff; background: #2d5bff; } .ds-pill.positive { color: #17744b; background: #e2f2e6; } .ds-pill.warning { color: #8a5300; background: #fff0cc; } .ds-pill.danger { color: #b4321b; background: #fbe6e0; }"
+    },
+    {
+      "name": "Signal Right Now Panel",
+      "kind": "card",
+      "refersTo": "signal-now",
+      "description": "A night (#1b1e1b) card that says what Signal is doing in one sentence, with a live dot that beats only while work is actually running, and health problems listed with severity glyph plus words. With no health checks recorded it says exactly that instead of implying health.",
+      "html": "<section class=\"ds-now\"><h2><span class=\"ds-live\"></span>Signal right now</h2><p>Idle until the next weekly loop.</p><p class=\"ds-now-health\">No health checks have been recorded yet.</p></section>",
+      "css": ".ds-now { padding: 20px 22px; color: #eef0ea; background: #1b1e1b; border: 1px solid #1b1e1b; border-radius: 16px; } .ds-now h2 { display: flex; align-items: center; gap: 9px; margin: 0; color: #fff; font: 600 18px/1.2 \"Bricolage Grotesque Variable\", ui-sans-serif, system-ui, sans-serif; } .ds-now p { margin: 12px 0 0; font-size: 15.5px; } .ds-now-health { color: #a3a9a2; font-size: 14px; } .ds-live { width: 8px; height: 8px; background: #cdd1c8; border-radius: 50%; } .ds-live.on { background: #2d5bff; }"
+    },
+    {
+      "name": "Inbox Decision",
+      "kind": "form",
+      "refersTo": "inbox-detail",
+      "description": "One decision on one card: what changes as Now and After (the After side lifted with an ink border, a blue tag and its new text highlighted once), what to expect, checks passed, how it ships, technical details collapsed. A sticky glass decision bar keeps Reject, Request changes and the ink Approve together with a sentence stating that approving records a decision only.",
+      "html": "<article class=\"ds-decision\"><div class=\"ds-ba\"><div><span class=\"ds-ba-tag\">Now</span><code>Pricing</code></div><div class=\"after\"><span class=\"ds-ba-tag\">After</span><code>Pricing plans for small teams</code></div></div></article>",
+      "css": ".ds-decision { display: flex; flex-direction: column; padding: 24px 28px; background: #ffffff; border: 1px solid #e3e5df; border-radius: 16px; box-shadow: 0 1px 2px rgba(18, 20, 18, 0.05), 0 10px 28px -18px rgba(18, 20, 18, 0.28); } .ds-ba { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 14px; } .ds-ba > div { position: relative; min-width: 0; padding: 20px 16px 14px; background: #f7f8f4; border: 1px solid #e3e5df; border-radius: 14px; } .ds-ba > .after { background: #ffffff; border-color: #121412; box-shadow: 0 1px 2px rgba(18, 20, 18, 0.05), 0 10px 28px -18px rgba(18, 20, 18, 0.28); } .ds-ba-tag { position: absolute; top: -11px; left: 12px; padding: 2px 8px; background: #ffffff; border-radius: 999px; box-shadow: inset 0 0 0 1px #cdd1c8; font: 500 10.5px/1.4 \"Geist Mono Variable\", ui-monospace, monospace; letter-spacing: 0.06em; text-transform: uppercase; } .after .ds-ba-tag { color: #fff; background: #2d5bff; box-shadow: none; } .ds-ba code { display: block; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13.5px; line-height: 1.6; } .ds-ba .after code { background-color: rgba(45, 91, 255, 0.14); border-radius: 4px; }"
+    },
+    {
+      "name": "Glass Overlay Bar",
+      "kind": "nav",
+      "refersTo": "decision-bar",
+      "description": "The Inbox decision bar: sticky to the bottom of the decision card while the change scrolls beneath it, so it earns blur. The hint sentence spans the full width; actions sit right with the ink primary last. Where backdrop-filter is unsupported the bar is opaque white canvas.",
+      "html": "<div class=\"ds-decision-bar\"><span>Approving records your decision only. Nothing goes live until you merge.</span><div><button class=\"ds-btn danger\">Reject</button><button class=\"ds-btn secondary\">Request changes</button><button class=\"ds-btn primary\">Approve exact revision</button></div></div>",
+      "css": ".ds-decision-bar { position: sticky; bottom: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 14px 28px; background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(1.8) blur(20px); -webkit-backdrop-filter: saturate(1.8) blur(20px); border-top: 1px solid #e3e5df; } @supports not (backdrop-filter: blur(1px)) { .ds-decision-bar { background: #ffffff; } } .ds-decision-bar > span { flex-basis: 100%; color: #5c615c; font-size: 13px; } .ds-decision-bar > div { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; } .ds-btn { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; border-radius: 10px; font: 600 14px/1 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; text-decoration: none; cursor: pointer; transition: box-shadow 200ms cubic-bezier(0.22, 1, 0.36, 1), border-color 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 120ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn.primary { color: #fff; background: #121412; border: 1px solid #121412; } .ds-btn.primary:hover { box-shadow: 0 0 0 4px rgba(45, 91, 255, 0.28); } .ds-btn.secondary { color: #121412; background: #ffffff; border: 1px solid #cdd1c8; } .ds-btn.secondary:hover { border-color: #121412; } .ds-btn.danger { color: #b4321b; background: #ffffff; border: 1px solid #e3e5df; } .ds-btn.danger:hover { background: #fbe6e0; border-color: transparent; } .ds-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(45, 91, 255, 0.35); }"
+    },
+    {
+      "name": "Mobile Navigation Panel",
+      "kind": "menu",
+      "refersTo": "mobile-navigation-panel",
+      "description": "Under 900px the grouped navigation opens from a 44px menu button as a floating panel over the scrolling page, so it is glass with the floating shadow; 44px tap targets. Opaque white canvas where blur is unsupported.",
+      "html": "<details class=\"ds-mnav\"><summary aria-label=\"Open navigation\">Menu</summary><div class=\"ds-mnav-panel\"><a href=\"/\">Home</a><a href=\"/approvals\">Inbox</a></div></details>",
+      "css": ".ds-mnav { position: relative; } .ds-mnav summary { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 10px; list-style: none; cursor: pointer; } .ds-mnav-panel { position: absolute; top: 52px; left: 0; z-index: 20; display: flex; width: min(300px, calc(100vw - 24px)); max-height: calc(100vh - 76px); flex-direction: column; gap: 12px; padding: 16px 12px; overflow-y: auto; background: rgba(255, 255, 255, 0.95); backdrop-filter: saturate(1.8) blur(20px); -webkit-backdrop-filter: saturate(1.8) blur(20px); border: 1px solid #e3e5df; border-radius: 14px; box-shadow: 0 2px 4px rgba(18, 20, 18, 0.05), 0 24px 56px -24px rgba(18, 20, 18, 0.38); } @supports not (backdrop-filter: blur(1px)) { .ds-mnav-panel { background: #ffffff; } } .ds-mnav-panel a { display: flex; min-height: 44px; align-items: center; padding: 0 10px; color: #3e433e; border-radius: 10px; text-decoration: none; }"
+    },
+    {
+      "name": "Pill",
+      "kind": "badge",
+      "refersTo": "pill",
+      "description": "A word on a tint, 24px tall. Neutral by default; Signal Blue only for things waiting on the owner; green, amber and red only with the outcome word inside them.",
+      "html": "<span class=\"ds-pill accent\">Waiting on you</span> <span class=\"ds-pill positive\">Done</span> <span class=\"ds-pill warning\">Deferred</span> <span class=\"ds-pill\">Fix</span>",
+      "css": ".ds-pill { display: inline-flex; height: 24px; align-items: center; gap: 6px; padding: 0 9px; color: #3e433e; background: #eef0ea; border-radius: 999px; font: 600 12.5px/1 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; white-space: nowrap; } .ds-pill.accent { color: #fff; background: #2d5bff; } .ds-pill.positive { color: #17744b; background: #e2f2e6; } .ds-pill.warning { color: #8a5300; background: #fff0cc; } .ds-pill.danger { color: #b4321b; background: #fbe6e0; }"
+    },
+    {
+      "name": "Primary and Secondary Button",
+      "kind": "button",
+      "refersTo": "primary-command",
+      "description": "Ink primary with a blue halo on hover, white secondary with a strong hairline that turns ink on hover, and a quiet red danger button. 40px tall, 10px corners, scale(0.97) on press. Destructive actions are never primary, and no ordinary action is blue.",
+      "html": "<button class=\"ds-btn primary\">Approve exact revision</button> <button class=\"ds-btn secondary\">Request changes</button> <button class=\"ds-btn danger\">Reject</button>",
+      "css": ".ds-btn { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; border-radius: 10px; font: 600 14px/1 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; text-decoration: none; cursor: pointer; transition: box-shadow 200ms cubic-bezier(0.22, 1, 0.36, 1), border-color 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 120ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn.primary { color: #fff; background: #121412; border: 1px solid #121412; } .ds-btn.primary:hover { box-shadow: 0 0 0 4px rgba(45, 91, 255, 0.28); } .ds-btn.secondary { color: #121412; background: #ffffff; border: 1px solid #cdd1c8; } .ds-btn.secondary:hover { border-color: #121412; } .ds-btn.danger { color: #b4321b; background: #ffffff; border: 1px solid #e3e5df; } .ds-btn.danger:hover { background: #fbe6e0; border-color: transparent; } .ds-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(45, 91, 255, 0.35); }"
+    },
+    {
+      "name": "Evidence-Empty Chart",
+      "kind": "chart",
+      "refersTo": "data-chart",
+      "description": "A chart with no observed data: a white card with its source state in a neutral tag, and the plot as one recessed field holding a sentence that names what is missing and which connection would supply it. No axis, grid, legend or sample line is drawn, and no score is fabricated.",
+      "html": "<section class=\"ds-chart\"><header><div><h2>Citation baseline</h2><p>Missing observations are incomplete, not zero.</p></div><span class=\"ds-chart-state\">No source</span></header><div class=\"ds-chart-plot\"><strong>No observations yet</strong><span>No visibility score is fabricated.</span><a class=\"ds-btn primary\" href=\"/connectors\">Review connectors</a></div></section>",
+      "css": ".ds-chart { overflow: hidden; background: #ffffff; border: 1px solid #e3e5df; border-radius: 16px; box-shadow: 0 1px 2px rgba(18, 20, 18, 0.05), 0 10px 28px -18px rgba(18, 20, 18, 0.28); } .ds-chart header { display: flex; justify-content: space-between; gap: 16px; padding: 24px 24px 0; } .ds-chart h2 { margin: 0; font: 600 18px/1.3 \"Bricolage Grotesque Variable\", ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.02em; } .ds-chart header p { margin: 4px 0 0; color: #5c615c; font-size: 13px; } .ds-chart-state { flex: 0 0 auto; padding: 4px 8px; color: #5c615c; background: #eef0ea; border-radius: 8px; font-size: 12px; font-weight: 600; } .ds-chart-plot { display: flex; height: 240px; flex-direction: column; align-items: center; justify-content: center; margin: 16px 24px 24px; padding: 24px; color: #5c615c; text-align: center; background: #eef0ea; border-radius: 12px; box-shadow: inset 0 1px 2px rgba(18, 20, 18, 0.05); } .ds-chart-plot strong { color: #121412; font-size: 14px; } .ds-chart-plot span { max-width: 44ch; margin: 4px 0 16px; font-size: 13px; } .ds-btn { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; border-radius: 10px; font: 600 14px/1 \"Instrument Sans Variable\", ui-sans-serif, system-ui, sans-serif; text-decoration: none; cursor: pointer; transition: box-shadow 200ms cubic-bezier(0.22, 1, 0.36, 1), border-color 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 120ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-btn:active { transform: scale(0.97); } .ds-btn.primary { color: #fff; background: #121412; border: 1px solid #121412; } .ds-btn.primary:hover { box-shadow: 0 0 0 4px rgba(45, 91, 255, 0.28); } .ds-btn.secondary { color: #121412; background: #ffffff; border: 1px solid #cdd1c8; } .ds-btn.secondary:hover { border-color: #121412; } .ds-btn.danger { color: #b4321b; background: #ffffff; border: 1px solid #e3e5df; } .ds-btn.danger:hover { background: #fbe6e0; border-color: transparent; } .ds-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(45, 91, 255, 0.35); }"
+    },
+    {
+      "name": "Unavailable Product Ledger",
+      "kind": "table",
+      "refersTo": "readiness",
+      "description": "An unbuilt or unconnected destination as an honest page: 'What has to be true first' as a hairline list of requirement, source and current state in caution amber words, closed by one sentence giving this section's reason for being empty plus the guarantee that nothing is simulated. It takes the one card language; no fact band, filter or repeated boxed notice.",
+      "html": "<section class=\"ds-readiness\"><h2>What has to be true first</h2><ul><li><span><strong>Verified origin</strong><small>Ownership proof</small></span><span class=\"ds-readiness-state\">Not verified</span></li></ul><p>No verified-origin crawl inventory is available. Nothing here is simulated: the page stays empty until each requirement above is met.</p></section>",
+      "css": ".ds-readiness { padding: 22px 24px; background: #ffffff; border: 1px solid #e3e5df; border-radius: 16px; box-shadow: 0 1px 2px rgba(18, 20, 18, 0.05), 0 10px 28px -18px rgba(18, 20, 18, 0.28); } .ds-readiness h2 { margin: 0; font: 600 18px/1.3 \"Bricolage Grotesque Variable\", ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.02em; } .ds-readiness ul { max-width: 62ch; margin: 16px 0 0; padding: 0; list-style: none; border-top: 1px solid #e3e5df; } .ds-readiness li { display: flex; gap: 24px; align-items: baseline; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid #e3e5df; } .ds-readiness strong { display: block; font-size: 14px; font-weight: 600; } .ds-readiness small { display: block; margin-top: 2px; color: #5c615c; font-size: 12px; } .ds-readiness-state { flex: 0 0 auto; color: #8a5300; font-size: 13px; } .ds-readiness p { max-width: 54ch; margin: 24px 0 0; color: #5c615c; font-size: 13px; }"
+    },
+    {
+      "name": "Setup Checklist",
+      "kind": "card",
+      "refersTo": "setup-checklist",
+      "description": "Owner onboarding on Home: five steps read from loaded connection states, a blue left rule, a done count, and worded step states (Done, To do, Needs attention, Could not check). Hidden once the required steps are done.",
+      "html": "<section class=\"ds-setup\"><header><h2>Get Signal working</h2><span>1 of 5 done</span></header><ol><li data-state=\"done\"><span></span><div><a href=\"#\">Verify you own the site</a><p>Proves Signal is working on your site.</p></div><em>Done</em></li><li data-state=\"todo\"><span></span><div><a href=\"#\">Connect Search Console</a><p>Read-only search data Signal learns from.</p></div><em>To do</em></li></ol></section>",
+      "css": ".ds-setup { padding: 20px 24px; background: #fff; border: 1px solid #e3e5df; border-left: 3px solid #2d5bff; border-radius: 16px; font: 15px/1.5 'Instrument Sans Variable', sans-serif; color: #121412; } .ds-setup header { display: flex; justify-content: space-between; align-items: center; } .ds-setup h2 { margin: 0; font: 600 19px/1.2 'Bricolage Grotesque Variable', sans-serif; } .ds-setup ol { margin: 12px 0 0; padding: 0; list-style: none; } .ds-setup li { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; padding: 12px 0; border-top: 1px solid #e3e5df; } .ds-setup li > span { width: 18px; height: 18px; border: 1.5px solid #cdd1c8; border-radius: 50%; } .ds-setup li[data-state=done] > span { background: #17744b; border-color: #17744b; } .ds-setup a { color: #121412; font-weight: 600; text-decoration: none; } .ds-setup p { margin: 2px 0 0; color: #5c615c; font-size: 14px; } .ds-setup em { font-style: normal; font-size: 13px; color: #5c615c; } .ds-setup li[data-state=todo] em { color: #2448d8; font-weight: 600; }"
+    },
+    {
+      "name": "Connection Status Pill",
+      "kind": "chip",
+      "refersTo": "connection-status",
+      "description": "A worded status with a dot; the tone follows the words: green for ready (Connected, Available, Read only), amber for anything needing attention, grey for off.",
+      "html": "<span class=\"ds-conn\" data-tone=\"ready\">Connected</span> <span class=\"ds-conn\" data-tone=\"attention\">Reconnect required</span> <span class=\"ds-conn\" data-tone=\"off\">Not connected</span>",
+      "css": ".ds-conn { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font: 600 12.5px/1.4 'Instrument Sans Variable', sans-serif; color: #5c615c; background: #eef0ea; } .ds-conn::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; } .ds-conn[data-tone=ready] { color: #17744b; background: #e2f2e6; } .ds-conn[data-tone=attention] { color: #8a5300; background: #fff0cc; }"
+    },
+    {
+      "name": "Phone Tab Bar",
+      "kind": "navigation",
+      "refersTo": "tab-bar",
+      "description": "Under 900px, an opaque fixed bottom bar with Home, Inbox (with a blue count), Activity and Results. It is not a glass surface; the full menu stays in the top bar.",
+      "html": "<nav class=\"ds-tabs\"><a aria-current=\"page\">Home</a><a>Inbox <b>2</b></a><a>Activity</a><a>Results</a></nav>",
+      "css": ".ds-tabs { display: grid; grid-template-columns: repeat(4, 1fr); padding: 4px 8px; background: #fff; border-top: 1px solid #e3e5df; font: 600 11.5px/1.3 'Instrument Sans Variable', sans-serif; } .ds-tabs a { display: grid; justify-items: center; min-height: 48px; align-content: center; color: #5c615c; } .ds-tabs a[aria-current=page] { color: #121412; } .ds-tabs b { min-width: 18px; padding: 0 5px; border-radius: 999px; color: #fff; background: #2d5bff; font-size: 11px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Employee Who Reports",
+    "overview": "Signal is an SEO and AI-search employee that reports to its owner, not a console. The owner checks in for a few minutes a week and answers three questions at a glance: is search improving, what did Signal do, and what does it need from me. The interface fills the full browser viewport: a porcelain ground (#f2f3ef), a sticky glass top bar, a grouped navigation rail that shares the page with one work column, and white cards with a hairline and a soft shadow. Near-black ink carries text and every primary action; one Signal Blue marks what waits on the owner and what Signal is doing. Bricolage Grotesque gives headings their voice, Instrument Sans carries 15px body, Geist Mono labels and identifiers. The weekly loop is the signature visual. Nothing is shown that Signal has not observed.",
+    "keyCharacteristics": [
+      "Every screen leads with a sentence about what happened and what is needed; exact evidence is one click away.",
+      "One card language: white, 16px radius, hairline border, one soft shadow, on a porcelain ground.",
+      "Ink for primary actions; Signal Blue only for what waits on the owner, what Signal is doing, and focus.",
+      "Missing or unavailable data is stated in words; no number, chart line or healthy state is simulated.",
+      "Glass on exactly three surfaces that content scrolls beneath, each with an opaque fallback."
+    ],
+    "rules": [
+      {
+        "name": "The Blue Means You Or Signal Rule",
+        "body": "Signal Blue marks decisions waiting on the owner (Inbox count, the accent tile, a waiting stage, the After side), what Signal is doing (the live dot), and focus rings. It is never decoration and never an ordinary action colour; primary actions are ink. Blue text uses #2448d8.",
+        "section": "colors"
+      },
+      {
+        "name": "The Colour Never Alone Rule",
+        "body": "Green, amber and red always travel with a word (Done, Waiting on you, Failed) and, where it reports state, a Lucide mark. A tint behind a pill is allowed; a tint standing in for the word is not.",
+        "section": "colors"
+      },
+      {
+        "name": "The Never Simulate Readiness Rule",
+        "body": "Never simulate readiness. An empty chart draws no sample line, an unavailable count shows a dash with its reason in words, an unbuilt page says what has to be true first, and missing health checks are reported as missing, never as healthy.",
+        "section": "components"
+      },
+      {
+        "name": "The Three Voices Rule",
+        "body": "Bricolage Grotesque for headings and observed counts, Instrument Sans for sentences, Geist Mono for labels, paths and identifiers. Mono never carries a sentence.",
+        "section": "typography"
+      },
+      {
+        "name": "The Depth Means Layering Rule",
+        "body": "A shadow reports that a surface is in front of another. Cards sit one step above the ground; menus, the account panel and the mobile navigation panel one step higher. Nothing gets a shadow for emphasis, and surfaces at the same depth share one shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Glass Needs Something Behind It Rule",
+        "body": "If nothing scrolls under a surface, it is opaque. backdrop-filter: saturate(1.8) blur(20px) is granted only to the top bar, the Inbox decision bar and the mobile navigation panel, and @supports not (backdrop-filter: blur(1px)) returns each to opaque white canvas.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do say what happened in a sentence and show the evidence on request.",
+      "Do state missing, unavailable or unconnected data in words, with the connection that would supply it.",
+      "Do keep every top-level section in the one card language and the work in one column.",
+      "Do make ink the primary action and keep Reject, Request changes and Approve together in the decision bar.",
+      "Do verify 390px, 900px and desktop layouts and keep 44px tap targets on mobile navigation."
+    ],
+    "donts": [
+      "Don't build black-box AI interfaces that hide evidence, decisions, costs or approval scope.",
+      "Don't draw a chart, number or healthy state that Signal has not observed.",
+      "Don't colour state without words, or use Signal Blue for decoration or ordinary actions.",
+      "Don't use gradients, or blur a surface that has nothing scrolling behind it.",
+      "Don't show raw codes, keys or hashes in the main reading path, or repeat safety notices on every page.",
+      "Don't add shadows to manufacture importance or a right-hand context rail."
+    ]
+  }
+}

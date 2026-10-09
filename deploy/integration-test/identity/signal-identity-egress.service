@@ -1,0 +1,13 @@
+[Unit]
+Description=Block new outbound traffic from the private Signal identity bridge
+Requires=docker.service
+After=docker.service
+PartOf=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/signal-integration/identity/deny-egress.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

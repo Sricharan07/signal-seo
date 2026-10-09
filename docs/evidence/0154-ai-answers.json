@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "slice": "0154",
+  "date": "2026-10-04",
+  "classification": "product; Candidate Inbox sealing security-critical",
+  "status": "locally_qualified_not_deployed",
+  "branch_base": "856a996",
+  "migration": "0094_owner_ai_questions",
+  "migration_parent": "0093",
+  "migration_sql_sha256": "dd134be97a7e1f2c443cdbadc699288e1d4a7b8e6122fbebc3f3dfa1119fe614",
+  "database_source_map_sha256": "8f1eabf7d5d7ccc199789cc5fa93a0b54af02a988a0f424a744c1405bc921e9d",
+  "database_source_map_encoding": "jq -cS .source_sha256 .runtime/database-tests/latest.json, including trailing newline",
+  "adrs": ["0164"],
+  "environment": "Invocation-owned disposable PostgreSQL 17.11 and real private no-network candidate containers; synthetic provider responses behind existing shared egress",
+  "positive_negative_failure": true,
+  "checks": [
+    {"command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q", "passed": 2904, "failed": 0, "skipped": 0, "warnings": 2},
+    {"command": ".venv/bin/python scripts/run-database-tests.py --shards 3", "passed": 1233, "failed": 0, "skipped": 0, "seconds": 432.161, "report": ".runtime/database-tests/latest.json"},
+    {"command": ".venv/bin/python scripts/run-ai-answers-tests.py", "passed": 61, "failed": 0, "skipped": 0, "report": ".runtime/ai-answers-tests/latest.json"},
+    {"command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py", "passed": 32, "failed": 0, "skipped": 0, "report": ".runtime/candidate-sandbox/latest.json"},
+    {"command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "status": "PASS"},
+    {"command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "status": "PASS", "checked_files": 639},
+    {"command": "npm test", "status": "PASS", "repository_passed": 46, "dashboard_passed": 272, "failed": 0, "markdown_files": 328, "typecheck": "PASS", "production_build": "PASS", "design_guards_changed": false},
+    {"command": "gitleaks git --pre-commit --staged --config .gitleaks.toml .", "status": "PASS", "leaks": 0, "config": "Unchanged main .gitleaks.toml"}
+  ],
+  "coverage": {
+    "positive": ["Latest committed crawl proposal", "Unchanged crawl provenance and edited owner-data questions", "Fresh-MFA immutable approval, exact replay and scheduled-run consumption", "Accepted grounded Article revision sealed and replayed in pending Candidate Inbox", "Existing no-network exact baseline/candidate output lab"],
+    "negative": ["Non-owner roles, wrong tenant/site and recovery", "Primary and expired-MFA approval refusal", "Changed request, stale baseline and forged crawl provenance", "Unaccepted or wrong-digest proposal, unrelated fact reference and revoked approved fact refusal", "Question bounds, duplicate data, ungrounded field references and unsafe BFF input", "No GitHub PR operation or shipping action"],
+    "failure": ["Missing worker and private composition", "Known recipe/build/provider failures without readiness", "Unknown result requires refresh before retry", "Candidate crash, timeout, output/memory limits, network and workflow-write isolation"]
+  },
+  "ui_evidence": {
+    "scope": "Synthetic isolated component preview, not a signed-in owner journey",
+    "desktop": "1440x2000 full component, question editor and accepted fact selectors",
+    "mobile": "390x2400 full component; no overlapping controls or clipped copy",
+    "review": "Independent reviewer scored ink primary commands and supplied unavailable/MFA reasons resolved; disposition ship for those two fixes only",
+    "design_documentation": "Incumbent DESIGN.md and tokens preserved; read-only handoff confirmed existing forms and identifiers",
+    "cleanup": "Temporary preview removed, invocation-owned loopback server stopped and generated preview types moved out of build inputs"
+  },
+  "development_failures_resolved": [
+    "Initial MFA fixture violated session timestamp ordering; retained existing auth_time and corrected test-only fixture",
+    "Corrected scheduler packet assertion and sensitive-claim positive fixture without reducing grounding gates",
+    "Identity-role release-helper denial resolved by owner-scoped reviewed-release query; helper grants unchanged",
+    "Interim npm checks preceded evidence-file creation or retained temporary preview type metadata; final complete npm test passed"
+  ],
+  "cleanup": "All invocation-owned database and candidate containers cleaned; other sessions' containers untouched; no image pruning",
+  "full_gate": "NOT_EXECUTED by request",
+  "temporal_started": false,
+  "production_authority": false,
+  "live_providers": "NOT_EXECUTED",
+  "limits": ["Not deployed", "Live assistant APIs and dedicated GitHub source/build remain unqualified", "No PR, merge, deploy, default-branch write or standing authority change", "Existing qualified private worker/provider ports required; unconfigured ports explicitly unavailable", "HowTo, unsupported source mappings, templated/CMS sources and pages without current findings unavailable", "Schedule UI composition belongs to separate slice 0149", "Actual assistant spend remains unpriced; all dispatched holds carry forward"]
+}

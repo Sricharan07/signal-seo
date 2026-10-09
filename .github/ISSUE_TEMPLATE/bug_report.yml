@@ -1,0 +1,70 @@
+name: Bug report
+description: Something in Signal does not work as documented.
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. If this could let anyone gain authority, read data they
+        should not, or bypass a safety rule, stop here and report it privately instead
+        (see SECURITY.md).
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start the local pilot with `npm run pilot`
+        2. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Dashboard
+        - API
+        - Weekly loop / workers
+        - Connectors (GSC, GitHub, Bing, GA4, Slack, Telegram, ...)
+        - Ask Signal
+        - Content writing
+        - Database / migrations
+        - Self-hosting / deployment
+        - Tests / tooling
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit or version
+      placeholder: e.g. a519a65
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Docker version, Python and Node versions, self-hosted or local pilot.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Remove tokens, cookies, emails and site data before pasting.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: I removed secrets and personal data from this report.
+          required: true

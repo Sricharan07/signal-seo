@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "slice": "0121",
+  "classification": "security-critical",
+  "date": "2026-10-02",
+  "status": "REPAIR_LOCALLY_QUALIFIED_LIVE_PENDING",
+  "local": {
+    "real_postgresql": {"status": "PASS", "cases": 874},
+    "api_identity_tooling": {"status": "PASS", "cases": 1442},
+    "repository": {"status": "PASS", "cases": 41},
+    "dashboard": {"status": "PASS", "cases": 153},
+    "typecheck_build_changed_python_lint_format": "PASS",
+    "unprotected_binding_durable_failure_replay": "PASS_REAL_POSTGRESQL",
+    "exact_public_origin_private_listener_startup_rejections": "PASS"
+  },
+  "live": {
+    "repair_deployed": false,
+    "slack_gsc_positive_oauth": "PENDING",
+    "github_protected_binding": "PENDING",
+    "production_writes_enabled": false,
+    "gmail_access": false
+  },
+  "complete_integration_request": "IN_PROGRESS"
+}

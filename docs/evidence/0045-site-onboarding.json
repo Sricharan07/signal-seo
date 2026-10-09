@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-12T18:06:27Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "python": "3.12.14",
+  "framework": "Next.js 16.3.4",
+  "database": {
+    "engine": "PostgreSQL 17.11",
+    "image": "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+    "recorded_at": "2026-09-12T18:06:27.264835+00:00",
+    "cleanup": "completed"
+  },
+  "source_sha256": {
+    "database/migrations/versions/0027_site_onboarding.py": "a26a3d8f6791177dd1b5808fcaddb4d4e2b3985d0e86c9ef046061cfa10f81b5",
+    "database/migrations/versions/0027_site_onboarding.sql": "a0f337759c590760d89bc104f1f23ce587a2a1776da44db5b9f6d56753b6df62",
+    "services/control_plane/src/signal_core/site_onboarding.py": "4d59fe0fa93558f14f13d8b756409fa7317b40da1bf8f0ca651a72f54fde4942",
+    "apps/api/src/signal_api/authentication.py": "57bbfc7f1f762ab9c7a613fe68e9b574c4c1fca8c5cd7f5b59801d0e6b5b74e1",
+    "apps/api/src/signal_api/main.py": "82b240c17f638b233b1f922a490794a10981fbd416999368e4f8405d73f5b4a6",
+    "apps/api/src/signal_api/session_contracts.py": "9c03b0c7420dc13b81929e888ab19153890597a80417a25470662085e498d2c6",
+    "apps/dashboard/app/auth/create-site/route.ts": "908c7587b729990a752453f3be478ff95bcfb5e8f090fa3b66d0fba81061b5e0",
+    "apps/dashboard/app/page.tsx": "de7c2382eefe44ffa37e32789409425c6f8e12fccb6da925ce06e4831c19b59c",
+    "apps/dashboard/components/dashboard-view.tsx": "ffe2756cf8ab8e68e0c98e82d93fe727dda92be4cb4af5eedf9b6e14e5c04379",
+    "apps/dashboard/app/globals.css": "720263df6ddb9c5d24775d87e6a0729e926fbdaa88e36d20210efcd7c337ce73",
+    "apps/dashboard/lib/auth-route.ts": "bc4c7a9dbe99f7977e3e623e388ada0c34016ec39df81b87a2808e2c93cafc75",
+    "apps/dashboard/lib/browser-auth.ts": "cd2e2cf5c737dd8d8c10d50d15b90a788b941f5e131ec3a0838523647f50c946",
+    "tests/control_plane/test_site_onboarding.py": "325b70d8dc845ed1b7309ba63adb84099d602968490f2200b8304df284f487f9",
+    "tests/control_plane/test_database.py": "4a9c5c87bd6cb982d468afc8ac9146deb4b73a32facfc759cb53a1c9de507b27",
+    "tests/api/test_session_lifecycle.py": "63b4257f4b9c1f370d95c8b263708ae97e3cb529c92511b6dbf88d9c10bda331",
+    "tests/api/test_api.py": "6cb78251c81f263c4350d33a2c1e5f9b33914b81dc0d6b7280f96312819d17a4",
+    "apps/dashboard/tests/browser-auth.test.ts": "7186f23e1af17b36af5805f5e931fb317813769e29095d41f84bed13a04e118d",
+    "apps/dashboard/tests/site-onboarding-route.test.ts": "26d5e875dffd7245bc2f8c482d410e79ccc1988e2fbf1941a24454b6ee5d494b",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "5c5ff3f08b129e16ca5dd6ca918035a32d4ec5af08986e7c15f68aa0dd4be1ce",
+    "tests/repository/dashboard.test.mjs": "4b968a7cc300ab5c33cd82e388815056116c24d11b5fc192ebe94c4a49f8070e",
+    "docs/adr/0045-owner-controlled-site-onboarding.md": "56f674e19a58a2853b52289f51c9897101a1f5ddfd8bb82c5f5d8ffc14c48eb4",
+    "docs/implementation/0045-site-onboarding.md": "7da3fb420fc5459a0d22b947f5e49c62a68d01ee0c03892938b379dc7b76304a",
+    "docs/runbooks/site-onboarding.md": "8dbfdbb3fd22f2b0c8cb1f63e65f6bb2d42f4b801c6b95fcc7bed014731b392d",
+    "DESIGN.md": "256729d28bf18de872e9696e8b7bccd829445b65ba886e3c16c0e59675759431",
+    ".impeccable/design.json": "c6a3f51e3527f773513e700a688d131e611b20544f6cda369c0aceec024e5085"
+  },
+  "tests": [
+    {
+      "name": "real PostgreSQL migration, authority, concurrency, and failure regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 537,
+      "status": "PASS"
+    },
+    {
+      "name": "API contracts",
+      "command": ".venv/bin/python -m pytest tests/api -q",
+      "passed": 219,
+      "status": "PASS"
+    },
+    {
+      "name": "API identity and tooling regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+      "passed": 672,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard identity, site-onboarding, read, and rendering contracts",
+      "command": "npm run test:dashboard",
+      "passed": 62,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard TypeScript contract",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production build",
+      "command": "npm run build:dashboard",
+      "routes": [
+        "/",
+        "/_not-found",
+        "/auth/callback",
+        "/auth/clear-browser-state",
+        "/auth/create-site",
+        "/auth/login",
+        "/auth/logout",
+        "/auth/select-organization",
+        "/auth/select-site"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 20,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "markdown_files": 125,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and format",
+      "commands": [
+        ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+        ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling"
+      ],
+      "formatted_files": 158,
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        ".venv/bin/python -m pip check",
+        "npm audit --omit=dev"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 5,
+      "reviewed_false_positives": "five source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "synthetic authenticated expanded owner-onboarding desktop overview",
+      "viewport": "1280x720",
+      "site_rows": 2,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic authenticated expanded owner-onboarding intermediate overview",
+      "viewport": "980x800",
+      "site_rows": 2,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic authenticated expanded owner-onboarding mobile overview",
+      "viewport": "390x844",
+      "site_rows": 2,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    }
+  ],
+  "browser_fixture": {
+    "kind": "disposable loopback API transport and session fixture",
+    "removed_after_check": true,
+    "temporary_route_removed": true,
+    "temporary_browser_tab_closed": true,
+    "customer_data": false,
+    "credential": false,
+    "production_authority": false
+  },
+  "resolved_qualification_findings": [
+    {
+      "finding": "The first dashboard placement put Add site in a panel that authenticated sessions do not render.",
+      "resolution": "Moved the owner-only disclosure into the Authorized sites directory and added owner/viewer rendering assertions."
+    },
+    {
+      "finding": "Initial onboarding advanced active-site state without extending the existing per-session context hash chain.",
+      "resolution": "Added a separate context event identity and atomically append the chained active-site transition before the onboarding receipt."
+    },
+    {
+      "finding": "The dashboard response validator's strict field inventory was not in canonical order.",
+      "resolution": "Corrected the exact field order; malformed and extra response tests now close the route."
+    },
+    {
+      "finding": "A tenant-wide onboarding idempotency receipt also references a site, making its ownership scope ambiguous.",
+      "resolution": "Added and hash-bound scope_kind=tenant while retaining the exact created-site foreign keys; the separate active-context event remains site-scoped."
+    }
+  ],
+  "raw_session_recorded": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "external_write": false,
+  "production_authority": false
+}

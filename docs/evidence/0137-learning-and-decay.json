@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "slice": "0137",
+  "classification": "product",
+  "base": "775474608f2f75e21838c079e655e3336f1fad3e",
+  "migration": "0088",
+  "down_revision": "0087",
+  "production_authority": false,
+  "status": "locally_qualified",
+  "recorded_at": "2026-10-04T04:01:28.358806+00:00",
+  "full_gate": {
+    "passed": 3280,
+    "failed": 0,
+    "all_run_test_labs": 10,
+    "delivery_unsharded": true
+  },
+  "focused_domain": {
+    "passed": 23,
+    "failed": 0
+  },
+  "focused_postgresql": {
+    "passed": 13,
+    "failed": 0
+  },
+  "gate_commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "exit_code": 0,
+      "passed": 968,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "exit_code": 0,
+      "passed": 40,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "exit_code": 0,
+      "passed": 15,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "exit_code": 0,
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "exit_code": 0,
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "exit_code": 0,
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-indexnow-tests.py",
+      "exit_code": 0,
+      "passed": 17,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "exit_code": 0,
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "exit_code": 0,
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "exit_code": 0,
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "exit_code": 0,
+      "passed": 34,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "exit_code": 0,
+      "passed": 1915,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps/api services/control_plane database scripts tests/api tests/identity tests/tooling tests/connectors tests/control_plane tests/temporal tests/consumer tests/delivery tests/page_attempt",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps/api services/control_plane database scripts tests/api tests/identity tests/tooling tests/connectors tests/control_plane tests/temporal tests/consumer tests/delivery tests/page_attempt",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "exit_code": 0,
+      "files_unchanged": 480
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "repository_passed": 43,
+      "dashboard_passed": 203,
+      "failed": 0,
+      "markdown_files": 267,
+      "typecheck": "PASS",
+      "build": "PASS"
+    }
+  ],
+  "secret_scan": {
+    "staged_exit_code": 0,
+    "staged_leaks": 0,
+    "staged_command": "gitleaks git --config .gitleaks.toml --pre-commit --staged --redact .",
+    "required_range_command": "gitleaks git --config .gitleaks.toml --log-opts=\"main..HEAD\" --redact .",
+    "configuration": "byte-identical to main; no allowlist edits"
+  },
+  "source_sha256": {
+    "services/control_plane/src/signal_core/observed_learning.py": "c35c2ca698106e8da86026e0d5aac1d2f0c1ef7e7c87a1b23cb04595f6dee2aa",
+    "services/control_plane/src/signal_core/seo_strategy.py": "2d33c71b0fded7e49fdc3bd287ec623017541ecec5f9730de26134b8e7976ed7",
+    "database/migrations/versions/0088_observed_learning.py": "ead1ac6175ded84fae012d5fbf74ea0d8eab0011abf06a9fd7d7831a83137344",
+    "database/migrations/versions/0088_observed_learning.sql": "521a3cefad6a436f6e5cafbab673c1bc1bc92372669db64ab36469a6c3e30ba8",
+    "apps/dashboard/components/seo-strategy.tsx": "60bca3775d64b25d246878145e7eea6641e99f4526eccf562c2eee96aa3876a7",
+    "apps/dashboard/lib/seo-strategy-api.ts": "80873f2ae57bb67b5ca3c85cee30d266ee1c238f8b0b14f83aff4ae34a53a5c5",
+    "apps/dashboard/tests/observed-learning.fixture.ts": "8f6eb17f58bdec347869cf44ad44dcf752c71cd7938b3bc135a7aa070a005323",
+    "apps/dashboard/tests/observed-learning.test.tsx": "9d80d8bd0d8d9dbded27b39c12761a3fa6671973fa30659dd850efa61efeaa17",
+    "tests/control_plane/test_database.py": "c37dde75f52b8dbd2ceb94792202059966793346d9f444198ab1d99779791162",
+    "tests/control_plane/test_observed_learning.py": "37300e61054e9995330c0a276b8e89ca1c61ae9f36f5bb3f1ec6e17623341d80",
+    "tests/connectors/test_observed_learning.py": "908f3a887474819f64d6a79630e2116bf3f33dd716173741b8ea013ae6d68894",
+    "tests/delivery/test_change_measurement_delivery.py": "321615531bd080f5c4de99053988fe2622c7f9539ea38950253307a408234aaa"
+  },
+  "source_manifests": "PostgreSQL and delivery manifests match qualified source bytes.",
+  "cleanup": "All owned disposable lab resources cleaned; no foreign container stopped.",
+  "truncation_check": "Changed Python AST, JSON, SQL and PNG endings intact; protected specification hashes passed.",
+  "superseded_run": "Disk-full infrastructure repaired; two test-fixture scope/clock errors corrected; pre-existing Temporal startup failure passed on fresh full rerun. No gate weakened.",
+  "live_providers": "NOT_EXECUTED",
+  "deployment": "NOT_EXECUTED",
+  "customer_effectiveness": "NOT_EXECUTED",
+  "screenshots": {
+    "files": [
+      "0137-learning-desktop.png",
+      "0137-learning-mobile.png"
+    ],
+    "scope": "Synthetic SSR of actual component and CSS, not customer or hydrated-flow evidence.",
+    "desktop": [
+      1440,
+      980
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "document_overflow": false
+  },
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 37,
+    "migration": "0088",
+    "down_revision": "0087",
+    "app_tables": 173,
+    "fast_checks": {
+      "python": 2757,
+      "database": 1215,
+      "repository": 46,
+      "dashboard": 258
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false,
+    "source_sha256": {
+      "services/control_plane/src/signal_core/observed_learning.py": "4ae577635ce7fdf107d608271396c431083354481e8799702c03afdb0d5c99bd",
+      "services/control_plane/src/signal_core/seo_strategy.py": "2d33c71b0fded7e49fdc3bd287ec623017541ecec5f9730de26134b8e7976ed7",
+      "database/migrations/versions/0088_observed_learning.py": "5b1ca24d5a402db000117a125a4b783347b613689564260c835ded106a7d947c",
+      "database/migrations/versions/0088_observed_learning.sql": "36d823f282c82a9ef4b1520bb0b6f79eb03e87b349f82d91bdbab326e2cded75",
+      "apps/dashboard/components/seo-strategy.tsx": "60bca3775d64b25d246878145e7eea6641e99f4526eccf562c2eee96aa3876a7",
+      "apps/dashboard/lib/seo-strategy-api.ts": "80873f2ae57bb67b5ca3c85cee30d266ee1c238f8b0b14f83aff4ae34a53a5c5",
+      "apps/dashboard/tests/observed-learning.fixture.ts": "8f6eb17f58bdec347869cf44ad44dcf752c71cd7938b3bc135a7aa070a005323",
+      "apps/dashboard/tests/observed-learning.test.tsx": "9d80d8bd0d8d9dbded27b39c12761a3fa6671973fa30659dd850efa61efeaa17",
+      "tests/control_plane/test_database.py": "a36eaa096af823a594dbc9e66394518c5618a033624f70d4ab1106a9d58dc15e",
+      "tests/control_plane/test_observed_learning.py": "37300e61054e9995330c0a276b8e89ca1c61ae9f36f5bb3f1ec6e17623341d80",
+      "tests/connectors/test_observed_learning.py": "86dc47c57d448e5e979960937a263eb4d2361e435a53024b43097c82285f5847",
+      "tests/delivery/test_change_measurement_delivery.py": "321615531bd080f5c4de99053988fe2622c7f9539ea38950253307a408234aaa"
+    },
+    "source_hash_scope": "Current merge qualification; top-level hashes are historical pre-merge evidence"
+  }
+}

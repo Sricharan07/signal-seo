@@ -1,0 +1,669 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-08T08:14:32.628011+00:00",
+  "database": "17.11",
+  "image": "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+  "python": "3.12.14",
+  "source_sha256": {
+    "database/alembic.ini": "77720a47a1ca4da8a4603b94a6dee27da971c92d645be56c8f281dd3364e1444",
+    "database/bootstrap.sql": "a5433e1604c2e22b87cb0f5bc427b75137ccc5466a53c348af13117bf0d3c546",
+    "database/migrations/env.py": "d62c5ff160ee9bd8f3562fc4985ef8c25f5205604d2fe9769c2688c5338e402e",
+    "database/migrations/versions/0001_durable_commands.py": "322e06d0cafcea2193d0690e1549055012f588c704952a7b18a9048940b1e971",
+    "database/migrations/versions/0001_durable_commands.sql": "02ebd33b6123238d20607338cabf8e6f2b58add7d1973efcff838cb3659331aa",
+    "database/migrations/versions/0002_identity_authorization.py": "7bcc104be042da51dbcc7e457997f9749cf219fd9d9ba345fb7298d75245a2c9",
+    "database/migrations/versions/0002_identity_authorization.sql": "60a154816915ad5e2f3ee3e1795bdde9e4a9163491d2d3fd249fc6f3097f68c3",
+    "database/migrations/versions/0003_oidc_login_attempts.py": "b1226beaea952fdffe98d2057ab2a6f7ad7af6f9b2e1e6dbe638c21fe7b8c3aa",
+    "database/migrations/versions/0003_oidc_login_attempts.sql": "d6060ed4f0398d47a1c964b500941e23146caa5ba9c34870eac99c2e7fc25604",
+    "database/migrations/versions/0004_identity_session_issuance.py": "a68c88a6fe1e3d61f00213a4ac1ed4936ae5646eea35905f443757691ddab086",
+    "database/migrations/versions/0004_identity_session_issuance.sql": "e0b167de37b7570f378a504fb297328b9d4fdafddfb2cfcb10da7df5b285c4df",
+    "database/privileges.json": "53d6a54ba9cb987f078365b97c8e11f0a9f843827a74f83289f493918484f4fe",
+    "pyproject.toml": "25ec62568b3ee63d04cc422c36c4f8228f9daf7c0ca8ea9f662305ada5553dc0",
+    "requirements.txt": "d28d6a008537cba43ce801520add2c8e4767ce5a4dd86fac09354ac73f42a08d",
+    "scripts/database_lab.py": "1adeb2d407f98f4e18b3a6ce1ae2bb86cb1093d1f4f432695aafdbde1fd6c551",
+    "scripts/run-database-tests.py": "940a97b93909fd4838772317b02494c6978a9633b87acb73a033da75af78a16a",
+    "services/control_plane/src/signal_core/__init__.py": "e66d7cccb9646be13ea457ca5e76594be38b1046cc0b7ffe5dc35c69ae2e0490",
+    "services/control_plane/src/signal_core/authorization.py": "c60fb1947474b1e347c7137490091aef3e1c6a39f3b19cc4d74c0e8b51d47c26",
+    "services/control_plane/src/signal_core/commands.py": "ba12ce67050cb377c3a4d450102f130a880b62ba4601de53ed5acaf310c60715",
+    "services/control_plane/src/signal_core/database.py": "771720f9cff34b92abdc1cc1a073115274eeefa135a8c0e6e0344a796d11c601",
+    "services/control_plane/src/signal_core/login_flow.py": "9bbdca358f2d7bdff88e23bb46071de599440596efc295f824b41e240ea62057",
+    "services/control_plane/src/signal_core/oidc_login.py": "015cdd6d64154453d4f8c3469f8d43bfcb425a62035dd247262b1b3376014fb9",
+    "services/control_plane/src/signal_core/oidc_protocol.py": "807d42c32babaf7a6955c028f53f1683dffaf1f8ea52cfdc22819de950de1b72",
+    "services/control_plane/src/signal_core/openbao_http.py": "43d25a3001213cdb32e903c84737621fddbc00ebe0f81fb50d8ffa91ff04e55f",
+    "services/control_plane/src/signal_core/pkce_secrets.py": "baa6cb57476dfa9e17dbddbad57d21e65837b77ddf3b6b253add6fb24eefa769",
+    "services/control_plane/src/signal_core/recovery_authority.py": "0f9dc727cd0f0bf4083ae9fbb5eb0a52ecfbf3c627bb784818d600dcbe75edf1",
+    "services/control_plane/src/signal_core/session_issuance.py": "85a669ce2f441e982f068dc295d1ee7219cb86ece8e0c9c8ca19e206937c139d",
+    "services/control_plane/src/signal_core/session_tokens.py": "3a36d87355f5243fe03ff5986f32b49b6016e26b9e3eaaf096dc88c7628e085c",
+    "tests/control_plane/conftest.py": "47700e1f3c538bd01280f678d5c512ea64e297c3e134090efe3e5da43276d66e",
+    "tests/control_plane/test_authorization.py": "59a62cd8b379fdb98c6d4f55e2e9f1cdacd696bbbc32b4fe95a5493b7b725545",
+    "tests/control_plane/test_commands.py": "08959691b625e2ad95c1539e7a6662cf8bde127bc2ebae6d7d69161ff158c677",
+    "tests/control_plane/test_database.py": "099cf6677a771f8dfe463a00a02981a8f826b84e701023bd56d714efc458a0e4",
+    "tests/control_plane/test_login_flow.py": "e72eca3f7dcfd355fd9dd9b931a3a6fbb0fcce8bc3197fac94da8cfe67148676",
+    "tests/control_plane/test_oidc_login.py": "cb50d7121f37ccca70c9d9a4db5eeb7e9c05aae301b4192566df5605b8b27f6c",
+    "tests/control_plane/test_session_issuance.py": "a0aaf6be512b9c67293cb929cee0d60ff93584bbfc9d3a654c0563435327e5a8"
+  },
+  "production_authority": false,
+  "cleanup": "completed",
+  "tests": [
+    {
+      "name": "test_valid_session_derives_current_tenant_site_and_actor",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_session_states_are_indistinguishable[app.sessions-revoked_at-now()]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_session_states_are_indistinguishable[control.identity_sessions-revoked_at-now()]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_session_states_are_indistinguishable[control.users-disabled_at-now()]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_session_states_are_indistinguishable[control.identity_sessions-recovery_generation-'stale-generation']",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_session_states_are_indistinguishable[app.sessions-mfa_level-'mfa']",
+      "status": "PASS"
+    },
+    {
+      "name": "test_external_generation_mismatch_invalidates_otherwise_live_session",
+      "status": "PASS"
+    },
+    {
+      "name": "test_expired_session_layers_are_rejected[app.sessions-tenant_session_id]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_expired_session_layers_are_rejected[control.identity_sessions-identity_session_id]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_current_membership_and_site_state_are_rechecked[app.memberships-state-'suspended']",
+      "status": "PASS"
+    },
+    {
+      "name": "test_current_membership_and_site_state_are_rechecked[app.site_memberships-state-'removed']",
+      "status": "PASS"
+    },
+    {
+      "name": "test_current_membership_and_site_state_are_rechecked[app.sites-state-'archived']",
+      "status": "PASS"
+    },
+    {
+      "name": "test_current_membership_and_site_state_are_rechecked[app.tenants-lifecycle-'suspended']",
+      "status": "PASS"
+    },
+    {
+      "name": "test_wrong_site_is_denied_without_scope_details",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_token_is_rejected_before_database_access[]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_token_is_rejected_before_database_access[short]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_token_is_rejected_before_database_access[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_token_is_rejected_before_database_access[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_token_is_rejected_before_database_access[contains+symbol]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_missing_recovery_anchor_fails_before_database_access",
+      "status": "PASS"
+    },
+    {
+      "name": "test_identity_role_cannot_enumerate_or_mutate_authority",
+      "status": "PASS"
+    },
+    {
+      "name": "test_raw_session_token_is_never_stored",
+      "status": "PASS"
+    },
+    {
+      "name": "test_email_does_not_link_different_oidc_issuers",
+      "status": "PASS"
+    },
+    {
+      "name": "test_acceptance_commits_command_event_and_outbox_together",
+      "status": "PASS"
+    },
+    {
+      "name": "test_retry_returns_original_command_without_duplicate_events",
+      "status": "PASS"
+    },
+    {
+      "name": "test_same_key_for_different_site_conflicts_without_disclosing_scope",
+      "status": "PASS"
+    },
+    {
+      "name": "test_concurrent_duplicate_acceptance_has_one_durable_result",
+      "status": "PASS"
+    },
+    {
+      "name": "test_outbox_failure_rolls_back_all_acceptance_records",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_idempotency_keys_fail_before_database_access[]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_idempotency_keys_fail_before_database_access[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_idempotency_keys_fail_before_database_access[a\\x00b]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_idempotency_keys_fail_before_database_access[a b]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_idempotency_keys_fail_before_database_access[../escape]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_idempotency_keys_fail_before_database_access[None]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_service_identity_fails_before_database_access[]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_service_identity_fails_before_database_access[admin:anything]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_service_identity_fails_before_database_access[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_service_identity_fails_before_database_access[None]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_missing_scope_and_suspended_tenant_are_rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "test_reconnection_after_lost_acknowledgement_reuses_committed_intent",
+      "status": "PASS"
+    },
+    {
+      "name": "test_runtime_roles_are_not_owners_or_privileged",
+      "status": "PASS"
+    },
+    {
+      "name": "test_privileges_match_reviewed_manifest",
+      "status": "PASS"
+    },
+    {
+      "name": "test_context_function_execution_is_explicit_and_not_public",
+      "status": "PASS"
+    },
+    {
+      "name": "test_missing_scope_returns_no_tenant_rows",
+      "status": "PASS"
+    },
+    {
+      "name": "test_scope_is_transaction_local_and_reused_connections_do_not_leak",
+      "status": "PASS"
+    },
+    {
+      "name": "test_scope_is_cleared_after_failure_and_cannot_be_nested",
+      "status": "PASS"
+    },
+    {
+      "name": "test_scope_rejects_non_uuid_values",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_raw_scope_fails_closed",
+      "status": "PASS"
+    },
+    {
+      "name": "test_cross_tenant_and_same_tenant_wrong_site_are_invisible",
+      "status": "PASS"
+    },
+    {
+      "name": "test_cross_scope_foreign_keys_reject_even_when_rls_is_bypassed",
+      "status": "PASS"
+    },
+    {
+      "name": "test_outbox_cannot_reference_another_commands_event",
+      "status": "PASS"
+    },
+    {
+      "name": "test_runtime_cannot_disable_rls_write_control_or_truncate",
+      "status": "PASS"
+    },
+    {
+      "name": "test_forced_rls_applies_even_to_table_owner",
+      "status": "PASS"
+    },
+    {
+      "name": "test_immutable_records_have_privilege_and_trigger_protection",
+      "status": "PASS"
+    },
+    {
+      "name": "test_tenant_context_functions_are_stable_not_immutable",
+      "status": "PASS"
+    },
+    {
+      "name": "test_residual_session_scope_is_rejected_instead_of_restored",
+      "status": "PASS"
+    },
+    {
+      "name": "test_non_autocommit_connection_is_rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "test_runtime_cannot_run_migrations",
+      "status": "PASS"
+    },
+    {
+      "name": "test_migration_revision_is_persisted_and_downgrade_refuses_data_loss",
+      "status": "PASS"
+    },
+    {
+      "name": "test_scheduler_directory_does_not_bypass_outbox_isolation",
+      "status": "PASS"
+    },
+    {
+      "name": "test_tenant_and_site_insert_policy_denies_wrong_context",
+      "status": "PASS"
+    },
+    {
+      "name": "test_failed_initial_migration_leaves_no_partial_schema",
+      "status": "PASS"
+    },
+    {
+      "name": "test_failed_identity_migration_preserves_prior_revision_only",
+      "status": "PASS"
+    },
+    {
+      "name": "test_failed_oidc_migration_preserves_identity_revision_only",
+      "status": "PASS"
+    },
+    {
+      "name": "test_failed_session_issuance_migration_preserves_oidc_revision_only",
+      "status": "PASS"
+    },
+    {
+      "name": "test_initiation_persists_hashes_only_after_verifier_is_durable",
+      "status": "PASS"
+    },
+    {
+      "name": "test_complete_flow_consumes_all_proofs_and_issues_hash_only_session",
+      "status": "PASS"
+    },
+    {
+      "name": "test_bad_entropy_is_rejected_before_network_or_database[opaque_values0-vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_bad_entropy_is_rejected_before_network_or_database[opaque_values1-vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_bad_entropy_is_rejected_before_network_or_database[opaque_values2-short]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_start_policy_is_rejected_before_network[https://attacker.test-300]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_start_policy_is_rejected_before_network[/-601]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_provider_or_secret_start_failure_creates_no_attempt",
+      "status": "PASS"
+    },
+    {
+      "name": "test_state_conflict_leaves_only_a_bounded_unreachable_secret",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_callback_and_wrong_binding_do_not_consume_attempt",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_recovery_authority_data_does_not_consume_attempt",
+      "status": "PASS"
+    },
+    {
+      "name": "test_recovery_authority_outage_does_not_consume_attempt",
+      "status": "PASS"
+    },
+    {
+      "name": "test_provider_failure_burns_attempt_without_reading_secret",
+      "status": "PASS"
+    },
+    {
+      "name": "test_missing_secret_rejects_before_code_exchange",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_provider_token_consumes_proofs_but_issues_no_session",
+      "status": "PASS"
+    },
+    {
+      "name": "test_unknown_identity_never_creates_user_or_session",
+      "status": "PASS"
+    },
+    {
+      "name": "test_successful_callback_replay_stops_before_provider_and_secret_calls",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_persists_only_hashes_and_consumes_once",
+      "status": "PASS"
+    },
+    {
+      "name": "test_wrong_binding_is_indistinguishable_and_does_not_consume",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_browser_values_fail_before_database_access[None]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_browser_values_fail_before_database_access[]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_browser_values_fail_before_database_access[short]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_browser_values_fail_before_database_access[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_browser_values_fail_before_database_access[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_malformed_browser_values_fail_before_database_access[bad+token]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_expired_attempt_cannot_be_consumed",
+      "status": "PASS"
+    },
+    {
+      "name": "test_duplicate_state_is_a_safe_conflict",
+      "status": "PASS"
+    },
+    {
+      "name": "test_concurrent_callback_consumes_exactly_once",
+      "status": "PASS"
+    },
+    {
+      "name": "test_identity_role_is_hash_scoped_and_column_limited",
+      "status": "PASS"
+    },
+    {
+      "name": "test_residual_oidc_scope_contaminates_connection",
+      "status": "PASS"
+    },
+    {
+      "name": "test_registration_rejects_ambiguous_or_unsafe_values[issuer-http://identity.example.test/realms/signal]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_registration_rejects_ambiguous_or_unsafe_values[issuer-https://*.example.test/realms/signal]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_registration_rejects_ambiguous_or_unsafe_values[issuer-https://user@example.test/realms/signal]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_registration_rejects_ambiguous_or_unsafe_values[issuer-https://example.test/realm?query=1]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_registration_rejects_ambiguous_or_unsafe_values[client_id-bad client]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_registration_rejects_ambiguous_or_unsafe_values[client_id-None]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_registration_rejects_ambiguous_or_unsafe_values[redirect_uri-//example.test/callback]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_registration_rejects_ambiguous_or_unsafe_values[redirect_uri-https://example.test/callback#fragment]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_loopback_http_registration_is_available_for_disposable_labs",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_input_contracts_fail_before_database_access[attempt_id-value0]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_input_contracts_fail_before_database_access[pkce_secret_reference-plain-verifier]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_input_contracts_fail_before_database_access[registration-None]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_input_contracts_fail_before_database_access[return_path-https://attacker.example]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_input_contracts_fail_before_database_access[return_path-//attacker.example]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_input_contracts_fail_before_database_access[return_path-/bad\\\\path]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_input_contracts_fail_before_database_access[return_path-/caf\\xe9]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_input_contracts_fail_before_database_access[ttl_seconds-59]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_attempt_input_contracts_fail_before_database_access[ttl_seconds-601]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_consumed_attempt_representation_hides_nonce_and_secret_reference",
+      "status": "PASS"
+    },
+    {
+      "name": "test_verified_identity_issues_hash_only_global_session",
+      "status": "PASS"
+    },
+    {
+      "name": "test_mfa_acr_maps_to_mfa_without_trusting_display_claims",
+      "status": "PASS"
+    },
+    {
+      "name": "test_unknown_and_disabled_users_are_indistinguishable",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides0]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides1]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides2]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides3]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides4]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides5]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides6]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides7]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides8]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides9]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides10]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_untrusted_identity_or_stale_authentication_fails_before_database[overrides11]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_session_policy_rejects_ambiguous_acr_and_time_configuration",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_recovery_generation_fails_before_database[None]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_recovery_generation_fails_before_database[]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_recovery_generation_fails_before_database[bad generation]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_recovery_generation_fails_before_database[xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_global_token_collision_is_retried_then_bounded",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_global_token_source_fails_before_database[None]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_global_token_source_fails_before_database[<lambda>0]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_global_token_source_fails_before_database[<lambda>1]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_identity_role_is_hash_scoped_and_insert_column_limited",
+      "status": "PASS"
+    },
+    {
+      "name": "test_active_membership_issues_hash_only_tenant_session",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_parent_and_authority_states_are_indistinguishable[control.identity_sessions-revoked_at-now()]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_parent_and_authority_states_are_indistinguishable[control.identity_sessions-recovery_generation-'stale-generation']",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_parent_and_authority_states_are_indistinguishable[control.users-disabled_at-now()]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_parent_and_authority_states_are_indistinguishable[app.memberships-state-'suspended']",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_parent_and_authority_states_are_indistinguishable[app.tenants-lifecycle-'suspended']",
+      "status": "PASS"
+    },
+    {
+      "name": "test_expired_parent_and_external_generation_mismatch_are_rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "test_wrong_tenant_does_not_disclose_membership",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_tenant_session_input_fails_before_database[identity_session_token-short]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_tenant_session_input_fails_before_database[identity_session_token-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_tenant_session_input_fails_before_database[requested_tenant_id-not-a-uuid]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_invalid_tenant_session_input_fails_before_database[current_recovery_generation-]",
+      "status": "PASS"
+    },
+    {
+      "name": "test_tenant_token_collision_is_retried_then_bounded",
+      "status": "PASS"
+    },
+    {
+      "name": "test_session_issuance_does_not_create_authority_and_composes_with_site_authorization",
+      "status": "PASS"
+    },
+    {
+      "name": "test_residual_global_session_scope_contaminates_connection",
+      "status": "PASS"
+    },
+    {
+      "name": "test_default_policy_is_frozen_and_has_disjoint_acr_sets",
+      "status": "PASS"
+    }
+  ],
+  "passed": 155
+}

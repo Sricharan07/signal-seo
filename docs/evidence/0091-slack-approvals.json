@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "slice": "0091",
+  "classification": "security-critical",
+  "base_commit": "b7cda0f",
+  "migration": "0058",
+  "production_authority": false,
+  "live_slack": "NOT_EXECUTED",
+  "qualification": "internal_only",
+  "customer_credentials_used": false,
+  "commands": [
+    {"command": ".venv/bin/python scripts/run-database-tests.py", "passed": 750, "failed": 0, "seconds": 337.36, "evidence": "0091-postgresql.json"},
+    {"command": ".venv/bin/python scripts/run-authority-journal-tests.py", "passed": 14, "failed": 0, "scope": "two real PostgreSQL clusters, real OpenBao rotation, restored-primary Slack denial replay"},
+    {"command": ".venv/bin/python scripts/run-temporal-tests.py", "passed": 7, "failed": 0, "evidence": "0091-temporal.json"},
+    {"command": ".venv/bin/python scripts/run-consumer-tests.py", "passed": 3, "failed": 0, "evidence": "0091-consumer.json"},
+    {"command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py", "passed": 6, "failed": 0, "evidence": "0091-workflow-consumer-image.json"},
+    {"command": ".venv/bin/python scripts/run-crawler-network-tests.py", "passed": 14, "failed": 0, "evidence": "0091-crawler-network.json"},
+    {"command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py", "passed": 10, "failed": 0, "evidence": "0091-candidate-sandbox.json"},
+    {"command": ".venv/bin/python scripts/run-page-attempt-tests.py", "passed": 1, "failed": 0, "evidence": "0091-page-attempt.json"},
+    {"command": ".venv/bin/python scripts/openbao_lab.py", "passed": 23, "failed": 0, "evidence": "0091-openbao.json"},
+    {"command": ".venv/bin/pytest tests/api tests/identity tests/tooling tests/connectors -q", "passed": 1196, "failed": 0},
+    {"command": ".venv/bin/python scripts/check-gsc-provider-boundary.py", "status": "PASS"},
+    {"command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "status": "PASS"},
+    {"command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "checked_files": 344, "unformatted": 0},
+    {"command": ".venv/bin/pip check", "broken_requirements": 0},
+    {"command": "npm test", "status": "PASS", "repository_tests": 24, "dashboard_tests": 136, "documentation_files": 211, "typecheck": "PASS", "build": "PASS"},
+    {"command": "git diff --check", "status": "PASS"},
+    {"command": "gitleaks git --staged --config .gitleaks.toml --redact --no-banner", "leaks": 0},
+    {"command": "gitleaks git --config .gitleaks.toml --log-opts=main..HEAD --redact --no-banner", "status": "REQUIRED_POST_COMMIT", "configuration": "unchanged main configuration; no allowlist widening"}
+  ],
+  "coverage": [
+    "OAuth exact session/state/workspace/scope, expiry and consumed-state replay, local and upstream revocation",
+    "single-use expected-user linking, expiry, wrong person, membership epoch change, removed member/site grant, disabled user, role downgrade and revoked link",
+    "bad signature, old/future timestamp, authenticated replay, wrong workspace/channel, ignored message instructions and response URL",
+    "mismatched sealed hash, stale extension base, A3 and A4 approve/reject handoff, above-configured risk, stale-MFA denial and fresh dashboard MFA decision",
+    "exact Inbox revision to outbox to linked-owner decision to the unchanged 0084 continuation; same dashboard-readable immutable decision record",
+    "closed Slack form OAuth/JSON bot origin/method/size/time profiles; JSON OAuth bodies, other routes, query strings and ambiguous fields denied; runtime/RLS negatives, acknowledged and ambiguous retries never double-post",
+    "real OpenBao least-privilege client/signing ACL, CAS-zero bot storage, overwrite rejection and permanent metadata revocation",
+    "independent deny-only journal and restored-primary Slack binding/link tombstones"
+  ],
+  "screenshots": [
+    {"path": "0091-slack-unavailable-desktop.png", "width": 1440, "state": "actual unconfigured connector"},
+    {"path": "0091-slack-unavailable-mobile.png", "width": 390, "state": "actual unconfigured connector"},
+    {"path": "0091-slack-owner-desktop.png", "width": 1440, "state": "synthetic owner form, actual component rendered into local browser only"},
+    {"path": "0091-slack-owner-mobile.png", "width": 390, "state": "synthetic owner form, actual component rendered into local browser only"}
+  ],
+  "not_executed": ["live Slack OAuth, posting, callbacks, revocation and provider retry behavior", "production composition and deferred-outbox supervisor", "automatic weekly workflow notifications", "high-risk step-up initiation UX", "Slack app distribution and production monitoring"],
+  "owner_inputs": ["disposable Slack app/workspace/channel/users and existing bot channel membership", "OpenBao-only client and signing secrets with dedicated least-privilege ACL", "exact HTTPS OAuth and signed callback URLs", "verified site/current owner", "independent recovery and journal custody", "qualified shared egress composition"],
+  "cleanup": "each lab removes only its invocation-owned containers; local dashboard server stopped; other tracks left untouched"
+}

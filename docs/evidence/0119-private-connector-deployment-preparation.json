@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "slice": "0119",
+  "classification": "security-critical",
+  "date": "2026-10-02",
+  "status": "LOCAL_HELPER_QUALIFIED_DASHBOARD_DEPLOYED_API_AND_PROVIDERS_PENDING",
+  "local": {
+    "api_identity_tooling": {"status": "PASS", "cases": 1434},
+    "focused_provisioning": {"status": "PASS", "cases": 12},
+    "callback_qualification": {"status": "PASS", "cases": 12},
+    "repository": {"status": "PASS", "cases": 39},
+    "dashboard": {"status": "PASS", "cases": 153},
+    "typecheck_and_production_build": "PASS",
+    "real_disposable_openbao": "PASS_LIMITED_OPERATOR_DENIALS_POST_ROOT_SNAPSHOT_REVOCATION",
+    "vm_image_builds": "PASS",
+    "credential_free_no_network_api_import": "PASS"
+  },
+  "live": {
+    "dashboard_image": "sha256:cd5116f6bfdc9f8c970417f69fb13d96e02fbfe6eca059c2c1df6bfb41f8ef65",
+    "running_api_image": "sha256:48456b79daa10da356ba1a282b82f7b546cdab4b01b385573586b8fdd7ae1a2d",
+    "prepared_api_image": "sha256:60877f8b74e276e749ac1f7928fe2309e21221c1c56cde6814e44578dbd863c9",
+    "ingress_image": "sha256:801002cbc3d9cbbe8f4255bf32b0a1c0f36e664e2eb0b8d7057aa802644f7310",
+    "migration": "0060",
+    "negative_gsc_callback": "PASS_303_FIXED_UNAVAILABLE_NO_STORE_NO_REFERRER_CLEAR_COOKIE",
+    "negative_slack_callback": "PASS_303_FIXED_UNAVAILABLE_NO_STORE_NO_REFERRER_CLEAR_COOKIE",
+    "anonymous_gsc_github_mutations": "PASS_403",
+    "direct_public_connector_api": "PASS_404",
+    "public_private_tls_pkce_csrf_and_admin_isolation_recheck": "PASS_2026_10_02",
+    "expired_operator": "DENIED_403",
+    "secure_legacy_recovery_endpoint": "CLOSED_405",
+    "private_quorum_provisioning": "NOT_EXECUTED_PENDING_OWNER_CONFIRMATION",
+    "positive_gsc_slack_oauth_and_github_binding": "NOT_EXECUTED",
+    "repository_visibility_or_billing_changed": false,
+    "gsc_property_created": false,
+    "production_writes_enabled": false,
+    "gmail_access": false
+  },
+  "complete_integration_request": "IN_PROGRESS"
+}

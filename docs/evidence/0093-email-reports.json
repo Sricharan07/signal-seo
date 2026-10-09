@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-02",
+  "classification": "security-critical: outbound credentials, identity verification and SMTP egress",
+  "base_commit": "404eeb9",
+  "migration": "0068_email_reports",
+  "down_revision": "0067",
+  "historical_migrations_modified": false,
+  "qualification_status": "PASS_LOCAL",
+  "current_source_fully_qualified": true,
+  "gate_logs": ".runtime/email-0093-review",
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 868,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 36,
+      "failed": 0,
+      "skipped": 0,
+      "full_suite": true
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 25,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling tests/connectors",
+      "passed": 1286,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS",
+      "formatted_files": 378
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "repository_passed": 24,
+      "dashboard_passed": 153,
+      "markdown_files": 218,
+      "failed": 0,
+      "typecheck": "PASS",
+      "build": "PASS"
+    },
+    {
+      "command": "gitleaks protect --staged --config .runtime/email-0093-review/main-gitleaks.toml --redact --no-banner",
+      "result": "PASS",
+      "leaks": 0,
+      "configuration": "Byte-for-byte copy of main's .gitleaks.toml; unchanged allowlist"
+    }
+  ],
+  "post_commit_gate": {
+    "command": "gitleaks git --log-opts=\"main..HEAD\" --config .runtime/email-0093-review/main-gitleaks.toml --redact --no-banner .",
+    "result_location": "PR #15 review-correction comment after committing; must pass before push"
+  },
+  "gate_case_totals": {
+    "passed": 2447,
+    "failed": 0,
+    "unique_case_claim": false
+  },
+  "qualified_artifacts": [
+    {
+      "path": ".runtime/database-tests/latest.json",
+      "sha256": "2c94c67e07e881bf31b700644499bd71790008ba1e9e29c590558320fb1f9906",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/autonomy-delivery/latest.json",
+      "sha256": "c0e9c758c3b73e7ba61fa3169df0eacd8a557513d52313649f0f33ac33d78466",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/consumer-tests/latest.json",
+      "sha256": "ca3e38ad920c3000da1819f6488fe974654ce6603cc3cb969e7636c2797ad106",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/crawler-network/latest.json",
+      "sha256": "d0146c02bdcf022b47992a6656cc6f780c43de0164b75fff7e8747176dfc4f8b",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/temporal-tests/latest.json",
+      "sha256": "f4a7f2e2cd2f53ecb70cfebbf5d84c1c3d5726c5ce586fc7f8f4ba4f3c031c9e",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/candidate-sandbox/latest.json",
+      "sha256": "74cf8c02e599b9b59ec31be7d6fea1457c46d0af74682ed2b3131594b835b929",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/openbao-tests/latest.json",
+      "sha256": "d90775e7685bde50b92ce57ac6b922367ca7222be2f7a2bb3b5091c2fb8e75fd",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/workflow-consumer-image/latest.json",
+      "sha256": "cf4f8e54992ff2ad2ad190d1156b1e0eeaee487ddb5949889ec517db2dfe57f1",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/page-attempt-tests/latest.json",
+      "sha256": "e6a8154b4e24b06f2796079a2db2d050187843db4838c18f5d75094e050c3a54",
+      "cleanup": "completed"
+    }
+  ],
+  "development_corrections": [
+    "Exact reviewed API mutation, app-table count and Alembic head assertions were updated for the new route, three forced-RLS tables and 0068; no assertion or safety gate was relaxed.",
+    "An HTTP test helper now constructs validated headers before accessing HTTP-only rules, so the SMTP profile is explicitly rejected rather than producing a lookup error.",
+    "Immutable verification/history references deliberately retain proof identifiers without preventing pre-existing expired-session or unreferenced-membership cleanup. Existing cleanup tests pass unchanged.",
+    "The total SMTP deadline now publishes the TLS socket before handshake and bounds remaining socket time; real stalled STARTTLS and implicit-TLS tests pass.",
+    "The page-attempt Docker startup failure cleared on retry. Earlier development runs rejected by source-integrity guards or interrupted for changed inputs are not counted as final qualification.",
+    "Every final lab artifact's recorded inputs match current source; no owned lab, SMTP server, browser or dev server remains running. Other tracks' resources were preserved."
+  ],
+  "qualification_scope": {
+    "identity": "Existing validated OIDC email_verified claim only; fresh self opt-in, no verification email or link.",
+    "smtp": "Real ephemeral loopback TLS stdlib SMTP server behind SharedSmtpEgress; synthetic credentials, no public test service.",
+    "database": "Disposable real PostgreSQL with non-owner roles, immutable records and forced tenant RLS.",
+    "openbao": "Real TLS OpenBao single-secret read-only SMTP credential ACL.",
+    "ui": "Actual EmailPreferences component and repository CSS, synthetic enabled/unknown state at 1440x1000 and 390x844; not full-app or live-provider qualification."
+  },
+  "ui_verification": {
+    "desktop": "1440x1000; document width 1440; no horizontal overflow",
+    "mobile": "390x844; document width 390; no horizontal overflow",
+    "checkbox_label_height_px": 40,
+    "native_space_toggle": "PASS",
+    "screenshots_inspected": true,
+    "detector_changed_targets": "PASS: no findings",
+    "bounded_review_disposition": "ship",
+    "incumbent_design_files": "Preserved; existing schema/narrative drift reported only"
+  },
+  "live_smtp_send": "NOT_EXECUTED",
+  "live_inbox_placement": "NOT_EXECUTED",
+  "production_composition_and_supervision": "NOT_EXECUTED",
+  "production_write_authority": false,
+  "release_admission": false,
+  "followup_migration": {
+    "revision": "0069",
+    "down_revision": "0068",
+    "purpose": "Optional email freshness rejection invalidates verification without rejecting authenticated sign-in; immutable closed outcomes; original migrations unchanged",
+    "integration_renumbering_required": true
+  },
+  "review_correction": {
+    "added_postgresql_cases": 10,
+    "postgresql_passed": 868,
+    "successful_sign_in_and_zero_smtp": [
+      "out_of_order_claim",
+      "past_window_claim",
+      "future_window_claim",
+      "email_verified_false",
+      "email_verified_missing"
+    ],
+    "authority_errors_rollback": [
+      "subject_mismatch",
+      "session_mismatch",
+      "missing_timestamp",
+      "session_hash_mismatch"
+    ],
+    "wrong_database_role_denied": true,
+    "session_audit_failure_rolls_back_claim": true,
+    "immutable_rejection_outcome": true,
+    "verification_cleared": true,
+    "timestamp_watermark_non_regressing_and_future_bounded": true,
+    "application_oidc_validation_unchanged": true,
+    "preliminary_page_attempt": "Docker startup failure before pytest; retry qualified",
+    "owned_resources_cleaned_up": true
+  },
+  "merge_train": {
+    "date": "2026-10-02",
+    "pr": 15,
+    "original_head": "c63fb6a0e3bc7fd8fb15d304c5aa61bb499375ae",
+    "migration": "0068, 0069",
+    "down_revision": "0067, 0068",
+    "app_tables": 124,
+    "production_authority": false,
+    "checks": [
+      {
+        "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+        "exit_code": 0,
+        "summaries": [
+          "1849 passed in 36.87s"
+        ]
+      },
+      {
+        "command": ".venv/bin/python -m ruff check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": []
+      },
+      {
+        "command": ".venv/bin/python -m ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": [
+          "469 files already formatted"
+        ]
+      },
+      {
+        "command": "npm test",
+        "exit_code": 0,
+        "summaries": [
+          "# tests 43",
+          "# pass 43",
+          "# tests 190",
+          "# pass 190"
+        ]
+      },
+      {
+        "command": ".venv/bin/python scripts/run-database-tests.py",
+        "exit_code": 0,
+        "summaries": [
+          "======================= 955 passed in 501.75s (0:08:21) ========================"
+        ]
+      }
+    ]
+  },
+  "qualification_history_scope": "Original slice commands, counts, base commits and source hashes are historical; merge_train records cumulative rebased fast gates. Final-tip full gate is required before PR branch publication and recorded in PR comments and run-owned lab receipts."
+}

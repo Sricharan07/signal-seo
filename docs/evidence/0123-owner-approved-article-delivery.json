@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "slice": "0123",
+  "recorded_at": "2026-10-02",
+  "classification": "security-critical",
+  "base_commit": "404eeb9",
+  "migration": "0071",
+  "down_revision": "0070",
+  "historical_migrations_modified": false,
+  "accepted_specifications_modified": false,
+  "qualification_status": "PASS_LOCAL",
+  "current_source_fully_qualified": false,
+  "total_tests_passed": 2401,
+  "failed": 0,
+  "new_article_delivery_cases": 34,
+  "gate_logs": ".runtime/0123-gates",
+  "commands": [
+    {"command": ".venv/bin/python scripts/run-database-tests.py", "passed": 831, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-authority-journal-tests.py", "passed": 14, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py", "passed": 70, "failed": 0, "skipped": 0, "deselected": 0, "full_suite": true, "duration_seconds": 2570.74},
+    {"command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py", "passed": 10, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-consumer-tests.py", "passed": 3, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-crawler-network-tests.py", "passed": 14, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-page-attempt-tests.py", "passed": 1, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-temporal-tests.py", "passed": 7, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py", "passed": 6, "failed": 0},
+    {"command": ".venv/bin/python scripts/openbao_lab.py", "passed": 23, "failed": 0},
+    {"command": ".venv/bin/python scripts/check-gsc-provider-boundary.py", "result": "PASS"},
+    {"command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling tests/connectors", "passed": 1248, "failed": 0},
+    {"command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network", "result": "PASS"},
+    {"command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network", "result": "PASS", "formatted_files": 370},
+    {"command": ".venv/bin/python -m pip check", "result": "PASS"},
+    {"command": "npm test", "result": "PASS", "repository_passed": 24, "dashboard_passed": 150, "failed": 0, "markdown_files": 218, "typecheck": "PASS", "build": "PASS"}
+  ],
+  "staged_diff_secret_gate": {
+    "command": "git diff --cached | gitleaks stdin --config .gitleaks.toml --redact --no-banner",
+    "result": "PASS",
+    "leaks": 0,
+    "config_source": "unchanged main:.gitleaks.toml"
+  },
+  "commit_range_secret_gate": {
+    "command": "gitleaks git --config .gitleaks.toml --log-opts=\"main..HEAD\" .",
+    "required_before_push": true,
+    "result_record": "Pull request, after the implementation commit exists"
+  },
+  "qualified_artifacts": [
+    {"path": ".runtime/autonomy-delivery/latest.json", "sha256": "9728c344bc0c89706284cd8835711aeeaa7179d755f4073add4dafc6de882ac0", "cleanup": "completed", "source_hashes_matched": true},
+    {"path": ".runtime/database-tests/latest.json", "sha256": "16555a8a2c938604f462bfd673133335499d376f9acf8ff0c0d7ddca486d99a1", "cleanup": "completed", "source_hashes_matched": true}
+  ],
+  "qualification_scope": {
+    "database": "Real disposable PostgreSQL under non-owner roles with 104 forced-RLS tables and a physically separate write-intent journal cluster.",
+    "github": "Synthetic GitHub behind actual shared egress, existing credentials boundary, exact Git objects, journal, fencing and reconciliation.",
+    "sandbox": "Real disposable non-root, credential-free, no-network candidate build containers.",
+    "workflow": "Existing real Temporal technical-delivery regressions; owner editorial path uses the same delivery machinery, not a new workflow.",
+    "worker_death": "BaseException immediately after the PR effect; natural admission-lease expiry and a new worker reconcile without another repository POST. Not an OS SIGKILL or live-provider claim.",
+    "authority": "Dashboard owner plus fresh MFA only, exact immutable revision and acknowledgements; chat and standing workload denial includes persisted Jev ship advice for the article's exact digest.",
+    "observation": "Exact new-article and refreshed-file artifact digests verified through the existing shared live-verification gateway. PR opening alone is not delivery proof."
+  },
+  "development_corrections": [
+    "The final authority review added denial when a legacy editorial rejection or requested changes follows delivery approval; both cases pass.",
+    "Opened effects count from effect time and aged unresolved reservations cannot resume into a new weekly cap window; both rollover negatives pass.",
+    "The first unfiltered mixed-suite run had 56 passes and 14 journal-signature failures because imported and collected fixture modules generated separate synthetic keys for one journal stream. A shared synthetic key pair fixes the fixture identity; full-chain production verification is unchanged. The mixed three-case diagnostic and final unfiltered 70-case run pass.",
+    "No production safety gate, assertion, provider budget or lease was weakened. The expanded unsharded lab process deadline is one hour."
+  ],
+  "ui_verification": {
+    "scope": "Actual content-writer component and repository CSS with labelled synthetic fixtures; not a live authenticated owner journey.",
+    "desktop_viewport": [1440, 1000],
+    "mobile_viewport": [390, 844],
+    "passed": 2,
+    "failed": 0,
+    "acknowledgement_enable_disable": "PASS",
+    "horizontal_overflow": false,
+    "javascript_errors": 0,
+    "screenshots_inspected": true
+  },
+  "cleanup": "All invocation-owned labs and temporary UI servers stopped by their owning harness; other-track resources preserved.",
+  "owner_inputs_for_first_live_run": [
+    "verified disposable HTTPS origin and protected disposable GitHub repository without uncertified workflow files",
+    "least-privilege GitHub App installation and existing OpenBao key reference",
+    "current active read binding and observed complete Eleventy HTML extension",
+    "credential-free exact-artifact build, original sealed candidate, unsuperseded brief and current approved facts",
+    "current dashboard owner session with MFA within five minutes and each flagged sentence acknowledged",
+    "independent write-journal cluster and keys, recovery anchor, role DSNs and admitted shared GitHub/crawl contexts",
+    "robots and encrypted artifact keys, trusted customer deployment environment and actor; only the owner merges and deploys"
+  ],
+  "live_github": "NOT_EXECUTED",
+  "live_site": "NOT_EXECUTED",
+  "live_jev": "NOT_EXECUTED",
+  "authenticated_owner_journey": "NOT_EXECUTED",
+  "production_composition": "NOT_EXECUTED",
+  "production_writes_enabled": false,
+  "article_autonomy_enabled": false,
+  "delivery_certified": false,
+  "release_admission": false,
+  "customer_credentials_used": false,
+  "measurement_integration_fix": {
+    "classification": "security-critical",
+    "qualification_status": "PASS_FOCUSED_FINAL_STACK_PENDING",
+    "focused_check": {
+      "scope": "Actual article and refresh dispatch/live receipt through 7/28/90-day measurement and replay; unchanged technical delivery measurement regression",
+      "passed": 3,
+      "failed": 0,
+      "duration_seconds": 258.59,
+      "log": "/tmp/signal-merge-train/train2-article-measurement-retry.log",
+      "historical_failures": "Added test's raw/reordered session arguments corrected using session_args; unchanged retry after Temporal five-second local startup timeout passed",
+      "timeout_or_safety_limits_changed": false
+    },
+    "ui_check": {
+      "scope": "Synthetic actual-component render, not authenticated owner journey",
+      "passed": 2,
+      "viewports": [[1440, 1000], [390, 844]],
+      "overflow": false,
+      "javascript_errors": 0,
+      "evidence_disclosure": "PASS"
+    },
+    "migration": "0071",
+    "frozen_migrations_modified": false,
+    "new_page_baseline": "new_page / NO_PRE_CHANGE_WINDOW; null dates, generations, coverage and metrics",
+    "refresh_baseline": "normal pre-PR window and generation cutoff on the existing page URL",
+    "post_horizons": [7, 28, 90],
+    "source": "existing imported GSC page-dimension evidence; no provider I/O",
+    "technical_baseline": "original function retained unchanged, delegated for non-editorial operations",
+    "technical_horizon": "unchanged for dated baselines; new-page confounders start at verified live date",
+    "wording": "observed change, not a causal estimate",
+    "production_authority": false
+  },
+  "merge_train": {
+    "base": "7754746",
+    "pr": 24,
+    "migration": "0071",
+    "down_revision": "0070",
+    "app_tables": 130,
+    "fast_checks": {
+      "python": 1905,
+      "database": 966,
+      "repository": 43,
+      "dashboard": 203,
+      "ruff_check": "PASS",
+      "ruff_format": "PASS"
+    },
+    "frozen_migrations": "0001-0070",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false
+  }
+}

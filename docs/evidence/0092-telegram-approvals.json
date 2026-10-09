@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "slice": "0092",
+  "classification": "security-critical",
+  "base_branch": "slice/0091-slack-approvals",
+  "base_commit": "fdb0f00605733641692d1b8650638a545c769cc9",
+  "migration": "0070",
+  "down_revision": "0069",
+  "application_tables": 129,
+  "production_authority": false,
+  "live_telegram": "NOT_EXECUTED",
+  "qualification": "internal_only",
+  "customer_credentials_used": false,
+  "final_passing_cases": 2243,
+  "final_failed_cases": 0,
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 757,
+      "failed": 0,
+      "seconds": 460.61,
+      "evidence": "0092-postgresql.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "scope": "two real PostgreSQL clusters, real OpenBao rotation, restored-primary Slack and Telegram binding/link denial replay"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0,
+      "evidence": "0092-temporal.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "evidence": "0092-consumer.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0,
+      "evidence": "0092-workflow-consumer-image.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "evidence": "0092-crawler-network.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 10,
+      "failed": 0,
+      "evidence": "0092-candidate-sandbox.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "evidence": "0092-page-attempt.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 26,
+      "failed": 0,
+      "evidence": "0092-openbao.json"
+    },
+    {
+      "command": ".venv/bin/pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "passed": 1237,
+      "failed": 0,
+      "seconds": 17.27
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "checked_files": 352,
+      "unformatted": 0
+    },
+    {
+      "command": ".venv/bin/pip check",
+      "broken_requirements": 0
+    },
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "repository_tests": 24,
+      "dashboard_tests": 144,
+      "documentation_files": 213,
+      "typecheck": "PASS",
+      "build": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "status": "PASS"
+    },
+    {
+      "command": "gitleaks git --staged --config .gitleaks.toml --redact --no-banner",
+      "leaks": 0
+    },
+    {
+      "command": "gitleaks git --config .gitleaks.toml --log-opts=main..HEAD --redact --no-banner",
+      "status": "REQUIRED_POST_COMMIT",
+      "configuration": "unchanged main configuration; no allowlist widening"
+    }
+  ],
+  "transient_infrastructure_retries": [
+    {
+      "runner": "authority-journal",
+      "initial_outcome": "Docker pinned-image pull failed before tests",
+      "unchanged_retry": "PASS"
+    },
+    {
+      "runner": "page-attempt",
+      "initial_outcome": "Docker command failed before tests",
+      "unchanged_retry": "PASS"
+    }
+  ],
+  "source_hash_checks": {
+    "reports": 8,
+    "matching_entries": 929,
+    "mismatches": 0
+  },
+  "coverage": [
+    "owner and verified-site install, getMe group prohibition, webhook registration, duplicate bot reservation, failed setup and single-delete revocation fence",
+    "expected-person private pairing, one-use expiry/replay, wrong person, wrong chat, group/supergroup/channel prohibition, text-as-data",
+    "missing/wrong webhook secret, durable update replay, wrong binding/user/chat/message/callback, current-member EC-140 role/site/removal/disabled/epoch/revocation variants",
+    "stale base and sealed hash mismatch, A3/A4/canonical/unknown and lower-configured-ceiling handoff without decision, fresh-MFA dashboard boundary",
+    "same immutable dashboard-readable Inbox decision from paired Telegram approval, followed by existing 0084 and 0085 continuation",
+    "profile rejects another origin/method, GET, non-JSON, query, token URL, bad JSON and oversized inputs; credential isolated from other profiles",
+    "token and webhook secret absent from every persisted app/control row and DEBUG logs, safe transport errors and reflected header suppression",
+    "outbox exact retry never double-sends accepted or ambiguous outcome; pre-dispatch deferral only; callback acknowledgements and step-up replies use outbox",
+    "real OpenBao scoped ACL, CAS-zero creation, overwrite rejection and permanent metadata deletion",
+    "restriction journal binding/link denial and real restored-primary replay with recovery generation checks"
+  ],
+  "screenshots": [
+    {
+      "path": "0092-telegram-unavailable-desktop.png",
+      "width": 1440,
+      "state": "actual unconfigured connector"
+    },
+    {
+      "path": "0092-telegram-unavailable-mobile.png",
+      "width": 390,
+      "state": "actual unconfigured connector"
+    },
+    {
+      "path": "0092-telegram-owner-desktop.png",
+      "width": 1440,
+      "state": "synthetic owner form, actual React markup, no live provider"
+    },
+    {
+      "path": "0092-telegram-owner-mobile.png",
+      "width": 390,
+      "state": "synthetic owner form, actual React markup, no live provider"
+    },
+    {
+      "path": "0092-telegram-paired-desktop.png",
+      "width": 1440,
+      "state": "synthetic paired owner, actual React markup, no live provider"
+    },
+    {
+      "path": "0092-telegram-paired-mobile.png",
+      "width": 390,
+      "state": "synthetic paired owner, actual React markup, no live provider"
+    },
+    {
+      "path": "0092-telegram-failed-desktop.png",
+      "width": 1440,
+      "state": "synthetic failed setup, actual React markup, no live provider"
+    },
+    {
+      "path": "0092-telegram-failed-mobile.png",
+      "width": 390,
+      "state": "synthetic failed setup, actual React markup, no live provider"
+    }
+  ],
+  "ui_verification": {
+    "horizontal_overflow": 0,
+    "detector_primary_findings": 0,
+    "review_fix": "removed contradictory static Not paired ledger; regression assertion added",
+    "final_verdict": "ship at fix-list scope; sole finding resolved",
+    "documentation_comparison": "complete; incumbent authority files preserved; existing drift left untouched",
+    "scope": "narrow incumbent extension; synthetic screenshots do not qualify hydrated provider interactions"
+  },
+  "not_executed": [
+    "live Telegram getMe/setWebhook/private pairing/posting/callbacks/deletion/provider limits",
+    "production composition and deferred-outbox supervisor",
+    "automatic weekly notifications",
+    "high-risk step-up initiation UX",
+    "production deployment monitoring"
+  ],
+  "owner_inputs": [
+    "dedicated BotFather bot with group joining disabled and numeric private user ID",
+    "OpenBao-only bot/webhook credentials in CAS-required max_versions=1 dedicated KV v2 mount and isolated ACL",
+    "exact public HTTPS dashboard and binding-specific webhook origins with TLS",
+    "verified site/current owner",
+    "independent recovery and journal custody",
+    "qualified shared egress composition"
+  ],
+  "cleanup": "each lab removes only its invocation-owned resources; local dashboard stopped before commit; pre-existing containers and other tracks left untouched",
+  "historical_qualification": "Original slice command counts and source hashes below are historical; merge_train records cumulative rebased verification.",
+  "merge_train": {
+    "date": "2026-10-02",
+    "pr": 11,
+    "original_head": "53c0d373bf1872380cf1dadcbaabb8f082a54080",
+    "migration": "0070",
+    "down_revision": "0069",
+    "app_tables": 129,
+    "production_authority": false,
+    "state": "VERIFICATION_INCOMPLETE",
+    "publication": "NOT_EXECUTED",
+    "checks": [
+      {
+        "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+        "exit_code": 0,
+        "summaries": [
+          "1892 passed in 32.64s"
+        ]
+      },
+      {
+        "command": ".venv/bin/python -m ruff check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": []
+      },
+      {
+        "command": ".venv/bin/python -m ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": [
+          "477 files already formatted"
+        ]
+      },
+      {
+        "command": "npm test",
+        "exit_code": 0,
+        "summaries": [
+          "# tests 43",
+          "# pass 43",
+          "# tests 200",
+          "# pass 200"
+        ]
+      },
+      {
+        "command": ".venv/bin/python scripts/run-database-tests.py",
+        "exit_code": 1,
+        "summaries": []
+      }
+    ],
+    "database_budget": {
+      "seconds": 600,
+      "unchanged": true,
+      "full_suite_attempts": 3,
+      "outcome": "TimeoutExpired",
+      "assertion_failures_reported": 0,
+      "completion_not_claimed": true,
+      "isolated_telegram_end_to_end": {
+        "passed": 1,
+        "seconds": 112.99
+      },
+      "disk_preflight_rejection": "One retry refused before container creation when less than 3 GiB was free."
+    },
+    "delivery": {
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 1571.81,
+      "full_suite": true,
+      "evidence": "0092-autonomy-delivery.json",
+      "coverage": [
+        "current exact Telegram approval dispatches once through 0084 with channel telegram persisted and shown",
+        "stale Telegram callback creates no decision and does not dispatch",
+        "superseded Telegram approval does not dispatch"
+      ]
+    },
+    "other_checks": {
+      "pip_check": "PASS",
+      "gsc_provider_boundary": "PASS",
+      "range_gitleaks": {
+        "commits": 8,
+        "leaks": 0,
+        "configuration": "main .gitleaks.toml"
+      }
+    },
+    "remaining": [
+      "Complete the unchanged database gate or obtain an explicit lab-budget decision",
+      "Run the remaining full gate on the final tip",
+      "Publish all seven PR branches with force-with-lease, retarget to main and comment"
+    ],
+    "cleanup": "All invocation-owned containers and processes exited; other tracks untouched."
+  }
+}

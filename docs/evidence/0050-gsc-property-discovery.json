@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-13T00:43:06Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "c5298c6952fc5e64ac3d4202019678bb7f3324622a4b958e65fb89f5a0b9523d",
+    "README.md": "251e0b4c2794f9c3894b313a5f5f91d18cffb20d778c1c2aff6fbbdd897b049f",
+    "docs/README.md": "dfb9ebe2e11597df7c1192cd7919824ab2c942d09c14398dd693d082927bc17b",
+    "docs/adr/README.md": "b6148d989ad97fac270535a9103399621bb910cf05394e1844b5e0a033fedb15",
+    "docs/adr/0050-fixed-read-only-gsc-property-discovery.md": "8f0520ec98d2cf0a075313d4030790846ac28c77508e594b4818ef579c019be2",
+    "docs/implementation/0050-gsc-property-discovery.md": "d50d48fc83389ab7741a1263ab084528b68907ea1b71919bbe53295321ff52b5",
+    "docs/implementation/core-v1-roadmap.md": "8947d9db9e9119a1e9b082eeaeed7cf9c997b6737ab04f1fe16f0d662ef041e8",
+    "docs/implementation/status.md": "0b8a3261c40e4e7367a39df0dc5a50439123d57a400cafee933bf0d7019ec6bd",
+    "docs/runbooks/gsc-property-discovery.md": "c7e40afee603dc13e0f0fee413ae3abcdc7eb2b49993ee7ced9a2b825c88c867",
+    "pyproject.toml": "a5995ca5e39286a6b6e8fd57c1e9540a0872100a3327140a5c344e0747173a67",
+    "scripts/check-gsc-provider-boundary.py": "db1efe3cd4ac2d052e1a5b0d09c782d580ac60104778f4b0794cfae97bdc80a2",
+    "services/control_plane/README.md": "236b4236b849dc6b3fc42c06b29bbd602e10801c88a2110c98b9f74bde98df41",
+    "services/control_plane/src/signal_core/gsc_properties.py": "95443361ecd1a0f4b223b43e0be856a98ffc499b4604774547068addcec54488",
+    "tests/connectors/test_gsc_properties.py": "8a546417a0a87b87994f5c50194487f84e8b011398f089541f947d7bfb84938f",
+    "tests/repository/gsc-connector.test.mjs": "658bd8b5143abf59d5c62c0499940084b99a73117860e8fb95c8e8f8ee3c6052"
+  },
+  "tests": [
+    {
+      "name": "focused GSC discovery protocol",
+      "command": ".venv/bin/python -m pytest tests/connectors/test_gsc_properties.py -q",
+      "passed": 25,
+      "status": "PASS"
+    },
+    {
+      "name": "non-database Python regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/connectors tests/identity tests/tooling -q",
+      "passed": 737,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and formatting",
+      "commands": [
+        ".venv/bin/python -m ruff check services/control_plane/src/signal_core/gsc_properties.py tests/connectors/test_gsc_properties.py scripts/check-gsc-provider-boundary.py",
+        ".venv/bin/python -m ruff format --check services/control_plane/src/signal_core/gsc_properties.py tests/connectors/test_gsc_properties.py scripts/check-gsc-provider-boundary.py"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "real Google negative provider boundary",
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "expected_result": "authorization rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 22,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "command": "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+      "findings": 0,
+      "status": "PASS"
+    }
+  ],
+  "provider_endpoint": "https://www.googleapis.com/webmasters/v3/sites",
+  "required_scope": "https://www.googleapis.com/auth/webmasters.readonly",
+  "authorized_provider_success": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "credential_persisted": false,
+  "external_write": false,
+  "production_authority": false
+}

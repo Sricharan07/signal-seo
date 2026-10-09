@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-13T02:03:05Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "a63d4fa42d3016b8e84d1a322ea8034e2a4400c778ebe43ddd6dc97a1288858a",
+    "README.md": "e19e2175d08c138e373a77b67817657f2446d3258093caa62cda7fda479e992e",
+    "apps/api/README.md": "3c9a0e24d6b3afc8c561f0ca80296ef8fd6d2368fc3f65ea33ea9f2d2214474a",
+    "apps/api/src/signal_api/browser_security.py": "592d872cca0b3a406a74e8448aa1ef43d9abcc3f9f7f3d8f600f04f91c4bff26",
+    "apps/dashboard/README.md": "2d260041560689168e74e10bd472823559bf8a5460bee5256e21d95e997e0987",
+    "apps/dashboard/lib/auth-route.ts": "1f7cf4a055af248c705cc870d6eede9b54b7680435504f1491ea7b7ec6941888",
+    "apps/dashboard/lib/browser-auth.ts": "7c25c3dde8e8aafcfea591a42bd20e894a4075b312bd13ac2399f74f615d1995",
+    "apps/dashboard/lib/session-api.ts": "e1619c5af13304231daa682bafe7f237fa357f9e8ba5e66323d6e3d4c9550de5",
+    "apps/dashboard/next.config.ts": "e9b7c0e71594ae95fcc677f7c57f06708e7419643b83a31c55645fb0b20d50a3",
+    "apps/dashboard/tests/auth-route.test.ts": "fa9db9a2c40b74063ebb949857cdbf36fc9c7d43f580599c0be7908a844c0895",
+    "apps/dashboard/tests/browser-auth.test.ts": "ea262e541dbb4f028f4f94f9bdc68c032e889828dab33c75fb652a293834e9f7",
+    "apps/dashboard/tests/next-config.test.ts": "07ea39b8600a9db140c1468b0fd9d114dd0ed935d12a37ad41a4bd26bdb486f5",
+    "apps/dashboard/tests/session-api.test.ts": "40bf422339759af8e73434910949f447971dca4e566a3f0048c11615d475bcd1",
+    "deploy/local-pilot/keycloak-realm.json": "5767ccf5239574e35d6e30a835c35f5426644cd33e634bf666775186f7a53c4b",
+    "docs/README.md": "534ae1a448565acb91956fc7928ba7e9ad6c1fbabde028e7c582052c9bc12582",
+    "docs/adr/0051-compose-a-disposable-local-owner-journey.md": "7f2798e7605c73c42415698806bcb3a0da66f80a99b59818a883adb0a92ad862",
+    "docs/adr/README.md": "5647a6f6e23b0067535378f5e2e797ae045b8c15ff43111b1b87b63423c11d90",
+    "docs/implementation/0051-disposable-local-owner-journey.md": "63ee6c29fe9dcbc2e5221cc87929ade9858d7bc815c01a4b48d9680e64d245e1",
+    "docs/implementation/core-v1-roadmap.md": "200fe669295b80949b31187a77fff56d7c1adccdaa61c7ebdee75538f28f8e8d",
+    "docs/implementation/status.md": "91d9863c7ced8b0011f85e2842cbd77480641bfae11a54f881fa0344052149a3",
+    "docs/runbooks/local-pilot.md": "dcdec665eaf23e0b4be60f1f4fc768196958ef432e790db9c28d506fada283fc",
+    "experiments/keycloak-feasibility/realm.json": "98de2b07a306b0f444aede25b27b9b165ebccce6b7f4c6ba8c72e224166f7eff",
+    "package.json": "f60d3b5a73872c1d9668ce66a07739db40142e699b5e033e752292185f8db330",
+    "scripts/keycloak_lab.py": "15b5ada2000b36256bc493a9305871ec3d3e406b75fd2aba5f5440cac5156739",
+    "scripts/local_pilot.py": "3654e7e4f086f2b0bc95aaa706b168a6eefb5992060e5c8e692f1228f6ac58fc",
+    "services/control_plane/src/signal_core/oidc_protocol.py": "cf198cb788d5eef440c08a130cec59d735c52223dd9ff8c1b16186603e026e27",
+    "tests/api/test_browser_security.py": "e113b98534b3be4b98af9e53d6372a11b3d2fe05da727872a4647174b416d744",
+    "tests/identity/test_oidc_protocol.py": "514d92ab9967f80aca95c9804ee58bc3b747d3ddea55bef96c82be0ac2bb95cb",
+    "tests/repository/dashboard.test.mjs": "d30badae717fbda15c1d113aab3350fba6708e4864e77dd06d5b472126731479",
+    "tests/tooling/test_keycloak_lab.py": "b5c08d28683b16ebea1f06d74314b7fb94f61581613d1b7115916a48c27cf247",
+    "tests/tooling/test_local_pilot.py": "461c3fdaacaf7636c47e2075525c3870f2e0f056dd4ad18b9ce9830e200bb31c"
+  },
+  "tests": [
+    {
+      "name": "focused local identity and browser boundary",
+      "command": ".venv/bin/python -m pytest tests/tooling/test_local_pilot.py tests/tooling/test_keycloak_lab.py tests/api/test_browser_security.py tests/identity/test_oidc_protocol.py -q",
+      "passed": 104,
+      "status": "PASS"
+    },
+    {
+      "name": "non-database Python regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/connectors tests/identity tests/tooling -q",
+      "passed": 740,
+      "status": "PASS"
+    },
+    {
+      "name": "real PostgreSQL regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 547,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard regression",
+      "command": "npm --workspace @signal/dashboard test",
+      "passed": 79,
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 22,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "markdown_files": 140,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard types and production build",
+      "commands": [
+        "npm --workspace @signal/dashboard run typecheck",
+        "npm --workspace @signal/dashboard run build"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and formatting",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        "npm audit --omit=dev",
+        ".venv/bin/pip check"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 9,
+      "reviewed_false_positives": "nine source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real Keycloak session token",
+      "command": ".venv/bin/python scripts/keycloak_lab.py",
+      "passed": 5,
+      "status": "PASS"
+    },
+    {
+      "name": "real disposable browser journey",
+      "command": "npm run pilot",
+      "steps": [
+        "OIDC sign-in through Keycloak",
+        "organization selection through the API and PostgreSQL",
+        "owner site onboarding and active-site projection"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "graceful pilot shutdown and cleanup",
+      "result": "exit 0; ports 3000 and 8000 released; invocation-owned containers removed",
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "browser_origin": "http://localhost:3000",
+  "provider": "Keycloak 26.7.3",
+  "database": "PostgreSQL 17.11",
+  "secret_service": "OpenBao 2.6.1",
+  "synthetic_identity_only": true,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "external_write": false,
+  "production_authority": false,
+  "cleanup": "completed"
+}

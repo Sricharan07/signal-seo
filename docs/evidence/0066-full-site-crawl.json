@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29T08:22:28Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "tests": [
+    {
+      "name": "focused crawl parser, cancellation, and disposable pilot boundaries",
+      "command": ".venv/bin/pytest -q tests/tooling/test_crawl_parser.py tests/tooling/test_full_site_crawl.py tests/tooling/test_local_pilot.py",
+      "passed": 28,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real PostgreSQL database lab under non-owner runtime roles",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "provider": "PostgreSQL 17.11",
+      "passed": 602,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "real isolated crawler network lab",
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "provider": "Docker Engine 28.5.1",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "real Temporal lab",
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "provider": "Temporal Server 1.31.2",
+      "passed": 3,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "API, identity, and tooling regression",
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling",
+      "passed": 868,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "verified-crawl disposable pilot startup and cleanup",
+      "command": "npm run pilot:verified-crawl",
+      "providers": ["PostgreSQL 17.11", "OpenBao 2.6.1", "Keycloak", "Temporal Server 1.31.2"],
+      "ready": true,
+      "dashboard_http_status": 200,
+      "cleanup": "completed after Ctrl-C; no owned containers or listeners remained",
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint, format, and dependency validation",
+      "commands": [
+        ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+        ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+        ".venv/bin/python -m pip check"
+      ],
+      "formatted_files": 206,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 24,
+      "markdown_files": 171,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "production dependency audit",
+      "command": "npm audit --omit=dev",
+      "vulnerabilities": 0,
+      "status": "PASS"
+    }
+  ],
+  "owner_controlled_origin_end_to_end": "NOT_EXECUTED",
+  "owner_controlled_origin_reason": "No owner-controlled public origin was supplied for this local qualification.",
+  "production_composition": false,
+  "external_write": false,
+  "production_authority": false
+}

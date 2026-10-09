@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "slice": "0089",
+  "migration_revision": "0050",
+  "recorded_at": "2026-09-29",
+  "qualification": "internal_only",
+  "commands": {
+    "postgresql": ".venv/bin/python scripts/run-database-tests.py",
+    "authority_journal": ".venv/bin/python scripts/run-authority-journal-tests.py",
+    "consumer": ".venv/bin/python scripts/run-consumer-tests.py",
+    "temporal": ".venv/bin/python scripts/run-temporal-tests.py",
+    "page_attempt": ".venv/bin/python scripts/run-page-attempt-tests.py",
+    "crawler_network": ".venv/bin/python scripts/run-crawler-network-tests.py",
+    "workflow_image": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+    "openbao": ".venv/bin/python scripts/openbao_lab.py",
+    "non_database_python": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+    "ruff_check": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling",
+    "ruff_format": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling",
+    "pip_check": ".venv/bin/python -m pip check",
+    "repository": "npm test",
+    "gitleaks_staged": "gitleaks git --staged . --config .gitleaks.toml",
+    "gitleaks_history": "gitleaks git --log-opts=\"475c58d..HEAD\" . --config .gitleaks.toml"
+  },
+  "observed": {
+    "postgresql": "643 passed on real PostgreSQL 17.11",
+    "authority_journal": "10 passed, 0 failed; real PostgreSQL restore and replay",
+    "consumer": "1 passed, 0 failed",
+    "temporal": "3 passed, 0 failed",
+    "page_attempt": "1 passed, 0 failed",
+    "crawler_network": "10 passed, 0 failed",
+    "workflow_image": "6 passed, 0 failed",
+    "openbao": "10 passed; synthetic TLS OpenBao v2.6.1, cleanup completed",
+    "non_database_python": "893 passed",
+    "ruff_check": "All checks passed",
+    "ruff_format": "235 files already formatted",
+    "pip_check": "No broken requirements found",
+    "repository": "24 repository tests, 186 Markdown files checked, 109 dashboard tests, dashboard typecheck and build passed",
+    "gitleaks_staged": "No leaks found",
+    "gitleaks_history": "required post-commit history scan"
+  },
+  "live_typesafe_success": "NOT_EXECUTED",
+  "production_authority": false
+}

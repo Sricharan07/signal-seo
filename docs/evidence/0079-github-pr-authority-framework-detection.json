@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29T11:23:29Z",
+  "classification": "security-critical: one-repository PR permission observation, owner/site authority, connector egress",
+  "tests": [
+    {
+      "name": "real PostgreSQL migration, owner authority, revocation, rollback, and regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "provider": "PostgreSQL 17.11",
+      "passed": 618,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "real OpenBao synthetic App key and read-only policy regression",
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "provider": "OpenBao 2.6.1",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "isolated pinned network and shared-egress regression",
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "GitHub provider, fixed-route transport, format, and qualification contract",
+      "command": "PYTHONPATH=services/control_plane/src .venv/bin/pytest -q tests/connectors/test_github_app.py tests/connectors/test_github_read_binding.py tests/connectors/test_github_shared_egress_transport.py tests/tooling/test_github_format.py tests/tooling/test_github_binding_qualification.py tests/tooling/test_github_pr_qualification.py",
+      "passed": 60,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "API, identity, and tooling regression",
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling",
+      "passed": 880,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint, format, and dependency validation",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests database/migrations",
+        ".venv/bin/ruff format --check apps services scripts tests database/migrations",
+        ".venv/bin/python -m pip check"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "root repository and dashboard quality gate",
+      "command": "npm test",
+      "repository_tests": 24,
+      "markdown_files": 178,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    }
+  ],
+  "dedicated_github_app_live_pr_permission_and_inventory": "NOT_EXECUTED",
+  "github_provider_revocation_live": "NOT_EXECUTED",
+  "verification_note": "An initial npm test typecheck failed on four byte-identical ignored .next type-file duplicates. They were preserved under .runtime/dashboard-next-duplicate-types; the complete npm test then passed without source or gate changes.",
+  "external_repository_write": false,
+  "candidate_build": false,
+  "production_authority": false,
+  "release_admission": false
+}

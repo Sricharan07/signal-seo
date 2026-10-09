@@ -1,0 +1,91 @@
+name: signal-integration-application
+x-bounded: &bounded
+  init: true
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  memswap_limit: 512m
+  cpus: 1.0
+  pids_limit: 128
+  ulimits:
+    core: 0
+  restart: unless-stopped
+  logging:
+    options:
+      max-size: 10m
+      max-file: "3"
+services:
+  application-database:
+    <<: *bounded
+    image: postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
+    user: "70:70"
+    mem_limit: 512m
+    environment:
+      POSTGRES_DB: signal
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/signal-secrets/postgres-password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=peer
+    command: [postgres, -c, ssl=on, -c, ssl_cert_file=/run/signal-tls/application-database.pem, -c, ssl_key_file=/run/signal-tls/application-database-key.pem, -c, password_encryption=scram-sha-256, -c, max_connections=50, -c, shared_buffers=128MB]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m,mode=1777
+      - /var/run/postgresql:rw,noexec,nosuid,nodev,size=16m,uid=70,gid=70,mode=0700
+    volumes:
+      - data:/var/lib/postgresql/data
+      - ./initialize-database.sh:/docker-entrypoint-initdb.d/initialize-database.sh:ro
+      - ./pg_hba.conf:/run/signal-config/pg_hba.conf:ro
+      - /run/signal-application/database:/run/signal-secrets:ro
+      - ./tls/application-database:/run/signal-tls:ro
+    networks: [database]
+    healthcheck:
+      test: [CMD, pg_isready, -U, postgres, -d, signal]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  api:
+    <<: *bounded
+    image: ${SIGNAL_API_IMAGE:?Build and bind the API image ID}
+    user: "10001:10001"
+    mem_limit: 512m
+    depends_on:
+      application-database:
+        condition: service_healthy
+    ports: ["127.0.0.1:8380:8443"]
+    tmpfs: ["/tmp:rw,noexec,nosuid,nodev,size=16m,mode=1777"]
+    volumes:
+      - /run/signal-application/api:/run/signal-application:ro
+      - ./tls/api:/run/signal-tls:ro
+      - owner-robots:/var/lib/signal-owner-robots
+    networks: [database, oidc, secrets, api, ingress]
+  dashboard:
+    <<: *bounded
+    image: ${SIGNAL_DASHBOARD_IMAGE:?Build and bind the dashboard image ID}
+    user: "1000:1000"
+    mem_limit: 512m
+    ports: ["127.0.0.1:8480:8443"]
+    environment:
+      SIGNAL_API_BASE_URL: https://api:8443
+      SIGNAL_DASHBOARD_ORIGIN: ${SIGNAL_DASHBOARD_ORIGIN:?Protected origin configuration required}
+      SIGNAL_IDENTITY_PROVIDER_ORIGIN: ${SIGNAL_IDENTITY_PROVIDER_ORIGIN:?Protected identity origin required}
+      SIGNAL_OWNER_CONNECTOR_SCOPE: ${SIGNAL_OWNER_CONNECTOR_SCOPE:?Protected repository configuration required}
+    tmpfs: ["/tmp:rw,noexec,nosuid,nodev,size=16m,mode=1777"]
+    volumes: [./tls/dashboard:/run/signal-tls:ro, /run/signal-application/dashboard:/run/signal-config:ro]
+    networks: [api, ingress]
+networks:
+  database:
+    internal: true
+  api:
+    internal: true
+  oidc:
+    external: true
+    name: signal-test-oidc
+  secrets:
+    external: true
+    name: signal-test-secrets
+  ingress:
+    driver_opts:
+      com.docker.network.bridge.name: sig-app
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
+volumes:
+  data:
+  owner-robots:

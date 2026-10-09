@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-08T06:47:38.896487+00:00",
+  "provider": "OpenBao v2.6.1 (ba7ad8861d0578cd4da4f7b9e5a6756d30484f8f), committed 2026-07-22T14:22:33Z",
+  "image": "ghcr.io/openbao/openbao:2.6.1@sha256:5b2486ab0fb90bbc788cc345b0a08616dfb375873ee8be5df3a2fd4d378a67e0",
+  "python": "3.12.14",
+  "source_sha256": {
+    "requirements.txt": "d28d6a008537cba43ce801520add2c8e4767ce5a4dd86fac09354ac73f42a08d",
+    "scripts/openbao_lab.py": "d21d0dce0a228327874af11bd59460e162032689f16641113f955bd4d44b7a94",
+    "services/control_plane/src/signal_core/pkce_secrets.py": "c4dc12ae45e56db568b9d2803b3d180b844f2028ea49fd6b9a9605d89c38bc92",
+    "tests/identity/test_pkce_secrets.py": "06b8741093f75b6461153e3a7117b76e7b8081aee21e3196068e78172b0bc83e",
+    "tests/tooling/test_openbao_lab.py": "8bb6b90852fa594b2aaba1707c1bc5498c71ab289f79af5b96e149fda4a5a65c"
+  },
+  "tests": [
+    {
+      "name": "TLS KV v2 bounded mount configuration",
+      "status": "PASS"
+    },
+    {
+      "name": "CAS-zero PKCE verifier creation",
+      "status": "PASS"
+    },
+    {
+      "name": "separate writer and consumer ACLs",
+      "status": "PASS"
+    },
+    {
+      "name": "confirmed permanent consume and replay rejection",
+      "status": "PASS"
+    },
+    {
+      "name": "conflicting overwrite rejected and original preserved",
+      "status": "PASS"
+    }
+  ],
+  "passed": 5,
+  "production_authority": false,
+  "synthetic_secrets_only": true,
+  "token_material_recorded": false,
+  "secret_material_recorded": false,
+  "transport_security": "OpenBao-generated locally trusted TLS",
+  "cleanup": "completed"
+}

@@ -1,0 +1,35 @@
+{
+  "signal_identity": {
+    "control.users": ["SELECT"],
+    "control.identity_sessions": ["SELECT"],
+    "control.oidc_login_attempts": ["SELECT", "INSERT"],
+    "control.invitation_identity_proofs": ["SELECT"],
+    "app.tenants": ["SELECT"],
+    "app.sites": ["SELECT"],
+    "app.memberships": ["SELECT"],
+    "app.sessions": ["SELECT"],
+    "app.site_memberships": ["SELECT"]
+  },
+  "signal_bootstrap": {
+    "app.tenants": ["SELECT", "INSERT"],
+    "app.sites": ["SELECT", "INSERT"],
+    "app.memberships": ["SELECT", "INSERT"],
+    "app.site_memberships": ["SELECT", "INSERT"],
+    "control.tenant_directory": ["SELECT", "INSERT"]
+  },
+  "signal_api": {
+    "app.tenants": ["SELECT"],
+    "app.sites": ["SELECT"],
+    "app.commands": ["SELECT", "INSERT"],
+    "app.command_events": ["SELECT", "INSERT"],
+    "app.outbox": ["SELECT"]
+  },
+  "signal_scheduler": {
+    "control.tenant_directory": ["SELECT"]
+  },
+  "signal_authority_dispatcher": {},
+  "signal_release_manager": {},
+  "signal_workflow": {},
+  "signal_crawl_admission": {},
+  "signal_crawl_ingest": {}
+}

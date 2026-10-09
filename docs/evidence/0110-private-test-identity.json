@@ -1,0 +1,52 @@
+{
+  "slice": "0110",
+  "date": "2026-09-30",
+  "classification": "security-critical deployment foundation",
+  "environment": "Existing owner-authorized single test VM; no new paid capacity",
+  "positive": {
+    "private_identity_tls_discovery": "PASS: exact public issuer, private CA, public RS256 JWKS",
+    "admin_configuration_readback": "PASS: exact PKCE client, closed realm, Google email filter/file vault/nonce/signature; zero signal users",
+    "database": "PASS: persistent PostgreSQL, nonsuperuser application role, observed TLS 1.3 connections",
+    "container_replacement": "PASS: same realm ID after database and identity replacement",
+    "runtime_image_id": "sha256:73c964d785bfda4fafd72323ecb405b8b4073dc7162f4b89dce688e752a8cc89",
+    "realm_id": "00000000-0000-4000-8000-000000000001",
+    "private_infrastructure_store": "PASS: audited CAS-zero generation 1, exact readonly policy, denial/revocation checks"
+  },
+  "negative": {
+    "unauthenticated_admin": "PASS: denied",
+    "wrong_redirect": "PASS: 400",
+    "missing_pkce": "PASS: invalid_request redirect to sole exact registered callback; no code",
+    "missing_google_callback_state": "PASS: 400",
+    "unissued_code_and_password_grant": "PASS: denied without token",
+    "untrusted_ca_and_wrong_tls_hostname": "PASS: certificate verification failures",
+    "database_create_role": "PASS: permission denied inside transaction",
+    "database_wrong_tls_hostname": "PASS: verify-full rejected",
+    "outbound_https": "PASS: timeout under explicit NEW drops; masquerading disabled",
+    "missing_runtime_secret": "PASS: isolated no-network actual image exits 1 before startup"
+  },
+  "failures_repaired": [
+    "Explicit pinned PostgreSQL pull required with pull_policy never",
+    "Optimized Keycloak paths/health/metrics must be baked at build time",
+    "All-internal Docker networks suppress loopback publication; restricted nonmasquerading ingress bridge used",
+    "Negative startup check repeated with actual Docker manifest image ID, not build config digest",
+    "Missing-PKCE assertion follows legitimate exact-callback error redirect"
+  ],
+  "secrets": {
+    "output_arguments_git": "NONE",
+    "vm_password_vault_storage": "tmpfs; narrow readonly mounts",
+    "temporary_uploads": "REMOVED after qualification",
+    "post_infrastructure_encrypted_snapshot": "CAPTURED; older pair preserved",
+    "latest_snapshot_restore": "NOT_EXECUTED",
+    "identity_database_disaster_recovery": "NOT_EXECUTED"
+  },
+  "regression": {
+    "python": "PASS: 118 focused cases",
+    "ruff": "PASS",
+    "npm_test": "PASS: 33 repository cases, 227 Markdown files, 148 dashboard cases, typecheck and build"
+  },
+  "public_dns_tls_ingress": "NOT_EXECUTED: hostname does not resolve",
+  "google_consent_mfa_signal_owner_login": "NOT_EXECUTED",
+  "slack_gsc_github_runtime_qualification": "NOT_EXECUTED",
+  "bootstrap_retirement_workload_auth_recovery_composition": "NOT_EXECUTED",
+  "production_and_external_writes": "DISABLED"
+}

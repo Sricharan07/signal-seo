@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-30T02:06:21.071447+00:00",
+  "python": "3.12.14",
+  "docker_server": "28.5.1",
+  "base_image": "python:3.12.14-slim-bookworm@sha256:782412e85d0f0984994c290652577d4018aff08145c85b262bb63dc0c7522254",
+  "local_image_id": "sha256:397993b94a340a729fd559c7011dfc5d7d2008f7665104a40cc097b80635164b",
+  "network": {
+    "internal": true,
+    "ip_masquerade": false,
+    "subnet": "93.184.216.0/24"
+  },
+  "source_sha256": {
+    ".dockerignore": "3b970098f837811cf67c1280c450e60a08bb3f2be7c1dd2ae8f0b52ab8a1afc5",
+    ".github/workflows/quality.yml": "283314fd8da99cfc7acd8b710e5bfddfff25b5f5d8f6d2e8b73c0455b11d338b",
+    "deploy/crawler-network/Dockerfile": "711e43778fae54f7dbb19168578dfc8dce1e2f9758443cbb656971a131d4b477",
+    "deploy/crawler-network/server.py": "4624caf11450eb24392bd38c92741efb4e5d00357ef81f6300c0c877750aabfb",
+    "pyproject.toml": "a5995ca5e39286a6b6e8fd57c1e9540a0872100a3327140a5c344e0747173a67",
+    "requirements.txt": "c86b807c7cc48bddefaa501655eac4cb4e786f2765c14062ec942bfe0a6d00da",
+    "scripts/crawler_network_lab.py": "b77ab4d1f003962e7c88f2646a94d8529e5ed8a96533cc7e1af912eae056a733",
+    "scripts/run-crawler-network-tests.py": "337b548e68b30d70df104d2e5c96603275db6817aef061c626c512d12f5f9405",
+    "services/control_plane/src/signal_core/__init__.py": "e66d7cccb9646be13ea457ca5e76594be38b1046cc0b7ffe5dc35c69ae2e0490",
+    "services/control_plane/src/signal_core/crawl_http.py": "433c39afb98f2cd84012843fd3dde52ce99a641f35cd1f16c1e29185ac630263",
+    "services/control_plane/src/signal_core/crawl_urls.py": "578e16aea258e84c37be93a862ca7c1483959b6dcba820df7aa7212406b762be",
+    "tests/crawler/test_pinned_http_boundary.py": "e4227d05cd518d33fe6369fe01ffec1c14df09a995cb2054696d4aaea44e7d40",
+    "tests/repository/crawler-network.test.mjs": "d995895092869efc21b428b44b4c93f58bec4a3c02bf0b4e5149e4dd15a58b4d",
+    "tests/tooling/test_crawl_admission.py": "7a7457a589484ac7ebecaa41991d0b11af9fc0b572ccd33684919a40b39f2626",
+    "tests/tooling/test_crawl_artifacts.py": "9ecb0eb2cc70566b1db5cb715a68377aba49397dd8001355a9a8b519f5c7182a",
+    "tests/tooling/test_crawl_audit.py": "8022ae9b6a1f36edc0e22f8faacea2d540dcc61a3b34740e72df26716c2c791c",
+    "tests/tooling/test_crawl_http.py": "1b9a1ca99bc40f16fc616018f78b7ed3d89e29b7696304b28fb181eba5923ea4",
+    "tests/tooling/test_crawl_page.py": "bd01a9d8dbcb4fcd7306e7a800488afc1c06a32af1d4e1b37dd7174c7eb17c85",
+    "tests/tooling/test_crawl_parser.py": "7f639c986bcc13c9646cd80af9078fdd828783fa89816315ec2969eb45d8d881",
+    "tests/tooling/test_crawl_robots.py": "0c8bdc83095fc32bfe0a4ed5a09a03ab7d8d843ee083c42eb95c68e735503d5b",
+    "tests/tooling/test_crawl_urls.py": "0ba4496780fd4d0d5382bf4d40ea5e3b9d9606385de6be6c6c39d330b7ef7577",
+    "tests/tooling/test_crawl_workflow.py": "be9c50212049404102057f0f58a0e6aa2d0d9bc0e269420ac2fcf1100d963800",
+    "tests/tooling/test_crawler_network_lab.py": "5c120f21d9e025f179024dfee7aac8cff3669d3e48c0ee53932f672c0352abb5"
+  },
+  "production_authority": false,
+  "cleanup": "completed",
+  "tests": [
+    {
+      "name": "test_live_verification_uses_real_bounded_get_bytes_and_rejects_redirect_timeout",
+      "status": "PASS"
+    },
+    {
+      "name": "test_lab_image_and_network_are_nonroot_private_and_internal",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_http_fetch_pins_address_revalidates_redirect_and_sends_no_authority",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_private_redirect_is_rejected_before_a_second_connection",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_provider_post_is_pinned_bounded_and_does_not_add_cookies",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_model_api_key_header_is_pinned_and_never_echoed",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_connector_get_and_sensitive_form_post_are_pinned_and_bounded",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_bing_style_bearer_get_is_pinned_and_does_not_forward_cookies",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_provider_redirect_is_recorded_without_following",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_plaintext_proof_is_exact_and_redirect_free",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_streaming_limit_and_encoding_fail_without_retaining_body",
+      "status": "PASS"
+    },
+    {
+      "name": "test_internal_lab_network_cannot_reach_an_unserved_public_destination",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_robots_fetch_follows_admitted_redirect_and_classifies_statuses",
+      "status": "PASS"
+    },
+    {
+      "name": "test_real_robots_private_redirect_is_closed_evidence_without_second_resolution",
+      "status": "PASS"
+    }
+  ],
+  "passed": 14
+}

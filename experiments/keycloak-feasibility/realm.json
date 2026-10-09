@@ -1,0 +1,59 @@
+{
+  "realm": "signal-lab",
+  "enabled": true,
+  "displayName": "Signal disposable identity lab",
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "rememberMe": false,
+  "loginWithEmailAllowed": false,
+  "duplicateEmailsAllowed": false,
+  "defaultSignatureAlgorithm": "RS256",
+  "clients": [
+    {
+      "clientId": "signal-lab-dashboard",
+      "name": "Signal disposable dashboard client",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "frontchannelLogout": true,
+      "redirectUris": [
+        "https://127.0.0.1/callback"
+      ],
+      "webOrigins": [],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "https://127.0.0.1/logout-complete"
+      },
+      "defaultClientScopes": [
+        "basic",
+        "web-origins",
+        "acr",
+        "roles",
+        "profile",
+        "email"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "signal-lab-user",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Signal",
+      "lastName": "Lab",
+      "email": "signal-lab-user@example.invalid",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "signal-lab-only-password",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

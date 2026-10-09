@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "slice": "0103",
+  "migration_revision": "0042",
+  "recorded_at": "2026-09-29",
+  "qualification": "internal_only",
+  "commands": {
+    "authority_journal_lab": ".venv/bin/python scripts/run-authority-journal-tests.py",
+    "openbao_lab": ".venv/bin/python scripts/openbao_lab.py",
+    "postgresql": ".venv/bin/python scripts/run-database-tests.py",
+    "non_database_python": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+    "ruff_check": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling",
+    "ruff_format": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling",
+    "pip_check": ".venv/bin/python -m pip check",
+    "repository": "npm test"
+  },
+  "observed": {
+    "authority_journal_lab": "9 passed, 0 failed; two independent PostgreSQL 17.11 containers, real restore/replay, and OpenBao 2.6.1",
+    "openbao_lab": "9 passed, 0 failed",
+    "postgresql": "610 passed, 0 failed",
+    "non_database_python": "878 passed, 0 failed",
+    "ruff_check": "passed",
+    "ruff_format": "212 files already formatted",
+    "pip_check": "no broken requirements",
+    "repository": "24 repository and 106 dashboard tests passed; documentation, typecheck, and build passed"
+  },
+  "production_authority": false
+}

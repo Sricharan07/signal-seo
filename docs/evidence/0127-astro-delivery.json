@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-03",
+  "classification": "security-critical",
+  "base_commit": "19093ad6bccb366588d76c02e7015729fb6e8c47",
+  "migration": "0080",
+  "down_revision": "0079",
+  "historical_migrations_modified": false,
+  "accepted_specifications_modified": false,
+  "qualification_status": "PASS_LOCAL",
+  "final_counted_cases": 3001,
+  "final_failed_cases": 0,
+  "final_skipped_cases": 0,
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 906,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS",
+      "full_suite": true
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS_AFTER_UNCHANGED_SETUP_RETRY"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/keycloak_lab.py",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q --junitxml=.runtime/0127-frozen-python.xml",
+      "passed": 1768,
+      "failed": 0,
+      "skipped": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "result": "PASS",
+      "files": 436
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "result": "PASS",
+      "repository_passed": 43,
+      "dashboard_passed": 157,
+      "markdown_files": 253,
+      "typecheck": "PASS",
+      "build": "PASS",
+      "failed": 0
+    }
+  ],
+  "qualified_artifacts": [
+    {
+      "path": ".runtime/database-tests/latest.json",
+      "sha256": "9ff519d827752345678bdbfb120b6eb120538584dd3140cd021664585dfe45b8",
+      "passed": 906,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/autonomy-delivery/latest.json",
+      "sha256": "76b07288b5dec504ef7cf31f5005159f97ca9bc158bfbdd2dab263abe4c9072e",
+      "passed": 37,
+      "cleanup": "completed",
+      "full_suite": true
+    },
+    {
+      "path": ".runtime/candidate-sandbox/latest.json",
+      "sha256": "6d2963bb27e798da64c251f066aecc0833fb029c221dbb104908b916e55fdcb1",
+      "passed": 17,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/consumer-tests/latest.json",
+      "sha256": "07ffaa2adf06b185940efa468daa7312ae04772cf1c21068d44fc72fc67c1107",
+      "passed": 3,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/crawler-network/latest.json",
+      "sha256": "e0cdbb67fc49c7dd59d4a1ef86ac1ec9dffa15121156ea10e455789fd1e7f8b1",
+      "passed": 14,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/page-attempt-tests/latest.json",
+      "sha256": "f82b6ec387ec3ee64c6bc7ad1272b39270d175d3b6983dd5ecefa8e392938881",
+      "passed": 1,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/temporal-tests/latest.json",
+      "sha256": "9bafaf0802c1d43de3039e0d7e1144c10790d5aad52931ee5576e774ffa18750",
+      "passed": 7,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/workflow-consumer-image/latest.json",
+      "sha256": "741f24b40c3f82cfbcb19aadbf7fe01d4275705aa73a2a69724ea3de45919cd2",
+      "passed": 6,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/openbao-tests/latest.json",
+      "sha256": "e1689a4554397376519923196d883a24a6cd345b13b1f636bb65882284ef1276",
+      "passed": 23,
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/keycloak-tests/latest.json",
+      "sha256": "8d310d83f4cf88a7f28611b10b23ef48496522dd86d4b99e4439408e7f18a583",
+      "passed": 5,
+      "cleanup": "completed"
+    }
+  ],
+  "source_changes_after_qualification": [],
+  "verification_history": [
+    {
+      "result": "Earlier complete local gate passed 2997 counted cases",
+      "resolution": "Final review found full built HTML was stored directly in SQL. Corrected to the existing encrypted immutable artifact boundary with metadata-only SQL storage and requalified the corrected source; no earlier result is counted as final evidence."
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "intermediate_result": "Invocation-owned run interrupted after source hardening made its original hashes stale",
+      "resolution": "Verified PID start time and this worktree's cwd before SIGTERM; owned cleanup completed. Restarted the complete unsharded lab on frozen source. No other track resources were stopped."
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "intermediate_result": "Provider capacity interruption ended the subsequent frozen-source run before a final receipt",
+      "resolution": "On resume, verified that no process or containers from that invocation remained. Restarted the unchanged full unsharded lab; other tracks' running labs were left untouched."
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "first_result": "Docker setup failed with CalledProcessError before test execution",
+      "resolution": "Unchanged retry passed 1/1 with owned cleanup. Root cause not established; no code, test or safety gate changed."
+    },
+    {
+      "command": "npm test",
+      "first_result": "Repository cases passed; documentation gate rejected the implementation record's not-yet-created evidence link",
+      "resolution": "Added the required evidence record; complete rerun passed all repository/dashboard/documentation/typecheck/build gates. No safety gate was weakened."
+    }
+  ],
+  "gitleaks": {
+    "command": "gitleaks git --pre-commit --staged --config .gitleaks.toml --redact .",
+    "result": "PASS",
+    "leaks": 0,
+    "main_configuration_unchanged": true,
+    "commit_range": "Scan 19093ad6bccb366588d76c02e7015729fb6e8c47..HEAD after commit and record in the PR; keep the original parent while the merge train rebases its branch"
+  },
+  "visual_qualification": {
+    "surfaces": "Synthetic exact Astro Inbox, 1440x1000 desktop and 390x844 mobile",
+    "result": "PASS",
+    "horizontal_or_section_overflow": 0,
+    "impact_and_mfa_warning_visible": true,
+    "detector_findings": 0,
+    "private_browser_or_customer_data": false
+  },
+  "cache_cleanup": "Invocation-owned fixture caches removed and completed SDK caches pruned; no other track resource stopped",
+  "offline_engine_tests": "Real pinned npm/container, explicitly synthetic package fixture; not an actual Astro compiler test",
+  "live_github": "NOT_EXECUTED",
+  "live_official_registry": "NOT_EXECUTED",
+  "actual_astro_engine": "NOT_EXECUTED",
+  "customer_repository_build": "NOT_EXECUTED",
+  "customer_delivery_live_assertions": "NOT_EXECUTED",
+  "production_composition": "NOT_EXECUTED",
+  "production_write_authority": false,
+  "release_admission": false,
+  "indexnow_0086": "ABSENT_ON_BASE; explicit configured publicDir placement follow-up",
+  "train_3_owned_lab": {"command": "scripts/run-candidate-sandbox-tests.py", "passed": 18, "failed": 0},
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 30,
+    "migration": "0080",
+    "down_revision": "0079",
+    "app_tables": 157,
+    "fast_checks": {
+      "python": 2331,
+      "database": 1051,
+      "repository": 46,
+      "dashboard": 229
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false
+  }
+}

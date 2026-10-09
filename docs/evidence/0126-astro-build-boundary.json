@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-02",
+  "classification": "security-critical",
+  "base_commit": "7fad9abc4d6486651954134f00982cdc2627b183",
+  "migration": "0077",
+  "down_revision": "0076",
+  "historical_migrations_modified": false,
+  "accepted_specifications_modified": false,
+  "qualification_status": "PASS_LOCAL",
+  "final_counted_cases": 2945,
+  "final_failed": 0,
+  "final_skipped": 0,
+  "commands": [
+    {"command": ".venv/bin/python scripts/run-database-tests.py", "passed": 902, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python scripts/run-authority-journal-tests.py", "passed": 14, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py", "passed": 37, "failed": 0, "skipped": 0, "result": "PASS_AFTER_UNCHANGED_FULL_RETRY"},
+    {"command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py", "passed": 14, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python scripts/run-consumer-tests.py", "passed": 3, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python scripts/run-crawler-network-tests.py", "passed": 14, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python scripts/run-page-attempt-tests.py", "passed": 1, "failed": 0, "skipped": 0, "result": "PASS_AFTER_UNCHANGED_RETRY"},
+    {"command": ".venv/bin/python scripts/run-temporal-tests.py", "passed": 7, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py", "passed": 6, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python scripts/openbao_lab.py", "passed": 23, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python scripts/keycloak_lab.py", "passed": 5, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q", "passed": 1721, "failed": 0, "skipped": 0, "result": "PASS"},
+    {"command": ".venv/bin/python scripts/check-gsc-provider-boundary.py", "result": "PASS"},
+    {"command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "result": "PASS"},
+    {"command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "result": "PASS", "files": 428},
+    {"command": ".venv/bin/python -m pip check", "result": "PASS"},
+    {"command": "npm test", "result": "PASS", "repository_passed": 43, "dashboard_passed": 155, "markdown_files": 251, "typecheck": "PASS", "build": "PASS", "failed": 0}
+  ],
+  "gitleaks": {
+    "command": "gitleaks git --pre-commit --staged --config .gitleaks.toml --redact .",
+    "result": "PASS",
+    "leaks": 0,
+    "main_configuration_unchanged": true,
+    "commit_range": "Scan slice/0125-unprotected-base-acceptance..HEAD after commit and record in the PR"
+  },
+  "qualified_artifacts": [
+    {"path": ".runtime/database-tests/latest.json", "sha256": "10ad63a25aef169bca9aab71ac5467bf60731a3517320024605256137e1a1e54", "passed": 902, "cleanup": "completed"},
+    {"path": ".runtime/autonomy-delivery/latest.json", "sha256": "04063b06ac2364216f2c56a4d6cc5f0077ce307d857a305392a32f1f26cd3a70", "passed": 37, "cleanup": "completed"},
+    {"path": ".runtime/candidate-sandbox/latest.json", "sha256": "f5518136a00119601bde6ba0182d74d874ae353a97973dc2b4ec79834582144e", "passed": 14, "cleanup": "completed"},
+    {"path": ".runtime/consumer-tests/latest.json", "sha256": "8f9d60e961bc9098cef2074f94f3e024fe5b5a5f60c5e5823c0748c746035db2", "passed": 3, "cleanup": "completed"},
+    {"path": ".runtime/crawler-network/latest.json", "sha256": "e09f0a9564da50a03e00dca0386a14a0b38782649a4165634868871a3add746b", "passed": 14, "cleanup": "completed"},
+    {"path": ".runtime/page-attempt-tests/latest.json", "sha256": "0943cd36af4955c3d062a88bfba7ede24567314f81e4b4c6ef5e6485be8e2fc1", "passed": 1, "cleanup": "completed"},
+    {"path": ".runtime/temporal-tests/latest.json", "sha256": "77090d8c0e4b5fba136e96de09168219b8ffc471e0561d0ec22b00164c88d78c", "passed": 7, "cleanup": "completed"},
+    {"path": ".runtime/workflow-consumer-image/latest.json", "sha256": "f03ac9dec210482e412577e29a1fa82819fd7fd42ab91704a43d2ec8009428f4", "passed": 6, "cleanup": "completed"},
+    {"path": ".runtime/openbao-tests/latest.json", "sha256": "c51c0de8b4754376b440f48fab8c3404c14251bfe00093f59fd7600ac61865e6", "passed": 23, "cleanup": "completed"},
+    {"path": ".runtime/keycloak-tests/latest.json", "sha256": "3f8273f885d987f0994e30d198fc8bfbdb8071d69b83b0b4060b9a99ba09cf81", "passed": 5, "cleanup": "completed"}
+  ],
+  "source_changes_after_qualification": [],
+  "verification_history": [
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "first_passed": 36,
+      "first_failed": 1,
+      "failure": "test_standing_dispatch_is_bound_to_exact_revision: existing crawl setup raised RobotsSnapshotUnavailable before candidate preparation",
+      "first_report_sha256": "2065f33a0ed20b76f6675531d85945de40c4b2c86df69c70145d000147a81648",
+      "resolution": "The complete suite was rerun unchanged: 37 passed, 0 failed. Root cause is not established; fixture/timing risk remains explicit."
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "first_result": "Docker setup failed before test execution",
+      "resolution": "Unchanged retry passed the real page-attempt case with invocation-owned cleanup."
+    }
+  ],
+  "cache_cleanup": "Invocation-owned synthetic caches removed; completed Temporal SDK caches pruned; no other track resources stopped",
+  "registry_provider_tests": "Synthetic doubles behind real PostgreSQL shared egress",
+  "offline_engine_tests": "Real pinned npm/container, explicitly synthetic package fixture",
+  "live_github": "NOT_EXECUTED",
+  "live_official_registry": "NOT_EXECUTED",
+  "actual_astro_engine": "NOT_EXECUTED",
+  "customer_repository_build": "NOT_EXECUTED",
+  "production_composition": "NOT_EXECUTED",
+  "production_write_authority": false,
+  "astro_delivery": "UNAVAILABLE",
+  "release_admission": false,
+  "merge_train": {
+    "base": "7754746",
+    "pr": 26,
+    "migration": "0077",
+    "down_revision": "0076",
+    "app_tables": 152,
+    "fast_checks": {
+      "python": 2135,
+      "database": 1022,
+      "repository": 43,
+      "dashboard": 222,
+      "ruff_check": "PASS",
+      "ruff_format": "PASS"
+    },
+    "frozen_migrations": "0001-0070",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "generation_fixture_fix": "9a8a85f71962fe6ff4810635fa3d8b8ece23fcc3",
+    "measurement_fix": "381306fdf83b3b59aa877ac6a76870f836f9f08d",
+    "production_authority": false
+  }
+}

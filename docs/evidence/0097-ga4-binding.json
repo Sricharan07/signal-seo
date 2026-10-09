@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "slice": "0097",
+  "classification": "security-critical",
+  "base_commit": "404eeb9e19031a2136eb561e9f29de3cd92275f4",
+  "migration": "0067",
+  "down_revision": "0066",
+  "production_authority": false,
+  "customer_credentials_used": false,
+  "live_ga4": "NOT_EXECUTED",
+  "qualification": "local_optional_boundary",
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 840,
+      "failed": 0,
+      "seconds": 501.08,
+      "evidence": "0097-postgresql.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 15,
+      "failed": 0,
+      "scope": "independent PostgreSQL journal, real primary restore and OpenBao rotation, GA4 deny-only replay"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0,
+      "evidence": "0097-temporal.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "evidence": "0097-consumer.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0,
+      "evidence": "0097-workflow-consumer-image.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "evidence": "0097-crawler-network.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "evidence": "0097-page-attempt.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 10,
+      "failed": 0,
+      "evidence": "0097-candidate-sandbox.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 36,
+      "failed": 0,
+      "evidence": "0097-autonomy-delivery.json",
+      "full_suite": true
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 27,
+      "failed": 0,
+      "evidence": "0097-openbao.json"
+    },
+    {
+      "command": ".venv/bin/pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "passed": 1279,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+      "checked_files": 376,
+      "unformatted": 0
+    },
+    {
+      "command": ".venv/bin/pip check",
+      "broken_requirements": 0
+    },
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "repository_tests": 24,
+      "dashboard_tests": 157,
+      "documentation_files": 218,
+      "typecheck": "PASS",
+      "build": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "status": "PASS"
+    },
+    {
+      "command": "gitleaks git --staged --config .gitleaks.toml --redact --no-banner",
+      "status": "PASS",
+      "leaks": 0
+    },
+    {
+      "command": "gitleaks git --config .gitleaks.toml --log-opts=main..HEAD --redact --no-banner",
+      "status": "REQUIRED_POST_COMMIT",
+      "configuration": "unchanged main configuration; no allowlist widening; actual result reported in PR"
+    }
+  ],
+  "coverage": [
+    "OAuth wrong state, redirect, PKCE, consumed-state replay, tenant, role and MFA denial",
+    "exact analytics.readonly scope and owner-confirmed discovered property with matching web stream origin",
+    "OpenBao-only refresh reference, isolated GA4 namespace, verifier permanent consume, CAS and permanent destruction",
+    "typed exact Google OAuth/Admin/Data routes, bound token and property, methods, media, size, time and row bounds",
+    "date-bounded pagination, sampling, thresholding, other row, verbatim metadata/quota and never complete coverage",
+    "no tokens in runtime rows or sanitized errors; rotation failure and provider denial restrict use",
+    "revocation and external recovery changes during provider I/O prevent import success",
+    "real PostgreSQL migration rollback and unchanged existing GSC tests",
+    "independent GA4 restriction journal record verification and restored-primary deny-only replay",
+    "cookie/CSRF API and BFF, exact callback correlation, duplicate state/cookie and wrong scope denial, bounded streamed commands"
+  ],
+  "ui_verification": {
+    "server_render_contract": "PASS",
+    "loopback_http_smoke": 200,
+    "desktop_screenshot": "NOT_EXECUTED",
+    "mobile_screenshot": "NOT_EXECUTED",
+    "finish_review_disposition": "recapture",
+    "blocker": "No available computer-use browser surface; native app selection timed out.",
+    "documenter": "Existing-system extension confirmed at code level; incumbent design files preserved; no visual approval."
+  },
+  "not_executed": [
+    "live Google OAuth consent, Admin property/stream reads, Data reports, rotation and revocation",
+    "production identity/OpenBao/shared-egress/journal gateway composition and customer enablement",
+    "browser desktop/mobile visual and authenticated end-to-end journey qualification",
+    "background imports, orphan-token cleanup, tracking/consent validation and effect measurement"
+  ],
+  "owner_inputs": [
+    "disposable Google Cloud project with Analytics Admin/Data APIs and exact HTTPS Web OAuth callback",
+    "readable disposable GA4 property with web stream matching a current verified site origin",
+    "OpenBao-only OAuth client and least-privilege isolated GA4 KV credential",
+    "current owner MFA, independent recovery and restriction journal custody/dispatcher",
+    "admitted shared egress contexts and private API/dashboard gateway composition"
+  ],
+  "cleanup": "Invocation-owned containers only; loopback dashboard server stopped; other tracks untouched.",
+  "merge_train": {
+    "date": "2026-10-02",
+    "pr": 17,
+    "original_head": "30b201ab8f15ca7aa279988fbec4e34b7af2aa70",
+    "migration": "0067",
+    "down_revision": "0066",
+    "app_tables": 121,
+    "production_authority": false,
+    "checks": [
+      {
+        "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+        "exit_code": 0,
+        "summaries": [
+          "1806 passed in 30.65s"
+        ]
+      },
+      {
+        "command": ".venv/bin/python -m ruff check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": []
+      },
+      {
+        "command": ".venv/bin/python -m ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": [
+          "460 files already formatted"
+        ]
+      },
+      {
+        "command": "npm test",
+        "exit_code": 0,
+        "summaries": [
+          "# tests 43",
+          "# pass 43",
+          "# tests 185",
+          "# pass 185"
+        ]
+      },
+      {
+        "command": ".venv/bin/python scripts/run-database-tests.py",
+        "exit_code": 0,
+        "summaries": [
+          "======================= 918 passed in 500.58s (0:08:20) ========================"
+        ]
+      }
+    ]
+  },
+  "qualification_history_scope": "Original slice commands, counts, base commits and source hashes are historical; merge_train records cumulative rebased fast gates. Final-tip full gate is required before PR branch publication and recorded in PR comments and run-owned lab receipts."
+}

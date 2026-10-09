@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "classification": "security-critical",
+  "migration": "0081",
+  "down_revision": "0080",
+  "qualification_status": "LOCAL_FULL_GATE_PASS",
+  "recorded_at": "2026-10-04T04:15:00Z",
+  "base_commit": "237ccd15c35a1eafd7f4211f29e626d2874fb5c7",
+  "passed_test_check_cases": 3142,
+  "failed": 0,
+  "skipped": 0,
+  "production_authority": false,
+  "synthetic_credentials_only": true,
+  "customer_data_accessed": false,
+  "cleanup": "completed; no invocation-owned containers or processes remain",
+  "lab_source_hashes": "All .runtime/*/latest.json source_sha256 entries matched frozen source after the full gate",
+  "source_sha256": {
+    "database/migrations/versions/0081_front_matter.py": "16bb7af4f3aa55975f864013f9ff525d29289ac5a2b3cbfc355196ed7c2a57a6",
+    "database/migrations/versions/0081_front_matter.sql": "0bd5f06a99811519be8d24e16332d21a570633ff4d4eae1ab97f743851f78517",
+    "services/control_plane/src/signal_core/front_matter.py": "ae2033de2650dbd22835cd242dae38c892ee07bf53ecd50e2c20f7379e324303",
+    "services/control_plane/src/signal_core/front_matter_recipes.py": "7cb3ee0397f4fcbdfd13c47eac9e81e3710fea99d875e7169a666cd6177ebd30",
+    "services/control_plane/src/signal_core/astro_recipe_service.py": "3cf2a6e932b96f64ebace02e55dba683588b2d2392c04678c0d113ba4c3fefc9",
+    "services/control_plane/src/signal_core/candidate_build.py": "cc459c0a7233c227cb342f80f5ff38ac9c3979b838b33f2e651eea47e9f0e543",
+    "services/control_plane/src/signal_core/candidate_build_service.py": "b2c185fd96591991f648b83226c5f6f2be1db9681333be57eae8b5fb7b0307a5",
+    "services/control_plane/src/signal_core/github_format.py": "366e3ac3ce84a48022699b31daa785adcf6c2aedc014050cb751d5e215528541",
+    "services/control_plane/src/signal_core/github_pr_patch.py": "d8e491483f6b5b3fea40fac6f5acc35f8190ac64035e20ffb2b9db7bba831d17",
+    "scripts/run-candidate-sandbox-tests.py": "18c557dfd6e690b8793a04d2b7735598e9595fe7d446f1ee63af8655cef9d972",
+    "tests/control_plane/test_front_matter_delivery.py": "fc08304e4b9389e021a6c508b8b422ae99c20da688a26ee6a2b76ea9f262a8a4",
+    "tests/container/test_front_matter_delivery.py": "39f7217c2b536ad4bd0f6dd72f9b5cfdbfafd42182687062396be53ec6b0d7b4",
+    "tests/tooling/front_matter_support.py": "01f5aeaa8cbaec09da08dd33b66da0bdf843ef028b1e4b7ad2e941260127fcd9"
+  },
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 915,
+      "failed": 0,
+      "receipt": ".runtime/database-tests/latest.json",
+      "log": ".runtime/0139-gate/00.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "log": ".runtime/0139-gate/01.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 37,
+      "failed": 0,
+      "receipt": ".runtime/autonomy-delivery/latest.json",
+      "log": ".runtime/0139-gate/02.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 23,
+      "failed": 0,
+      "receipt": ".runtime/candidate-sandbox/latest.json",
+      "log": ".runtime/0139-gate/03.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "receipt": ".runtime/consumer-tests/latest.json",
+      "log": ".runtime/0139-gate/04.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "receipt": ".runtime/crawler-network/latest.json",
+      "log": ".runtime/0139-gate/05.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "receipt": ".runtime/page-attempt-tests/latest.json",
+      "log": ".runtime/0139-gate/06.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0,
+      "receipt": ".runtime/temporal-tests/latest.json",
+      "log": ".runtime/0139-gate/07.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0,
+      "receipt": ".runtime/workflow-consumer-image/latest.json",
+      "log": ".runtime/0139-gate/08.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 23,
+      "failed": 0,
+      "receipt": ".runtime/openbao-tests/latest.json",
+      "log": ".runtime/0139-gate/09.log"
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "status": "PASS",
+      "log": ".runtime/0139-gate/10.log"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q --junitxml=.runtime/0139-gate/python.xml",
+      "passed": 1896,
+      "failed": 0,
+      "log": ".runtime/0139-gate/11.log"
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database",
+      "status": "PASS",
+      "log": ".runtime/0139-gate/12.log"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database",
+      "status": "PASS",
+      "checked_files": 443,
+      "log": ".runtime/0139-gate/13.log"
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "status": "PASS",
+      "log": ".runtime/0139-gate/14.log"
+    },
+    {
+      "command": "npm test",
+      "passed": 203,
+      "failed": 0,
+      "repository_tests": 43,
+      "dashboard_tests": 160,
+      "checked_markdown_files": 256,
+      "log": ".runtime/0139-gate/15.log"
+    }
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "database": "PostgreSQL 17.11",
+    "database_image": "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+    "sandbox_image": "node:22.18.0-bookworm-slim@sha256:752ea8a2f758c34002a0461bd9f1cee4f9a3c36d48494586f60ffce1fc708e0e",
+    "openbao_image": "ghcr.io/openbao/openbao:2.6.1@sha256:5b2486ab0fb90bbc788cc345b0a08616dfb375873ee8be5df3a2fd4d378a67e0"
+  },
+  "security_qualification": {
+    "positive": "Exact YAML/TOML/JSON scalar replacement; supported quoting/multiline/BOM/CRLF; paired offline JS builds; exact A2/A4 built scope; Owner MFA approval/dispatch; current explicit unprotected-base acceptance",
+    "negative": "Duplicate keys, YAML aliases/tags, ambiguous spans, field/body/asset drift, protected paths, invalid Next config, Hugo/Jekyll toolchains, cross-tenant and non-Owner access, stale MFA, standing/Slack authority, forged manifests and receipts",
+    "failure": "Missing/failed build or dependency/encrypted HTML receipts, provider/source/base drift, receipt replay conflict, artifact scope mismatch and unknown external outcomes fail closed"
+  },
+  "secret_scans": {
+    "configuration": "Exact origin/main:.gitleaks.toml; allowlist unchanged",
+    "staged_command": "gitleaks protect --staged --config /tmp/signal-0139-main-gitleaks.toml --redact",
+    "range_command": "gitleaks git --config /tmp/signal-0139-main-gitleaks.toml --log-opts 237ccd15c35a1eafd7f4211f29e626d2874fb5c7..HEAD --redact",
+    "expected": "Zero leaks; rerun staged scan before commit and range scan before push"
+  },
+  "superseded_exploratory_run": {
+    "database_passed": 908,
+    "database_failed": 7,
+    "qualification": false,
+    "reason": "Pytest collected previous 0077 migration-head assertions before their source update to 0093; replaced by the frozen 915-pass full run"
+  },
+  "not_executed": [
+    "Live GitHub and npm registry providers",
+    "Actual Astro, Eleventy and Next.js generator compatibility (synthetic packages only)",
+    "Customer repository, credential and data integration",
+    "Deployment and live assertions",
+    "Production composition and production authority"
+  ],
+  "live_providers": "NOT_EXECUTED",
+  "train_3_owned_lab": {"command": "scripts/run-candidate-sandbox-tests.py", "passed": 24, "failed": 0},
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 38,
+    "migration": "0081",
+    "down_revision": "0080",
+    "app_tables": 157,
+    "fast_checks": {
+      "python": 2459,
+      "database": 1060,
+      "repository": 46,
+      "dashboard": 232
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false
+  }
+}

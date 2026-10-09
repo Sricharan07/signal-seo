@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "slice": "0165",
+  "classification": "security-critical",
+  "base": "a5c27ad1a9d0129f03ba43925486dc75569647b7",
+  "migration": "0101",
+  "down_revision": "0100",
+  "production_authority": false,
+  "status": "IMPLEMENTED_AND_SLICE_QUALIFIED",
+  "operation_families": 66,
+  "entrypoints": 147,
+  "shared_operation_bodies": 36,
+  "preserved_domain_variants": 30,
+  "independent_legacy_read_definitions": 21,
+  "normalized_divergence_families": 8,
+  "permission_truth_table_combinations": 180,
+  "python_hash_adapters": {
+    "adapters": 9,
+    "passed": 108,
+    "failed": 0
+  },
+  "slice_checks": [
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "passed": 409,
+      "failed": 0,
+      "skipped": 0,
+      "count_kind": "test_cases",
+      "seconds": 10.297
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "status": "PASS",
+      "passed": 3213,
+      "failed": 0,
+      "skipped": 0,
+      "count_kind": "test_cases",
+      "seconds": 75.903
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "status": "PASS",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "count_kind": "checks",
+      "seconds": 0.105
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "status": "PASS",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "count_kind": "checks",
+      "seconds": 0.057
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 0",
+      "status": "PASS",
+      "passed": 63,
+      "failed": 0,
+      "skipped": 0,
+      "count_kind": "test_cases",
+      "seconds": 1690.828
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 1",
+      "status": "PASS",
+      "passed": 62,
+      "failed": 0,
+      "skipped": 0,
+      "count_kind": "test_cases",
+      "seconds": 1800.703
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-ask-signal-tests.py",
+      "status": "PASS",
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0,
+      "count_kind": "test_cases",
+      "seconds": 40.849
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-authority-journal-tests.py",
+      "status": "PASS",
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "count_kind": "checks",
+      "seconds": 12.785
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-database-tests.py --shards 3",
+      "status": "PASS",
+      "passed": 1486,
+      "failed": 0,
+      "skipped": 0,
+      "count_kind": "test_cases",
+      "seconds": 631.376
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "status": "PASS",
+      "failed": 0
+    }
+  ],
+  "full_gate": "DEFERRED_TO_MERGE_TRAIN",
+  "live_provider": "NOT_EXECUTED",
+  "production_composition": "NOT_EXECUTED",
+  "permission_postgresql": {
+    "focused_passed": 14,
+    "final_cases_in_database_lab": 15,
+    "failed": 0,
+    "skipped": 0
+  },
+  "final_combined_equivalence": {
+    "passed": 37,
+    "failed": 0,
+    "skipped": 0,
+    "tests": ["test_shared_permission.py", "test_sql_dispatch.py", "test_sql_dispatch_bind.py"]
+  },
+  "final_sql_formatting": {
+    "change": "Removed trailing whitespace only after the broad labs; quoted literals and all 87612 non-comment SQL tokens are identical. Final combined PostgreSQL rerun passes 37 cases.",
+    "non_comment_tokens_and_quoted_literals_identical": true
+  },
+  "secret_scan": {
+    "command": "gitleaks git --staged --config .gitleaks.toml --redact",
+    "status": "PASS",
+    "leaks": 0,
+    "configuration": "Unchanged main .gitleaks.toml; commit-range receipt is in the PR body."
+  },
+  "cleanup": "All invocation-owned processes and resources cleaned; no labelled lab container remains. Foreign containers untouched.",
+  "development_corrections": [
+    "Added missing root-function SQL statement terminators before qualification.",
+    "The new normalized divergence fixture originally omitted delivery/internal-link resource-admission substitutes; independent before/after results were already equal. Added rollback-only admission substitutes to compare identical admitted inputs. No old behavioral assertion changed."
+  ],
+  "execution_contract": "Sequential labs, df before every lab, normal database --shards 3, unchanged timeouts and 4 GiB disk guard."
+}

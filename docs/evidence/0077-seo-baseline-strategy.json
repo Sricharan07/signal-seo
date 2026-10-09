@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-02",
+  "base_commit": "404eeb9",
+  "classification": "Product: existing owner/session authority; no new grants, secrets, egress or external writes",
+  "migration": "0063_seo_baseline_strategy",
+  "down_revision": "0062",
+  "historical_migrations_modified": false,
+  "qualification_status": "PASS_LOCAL",
+  "current_source_fully_qualified": true,
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 838,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 36,
+      "failed": 0,
+      "full_suite": true
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 23,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "passed": 1255,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS",
+      "formatted_files": 375
+    },
+    {
+      "command": ".venv/bin/pip check",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "result": "PASS",
+      "repository_passed": 24,
+      "dashboard_passed": 158,
+      "failed": 0,
+      "markdown_files": 217,
+      "typecheck": "PASS",
+      "build": "PASS"
+    },
+    {
+      "command": "git show main:.gitleaks.toml > .runtime/0077-main-gitleaks.toml",
+      "result": "PASS",
+      "allowlist_modified": false
+    },
+    {
+      "command": "gitleaks git --pre-commit --staged --config .runtime/0077-main-gitleaks.toml --no-banner --redact .",
+      "result": "PASS",
+      "leaks": 0
+    }
+  ],
+  "required_post_commit_gate": {
+    "command": "gitleaks git --config .runtime/0077-main-gitleaks.toml --log-opts=\"main..HEAD\" --no-banner --redact .",
+    "result_location": "PR gate summary; run before branch push"
+  },
+  "total_passed": 2389,
+  "total_failed": 0,
+  "focused_checks": {
+    "postgresql_passed": 7,
+    "api_passed": 6,
+    "analysis_passed": 6,
+    "dashboard_passed": 10
+  },
+  "gate_logs": ".runtime/0077-*.log",
+  "qualified_artifacts": [
+    {
+      "path": ".runtime/database-tests/latest.json",
+      "sha256": "0c265dbf8c56aba2e651b11263beb6a6d95f05f00b57e7af6806d7b5cb781fca",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/autonomy-delivery/latest.json",
+      "sha256": "0cc4a785598f25352a4fc6d23ab537ab5fc2a8b6801da907de7a586c71f2a3bf",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/candidate-sandbox/latest.json",
+      "sha256": "b1266e40c38118e9d76c48e0b9cac1fb07302815644e4951bfde293d6bf5b582",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/consumer-tests/latest.json",
+      "sha256": "ced10eb09fe20049d45b9c60731f85e3e220d3af1f3d31bd5dd16179ebd55cf8",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/crawler-network/latest.json",
+      "sha256": "3fe56187637c855eebfa7fa11bafd23562e2a8b1628f458f1a971a3c355a66d7",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/page-attempt-tests/latest.json",
+      "sha256": "19525c97fe97583fafdec3466bb0b5d793853eca05e740c444e772941e64a203",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/temporal-tests/latest.json",
+      "sha256": "055f9d606663acef21198cd11b2d944223e6e63d9c7b2eca2b9a1eaeed05258c",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/workflow-consumer-image/latest.json",
+      "sha256": "1869b811eb8cd62ff9f3db49e0c2321602d6ff9e05381a0a14763cc76d705597",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/openbao-tests/latest.json",
+      "sha256": "f279098a4e71c052cdd415aee218a497515d029eacc37a3bff2b4b882b801d89",
+      "cleanup": "completed"
+    }
+  ],
+  "qualification_scope": {
+    "database": "Real disposable PostgreSQL; forced RLS, function-only tables, current owner/session checks, immutable snapshots, exact unaccepted brief creation and replay.",
+    "providers": "Existing synthetic provider behavior behind shared egress; no live customer or licensed-provider claims.",
+    "cleanup": "No invocation-owned server, lab process or container left running. Concurrent other-track and unrelated containers preserved."
+  },
+  "development_corrections": [
+    "Updated exact migration-head/table-count assertions for 0063 and scoped the no-brief assertion to the test tenant/site; all 838 PostgreSQL tests pass without weaker safety checks.",
+    "Renamed the connector analysis test to avoid Python module-name collision and added only the two reviewed planning routes to the API mutation allowlist.",
+    "Preserved signed-out/non-owner dashboard unavailable surfaces; fixed malformed projection validation and bounded command, CSRF and projection streams before parsing."
+  ],
+  "ui_verification": {
+    "scope": "Actual component/CSS synthetic SSR captures; not live authenticated dashboard or provider qualification.",
+    "desktop": "1440x1000; all four views have no page overflow",
+    "mobile": "390x844; all four views have no page overflow; tables scroll locally",
+    "review_verdict": "SHIP within scoped component finish review",
+    "documentation_handoff": "Incumbent PRODUCT.md, DESIGN.md and .impeccable/design.json preserved; no new visual system",
+    "screenshots": [
+      "docs/evidence/0077-overview-desktop.png",
+      "docs/evidence/0077-overview-mobile.png",
+      "docs/evidence/0077-pages-desktop.png",
+      "docs/evidence/0077-pages-mobile.png",
+      "docs/evidence/0077-strategy-desktop.png",
+      "docs/evidence/0077-strategy-mobile.png",
+      "docs/evidence/0077-analytics-desktop.png",
+      "docs/evidence/0077-analytics-mobile.png"
+    ],
+    "hydrated_interactions": "NOT_EXECUTED",
+    "authenticated_shell_fit": "NOT_EXECUTED",
+    "long_content_stress": "NOT_EXECUTED"
+  },
+  "live_gsc": "NOT_EXECUTED",
+  "live_bing": "NOT_EXECUTED",
+  "live_assistants": "NOT_EXECUTED",
+  "live_customer_onboarding": "NOT_EXECUTED",
+  "model_reordering": "UNAVAILABLE_UNCONFIGURED",
+  "dataforseo": "UNAVAILABLE_NOT_IMPLEMENTED",
+  "unsealed_technical_preparation": "UNAVAILABLE",
+  "production_write_authority": false,
+  "release_admission": false,
+  "merge_train": {
+    "date": "2026-10-02",
+    "pr": 13,
+    "original_head": "b3b0b489cd586ff28c3560b9dee5caa2a37d2c02",
+    "migration": "0063",
+    "down_revision": "0062",
+    "app_tables": 106,
+    "production_authority": false,
+    "checks": [
+      {
+        "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+        "exit_code": 0,
+        "summaries": [
+          "1671 passed in 30.00s"
+        ]
+      },
+      {
+        "command": ".venv/bin/python -m ruff check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": []
+      },
+      {
+        "command": ".venv/bin/python -m ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": [
+          "426 files already formatted"
+        ]
+      },
+      {
+        "command": "npm test",
+        "exit_code": 0,
+        "summaries": [
+          "# tests 43",
+          "# pass 43",
+          "# tests 164",
+          "# pass 164"
+        ]
+      },
+      {
+        "command": ".venv/bin/python scripts/run-database-tests.py",
+        "exit_code": 0,
+        "summaries": [
+          "881 passed"
+        ],
+        "cleanup": "completed"
+      }
+    ]
+  },
+  "qualification_history_scope": "Original slice commands, counts, base commits and source hashes are historical; merge_train records cumulative rebased fast gates. Final-tip full gate is required before PR branch publication and recorded in PR comments and run-owned lab receipts."
+}

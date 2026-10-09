@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "slice": "0164",
+  "classification": "security-critical",
+  "base": "a519a65",
+  "migration": "0100",
+  "down_revision": "0099",
+  "production_authority": false,
+  "status": "IMPLEMENTED_AND_SLICE_QUALIFIED",
+  "focused_dispatch_postgresql": {
+    "passed": 48,
+    "failed": 0,
+    "skipped": 0,
+    "source_state": "Final reference invoker-security correction, unchanged identity tests and internal-shape behavior assertions included."
+  },
+  "development_correction": "Interrupted the invocation-owned draft delivery run to replace restore-unsafe catalog-reading CHECKs with immediate trigger guards. Real dump/restore regression passes. The interrupted run is not qualification.",
+  "ruff_check": "PASS",
+  "ruff_format_check": "PASS",
+  "slice_checks": [
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "passed": 409,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "status": "PASS",
+      "passed": 3105,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 0",
+      "status": "PASS",
+      "passed": 63,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 1",
+      "status": "PASS",
+      "passed": 62,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-ask-signal-tests.py",
+      "status": "PASS",
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-authority-journal-tests.py",
+      "status": "PASS",
+      "passed_checks": 19,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-crawler-network-tests.py",
+      "status": "PASS",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "source_state": "Before final reference invoker-security correction."
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-database-tests.py --shards 3",
+      "status": "PASS",
+      "passed": 1471,
+      "failed": 0,
+      "skipped": 0,
+      "source_state": "Corrected final SQL tip"
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-webflow-tests.py",
+      "status": "PASS",
+      "passed": 60,
+      "failed": 0,
+      "skipped": 0,
+      "source_state": "Corrected final SQL tip"
+    },
+    {
+      "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/provider_data_lab.py",
+      "status": "PASS",
+      "passed": 84,
+      "failed": 0,
+      "skipped": 0,
+      "source_state": "Corrected final SQL tip"
+    }
+  ],
+  "previous_infrastructure_blocker": {
+    "observed_at": "2026-10-05T05:09:35Z",
+    "free_disk_kib": 4021924,
+    "minimum_free_disk_bytes": 4294967296,
+    "guard": "Unchanged full_gate.run_step disk floor; remaining lab process was not started.",
+    "cleanup": "All invocation-owned lab processes and temporary resources cleaned. No shared resource or foreign container stopped.",
+    "resolution": "Owner restored about 4.4 GiB and required sequential labs, one database shard, and two-minute disk retries bounded to 30 minutes. Pending labs resumed."
+  },
+  "harness_correction": "The untracked focused orchestration helper initially omitted the crawler-subnet semaphore mapping. Corrected before retry; crawler lab never started in either attempt.",
+  "full_gate": "DEFERRED_TO_MERGE_TRAIN",
+  "live_provider": "NOT_EXECUTED",
+  "production_composition": "NOT_EXECUTED",
+  "historical_infrastructure_attempts": {
+    "observed_at": "2026-10-05T06:14:19Z",
+    "disk_wait": "Rechecked every two minutes within the 30-minute bound; disk recovered above 4 GiB and the queued Webflow lab started.",
+    "docker_health": "docker info --format {{.ServerVersion}} timed out after 10 seconds in the focused rerun and an independent health check. No tests or owned containers started in those attempts.",
+    "timeout_approval": "Earlier request superseded by owner direction to use three shards; no timeout changed.",
+    "reference_correction": "Catalog lookup is SECURITY DEFINER; reference reads retain invoker grants and forced RLS. Final 48 focused and 1471 database cases pass.",
+    "interrupted_focus": "One follow-up focused run accidentally started below the owner-required 4 GiB floor. Interrupted only its identified process group; owned resources cleaned. Added pre-start disk wait to the untracked helper. Not counted as qualification.",
+    "cleanup": "No owned lab processes remain; foreign containers and shared resources untouched.",
+    "resolution": "Owner restored Docker and 24 GiB disk; existing normal three-shard runner passed. No timeout change. All invocation-owned resources cleaned.",
+    "single_shard": "Incomplete 1200-second timeout at 70 percent; fifteen draft failures subsequently corrected and all 1471 cases passed on the final three-shard run."
+  }
+}

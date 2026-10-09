@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-13T07:47:18Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "e59b2733074097802d8a9a19db3a32f0c088d5a8d60d8cab868282e526042ac2",
+    "README.md": "ee2431718fa3db8d9d0b6ef84888fdfb3b97756eea3a7dc6589c53925e14a162",
+    "apps/api/README.md": "399bab5efb982e2a4e6f965819da50f8191e076671cd119c82572314d72fb8d3",
+    "apps/api/src/signal_api/authentication.py": "6b29902ac03f94f3a3d4beaf0dfed7cab08199be1289eff8b7fe965210514fae",
+    "apps/api/src/signal_api/finding_contracts.py": "5f71a4955a5c0b9f1245123e40f908ac8c84afd3986f54172e11090dfe28400e",
+    "apps/api/src/signal_api/main.py": "af846793872bc570d5b9adfb1b14122c7f7535e3ba60a1844d601bfb03317258",
+    "apps/dashboard/README.md": "7b5809e73db777e6d277d0d1ac308f740e01017889766c2cd9ed7604d006dce9",
+    "apps/dashboard/app/actions/analyze-fixture/route.ts": "f09e2bf07786990eb53ae063386fcb54cc7185f8a76a120d8fb43608dc19102a",
+    "apps/dashboard/app/globals.css": "3e12c9974ad3b4916d35afbd994bdb86b58ca3b7cdd6a3381c053ee351c69240",
+    "apps/dashboard/components/dashboard-view.tsx": "76e00e86947ee2f811bc7d26a8c1f2eaf49577fca357aa42dde8951352847d1e",
+    "apps/dashboard/lib/dashboard-page.ts": "b33d93d0519013e83483507886e01a89c99542f0dded5a0a725dc043eca670e1",
+    "apps/dashboard/lib/finding-api.ts": "30d17d7d161ddd40bc37a204de61cdb79ee8f033bfe622a7c2228213777ca04a",
+    "apps/dashboard/tests/analyze-fixture-route.test.ts": "3d0321e80dcc5760adf44cef4144a3948065f3c845adc0356607177f5021013a",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "ce31cef1651e63ec9087cc85c8bf384bf54cf175dbf65191faa81c5b8bfb4b3f",
+    "apps/dashboard/tests/finding-api.test.ts": "9f912be4e24ad94841f80ea97235738fcd887fe758ad86ffe62afd11a47d7b6b",
+    "database/README.md": "f430dec99a9cdb3744e1e449e04ddc2f43092f3722f847fd2f1fe3846e80386c",
+    "database/migrations/versions/0030_audit_evidence_findings.py": "b8ad7ea9eed00110283b32f99f6a8545efc94ea19fce169d2cbe975fe1fe6ae5",
+    "database/migrations/versions/0030_audit_evidence_findings.sql": "53a70d166646217cd1808e5c7571184c67b90971b18d398183e1a25776a44a88",
+    "docs/README.md": "a1c213af90f1b44264cd09c2c814e71e39cfd239cd680136790127caf048ca6a",
+    "docs/adr/0054-prove-the-finding-pipeline-with-a-fixed-fixture.md": "d1fb875ecd91a9ab35c1986af1b61c52928b9a5f96368822ed92c68a00922861",
+    "docs/adr/README.md": "bb7b6b736d6f3a329301b5b72805040b25a69ce1f77299fbb2c058c60a552d81",
+    "docs/implementation/0054-durable-fixture-finding.md": "1cee66530d28c8d2720904f294953c23d846cc2b309a487445ff28523e77ac57",
+    "docs/implementation/core-v1-roadmap.md": "79e001ecc22c97bc2b24bf3880ec983ec7b6e47f049f866bb0ff557b281ab921",
+    "docs/implementation/status.md": "2e0718a854e8ab5fb06ae29a2f60448e0217a380961c657ced04dd860d684647",
+    "docs/runbooks/local-pilot.md": "60b5870b999e3e1f795e16e4834a4ebca3050962a51c108dc062475c07559df4",
+    "scripts/local_pilot.py": "4290fa66c1540e5134226aa42b51d52864b692efe8e69e4c53db33cfd9543167",
+    "services/control_plane/README.md": "c78c19109e3f290126b0782b3ac726fa5406cd4d176fc5972f35d4249ebf48e4",
+    "services/control_plane/src/signal_core/audit_findings.py": "a7c1591d34e442b7a8cfc613c8cb7dfad96729da72812c39e76b49327a5fa78b",
+    "tests/api/test_api.py": "db8116df1c01941c501d03bb5c89b058a442221bfdba32379bf288b7dae4ea73",
+    "tests/api/test_audit_findings_http.py": "5616607d2739501f9919369c30401fc9b43a607437e238854d41631ba88533d5",
+    "tests/control_plane/test_audit_findings.py": "cd45b5927e4acdeeed68b027100fce7c0e8690d5db2a49284c20297f4b00ac2e",
+    "tests/control_plane/test_database.py": "44527367dcddb7a37e96d8ee255919f40797626d36d4ef409a613e6879e5b679",
+    "tests/repository/dashboard.test.mjs": "725540ef0a79df1877f1fc89116598e801370fb40e0595cc8f1ff09171bc48a2"
+  },
+  "tests": [
+    {
+      "name": "real PostgreSQL regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 558,
+      "status": "PASS"
+    },
+    {
+      "name": "API regression",
+      "command": ".venv/bin/pytest -q tests/api",
+      "passed": 259,
+      "status": "PASS"
+    },
+    {
+      "name": "non-database Python regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/connectors tests/identity tests/tooling -q",
+      "passed": 760,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard regression",
+      "command": "npm run test:dashboard",
+      "passed": 93,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard types and production build",
+      "commands": [
+        "npm run typecheck:dashboard",
+        "npm run build:dashboard"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 22,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 22,
+      "markdown_files": 146,
+      "dashboard_tests": 93,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and formatting",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests"
+      ],
+      "formatted_files": 142,
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        "npm audit --omit=dev",
+        ".venv/bin/pip check"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 4,
+      "reviewed_false_positives": "four source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real disposable browser finding journey",
+      "command": "npm run pilot",
+      "steps": [
+        "OIDC sign-in through local Keycloak",
+        "organization selection and owner site onboarding",
+        "durable audit acceptance and terminal PostgreSQL/Temporal manifest",
+        "Pages fixture-analysis mutation through same-origin BFF and tenant CSRF",
+        "visible current finding with evidence UUID, SHA-256 digest, observation time, confidence, and configured-origin denial",
+        "exact browser retry preserved one visible finding and the same evidence identity"
+      ],
+      "browser_console_warnings_or_errors": 0,
+      "status": "PASS"
+    }
+  ],
+  "qualification_notes": [
+    "An initial full PostgreSQL run passed all seven new finding cases but observed one non-reproducing conflict in the pre-existing crawl-page recovery test. A second clean disposable run passed all 558 cases, including that recovery case."
+  ],
+  "database_contract_changed": true,
+  "api_authority_changed": true,
+  "workflow_contract_changed": false,
+  "browser_origin": "http://localhost:3000",
+  "browser_viewport": "1280x720",
+  "local_pilot_left_running_for_review": true,
+  "synthetic_identity_only": true,
+  "synthetic_work_result_only": true,
+  "synthetic_fixture_findings_produced": true,
+  "customer_identity": false,
+  "customer_data": false,
+  "customer_origin_network_access": false,
+  "customer_seo_findings_produced": false,
+  "external_write": false,
+  "production_authority": false
+}

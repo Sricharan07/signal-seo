@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "slice": "0131",
+  "date": "2026-10-03",
+  "classification": "security-critical",
+  "branch_base": "4f3aca5efdf31117f5794fe525b937eddd06e3c6",
+  "migration": "0084_structured_visibility",
+  "migration_parent": "0083",
+  "adrs": [
+    "0131",
+    "0132"
+  ],
+  "environment": "disposable PostgreSQL 17.11, real local Temporal, private Docker networks, OpenBao TLS; synthetic provider responses behind shared egress",
+  "positive_negative_failure": true,
+  "checks": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 886,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 38,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 23,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q --tb=short",
+      "passed": 1707,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database/migrations",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database/migrations",
+      "status": "PASS",
+      "checked_files": 426
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "status": "PASS"
+    },
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "repository_tests": 43,
+      "dashboard_tests": 158,
+      "markdown_files": 249,
+      "failed": 0,
+      "typecheck": "PASS",
+      "production_build": "PASS"
+    },
+    {
+      "command": "gitleaks git --pre-commit --staged --config .gitleaks.toml .",
+      "status": "PASS",
+      "leaks": 0
+    }
+  ],
+  "qualification_notes": [
+    "The initial API inventory test failed on the new bounded POST route; its explicit reviewed inventory was updated and the full suite passed.",
+    "Final flag hardening exposed a missing claim_review_required field in the new sealing fixture. The fixture now matches the production builder packet, and string false is explicitly rejected. Stable-source database and delivery qualification passed after hardening.",
+    "Private transport error messages are reduced to fixed safe codes. The subprocess SIGKILL test independently counts replacement dispatches and asserts zero; its exception sentinel alone is not the assertion. The final unsharded delivery suite passed with this test strengthening.",
+    "Removed the temporary fixture's generated Next dev type cache after it correctly failed typecheck; the full npm gate then passed.",
+    "A concurrent isolated-network lab attempt failed before tests with Docker CalledProcessError. The fixed-subnet labs were then run separately; the final page-attempt and crawler-network runs both passed. No unrelated container was stopped.",
+    "Desktop 1440x1000 and mobile 390x844 synthetic fixture inspected; viewport and document width matched on mobile; labelled history region focused and scrolled by keyboard. Temporary fixture and loopback server removed.",
+    "No accepted specification, existing migration, technical_structured_data manifest, A2 key set or gitleaks allowlist was widened.",
+    "gitleaks git --log-opts=main..HEAD --config .gitleaks.toml . is run after commit; its commit-range result is recorded in the PR qualification. Main's unchanged configuration is used for both scans."
+  ],
+  "money": {
+    "currency": "USD",
+    "unit": "millionth",
+    "default_monthly_cap": 1000000,
+    "default_cadence_days": 7,
+    "default_enabled": false,
+    "actual_spend": "unpriced",
+    "hold_policy": "All dispatched holds, including successful unpriced calls and unknown outcomes, carry forward across UTC months. No settlement or automatic release. Reviewed provider monetary ceilings required before configuration."
+  },
+  "live_openai": "NOT_EXECUTED",
+  "live_perplexity": "NOT_EXECUTED",
+  "live_gemini": "NOT_EXECUTED",
+  "live_customer_repository_build": "NOT_EXECUTED",
+  "live_pr_delivery": "NOT_EXECUTED",
+  "live_effect_measurement": "NOT_EXECUTED",
+  "deployed_scheduler_composition": "NOT_EXECUTED",
+  "production_authority": false,
+  "customer_credentials_used": false,
+  "cleanup": "Own qualification resources cleaned by labs; temporary UI server stopped.",
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 34,
+    "migration": "0084",
+    "down_revision": "0083",
+    "app_tables": 164,
+    "fast_checks": {
+      "python": 2639,
+      "database": 1095,
+      "repository": 46,
+      "dashboard": 246
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false,
+    "integration_fix": {
+      "reason": "Preserve built character offsets alongside static byte offsets; resolve grounded dispatch by its exact reviewed release rather than the provenance finding; retain closed scheduling rejection",
+      "release_binding_regressions": 5,
+      "authority_enlarged": false
+    },
+    "owned_lab": {
+      "command": "scripts/run-candidate-sandbox-tests.py",
+      "passed": 32,
+      "status": "PASS",
+      "cleanup": "confirmed"
+    }
+  }
+}

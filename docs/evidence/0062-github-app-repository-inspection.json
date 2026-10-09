@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-21T03:09:56Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "source_sha256": {
+    "CHANGELOG.md": "2115e7cfd7ebaebecb58af481165751b12d69db0a7da4632fc2080f78b97c543",
+    "docs/README.md": "bb929acf947cc941f85fee4e39227917b7702bbb60a6ee83d215fcb25a2d3722",
+    "docs/adr/0059-downscope-github-app-repository-inspection.md": "d2bf9c831fa912f187e02e4393de3061496b7a908f7f875943703a786e988f27",
+    "docs/adr/README.md": "d942d14f4a6889fe0fb93c887bdbbf03388d1a0ac647280a4b7e87af16ea9cc0",
+    "docs/implementation/0062-github-app-repository-inspection.md": "7a82d861273a74051c26f4bf6d43baf5527f49dda0a47cac1d050860ede25c78",
+    "docs/implementation/core-v1-roadmap.md": "548ac75d1355c647ab32b66501949ea0cf8fe785e4a517f6a7dbfab3da71ee50",
+    "docs/implementation/status.md": "bb3060a8822ac5cbdf80e0686f1dd0b17bd6eaa293660a188e87076e2df77e5d",
+    "services/control_plane/README.md": "ca21fc66a5870057b746be497492aa0350c30077d7592f00ca5e118fb897bcbf",
+    "services/control_plane/src/signal_core/github_app.py": "633171d7412abda420796565cc1e196e2e262ea1617523da923ac7d496aa339a",
+    "tests/connectors/test_github_app.py": "62953f6b5b95d9c87ed9d242799cbe6ccaa52d3e8e611223c60b2523169309cb",
+    "tests/repository/github-connector.test.mjs": "5cb509f4f67f784b4d429967305c08407994b1bce816a7b7892e322ea2615bbd"
+  },
+  "tests": [
+    {
+      "name": "focused GitHub App adapter",
+      "command": "PYTHONPATH=services/control_plane/src .venv/bin/pytest -q tests/connectors/test_github_app.py",
+      "passed": 34,
+      "status": "PASS"
+    },
+    {
+      "name": "connector regression",
+      "command": "PYTHONPATH=services/control_plane/src .venv/bin/pytest -q tests/connectors",
+      "passed": 59,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and format",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests"
+      ],
+      "formatted_files": 155,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 23,
+      "markdown_files": 159,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "Python dependency validation",
+      "command": ".venv/bin/pip check",
+      "status": "PASS"
+    },
+    {
+      "name": "production dependency audit",
+      "command": "npm audit --omit=dev",
+      "vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "command": "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+      "findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "live negative GitHub authorization boundary",
+      "provider": "api.github.com",
+      "credential": "generated non-App RSA key",
+      "observed_code": "GITHUB_AUTHORIZATION_REJECTED",
+      "retryable": false,
+      "authorized_provider_success": false,
+      "status": "PASS"
+    }
+  ],
+  "authorized_provider_success": false,
+  "durable_repository_binding": false,
+  "repository_candidate_enabled": false,
+  "external_write": false,
+  "production_authority": false
+}

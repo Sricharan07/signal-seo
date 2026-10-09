@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "classification": "security-critical",
+  "base_commit": "f611c42",
+  "branch": "slice/0149-owner-paths",
+  "migration": "0093",
+  "down_revision": "0092",
+  "app_tables": 177,
+  "recorded_at": "2026-10-04T15:15:58Z",
+  "qualification_status": "LOCAL_REQUESTED_CHECKS_PASS",
+  "cleanup": "completed; invocation-owned labs and temporary SSR preview stopped",
+  "lab_source_hashes": "Database, delivery, OpenBao and crawler-network receipt source hashes match the frozen source",
+  "production_authority": false,
+  "customer_data_accessed": false,
+  "synthetic_credentials_only": true,
+  "full_gate": "NOT_EXECUTED; merge train owns the full gate",
+  "source_sha256": {
+    "database/migrations/versions/0093_owner_paths.sql": "6988ccb4fa04bae6b0fc4491680e2970d376f7ddb5abcf35469cd2b4b9f223b8",
+    "services/control_plane/src/signal_core/github_pr_extension.py": "17fee8e47ff3398f350b607e7d268f956b9a7f217ca90e27a4c9014f827f1e14",
+    "tests/control_plane/test_owner_paths.py": "605131a9c1b808e55892b703938347532baf29bc7d01dfbd7749429c88c13233",
+    "apps/api/src/signal_api/owner_connector_http.py": "7fb9499ed990192a213e10f75f3f5dd9d58e3a348b964f4521db30180525daf7"
+  },
+  "commands": [
+    { "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q", "passed": 2871, "failed": 0, "warnings": 2, "log": ".runtime/0149-fast-final.log" },
+    { "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "status": "PASS" },
+    { "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests", "status": "PASS", "checked_files": 635 },
+    { "command": "npm test", "passed": 323, "failed": 0, "repository_tests": 46, "dashboard_tests": 277, "checked_markdown_files": 327, "typecheck": "PASS", "build": "PASS", "log": ".runtime/0149-npm-final.log" },
+    { "command": ".venv/bin/python scripts/run-database-tests.py --shards 3", "passed": 1239, "failed": 0, "receipt": ".runtime/database-tests/latest.json", "log": ".runtime/0149-database-final.log" },
+    { "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py", "passed": 115, "failed": 0, "full_suite": true, "receipt": ".runtime/autonomy-delivery/latest.json", "log": ".runtime/0149-delivery-final.log" },
+    { "command": ".venv/bin/python scripts/run-authority-journal-tests.py", "passed": 17, "failed": 0, "log": ".runtime/0149-journal-final.log" },
+    { "command": ".venv/bin/python scripts/run-crawler-network-tests.py", "passed": 14, "failed": 0, "receipt": ".runtime/crawler-network/latest.json", "log": ".runtime/0149-crawler-network.log" },
+    { "command": ".venv/bin/python scripts/openbao_lab.py", "passed": 45, "failed": 0, "receipt": ".runtime/openbao-tests/latest.json" }
+  ],
+  "focused_owner_database": { "passed": 13, "failed": 0, "log": ".runtime/0149-owner-focused.log", "qualification": "Supplemental disposable PostgreSQL run; repository database lab is required separately" },
+  "security_qualification": {
+    "positive": "Composed owner HTTP prepare/independent finish/scoped read/revoke; stored weekly pause/resume; owner schedule rendering; acknowledged journal restriction and exact deny replay",
+    "negative": "Non-owner, primary/stale/future MFA, unverified site, missing/stale binding, cross-tenant/site, forged intent/binding/idempotency/provider assertion and replayed finish; invalid browser mutation proof; closed permission/protected-path/write contracts remain tested",
+    "failure": "Provider and credential failures do not grant; unreadable loaded state cannot become granted; unknown mutation responses require refresh; pending/repeated revoke remains locally restricted until a verified independent receipt; restored observed extensions are denied"
+  },
+  "visual_qualification": {
+    "method": "Native Chrome screenshots of loopback-only synthetic SSR fixture; desktop and 390x844 mobile",
+    "checks": "PR grant scope, text wrapping, Revoke and ink secondary Autonomy pause control fit without overlap",
+    "limits": "Not hydrated browser end-to-end or live provider evidence. Playwright not installed; no dependency added.",
+    "new_detector_findings": 0,
+    "retained_css_findings": 66,
+    "detector_review": "Component scan is empty. CSS advisories/warnings describe inherited source or the existing shared button tokens; none is introduced by this diff. No unrelated styling or design document changes made."
+  },
+  "secret_scans": {
+    "configuration": "Exact main:.gitleaks.toml; no allowlist changes",
+    "staged_command": "gitleaks git --staged --config /tmp/signal-0149-main-gitleaks.toml --redact",
+    "status": "PASS; zero staged leaks; scan repeated before commit"
+  },
+  "excluded_runs": [
+    "Database run-vzekd3mh: all shards passed but source changed during qualification; not qualified",
+    "Database run-w9mlxegb: 1226 passed, 13 setup errors in the new MFA fixture; fixture corrected without changing session constraints",
+    "Focused owner run: 12 passed, 1 failed while identity/tenant auth timestamps differed; synchronized both layers to exercise actual freshness denial",
+    "Mutable-source/interrupted database and delivery runs: excluded, invocation-owned cleanup attempted"
+  ],
+  "not_executed": [
+    "Live GitHub App permission change and real owner grant/revoke",
+    "Real GitHub PR creation or customer repository access",
+    "Deployed weekly controls and visibility scheduling",
+    "Production composition, production authority and R1-R4 release"
+  ]
+}

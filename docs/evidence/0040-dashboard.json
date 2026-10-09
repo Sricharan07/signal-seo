@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-09T19:49:00Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "framework": "Next.js 16.3.4",
+  "source_sha256": {
+    "package.json": "50f6ccf7a6a7f19d26fe33dfd3e8555c9eb999c323df42024c59b7b8784c71b2",
+    "package-lock.json": "eea339ef77963fd72c11e01e006ca06dadd767140f0fc768c92dff3fdc5c06ac",
+    "apps/dashboard/package.json": "5e48a435fde1d1d7e23931014b33323800aa8622b4d0af7d39c927666bf03b96",
+    "apps/dashboard/next.config.ts": "09aa5b8ccef17c1c032b5df2fd6f3918429d472c7b883350c5f84fb6f7d38c58",
+    "apps/dashboard/app/layout.tsx": "7ee29072505231711dd960cfcc0be339afbacca9e8da8e2fd633f790c8c3c218",
+    "apps/dashboard/app/page.tsx": "982074bcb3113f92ab112a735d52768c38c83f0ecce7a4969cab2f8079562d2f",
+    "apps/dashboard/app/globals.css": "b42d30a644fd341aa0d577a1c0560cdf6458566722ae3138d46394b7403ccb7e",
+    "apps/dashboard/components/dashboard-view.tsx": "b665d952d5a33c90d7183781bb961a171e69a24048422c15187dd59c339b73e2",
+    "dashboard-server-client": "23ac5691c40483269909b33d074e133439ed52d836ad0215b42ab6131b312b6b",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "b929cc482dfa20bdf65eaa68f735705f38071419400b2183445571c6c20bb27e",
+    "apps/dashboard/tests/next-config.test.ts": "563d99594f9615caad9e7d9d4e8dd1fda754adcb45b4d2a1169f4d5c534fa01c",
+    "dashboard-server-client-tests": "bbf3f07e5d9c7c9250f55a95cd49bd21999ca3431f61244c1a2e6ab542722110",
+    "tests/repository/dashboard.test.mjs": "d0b333bc96407eef2ae6978544dbad5e22a07badfb333bda24bfbd8b24e7e8ec"
+  },
+  "tests": [
+    {
+      "name": "dashboard unit and rendering contracts",
+      "command": "npm run test:dashboard",
+      "passed": 9,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard TypeScript contract",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production build",
+      "command": "npm run build:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 19,
+      "status": "PASS"
+    },
+    {
+      "name": "unchanged API identity and tooling regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+      "passed": 624,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "markdown_files": 112,
+      "status": "PASS"
+    },
+    {
+      "name": "production dependency audit",
+      "command": "npm audit --omit=dev",
+      "vulnerabilities": 0,
+      "status": "PASS"
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "connected not-ready desktop overview",
+      "viewport": "1440x900",
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "connected not-ready mobile overview and navigation disclosure",
+      "viewport": "390x844",
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "API unavailable mobile state",
+      "viewport": "390x844",
+      "fabricated_readiness": false,
+      "status": "PASS"
+    }
+  ],
+  "remote_ci": {
+    "run_id": 34397200180,
+    "status": "NOT_EXECUTED",
+    "reason": "GitHub rejected both jobs before checkout because account payments or the Actions spending limit require attention",
+    "code_failure_observed": false
+  },
+  "customer_data": false,
+  "provider_credentials": false,
+  "production_authority": false
+}

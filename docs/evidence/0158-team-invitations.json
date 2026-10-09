@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "slice": "0158",
+  "classification": "security-critical",
+  "migration": "0096",
+  "down_revision": "0095",
+  "merge_train": "train 5; slice qualified as 0090 after 0089",
+  "qualification": "LOCAL_CODE_AND_PROVIDER_LABS_PASSED_NOT_DEPLOYED",
+  "production_authority": false,
+  "live_fresh_browser": "NOT_EXECUTED",
+  "invitation_email": "UNAVAILABLE_EXISTING_BOUNDARY_NOT_COMPATIBLE",
+  "revocation": "UNAVAILABLE_FOUNDATIONS_DO_NOT_SUPPORT",
+  "revocation_superseded_by": "0159-invitation-revocation.json; original 0158 evidence preserved",
+  "full_gate": "NOT_EXECUTED_OWNER_REQUEST",
+  "temporal": "NOT_STARTED",
+  "source_sha256": {
+    "database/migrations/versions/0096_team_invitations.sql": "94ed595d5989f3c3232b82677fc398d18272cf50ba833312eb1176365bcd0df6",
+    "services/control_plane/src/signal_core/invitations.py": "9140eca996cccf4776f734846a73b8a35007f2917ba1f04156a1715de630f053",
+    "services/control_plane/src/signal_core/team_invitations.py": "b7b26b734b34683ae7763218516dd160f9bd0bea9a21df3006925d1576a23ac6",
+    "apps/api/src/signal_api/team_http.py": "e14f9a5a76dcd1c59fcbe64407b21efa217b00cea8bec4a21b379c0f579ebe70",
+    "apps/api/src/signal_api/authentication.py": "30cde23d0404a3942278c5330be1efb836e69ad84ac137164dcf67f05877ed7e",
+    "apps/dashboard/lib/browser-auth.ts": "249d68131b1cb9aa66c9549c8d07a4c415831d706d1f901066c29590e9d8ef8d",
+    "apps/dashboard/lib/team-api.ts": "e7b0b264967739c23581eebdd1e968bf2dc74b6aa128dccee1052db39f4f2a3a",
+    "apps/dashboard/app/auth/invitations/accept/route.ts": "42e71848b1a6497f8a9cc7a56bf9fc2bfdee1f11886a3d71ac69f548694fc872",
+    "apps/dashboard/tests/team-invitations.test.tsx": "35601156adf23c8900d22274876db21d6c4b5d7091e936434f1ec5ef7667dfe8",
+    "tests/control_plane/test_team_invitations.py": "8c90137ba1932f5765586d43d3f1c81ed27e3339620d58c5d1e06591c6905787"
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "result": "PASS",
+      "passed": 2893,
+      "new_team_api_cases": 24,
+      "warnings": 2,
+      "report": ".runtime/0158-pytest.log",
+      "report_sha256": "796cbdcd36d4ae15c2b5e03f0afc2ef3f95e06b73649e58dc775bab833eb0d65"
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "result": "PASS",
+      "files": 639
+    },
+    {
+      "command": "npm test",
+      "result": "PASS",
+      "repository_passed": 46,
+      "dashboard_passed": 294,
+      "new_team_dashboard_cases": 25,
+      "typecheck": "PASS",
+      "production_build": "PASS",
+      "design_guards": "UNCHANGED_PASS",
+      "report": ".runtime/0158-npm-test-final.log",
+      "report_sha256": "7ae60e2d306d9e792d4265438b3111ab5178d775067419d12a490fe95f045307"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-team-invitation-tests.py",
+      "result": "PASS",
+      "passed": 127,
+      "new_team_postgresql_cases": 34,
+      "database": "17.11",
+      "cleanup": "completed",
+      "recorded_at": "2026-10-04T15:27:11.851557+00:00",
+      "report": ".runtime/team-invitation-tests/latest.json",
+      "report_sha256": "b5bc7b7e7302a103cf0ce6c29fb64bab5e398df1428572f424d849752db4337c"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py --shards 3",
+      "result": "PASS",
+      "passed": 1260,
+      "database": "17.11",
+      "cleanup": "completed",
+      "source_hashes_stable": true,
+      "recorded_at": "2026-10-04T15:33:52.696784+00:00",
+      "report": ".runtime/database-tests/latest.json",
+      "report_sha256": "8666629a9d5b560cb4b8290a9051e57aab273ed3f8b21a68a9158d6720ec0bbd"
+    },
+    {
+      "command": ".venv/bin/python scripts/keycloak_lab.py",
+      "result": "PASS",
+      "passed": 5,
+      "cleanup": "completed",
+      "recorded_at": "2026-10-04T15:13:01.894678+00:00",
+      "report": ".runtime/keycloak-tests/latest.json",
+      "report_sha256": "af038b96f7875c1666443695df113d054ba47ac92607751e39482c75ce7615d5"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "result": "PASS",
+      "passed": 45,
+      "cleanup": "completed",
+      "recorded_at": "2026-10-04T15:17:08.431778+00:00",
+      "report": ".runtime/openbao-tests/latest.json",
+      "report_sha256": "16b2577fc4777386d777dc7260e65c92e5265a87e7ab1f2d6a16d79ab02ac74b"
+    }
+  ],
+  "safety_coverage": {
+    "positive": ["five supported roles", "identity-role function-only issuance", "hash-free history", "atomic acceptance and site membership", "proof-cookie isolation", "exact tenant/site Home selection"],
+    "negative": ["non-owner", "stale/future/primary MFA", "unverified site", "other tenant/site", "role escalation", "forged/replayed tokens", "different verified identity", "expired audited invitation", "CSRF and browser proof", "account non-enumeration"],
+    "failure": ["storage/provider unavailable", "malformed and unbounded responses", "uncertain issuance/acceptance", "audit collision rollback", "concurrent session/identity/user revocation locks"]
+  },
+  "superseded_runs": [
+    {"report": ".runtime/database-tests/run-w5mrb6vg", "result": "NOT_QUALIFICATION_SOURCE_CHANGED", "notes": "Obsolete privilege/fixture failures and one unrelated Telegram install failure; final complete run passed without weakening gates."},
+    {"report": ".runtime/database-tests/run-hme_w1bw", "result": "INTERRUPTED_NOT_QUALIFICATION", "notes": "Interrupted only invocation-owned lab to finish session/identity/user locking; helper attempted own cleanup."}
+  ],
+  "design_review": {
+    "static_detector": "NO_FINDINGS",
+    "reviewer_disposition": "recapture",
+    "scored_fixes": "reload and invalid-name recovery resolved",
+    "native_desktop_acceptance": "INSPECTED_NO_SAVED_CAPTURE",
+    "mobile_and_owner_team_captures": "NOT_EXECUTED",
+    "hydrated_fragment_removal": "UNQUALIFIED",
+    "design_system": "EXISTING_FILES_PRESERVED"
+  },
+  "staged_secret_scan": {
+    "result": "PASS_NO_LEAKS",
+    "command": "gitleaks git --staged --config .runtime/0158-main-gitleaks.toml --redact --no-banner .",
+    "config_from": "origin/main:856a9963c6350891d4a0162b69965229683bb632:.gitleaks.toml",
+    "config_sha256": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346"
+  }
+}

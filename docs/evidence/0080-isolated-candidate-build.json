@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29",
+  "classification": "security-critical: untrusted repository execution, owner/site authority, connector egress",
+  "tests": [
+    {
+      "name": "real PostgreSQL authority, receipt, failure, rollback, and regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "provider": "PostgreSQL 17.11",
+      "passed": 635,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "independent authority-restriction and recipe-revocation journal",
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 9,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real isolated candidate container and hostile build cases",
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "provider": "Docker with pinned Node 22.18.0 image",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "deterministic Temporal workflow regression",
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "composed workflow consumer with PostgreSQL and Temporal",
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "durable page attempt with real crawler network",
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "shared-egress network regression",
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "workflow consumer image packaging regression",
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "real OpenBao synthetic GitHub App secret and policy regression",
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "provider": "OpenBao 2.6.1",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "GitHub checkout, fixed-route transport, build policy, and live-command contract",
+      "command": "PYTHONPATH=services/control_plane/src .venv/bin/pytest -q tests/connectors/test_github_checkout.py tests/connectors/test_github_app.py tests/connectors/test_github_read_binding.py tests/connectors/test_github_shared_egress_transport.py tests/tooling/test_candidate_build.py tests/tooling/test_candidate_build_qualification.py",
+      "passed": 70,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "API, identity, and tooling regression",
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling",
+      "passed": 903,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint, format, and dependency validation",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests database/migrations",
+        ".venv/bin/ruff format --check apps services scripts tests database/migrations",
+        ".venv/bin/python -m pip check"
+      ],
+      "formatted_files": 243,
+      "status": "PASS"
+    },
+    {
+      "name": "root repository and dashboard quality gate",
+      "command": "npm test",
+      "repository_tests": 24,
+      "markdown_files": 184,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "history-scoped secret scan with repository allowlist",
+      "command": "gitleaks git --log-opts=\"5cf0b02..HEAD\" .",
+      "commits_scanned": 1,
+      "status": "PASS",
+      "leaks": 0
+    }
+  ],
+  "rebase_resolutions": [
+    "Migration 0043 PL/pgSQL ROWTYPE escaped as %%ROWTYPE for psycopg migration execution.",
+    "Workflow image lab now selects its own six image cases; the ten candidate container cases run through their dedicated lab.",
+    "The rebase retained the authority-journal and recipe-registry migrations at 0041 and 0042, with candidate builds at 0043 and down_revision 0042.",
+    "The first root quality gate found four ignored, byte-identical duplicate Next.js generated type files. They were preserved under .runtime/dashboard-next-duplicate-types-0080; the unchanged gate then passed."
+  ],
+  "dedicated_github_app_live_checkout_and_customer_build": "NOT_EXECUTED",
+  "production_runner_isolation": "NOT_EXECUTED",
+  "external_repository_write": false,
+  "release_admission": false
+}

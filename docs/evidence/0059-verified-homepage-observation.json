@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-21T01:51:59Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "23a65e00613582dfbb6caae5b29b702c898c10afd955f963f066b792f4cd19ba",
+    "README.md": "8b867a508801f53c29ec3558b033925bd218a2d51eea37d442fd8f33a2b12e68",
+    "apps/api/src/signal_api/authentication.py": "b35af17e9e6d67d906d35f5d168893f52314b59feb485e2377678dcc4af45ba9",
+    "apps/api/src/signal_api/finding_contracts.py": "3f71301153494bf6cadcf9ac441a53cdd66461675deb8575ae74d61a072b5e9c",
+    "apps/api/src/signal_api/main.py": "acca21b60ba1c5a30c57eb817ee8e67bf5cc49af6318754700dff5d306ee440f",
+    "apps/dashboard/app/actions/analyze-homepage/route.ts": "8381e7177665e0e7939b1fd9b2bd46472c7d33891e5c70c1e9df52f057d79281",
+    "apps/dashboard/components/dashboard-view.tsx": "dc51d15c5aac334232f4e4a9f6222621198d909f5917d1c97af9d62ad0cba82f",
+    "apps/dashboard/lib/dashboard-page.ts": "777b6e8137287a158153c956f0359122370f8ccc9363eb93cd491760bcda269f",
+    "apps/dashboard/lib/finding-api.ts": "f7c2135cfde47eca06b615f7d0e8e9d64ece93de53dd4c93ee0f7aa9029f3693",
+    "apps/dashboard/tests/analyze-homepage-route.test.ts": "70b4045f0b848e6d66bac8f29bff4e0e10741988d3f529d11df9e97a0422d779",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "8a1634175ad127ef34e680f75555605de533c3b25ddd511ffb5536f6caf0f735",
+    "apps/dashboard/tests/finding-api.test.ts": "c41e1582fc3706d023fa56562044cc1a62351e7210cf7e915ec0fb8d67c2114e",
+    "database/migrations/versions/0033_verified_homepage_observations.py": "cd7550b6fd8efa43ef69770d0840be36002a4663c00dc50449aedeed58b227e1",
+    "database/migrations/versions/0033_verified_homepage_observations.sql": "053032b436043c358ec6e97673a87868f9727a3c8ee3ecd3d00c4e96c2f7ac10",
+    "docs/adr/0057-bind-homepage-evidence-to-current-owner-proof.md": "db8fadc781283de517840214368f31ae1165e76c9d0e4891568a97e38d1db2ab",
+    "docs/implementation/0059-verified-homepage-observation.md": "4ce4cd661066c88489d020a86e7a8e5ad89e206afe9c8408b7637bce9ba3510f",
+    "docs/implementation/status.md": "bcff80de908e8ac35719395e5e8fb2be5d3fa22c2de82874656b3528e67d8a47",
+    "services/control_plane/src/signal_core/audit_findings.py": "c857207920b2504a5c422e02a49019f9bb004403acc2fc1f097bfd5680d32bf0",
+    "services/control_plane/src/signal_core/page_observations.py": "b324adf0a34959cdc4c0ac2996b034ebd30d2bbd5846aa597d2ca18e4485d12f",
+    "tests/api/test_audit_findings_http.py": "9834e383a9f03e3d3ce28992187d7adf505749555cc2dc36aed5cb05bdf60806",
+    "tests/control_plane/test_page_observations.py": "f0ecfdeb2a33fbab95438ed53092e976261a8c6f16123634fae2cd75e07ec7b6",
+    "tests/tooling/test_page_observations.py": "87f5953dd0c0f5fea2a895f50286c256e33364baf4faa8fa4801d2493e7bcbf7"
+  },
+  "tests": [
+    {
+      "name": "real PostgreSQL regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 573,
+      "status": "PASS"
+    },
+    {
+      "name": "API and tooling regression",
+      "command": ".venv/bin/pytest -q tests/api tests/tooling",
+      "passed": 661,
+      "status": "PASS"
+    },
+    {
+      "name": "focused page observation contracts",
+      "command": ".venv/bin/pytest -q tests/api/test_audit_findings_http.py tests/tooling/test_page_observations.py",
+      "passed": 29,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 22,
+      "markdown_files": 154,
+      "dashboard_tests": 105,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint, formatting, and dependency checks",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests",
+        ".venv/bin/pip check"
+      ],
+      "formatted_files": 153,
+      "status": "PASS"
+    },
+    {
+      "name": "production dependency audit",
+      "command": "npm audit --omit=dev",
+      "vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 3,
+      "reviewed_false_positives": "three source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    }
+  ],
+  "database_contract_changed": true,
+  "api_authority_changed": true,
+  "external_network_read_enabled": "owner-initiated GET of the exact verified homepage in the disposable pilot",
+  "customer_crawl_enabled": false,
+  "external_write": false,
+  "production_authority": false
+}

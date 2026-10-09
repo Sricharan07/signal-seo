@@ -1,0 +1,150 @@
+name: signal-integration-identity
+
+services:
+  database:
+    image: postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
+    pull_policy: never
+    user: "70:70"
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    memswap_limit: 512m
+    cpus: 1.0
+    pids_limit: 128
+    ulimits:
+      core: 0
+    restart: unless-stopped
+    stop_grace_period: 30s
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/signal-secrets/postgres-password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=peer
+    command: [postgres, -c, ssl=on, -c, ssl_cert_file=/run/signal-tls/database.pem, -c, ssl_key_file=/run/signal-tls/database-key.pem, -c, max_connections=50, -c, shared_buffers=128MB, -c, password_encryption=scram-sha-256]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=16m,mode=1777
+      - /var/run/postgresql:rw,noexec,nosuid,nodev,size=16m,uid=70,gid=70,mode=0700
+    healthcheck:
+      test: [CMD, pg_isready, -U, postgres, -d, keycloak]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - database:/var/lib/postgresql/data
+      - type: bind
+        source: ./initialize-database.sh
+        target: /docker-entrypoint-initdb.d/initialize-database.sh
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./pg_hba.conf
+        target: /run/signal-config/pg_hba.conf
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: /run/signal-identity/database
+        target: /run/signal-secrets
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./tls/database
+        target: /run/signal-tls
+        read_only: true
+        bind:
+          create_host_path: false
+    networks: [database]
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+
+  identity:
+    image: ${SIGNAL_IDENTITY_IMAGE:?Run the identity installer to bind the built image ID}
+    pull_policy: never
+    build: .
+    user: "1000:1000"
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1024m
+    memswap_limit: 1024m
+    cpus: 1.5
+    pids_limit: 256
+    ulimits:
+      core: 0
+    restart: unless-stopped
+    stop_grace_period: 30s
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://database:5432/keycloak?sslmode=verify-full&sslrootcert=/run/signal-tls/ca.pem
+      KC_DB_USERNAME: signal_keycloak
+      KC_HOSTNAME: ${SIGNAL_IDENTITY_HOSTNAME:?Protected identity hostname required}
+      KC_HOSTNAME_STRICT: "true"
+      KC_HTTP_RELATIVE_PATH: /identity
+      KC_HTTPS_CERTIFICATE_FILE: /run/signal-tls/identity.pem
+      KC_HTTPS_CERTIFICATE_KEY_FILE: /run/signal-tls/identity-key.pem
+      KC_HTTP_ENABLED: "false"
+      KC_HTTP_MANAGEMENT_RELATIVE_PATH: /management
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "false"
+      KC_VAULT_DIR: /run/signal-secrets/vault
+      KC_CACHE: local
+      KC_DB_POOL_INITIAL_SIZE: "2"
+      KC_DB_POOL_MIN_SIZE: "2"
+      KC_DB_POOL_MAX_SIZE: "10"
+      KC_LOG_LEVEL: WARN
+      JAVA_OPTS_KC_HEAP: -Xms128m -Xmx640m
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m,mode=1777
+      - /opt/keycloak/data:rw,nosuid,nodev,size=64m,uid=1000,gid=1000,mode=0700
+    ports:
+      - "127.0.0.1:8280:8443"
+    volumes:
+      - type: bind
+        source: /run/signal-identity/keycloak
+        target: /run/signal-secrets
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./tls/identity
+        target: /run/signal-tls
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: /run/signal-identity/keycloak/realm.json
+        target: /opt/keycloak/data/import/realm.json
+        read_only: true
+        bind:
+          create_host_path: false
+    networks: [database, identity, application_access]
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+
+networks:
+  application_access:
+    external: true
+    name: signal-test-oidc
+  database:
+    internal: true
+  identity:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: sig-identity
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
+
+volumes:
+  database:

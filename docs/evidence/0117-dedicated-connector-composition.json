@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "slice": "0117",
+  "classification": "security-critical",
+  "production_authority": false,
+  "api_identity_tooling": {"passed": 1407},
+  "postgresql_regression": {"passed": 858, "failed": 0, "elapsed_seconds": 420.65},
+  "disposable_openbao": {
+    "status": "PASS",
+    "synthetic_data_only": true,
+    "one_use_workload_login": "PASS",
+    "periodic_300_second_tokens": "PASS",
+    "actual_clients_and_key_reader": "PASS",
+    "synthetic_token_verifier_and_refresh_lifecycle": "PASS",
+    "cross_provider_and_authority_denials": "PASS",
+    "seal_unseal": "PASS",
+    "initial_post_unseal_result": "HTTP_307_LEADERSHIP_NOT_READY",
+    "repair": "wait_for_observed_active_health_no_redirect_following",
+    "workload_and_root_revocation_denied": "PASS",
+    "cleanup": "completed"
+  },
+  "mac_numeric_peer_public_robots_only": [
+    {"origin": "https://slack.com", "status": 200, "media_type": "text/plain", "exact_oauth_target_allowed": true, "sha256": "5cf267512c33523c02640ab26da932e2f6ccd78d88ff17cd8a540630d03104c6"},
+    {"origin": "https://api.github.com", "status": 404, "media_type": "application/json"},
+    {"origin": "https://oauth2.googleapis.com", "status": 404, "media_type": "text/html"},
+    {"origin": "https://www.googleapis.com", "status": 404, "media_type": "text/html"}
+  ],
+  "repository_checks": {"repository_cases": 39, "dashboard_cases": 148, "typescript": "PASS", "next_build": "PASS", "ruff": "PASS", "diff_check": "PASS"},
+  "live_provisioning": "NOT_EXECUTED",
+  "deployed_api": "0115",
+  "deployed_database": "0060",
+  "old_narrow_operator": "EXPIRED_HTTP_403",
+  "provider_connection_qualification": "NOT_EXECUTED",
+  "owner_integration_request_complete": false
+}

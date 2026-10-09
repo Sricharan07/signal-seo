@@ -1,0 +1,16 @@
+**
+!package.json
+!package-lock.json
+!apps/
+!apps/dashboard/
+!apps/dashboard/**
+!deploy/
+!deploy/integration-test/
+!deploy/integration-test/application/
+!deploy/integration-test/application/dashboard-server.mjs
+!deploy/integration-test/application/dashboard-server-options.mjs
+**/node_modules
+**/.next
+**/.env*
+**/*.pem
+**/._*

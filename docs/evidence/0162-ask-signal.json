@@ -1,0 +1,37 @@
+{
+  "slice": "0162",
+  "classification": "security-critical",
+  "scope": "backend only; dashboard is reviewer-owned",
+  "base": "1923beb",
+  "migration": {"revision": "0099", "down_revision": "0098", "app_tables": 183, "merge_train": "train 5; slice qualified after 0092 with 181 app tables"},
+  "focused": [
+    {"command": ".venv/bin/python -m pytest tests/api/test_ask_signal.py tests/connectors/test_ask_signal_domain.py -q", "passed": 39, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-ask-signal-tests.py", "passed": 26, "failed": 0}
+  ],
+  "final_qualification": [
+    {"command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q", "passed": 2997, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-database-tests.py --shards 3", "passed": 1348, "failed": 0, "seconds": 589.622, "receipt": ".runtime/database-tests/latest.json"},
+    {"command": ".venv/bin/ruff check apps/api/src services/control_plane/src tests scripts database", "status": "PASS"},
+    {"command": ".venv/bin/ruff format --check apps/api/src services/control_plane/src tests scripts database", "status": "PASS", "files": 654},
+    {"command": "npm test", "repository_passed": 46, "dashboard_passed": 278, "failed": 0, "markdown_files": 336, "typecheck": "PASS", "build": "PASS"}
+  ],
+  "coverage": {
+    "positive": ["grounded answer with citations", "idempotent replay", "memory source provenance", "memory in a later conversation", "forget then absent from packet", "FTS plus recency ranking", "repeated summary refresh", "summary without a model", "personal summary citation", "physical retention cleanup"],
+    "negative": ["cross tenant", "cross site", "another user/viewer conversation", "revoked membership/site access", "recovery generation", "direct runtime table access", "injected record and memory data", "model execution and href fields", "unsafe non-relative href", "oversized message", "budget role restriction", "conflicting replay"],
+    "failure": ["model unconfigured", "budget exhausted", "unknown outcome retains hold and does not retry", "malformed model output", "database unavailable", "forget during model I/O", "forget before final commit", "concurrent replay receives conflict until terminal reply", "lost connection seals unknown without dispatch", "failed reply commit rolls back remembered memory"]
+  },
+  "contract_deviations": ["Explicit preference/context memory additionally requires conservative personal-context classification; ambiguous, business-like or authority-like text returns 409."],
+  "answer_limit": "Extractive approved-record excerpts only; unsupported prose becomes no_record.",
+  "memory": {"retention_days": 365, "turns": 12, "retrieved_items": 10, "proposed_items_per_turn": 2, "atomic_remembered_reply": true, "summary_chars": 500, "summary_refresh": "turn 13 and every subsequent 12 turns; also without a model", "summary_contents": "eligible personal owner quotes and opaque cited-record references only", "forgetting": "immutable audit; retrieval/history/summary exclusion; I/O and final-commit rechecks"},
+  "retention": "Expiry enforced on reads; due private scopes pruned on access; scheduler-only bounded purge port implemented. Deployment timer NOT_EXECUTED.",
+  "authority": "Typed server-built links only. No approval, grant, cap, pause/resume, revoke, research dispatch, merge or deployment authority exercised. Business statements use existing propose-only Business Brain port.",
+  "full_gate": {"status": "DEFERRED_TO_MERGE_TRAIN", "reason": "Owner directed fast checks and database labs only; no full gate or Temporal."},
+  "staged_gitleaks": {"status": "PASS", "configuration": "unchanged main:.gitleaks.toml (matches fetched origin/main)", "leaks": 0},
+  "historical_runs": [
+    {"command": ".venv/bin/python scripts/run-database-tests.py --shards 3", "passed": 1343, "failed": 0, "note": "Before final concurrency, atomic-memory and provider-independent-summary additions."},
+    {"command": ".venv/bin/python scripts/run-database-tests.py --shards 3", "status": "CANCELLED", "count": 2, "note": "Invocation-owned runs stopped for source review edits; own runner cleanup, no passing claim."},
+    {"command": ".venv/bin/ruff format --check .", "status": "FAIL", "note": "Three immutable specification Markdown files' embedded examples; left untouched. Scoped Python format check passes."}
+  ],
+  "not_executed": ["live model gateway", "deployed owner journey", "reviewer dashboard integration", "inactive-scope cleanup timer", "production writes"],
+  "resources": "Only invocation-owned disposable PostgreSQL resources; no Temporal, shared-container stop or image prune."
+}

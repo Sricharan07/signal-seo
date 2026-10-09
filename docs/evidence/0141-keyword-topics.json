@@ -1,0 +1,126 @@
+{
+  "slice": "0141",
+  "classification": "security-critical",
+  "base": "cc7f318",
+  "migration": {
+    "revision": "0091",
+    "down_revision": "0090",
+    "app_tables": 177
+  },
+  "final_qualification": [
+    {
+      "command": ".venv/bin/python scripts/keyword_topics_lab.py",
+      "passed": 53,
+      "failed": 0,
+      "coverage": "All keyword topics, strategy, weekly skill and DataForSEO PostgreSQL tests, including exact-source pre-dispatch and oversized-input assertions."
+    },
+    {
+      "command": "cd apps/dashboard && npm test",
+      "passed": 267,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "focused": [
+    {
+      "command": ".venv/bin/python -m pytest tests/connectors/test_keyword_topics.py tests/connectors/test_seo_strategy_domain.py tests/connectors/test_observed_learning.py tests/api/test_seo_strategy.py -q",
+      "passed": 62,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/keyword_topics_lab.py -k 'optional_model or gateway_paid_call'",
+      "passed": 13,
+      "failed": 0,
+      "deselected": 37
+    },
+    {
+      "command": ".venv/bin/python scripts/keyword_topics_lab.py -k 'registry_uses_topics or topics_owner or optional_model'",
+      "passed": 11,
+      "failed": 0,
+      "deselected": 41
+    },
+    {
+      "command": "cd apps/dashboard && node --import tsx --test tests/keyword-topics.test.tsx tests/seo-strategy.test.tsx",
+      "passed": 15,
+      "failed": 0
+    }
+  ],
+  "full_gate": {
+    "status": "DEFERRED_TO_MERGE_TRAIN",
+    "command": ".venv/bin/python scripts/run-full-gate.py --range cc7f318..HEAD",
+    "report": ".runtime/full-gate/run-lzdcpkkg/summary.json",
+    "reported_passing_steps": 7,
+    "reported_failed_or_incomplete_steps": 16,
+    "reason": "Owner-reviewed infrastructure failures: candidate-sandbox global shared-container cleanup check sees other tracks' containers (0140 and 0144); browser-worker PyPI dependency download timed out once. These are not 0141 defects. Owner directed no full-gate rerun; the merge train will qualify the integrated branch. The prior run did not pass.",
+    "slice_failure_corrected": "Exact OpenAPI mutation set updated only for the new bounded ideas route.",
+    "corrected_python": {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q --junitxml=.runtime/0141-pytest-corrected.xml",
+      "passed": 2896,
+      "failed": 0
+    },
+    "npm": {
+      "passed": 313,
+      "failed": 0
+    },
+    "delivery_shards": "SKIPPED_NO_DELIVERY_CODE_CHANGES: no delivery code changed; integrated qualification deferred to merge train.",
+    "final_postgresql": "PASS: full keyword_topics lab, 53 passed, 0 failed, including exact-source pre-dispatch and oversized-input assertions.",
+    "cleanup": "Runner artifact cleanup completed; invocation-owned processes/containers exited; other tracks untouched."
+  },
+  "staged_gitleaks": {
+    "status": "PASS",
+    "configuration": "unchanged main:.gitleaks.toml",
+    "leaks": 0
+  },
+  "commit_range_gitleaks": {
+    "status": "DEFERRED_TO_MERGE_TRAIN",
+    "reason": "Owner requested staged scanning for this handoff; integrated commit-range gate belongs to the merge train.",
+    "configuration": "unchanged main:.gitleaks.toml"
+  },
+  "visual": {
+    "status": "INSPECTED",
+    "synthetic": true,
+    "viewports": [
+      1440,
+      390
+    ],
+    "detector_findings": 0,
+    "review_disposition": "ship",
+    "live_journey": "NOT_EXECUTED"
+  },
+  "not_executed": [
+    "live GSC",
+    "live Bing",
+    "live model",
+    "live DataForSEO",
+    "live Temporal/owner journey",
+    "dedicated deployment",
+    "production writes"
+  ],
+  "authority": "Existing 0077 decisions and 0135 registry caps/grants; briefs remain unaccepted; no acceptance, delivery, merge or deployment authority added.",
+  "merge_train_4": {
+    "base": "856a996",
+    "pr": 43,
+    "migration": "0091",
+    "down_revision": "0090",
+    "app_tables": 177,
+    "fast_checks": {
+      "python": 2943,
+      "database": 1250,
+      "repository": 46,
+      "dashboard": 276
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0089",
+    "database_subprocess_timeout_seconds": 1200,
+    "integration_fix": {
+      "kind": "test_only",
+      "reason": "The weekly cap fixture's four numeric variants correctly became one topic; use four genuinely distinct observed queries to continue proving the unchanged two-proposal cap.",
+      "strengthened_assertions": "Four clusters and exact query titles; related-query cluster member counts; existing cap, exact payload, no acceptance/decision and replay assertions unchanged.",
+      "initial_failure_log": "train4-43/database-before-topic-fixture-fix.log",
+      "requalification": "1250 PostgreSQL cases passed after the fixture fix"
+    },
+    "full_gate": "Final-tip 0138 receipt and PR comment govern integrated qualification; historical deferral is superseded only after every gate passes",
+    "production_authority": false
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "slice": "0112",
+  "date": "2026-09-30",
+  "classification": "security-critical identity and recovery",
+  "human_approval": "approve cleanup; one incomplete Signal Test account only",
+  "positive": {
+    "exact_empty_record_metadata": "PASS",
+    "application_user_registry_empty": "PASS",
+    "protected_authenticated_recovery_copy": "PASS; outside repository",
+    "real_postgresql_delete_restore_rollback": "PASS",
+    "exact_record_removed": "PASS; count zero",
+    "keycloak_restart_and_public_discovery": "PASS; discovery 200",
+    "four_fixed_identity_peers": "PASS; verified TLS; JWKS 200; unauthenticated user-info 401",
+    "real_google_callback": "PASS; profile form then authenticator setup",
+    "human_google_otp_enrollment": "CONFIRMED; enabled verified Google link, OTP credential and REGISTER/UPDATE_TOTP/LOGIN events"
+  },
+  "negative_and_failure": {
+    "real_changed_precondition": "REJECTED; original record unchanged",
+    "credential_link_verified_or_changed_account": "REJECTED; unit policy tests",
+    "backup_failure": "PASS; no deletion; identity restart attempted",
+    "missing_approval_or_existing_recovery_files": "REJECTED before remote operations",
+    "bootstrap_operator": "UNCHANGED; disabled independently verified",
+    "google_links_after_cleanup": "ZERO at cleanup checkpoint; later real human enrollment created the Google link",
+    "unregistered_network": "BLOCKED; unrelated Internet and instance metadata",
+    "callback_download": "504 confirmed; exact missing Google user-info peer repaired; generic credential-free HTML errors",
+    "untrusted_profile_sql": "PASS; structured literals; real temporary-schema rollback; live identities unchanged",
+    "request_logging": "PASS; entire request/response headers removed; actual rotation bounded to 2 x 1 MiB"
+  },
+  "regression": {
+    "focused_python": "PASS: 27 cases",
+    "api_identity_tooling": "PASS: 1273 cases",
+    "npm_test": "PASS: 38 repository cases, 231 Markdown files, 148 dashboard cases, typecheck and build",
+    "generated_next_cache_failure": "Duplicate generated types; cache preserved outside repository; clean rebuild passed",
+    "ruff": "PASS",
+    "staged_secret_scan": "PASS: gitleaks redacted staged-patch scan; no findings"
+  },
+  "human_google_otp_enrollment": "CONFIRMED",
+  "signed_owner_application_session": "PENDING; application users and identity sessions remain empty",
+  "google_pins_expire_at_utc": "2026-10-01T03:34:51Z",
+  "slack_gsc_github_runtime": "NOT_EXECUTED",
+  "production_and_external_writes": "DISABLED"
+}

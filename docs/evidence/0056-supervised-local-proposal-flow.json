@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-13T20:59:12Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "5b55fcd18cae6ea6fa301da2bd538e4e0de221f6d8610e58002517b02c7c7fa1",
+    "README.md": "fd97fb911189fb2175c01df0a31aa5c85f4db668d6900d924ed0c37b0afc434c",
+    "apps/api/README.md": "ebf4d834672ff1a2f5f0f3f83e705c7518fb139d2fd023cac87a6ca88306959c",
+    "apps/api/src/signal_api/authentication.py": "e50cd7cbd0a15e39e053db3aaf011792a99dc3b06de20578c19eef8c07118d7f",
+    "apps/api/src/signal_api/main.py": "a64994054cc97d09ce667f05013c5edd93c25bc1d00a21ce458136560156eb70",
+    "apps/api/src/signal_api/proposal_contracts.py": "3cb597925724f1415ae2f43257abc7137102250fb524c631b0b95ad58aaa4a9e",
+    "apps/dashboard/README.md": "72299a5416a72dbe0f66bd0f7eaa47d85f2dd373ac327b6308b215ee4122d70c",
+    "apps/dashboard/app/[section]/page.tsx": "a0e37a0f13222bd4dd6e6f6974f0f1184ce08f95c88857e84ea2d9956acb09f2",
+    "apps/dashboard/app/actions/decide-proposal/route.ts": "f5a1c56329e12b278efff1d07c65c78bd7a4a13fa99d09ab7d865ae0d179df3f",
+    "apps/dashboard/app/actions/prepare-proposal/route.ts": "14523c851f8351297b73c78dc6f889d9e72d3ddc8a706889089ee9a58d7d09d7",
+    "apps/dashboard/app/globals.css": "a6bf6868fcd7af3d0cf853a7d49b99a16b83a389d4ebae1277827d2b7e1b483f",
+    "apps/dashboard/components/dashboard-view.tsx": "c4a52e648fa4520d86084b4435e3b58a353556818244aed6b5bfcd8026b2d2f1",
+    "apps/dashboard/lib/dashboard-page.ts": "6f29d2a8a4df22f91dd2b872538a6661e36f03a7364de589088da743e4b43b0f",
+    "apps/dashboard/lib/proposal-api.ts": "ea2ff2145c84deb785eb7250971a2bfc328d48404d6df187ac2d39d4ed99bd90",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "2fb9df982152a70c783f90bb02ccf77c4db4bc482804cd36956b69be88bd2c0c",
+    "apps/dashboard/tests/proposal-api.test.ts": "4de2255c692ccca2b92b60c1a3d1997f793e9564d3fe81c9f2cd7db9e7374234",
+    "apps/dashboard/tests/proposal-routes.test.ts": "3a9f9be88de40c53b56e555f946448363dc6885c2e6b0df7fc3c0ea82b391e84",
+    "database/README.md": "a8b86cd2dd94232c1731b943fe5f7a8fd0c92dce944cb1e9601d81991fa4c738",
+    "database/migrations/versions/0031_local_fixture_proposals.py": "aa6d444779a546901451c806066da45ceddfef6a392275cb08e1b3b2e216a834",
+    "database/migrations/versions/0031_local_fixture_proposals.sql": "c11f2cdb488fa5e3d5b1dda0e759d28c02b46a693e0f8158e3a4cece43e23f8a",
+    "docs/README.md": "088516c5a966e5d67c98ee92be82dca08d2dda73b2d79dbe8be9724225bde20e",
+    "docs/adr/0055-supervise-local-proposals-with-exact-immutable-decisions.md": "947347ba6bbe48ff7e9b102fb75d8726276b8e79c688f110c47490d44a03f0ae",
+    "docs/adr/README.md": "94a55b7c0ce863efa7e427f3115bc4dc6818fe0f81a63c52e5960d351b581543",
+    "docs/implementation/0056-supervised-local-proposal-flow.md": "d63dff5080508d5a12afc582d7c1028becb301fc9161826ad80b53fabe12024e",
+    "docs/implementation/core-v1-roadmap.md": "4f49f272ec1bd1f36abc2d5b86069e70e0267c48cac9de0e0439db7d6c3588a7",
+    "docs/implementation/status.md": "348c1dac84378de350ac2a8ca2abc4a96673048974bae8ce4328500303c4c84e",
+    "docs/runbooks/local-pilot.md": "82bd0d8f99fcf982a635b588c138ded8bdc1760acccb71872f673bea687719e5",
+    "requirements.in": "4d66e341220dfb583801cf36cc08d6bc04afba2bbe13eceb4b1cf2b1e7897b5e",
+    "requirements.txt": "c86b807c7cc48bddefaa501655eac4cb4e786f2765c14062ec942bfe0a6d00da",
+    "scripts/local_pilot.py": "9e9a533d4e054b0abe3fefdc2f2a930d75ee5ece65817eac53e5e361706f8c86",
+    "services/control_plane/README.md": "cb16052d027dcf287fdb8e380a37a0b5fc6883c4441df345b288104e140c5dc3",
+    "services/control_plane/src/signal_core/proposals.py": "10d3a26056537b2cd2366651624554995d0d621151025dc5baeb09d166b124de",
+    "tests/api/test_api.py": "74e7bcb9b9192b745fb3fd9181e8069ed5c8e82075a1813d958ed702855fd3b0",
+    "tests/api/test_proposals_http.py": "3b10bf6bd5ff9126252ab155a248d7415b04f2fc07b5f1362efee032ffee814d",
+    "tests/control_plane/test_database.py": "536d663c6fdb1aaedae70b40e6bd053c931f866047e64c90b6682460b4b0594d",
+    "tests/control_plane/test_proposals.py": "572437a6aff389ffb0a0fe98b452916a6b31a3c2fae7b559b45a273ef4f5f156",
+    "tests/repository/dashboard.test.mjs": "11ec482e586802d4e0307f5c7bdbaa13ca60ebe7979030afe462d9b0d2ec91a4",
+    "tests/tooling/test_local_pilot.py": "06d5c286055058c90fac19aa4d074cdb6e7efdec8ae1ac454674a3cf19a57df8"
+  },
+  "tests": [
+    {
+      "name": "real PostgreSQL regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 564,
+      "database": "17.11",
+      "status": "PASS"
+    },
+    {
+      "name": "API regression",
+      "command": ".venv/bin/python -m pytest tests/api -q",
+      "passed": 272,
+      "status": "PASS"
+    },
+    {
+      "name": "non-database Python regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/connectors tests/identity tests/tooling -q",
+      "passed": 783,
+      "status": "PASS"
+    },
+    {
+      "name": "focused pilot port contract",
+      "command": ".venv/bin/python -m pytest tests/tooling/test_local_pilot.py -q",
+      "passed": 17,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard regression",
+      "command": "npm run test:dashboard",
+      "passed": 99,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard types and production build",
+      "commands": [
+        "npm run typecheck:dashboard",
+        "npm run build:dashboard"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 22,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 22,
+      "markdown_files": 149,
+      "dashboard_tests": 99,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and formatting",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests"
+      ],
+      "formatted_files": 146,
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        "npm audit --omit=dev",
+        ".venv/bin/pip check"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 4,
+      "reviewed_false_positives": "four source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real disposable supervised browser journey",
+      "command": "npm run pilot",
+      "steps": [
+        "preserved an unrelated listener on port 3000 and selected the exact registered origin http://localhost:3001",
+        "completed OIDC sign-in, organization selection, and disposable owner site onboarding",
+        "completed the PostgreSQL, outbox, Temporal, and worker audit path",
+        "committed one explicitly synthetic fixture finding through the same-origin BFF",
+        "prepared one four-responsibility evidence-bound proposal from Signal Chat",
+        "inspected exact evidence, before and after values, four checks, authority, cost, recovery, expiry, and SHA-256 in Approvals",
+        "recorded an approved owner decision and reloaded the same immutable decision",
+        "verified zero horizontal overflow at 390 by 844 and 1440 by 900"
+      ],
+      "browser_console_warnings_or_errors": 0,
+      "status": "PASS"
+    }
+  ],
+  "qualification_notes": [
+    "The first visual pass exposed a platform-specific false-free bind result beside an existing localhost listener. Port preflight now rejects any connectable localhost endpoint before attempting the bind; the focused test reproduces that case and the successful browser run selected port 3001."
+  ],
+  "database_contract_changed": true,
+  "api_authority_changed": true,
+  "workflow_contract_changed": false,
+  "identity_redirect_allowlist_changed": false,
+  "canonicalization_standard": "RFC 8785",
+  "preexisting_dashboard_port": 3000,
+  "selected_dashboard_port": 3001,
+  "browser_origin": "http://localhost:3001",
+  "browser_result_path": "/approvals?approval=approved",
+  "browser_viewports": [
+    "390x844",
+    "1440x900"
+  ],
+  "local_pilot_left_running_for_review": true,
+  "unrelated_listener_stopped_or_modified": false,
+  "synthetic_identity_only": true,
+  "synthetic_work_result_only": true,
+  "synthetic_fixture_findings_produced": true,
+  "model_invoked": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "customer_origin_network_access": false,
+  "customer_seo_findings_produced": false,
+  "external_write": false,
+  "github_operation": false,
+  "outbox_dispatch_from_decision": false,
+  "production_authority": false
+}

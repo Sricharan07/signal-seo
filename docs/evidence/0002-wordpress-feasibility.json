@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-07T22:45:23+00:00",
+  "wordpress": "6.9.1",
+  "php": "8.3.30",
+  "database": "11.4.10-MariaDB-ubu2404",
+  "theme": {
+    "name": "Twenty Twenty-Five",
+    "version": "1.4"
+  },
+  "cache": "WordPress per-process object cache; no persistent cache or CDN",
+  "production_authority": false,
+  "metadata_mapping": "synthetic only; Yoast NOT_EXECUTED",
+  "passed": 21,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Exact pinned WordPress and transactional database are running",
+      "status": "PASS",
+      "seconds": 0
+    },
+    {
+      "name": "Unique content patch preserves blocks, shortcodes and protected fields",
+      "status": "PASS",
+      "seconds": 0.008
+    },
+    {
+      "name": "Ambiguous, absent and empty patch targets fail closed",
+      "status": "PASS",
+      "seconds": 0
+    },
+    {
+      "name": "Unknown fields, oversized values and invalid identities are rejected",
+      "status": "PASS",
+      "seconds": 0.001
+    },
+    {
+      "name": "Draft and missing resources are not silently published or created",
+      "status": "PASS",
+      "seconds": 0.005
+    },
+    {
+      "name": "An editor save committed first causes a version conflict",
+      "status": "PASS",
+      "seconds": 0.147
+    },
+    {
+      "name": "Duplicate operation IDs return the original receipt, not a second mutation",
+      "status": "PASS",
+      "seconds": 0.017
+    },
+    {
+      "name": "Concurrent duplicate workers serialize on the same operation row",
+      "status": "PASS",
+      "seconds": 0.299
+    },
+    {
+      "name": "Response loss after commit is reconciled from a durable receipt",
+      "status": "PASS",
+      "seconds": 0.006
+    },
+    {
+      "name": "Crash before commit rolls back both content and receipt",
+      "status": "PASS",
+      "seconds": 0.127
+    },
+    {
+      "name": "An external hook survives SQL rollback: automatic execution remains blocked",
+      "status": "PASS",
+      "seconds": 0.005
+    },
+    {
+      "name": "Plugin changes to protected fields are detected and rolled back",
+      "status": "PASS",
+      "seconds": 0.004
+    },
+    {
+      "name": "Existing single synthetic metadata row updates atomically with content",
+      "status": "PASS",
+      "seconds": 0.006
+    },
+    {
+      "name": "Missing, duplicate and stale metadata are rejected without content changes",
+      "status": "PASS",
+      "seconds": 0.007
+    },
+    {
+      "name": "Metadata and content both roll back on failure before receipt",
+      "status": "PASS",
+      "seconds": 0.006
+    },
+    {
+      "name": "Nontransactional metadata engines are rejected before mutation",
+      "status": "PASS",
+      "seconds": 0.003
+    },
+    {
+      "name": "Inverse recovery preserves an unrelated human edit",
+      "status": "PASS",
+      "seconds": 0.015
+    },
+    {
+      "name": "Overlapping edits and changes after recovery preparation block undo",
+      "status": "PASS",
+      "seconds": 0.009
+    },
+    {
+      "name": "A stale editor can overwrite after Signal commits: not a lifetime lock",
+      "status": "PASS",
+      "seconds": 0.263
+    },
+    {
+      "name": "Authoritative receipt alone does not prove current public output",
+      "status": "PASS",
+      "seconds": 0.048
+    },
+    {
+      "name": "The prototype exposes no Signal REST API",
+      "status": "PASS",
+      "seconds": 0.013
+    }
+  ],
+  "source_sha256": {
+    "bootstrap.php": "2d587a2ac733b9d9e3702c651eef962e29171bbefd8052a9a0de0d4fee7c9bf3",
+    "bridge.php": "b386081957567c1c435f5302249b06a7965ccb931b38e52575e6fc78b0184e65",
+    "install.php": "983feb820bf625ab603a6dac4e5d18b97b96b950c97dffb1ea8a1bc318ec6958",
+    "test.php": "2ae759d4e2724ad65870608a8638dec59f16a42e17672da3ff7129b5ab13a961",
+    "worker.php": "8bc7dbb58c987ee7bd9be07879b1ae92d10fec19212e082f1b1b0b45b6c3211b"
+  }
+}

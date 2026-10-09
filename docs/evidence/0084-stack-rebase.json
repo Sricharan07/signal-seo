@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29",
+  "base_commit": "4c28142ca60b5d4f5e5f8bbf65404aa48521884c",
+  "main_base": "d935bbe",
+  "slice": "0084",
+  "migration": "0054_github_pr_operations (down_revision 0053)",
+  "profile": "github_repository_write: one repository and validated installation token; closed GET/POST Git-data and PR routes; JSON; request 131072 bytes, response 262144 bytes, timeout 5 seconds; no redirects",
+  "qualification": "LOCAL_GATES_PASS_LIVE_NOT_EXECUTED",
+  "gate": {
+    "run-authority-journal-tests.py": "13 passed, 0 failed",
+    "run-candidate-sandbox-tests.py": "10 passed, 0 failed",
+    "run-consumer-tests.py": "3 passed, 0 failed",
+    "run-crawler-network-tests.py": "13 passed, 0 failed",
+    "run-database-tests.py": "707 passed, 0 failed",
+    "run-page-attempt-tests.py": "1 passed, 0 failed",
+    "run-temporal-tests.py": "7 passed, 0 failed",
+    "run-workflow-consumer-image-tests.py": "6 passed, 0 failed",
+    "openbao_lab.py": "20 passed, 0 failed",
+    "check-gsc-provider-boundary.py": "PASS",
+    "pytest tests/api tests/identity tests/tooling tests/connectors": "1114 passed, 0 failed",
+    "ruff check": "PASS",
+    "ruff format --check": "319 files formatted",
+    "pip check": "PASS",
+    "npm test": "24 repository and 118 dashboard tests passed; 205 Markdown files; typecheck and build PASS",
+    "gitleaks git --log-opts=slice/0083-inbox-review..HEAD .": "1 commit, 0 leaks"
+  },
+  "failure_accounting": "Two full PostgreSQL runs found one gateway-double failure, diagnosed as pre-dispatch EGRESS_DEFERRED after an earlier global-origin read. Added a bounded five-second wait using the same egress identity, with unchanged last-moment fence checks. No ambiguous provider result is retried. The double also now waits its declared five-millisecond duration. The final full gate passes; no gate or test was weakened.",
+  "live_github_app_and_repository": "NOT_EXECUTED",
+  "production_write_authority": false
+}

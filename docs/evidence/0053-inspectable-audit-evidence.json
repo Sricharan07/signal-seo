@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-13T06:41:00Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "32003ad576b5f3df51ccdbdfb69dcb246fb13d6456dff7bd198e9d2361238ef3",
+    "README.md": "1d146302558a5ae39d0728dbe1b9f9629a0970a133b35ae05915d7988d613653",
+    "apps/dashboard/README.md": "5249d50c995c7f8cc0a47fe9518cc7cd8e56a2b2776a77169e9d25f19172b23d",
+    "apps/dashboard/app/globals.css": "01e79a9402c116559c39d2e3b508ad8e8aa7380e0635fa682920bc2dbd465e24",
+    "apps/dashboard/components/dashboard-view.tsx": "63c1707058d2bb345994142a33f4973d3c8437bdb7bd54a03a08704cfdbfcc7c",
+    "apps/dashboard/lib/work-api.ts": "dc27159e1af43fcf1d44730998df1728ef390ca26d4309c972e682e437d51593",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "2aff3bef5d413a02bae4749f6be53b5716662ac70747dc0d2601ff128f7f0c2f",
+    "apps/dashboard/tests/work-api.test.ts": "22942cc67c8dd19e0ffa07299271bb8891f46f08b29e92e108c1922a1c5cbaa1",
+    "docs/README.md": "40be5375e1923e93eaed87bd36b53826100a7b6a382e21e223efc96e9947b446",
+    "docs/adr/README.md": "aa508128e77df54dcaa90a168398a5e424ed03ce88d19b6bf0db9fd26c434a7a",
+    "docs/adr/0053-project-manifest-evidence-without-inventing-findings.md": "68f1f9107047a2d692cc30406f30015378c063e7469f367278f960590fc8617a",
+    "docs/implementation/0053-inspectable-audit-evidence.md": "a1c92908759d8da3924ea8152fb9c29db01d6577fd8487f816f9fb8ef7013488",
+    "docs/implementation/status.md": "55f9a9470662344b67a557ed98660b782903e9dc428ad68f29d6d945887c1bb7"
+  },
+  "tests": [
+    {
+      "name": "dashboard regression",
+      "command": "npm --workspace @signal/dashboard test",
+      "passed": 87,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard types and production build",
+      "commands": [
+        "npm --workspace @signal/dashboard run typecheck",
+        "npm --workspace @signal/dashboard run build"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint, formatting, and dependency integrity",
+      "commands": [
+        ".venv/bin/pip check",
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests"
+      ],
+      "formatted_files": 138,
+      "status": "PASS"
+    },
+    {
+      "name": "production dependency audit",
+      "command": "npm audit --omit=dev",
+      "vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 2,
+      "reviewed_false_positives": "two source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 22,
+      "markdown_files": 144,
+      "dashboard_tests": 87,
+      "status": "PASS"
+    },
+    {
+      "name": "real disposable browser evidence journey",
+      "command": "npm run pilot",
+      "steps": [
+        "OIDC sign-in through local Keycloak",
+        "organization selection and owner site onboarding",
+        "Work audit acceptance and automatic refresh to Completed",
+        "Overview projection of one recent completed site snapshot",
+        "Pages projection of complete manifest identity, digest, coverage, versions, and synthetic evidence boundary"
+      ],
+      "browser_console_warnings_or_errors": 0,
+      "status": "PASS"
+    }
+  ],
+  "database_contract_changed": false,
+  "api_authority_changed": false,
+  "workflow_contract_changed": false,
+  "upstream_real_postgresql_evidence": "0052-visible-durable-work-flow.json: 550 passed",
+  "browser_origin": "http://localhost:3000",
+  "browser_viewport": "1280x720",
+  "local_pilot_left_running_for_review": true,
+  "synthetic_identity_only": true,
+  "synthetic_work_result_only": true,
+  "customer_identity": false,
+  "customer_data": false,
+  "customer_origin_network_access": false,
+  "seo_findings_produced": false,
+  "external_write": false,
+  "production_authority": false
+}

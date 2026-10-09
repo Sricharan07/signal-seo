@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "slice": "0136",
+  "date": "2026-10-03",
+  "classification": "security-critical",
+  "base": "7754746",
+  "migration": "0086",
+  "down_revision": "0085",
+  "forced_rls_table_count": 171,
+  "full_gate": "PASS",
+  "scope_status": "Content Writer C2 qualified; older standalone grounding contracts not migrated",
+  "checks": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "status": "PASS",
+      "passed": 979,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "status": "PASS",
+      "passed": 15,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "status": "PASS",
+      "passed": 40,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-indexnow-tests.py",
+      "status": "PASS",
+      "passed": 17,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "status": "PASS",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "status": "PASS",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "status": "PASS",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "status": "PASS",
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "status": "PASS",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "status": "PASS",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "status": "PASS",
+      "passed": 34,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "status": "PASS",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q --junitxml=.runtime/0136-python.xml",
+      "status": "PASS",
+      "passed": 1949,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+      "status": "PASS",
+      "formatted_files": 489
+    },
+    {
+      "command": ".venv/bin/pip check",
+      "status": "PASS"
+    },
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "repository_passed": 43,
+      "dashboard_passed": 202,
+      "failed": 0,
+      "markdown_files": 267,
+      "typecheck": "PASS",
+      "production_build": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/evaluate-writing-quality.py",
+      "status": "PASS",
+      "synthetic_cases_passed": 5,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/evaluate-writing-quality.py --live",
+      "status": "NOT_EXECUTED",
+      "reason": "OWNER_MODEL_RUNTIME_UNCONFIGURED"
+    }
+  ],
+  "recovery_audit": {
+    "status": "PASS",
+    "touched_files_checked": 46,
+    "empty_or_truncated_files": 0,
+    "python_ast": "PASS",
+    "json_parse": "PASS",
+    "diff_whitespace": "PASS"
+  },
+  "disk_guard": {
+    "stop_below_gib": 3,
+    "minimum_full_gate_free_gib": 13.89,
+    "labs_sequential": true,
+    "owned_lab_cleanup": "completed"
+  },
+  "visual_review": {
+    "status": "PASS",
+    "fixture": "synthetic SSR, not authenticated live journey",
+    "desktop_width": 1440,
+    "mobile_width": 390,
+    "horizontal_overflow": false,
+    "exhausted_draft_disabled": true,
+    "low_quality_alert": true
+  },
+  "gitleaks_staged": "PASS using main .gitleaks.toml; no allowlist changes",
+  "gitleaks_commit_range": "Recorded in PR after commit; main configuration unchanged",
+  "live_model": "NOT_EXECUTED",
+  "live_jev": "NOT_EXECUTED",
+  "live_gsc_voice_ranking": "NOT_EXECUTED",
+  "authenticated_owner_journey": "NOT_EXECUTED",
+  "production_composition": "NOT_EXECUTED",
+  "production_authority": false,
+  "customer_credentials_used": false,
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 35,
+    "migration": "0086",
+    "down_revision": "0085",
+    "app_tables": 171,
+    "fast_checks": {
+      "python": 2721,
+      "database": 1154,
+      "repository": 46,
+      "dashboard": 253
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false
+  }
+}

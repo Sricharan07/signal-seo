@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "slice": "0140",
+  "base": "cc7f318",
+  "classification": "security-critical",
+  "migration": "0090",
+  "down_revision": "0089",
+  "state": "focused_qualified_full_gate_deferred",
+  "production_authority": false,
+  "live_providers": "NOT_EXECUTED",
+  "autonomy_eligible": false,
+  "focused": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/tooling/test_internal_linking.py tests/tooling/test_technical_recipe_service.py tests/tooling/test_github_pr_patch.py tests/tooling/test_live_verification.py tests/api/test_candidate_inbox_http.py --tb=short",
+      "passed": 96,
+      "failed": 0
+    },
+    {
+      "command": "database_lab.isolated_postgres + provision + alembic upgrade head; pytest -xq tests/control_plane/test_internal_links.py::test_weekly_registry_candidate_only_exact_scope_pause_and_replay tests/control_plane/test_internal_links.py::test_sql_sealer_refuses_forged_scope_autonomy_cap_duplicate_and_receipt tests/control_plane/test_internal_links.py::test_committed_graph_exact_candidate_replay_strategy_and_existing_approval tests/control_plane/test_weekly_skills.py --tb=short",
+      "passed": 21,
+      "failed": 0
+    },
+    {
+      "command": "npm run typecheck --workspace @signal/dashboard",
+      "status": "PASS"
+    },
+    {
+      "command": "gitleaks protect --staged --config <unchanged-main-gitleaks.toml> --no-banner --redact",
+      "status": "PASS",
+      "leaks": 0
+    },
+    {
+      "command": "database_lab.isolated_postgres + provision + alembic upgrade head; pytest -xq tests/control_plane/test_internal_links.py::test_fail_closed_before_sealing tests/control_plane/test_database.py::test_runtime_roles_are_not_owners_or_privileged tests/control_plane/test_database.py::test_migration_revision_is_persisted_and_downgrade_refuses_data_loss tests/control_plane/test_database.py::test_membership_directory_migration_backfills_existing_membership tests/control_plane/test_database.py::test_human_command_migration_preserves_existing_service_intent tests/control_plane/test_database.py::test_outbox_dispatch_migration_preserves_and_claims_pending_message tests/control_plane/test_database.py::test_workflow_start_migration_preserves_admitted_projection tests/control_plane/test_database.py::test_site_directory_migration_backfills_existing_site_membership tests/control_plane/test_database.py::test_site_onboarding_migration_backfills_and_tracks_existing_site --tb=short",
+      "passed": 16,
+      "failed": 0,
+      "seconds": 187.8,
+      "postgresql": "17.11",
+      "migration_head": "0090",
+      "cleanup": "completed",
+      "temporal_started": false
+    },
+    {
+      "command": "cd apps/dashboard && npm test",
+      "passed": 263,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "full_gate": "DEFERRED_TO_MERGE_TRAIN",
+  "cleanup": {
+    "gate_process": "exited",
+    "owned_runtime_artifacts": "removed by runner",
+    "shared_containers": "untouched",
+    "note": "No gate processes or candidate/build containers remain running; unrelated shared PostgreSQL containers were left untouched."
+  },
+  "not_executed": [
+    "Integrated full gate: DEFERRED_TO_MERGE_TRAIN",
+    "Live provider and real repository qualification",
+    "Deployed employee and approved PR/live-site journey"
+  ],
+  "next_action": "Merge train rebases onto current main, integrates the weekly report label into its redesigned presentation, and runs the full gate alone before merge. No default-branch push or merge by this slice.",
+  "full_gate_attempt": {
+    "command": ".venv/bin/python scripts/run-full-gate.py --range cc7f318..HEAD --jobs 4 --docker-jobs 2 --database-shards 3",
+    "status": "FAIL_INFRASTRUCTURE",
+    "run_once": true,
+    "seconds": 1696.26,
+    "completed_steps_passed": 6,
+    "completed_steps_failed": 2,
+    "cancelled_steps": 15,
+    "runner_summary": {
+      "passed": 6,
+      "failed": 17,
+      "not_executed": 0,
+      "note": "The runner labels all 15 cancelled steps FAIL; these are not additional test failures."
+    },
+    "counted_test_cases": {
+      "passed": 3338,
+      "failed": 2
+    },
+    "counted_checks": {
+      "passed": 19
+    },
+    "failures": [
+      {
+        "test": "tests/delivery/test_article_delivery.py::test_article_approval_dispatch_replay_and_observation[content_refresh]",
+        "reason": "Temporal local development server startup failed after five seconds with ConnectionRefused."
+      },
+      {
+        "test": "tests/delivery/test_article_delivery.py::test_article_approval_dispatch_replay_and_observation[new_article]",
+        "reason": "Temporal local development server startup failed after five seconds with ConnectionRefused."
+      }
+    ],
+    "steps": [
+      {
+        "name": "npm",
+        "command": "npm test",
+        "status": "PASS",
+        "passed": 309,
+        "failed": 0,
+        "count_kind": "test_cases",
+        "process_cleanup": "completed",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "pytest",
+        "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q --junitxml=<invocation-private-report>",
+        "status": "PASS",
+        "passed": 2916,
+        "failed": 0,
+        "count_kind": "test_cases",
+        "process_cleanup": "completed",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "ruff-check",
+        "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "process_cleanup": "completed",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "ruff-format",
+        "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "process_cleanup": "completed",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "pip-check",
+        "command": ".venv/bin/python -m pip check",
+        "status": "PASS",
+        "passed": 1,
+        "failed": 0,
+        "count_kind": "checks",
+        "process_cleanup": "completed",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "autonomy-delivery-0",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 0",
+        "status": "FAIL",
+        "passed": 57,
+        "failed": 1,
+        "count_kind": "test_cases",
+        "process_cleanup": "completed",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "autonomy-delivery-1",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-autonomy-delivery-tests.py --shard 1",
+        "status": "FAIL",
+        "passed": 56,
+        "failed": 1,
+        "count_kind": "test_cases",
+        "process_cleanup": "completed",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "authority-journal",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-authority-journal-tests.py",
+        "status": "PASS",
+        "passed": 16,
+        "failed": 0,
+        "count_kind": "checks",
+        "process_cleanup": "completed",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "browser-worker",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-browser-worker-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "attempted",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "candidate-sandbox",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-candidate-sandbox-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "attempted",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "consumer",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-consumer-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "crawler-network",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-crawler-network-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "database",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-database-tests.py --shards 3 --repeat-brain 5",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "indexnow",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-indexnow-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "page-attempt",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-page-attempt-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "self-host",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-self-host-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "temporal",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-temporal-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "webflow",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-webflow-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "workflow-consumer-image",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/run-workflow-consumer-image-tests.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "openbao",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/openbao_lab.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "keycloak",
+        "command": ".venv/bin/python scripts/gate_lab_worker.py scripts/keycloak_lab.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "gsc-boundary",
+        "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      },
+      {
+        "name": "gitleaks",
+        "command": "gitleaks git --config=<unchanged-main-gitleaks.toml> --log-opts=cc7f318..HEAD .",
+        "status": "CANCELLED",
+        "passed": 0,
+        "failed": null,
+        "count_kind": "checks",
+        "process_cleanup": "not_started",
+        "artifact_cleanup": "completed"
+      }
+    ]
+  },
+  "full_gate_deferral_reason": "Reviewer confirmed concurrent slice 0144 wiring Temporal dev server/labs caused infrastructure collisions on the shared machine. No full gate rerun and no Temporal startup; merge train runs the integrated gate alone.",
+  "focused_totals": {
+    "python_passed": 133,
+    "python_failed": 0,
+    "dashboard_passed": 263,
+    "dashboard_failed": 0,
+    "note": "96 focused tooling/API and 21 candidate/weekly cases already passed since the last source change and were not rerun; 16 outstanding PostgreSQL checks and the dashboard suite were run on reviewer-directed resume."
+  },
+  "merge_train_4": {
+    "base": "856a996",
+    "pr": 47,
+    "migration": "0090",
+    "down_revision": "0089",
+    "app_tables": 176,
+    "fast_checks": {
+      "python": 2916,
+      "database": 1237,
+      "repository": 46,
+      "dashboard": 270
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0089",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "Final-tip 0138 receipt and PR comment govern integrated qualification; historical deferral is superseded only after every gate passes",
+    "production_authority": false
+  }
+}

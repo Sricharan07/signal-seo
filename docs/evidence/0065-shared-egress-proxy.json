@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-28T08:45:22Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "tests": [
+    {
+      "name": "focused shared-egress and decision boundaries",
+      "command": ".venv/bin/pytest -q tests/tooling/test_crawl_http.py tests/tooling/test_jev_decisions.py tests/tooling/test_jev_qualification.py",
+      "passed": 87,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real isolated crawler network lab",
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "provider": "Docker Engine 28.5.1",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "real PostgreSQL database lab",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "provider": "PostgreSQL 17.11",
+      "passed": 592,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "API, identity, and tooling regression",
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling",
+      "passed": 858,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real TLS OpenBao lab",
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "provider": "OpenBao 2.6.1",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint",
+      "command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+      "status": "PASS"
+    },
+    {
+      "name": "Python format",
+      "command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+      "formatted_files": 200,
+      "status": "PASS"
+    },
+    {
+      "name": "Python dependency validation",
+      "command": ".venv/bin/pip check",
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 24,
+      "markdown_files": 169,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "production dependency audit",
+      "command": "npm audit --omit=dev",
+      "vulnerabilities": 0,
+      "status": "PASS"
+    }
+  ],
+  "live_typesafe_qualification": "NOT_EXECUTED",
+  "live_typesafe_reason": "No TypeSafe key and no prepared live shared-egress authority were supplied.",
+  "shared_egress_proxy": true,
+  "production_composition": false,
+  "authority_created": false,
+  "external_write": false,
+  "production_authority": false
+}

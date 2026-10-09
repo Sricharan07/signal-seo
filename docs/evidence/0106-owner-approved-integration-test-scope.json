@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-30",
+  "classification": "security-critical operational policy",
+  "human_authorization": "Direct owner approval of complete testing and amendment after a question naming dedicated hostname, private administration, no customer data and exact test repository",
+  "scope": {
+    "hostname": "signal-test.example.invalid",
+    "vm": "integration-test-vm",
+    "github_repository": "example-owner/integration-test",
+    "slack_workspace": "Test Workspace",
+    "administration_public": false,
+    "customer_data_allowed": false,
+    "public_synthetic_credentials_allowed": false,
+    "production_readiness_granted": false,
+    "runtime_external_write_authority_granted": false
+  },
+  "accepted_specifications_modified": false,
+  "runtime_changed": false,
+  "firewall_changed": false,
+  "provider_access_changed": false,
+  "verification": {
+    "command": "npm test",
+    "result": "PASS",
+    "repository_passed": 24,
+    "dashboard_passed": 148,
+    "documentation": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS"
+  },
+  "live_provider_integration": "NOT_EXECUTED",
+  "release_admission": false
+}

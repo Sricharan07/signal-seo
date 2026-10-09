@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "slice": "0130",
+  "classification": "security-critical",
+  "base_commit": "4f3aca5efdf31117f5794fe525b937eddd06e3c6",
+  "recorded_at": "2026-10-03",
+  "migration": "none",
+  "production_authority": false,
+  "release_status": "NOT_CERTIFIED",
+  "verification": "PASS_LOCAL_COMPONENTS_AND_PRECOMMIT_GATE",
+  "gate_logs": ".runtime/self-host-gates",
+  "commands": [
+    {"command": ".venv/bin/python scripts/run-authority-journal-tests.py", "passed": 14, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py", "passed": 36, "failed": 0, "full_suite": true},
+    {"command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py", "passed": 10, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-consumer-tests.py", "passed": 3, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-crawler-network-tests.py", "passed": 14, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-database-tests.py", "passed": 874, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-page-attempt-tests.py", "passed": 1, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-self-host-tests.py", "passed": 16, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-temporal-tests.py", "passed": 7, "failed": 0},
+    {"command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py", "passed": 6, "failed": 0},
+    {"command": ".venv/bin/python scripts/openbao_lab.py", "passed": 23, "failed": 0},
+    {"command": ".venv/bin/python scripts/keycloak_lab.py", "passed": 5, "failed": 0, "scope": "existing real OIDC protocol; not generic realm qualification"},
+    {"command": ".venv/bin/python scripts/check-gsc-provider-boundary.py", "result": "PASS"},
+    {"command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q", "passed": 1684, "failed": 0},
+    {"command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling tests/connectors tests/delivery tests/page_attempt tests/self_host", "result": "PASS"},
+    {"command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling tests/connectors tests/delivery tests/page_attempt tests/self_host", "result": "PASS", "formatted_files": 430},
+    {"command": ".venv/bin/python -m pip check", "result": "PASS"},
+    {"command": "npm test", "result": "PASS", "repository_passed": 46, "dashboard_passed": 154, "markdown_files": 250, "typecheck": "PASS", "build": "PASS", "failed": 0},
+    {"command": "gitleaks git --staged --config .gitleaks.toml --redact .", "result": "PASS", "leaks": 0}
+  ],
+  "post_commit_requirement": "Run gitleaks git --log-opts=main..HEAD --config .gitleaks.toml --redact .; record the actual committed-range result in the PR before publishing completion.",
+  "source_sha256": {
+    "scripts/self_host.py": "4c84acd9a4a15b99efd65e1b8c6332e568c978e34044d1241bc872c68560b44b",
+    "scripts/self_host_jobs.py": "05cc0527c43c24e306be2505c3735294b53e5b8a5ec91e0f5a8e4634f642345d",
+    "scripts/self_host_material.py": "a3124eb1c82731455646236f1f939b8e6724617fb8ad449457a774143fe722d1",
+    "scripts/self_host_lab.py": "e9198395a408b87a9a389e7ac83fcdc91189df73f79412aa4090bee9d377265d",
+    "services/control_plane/src/signal_core/owner_bootstrap.py": "4a68897662edd1c399e9cbdbf7763a2a8b1bfd4d33347ecc36b424a80f5eca19",
+    "services/control_plane/src/signal_core/self_host_config.py": "ff0824b78113d2a072330b622e3a8eaf05c7585918578b04203ae4630da6c982",
+    "apps/api/src/signal_api/self_host_runtime.py": "8400fd00d16317ac26f1b16501f0bbbc71a23d3c8af599cce441888d22bd57ac",
+    "deploy/self-host/compose.yaml": "7e67d08eb41be8cb88205b4ddc4d07d2bd2b5a9f94ae037aaa31a025fc1409a1",
+    ".runtime/self-host-tests/latest.json": "0f89a57d7b73d40a70a5958f17c0d5546e4338bc072a2ae7a705fe49e5dea732",
+    ".runtime/database-tests/latest.json": "8e2d9b44fb8fe480eb159d4584f94ea9547d14c848b09eb2c79d304727957c93",
+    ".runtime/autonomy-delivery/latest.json": "295d994b52d75cb220845361574558f75db9f7585e8b533cb0e197ac0554f863"
+  },
+  "development_corrections": [
+    "Tooling tests exposed inactive operator profiles in Compose normalization and dashed command parsing; explicit profile selection and a closed argument allowlist fixed both without weakening exposure checks.",
+    "Real lab fixtures corrected GPG Unix-socket path length, protected CA permissions and a missing durable browser-binding hash; the final full component lab passed.",
+    "Approval retry now preserves a current window instead of silently rearming it; explicit human rearm is required after expiry. Private TLS is validated before hydration and signed proof capture is periodically purged.",
+    "Initial npm typecheck found stale ignored Next types referring to the previously checked-out WordPress route. The generated cache was preserved outside the worktree, not source-reverted; the complete npm test rerun passed. The accepted WordPress slice was not changed."
+  ],
+  "cleanup": "All invocation-owned containers and lab servers removed; unrelated shared containers and tracks preserved.",
+  "not_executed": [
+    "Full generic Docker Compose startup and dedicated human password/OTP/first-owner session",
+    "Generic Keycloak import/retirement and Temporal schema/namespace startup",
+    "Public DNS/TLS, host IPv4/IPv6 isolation, reboot and image upgrade",
+    "Every live owner-supplied provider; no supplied credentials or provider calls",
+    "Cross-store restore, independent recovery anchor/journal deployment, vulnerability certification"
+  ],
+  "owner_inputs": [
+    "Dedicated Linux rootful Docker/Compose host with protected SSH, checked tmpfs and sufficient disk",
+    "Owner DNS/public certificate and private key, renewed externally",
+    "Five reviewed immutable owner-registry image digests and non-secret external config",
+    "Three independent Shamir custodians, binary public PGP encryption keys and separate root recipient",
+    "Independent TLS archive passphrase, encrypted off-host backups and hidden initial password",
+    "Human first login/password replacement/OTP enrollment and explicit bootstrap/completion/restart approvals",
+    "Optional owner provider credentials and a separate runtime qualification before admission"
+  ],
+  "runbook": "docs/self-host.md",
+  "merge_train": {
+    "base": "7754746",
+    "pr": 29,
+    "migration": null,
+    "down_revision": null,
+    "inherited_head": "0079",
+    "app_tables": 154,
+    "fast_checks": {
+      "python": 2234,
+      "database": 1046,
+      "repository": 46,
+      "dashboard": 227,
+      "ruff_check": "PASS",
+      "ruff_format": "PASS"
+    },
+    "frozen_migrations": "0001-0070",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "generation_fixture_fix": "9a8a85f71962fe6ff4810635fa3d8b8ece23fcc3",
+    "measurement_fix": "381306fdf83b3b59aa877ac6a76870f836f9f08d",
+    "production_authority": false
+  }
+}

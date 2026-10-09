@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-12T19:01:55Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "python": "3.12.14",
+  "framework": "Next.js 16.3.4",
+  "source_sha256": {
+    "apps/dashboard/app/globals.css": "9e035c65ea54f42f091c0cc5ce46f3883a9d4beb76ab78bbaa4107d71ac05c7f",
+    "apps/dashboard/app/page.tsx": "0d8114bc973d439cc185ed36a503fd5c59745bd5db507d974525e905511dab6a",
+    "apps/dashboard/app/[section]/page.tsx": "163ada5e7418e3335bf2bb2ab1ebe6fb4d63aa95bd1cea2282aba67a23d9a287",
+    "apps/dashboard/components/dashboard-view.tsx": "57a607efec4687257b72908beec34fe310be1955cbf89bee92b4add9daafef30",
+    "apps/dashboard/lib/dashboard-page.ts": "ecd5b2c0d6a281b3b0472cde112b0ab164f9928c15bf8accd7f840b7b2616bb5",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "40110b6c6d10ce1910a9c1ae871a12433e0114ee3335da79b5b53111b976f58e",
+    "tests/repository/dashboard.test.mjs": "a61673022097d7440ed3b49841449a0893b105e7d856be4d0f14c6893e3baf9a",
+    "docs/adr/0046-truthful-full-dashboard-information-architecture.md": "84d517a7bc32b6500cb0b6ad1314675d06ae95843eb248a1e86dfc69d47e282e",
+    "docs/implementation/0046-reference-led-dashboard-surfaces.md": "2e2f940f5a14f29bfca55495d541563761fc59f602ab2e5e9ad3b9e0dcf875a4",
+    "DESIGN.md": "e99913e3339d6a099a0b273d43b6225178a52a0d91733c9e5885d028b1993a2c",
+    ".impeccable/design.json": "a99dd7b7a4d46715f3af272806badf03fa623b0b085dc6dbffdb88fd83c3f29d",
+    "CHANGELOG.md": "2e74af95a8a00469f9da2c271f50df5ff095dbc1ce02619fcab601ecbf54fc57"
+  },
+  "tests": [
+    {
+      "name": "aggregate repository dashboard and documentation gate",
+      "command": "npm test",
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard rendering and boundary contracts",
+      "command": "npm run test:dashboard",
+      "passed": 63,
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 20,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "markdown_files": 127,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard TypeScript contract",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production build",
+      "command": "npm run build:dashboard",
+      "routes": [
+        "/",
+        "/_not-found",
+        "/[section]",
+        "/auth/callback",
+        "/auth/clear-browser-state",
+        "/auth/create-site",
+        "/auth/login",
+        "/auth/logout",
+        "/auth/select-organization",
+        "/auth/select-site"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [".venv/bin/python -m pip check", "npm audit --omit=dev"],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact"
+      ],
+      "initial_findings": 0,
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "all fourteen dashboard destinations",
+      "viewport": "1440x900",
+      "horizontal_overflow": false,
+      "sidebar_visible": true,
+      "work_columns": "830px 338px",
+      "status": "PASS"
+    },
+    {
+      "name": "analytics stacked-detail layout",
+      "viewport": "980x900",
+      "horizontal_overflow": false,
+      "detail_rail_stacked": true,
+      "status": "PASS"
+    },
+    {
+      "name": "all fourteen dashboard destinations",
+      "viewport": "390x844",
+      "horizontal_overflow": false,
+      "main_and_detail_present": true,
+      "status": "PASS"
+    },
+    {
+      "name": "mobile settings and navigation",
+      "viewport": "390x844",
+      "all_settings_tabs_visible": true,
+      "navigation_disclosure_expands": true,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "browser diagnostics",
+      "viewports": ["1440x900", "980x900", "390x844"],
+      "warnings": 0,
+      "errors": 0,
+      "status": "PASS"
+    }
+  ],
+  "browser_fixture": {
+    "kind": "disposable synthetic authenticated loopback page",
+    "temporary_route_removed": true,
+    "temporary_browser_tab_closed": true,
+    "customer_data": false,
+    "credential": false,
+    "production_authority": false
+  },
+  "database_change": false,
+  "provider_call": false,
+  "raw_session_recorded": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "external_write": false,
+  "production_authority": false
+}

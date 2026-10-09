@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "slice": "0094",
+  "classification": "product",
+  "base_commit": "404eeb9",
+  "migration": "0066_change_measurement",
+  "qualification": "locally_qualified",
+  "production_authority": false,
+  "live_provider_calls": "NOT_EXECUTED",
+  "report_channel_delivery": "NOT_EXECUTED",
+  "security": {
+    "new_provider_calls": false,
+    "new_credentials_or_egress": false,
+    "new_publishing_authority": false,
+    "import_boundaries_0069_0071_changed": false,
+    "accepted_specifications_changed": false,
+    "measurement_complete_state": false,
+    "delta_label": "observed change",
+    "provider_completeness": "not guaranteed"
+  },
+  "gates": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 837,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "report_sha256": "4246fba7959277bfbd87060f1d80f4542fa013fbb659d53feab7dc412dcff5df"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 37,
+      "failed": 0,
+      "skipped": 0,
+      "full_suite": true,
+      "cleanup": "completed",
+      "report_sha256": "74575d0e9bb093a8e5184dbb1bcf439a274db144d8aa7d408631a96e1b4b61ee"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "report_sha256": "e049284c307212ea00009cda828ffde568741cf9083feee97a05801eb1a4c5f3"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "report_sha256": "63f20cf0691883810ed60a5f566f535a52d844adc16a26036a374120c3d4683d"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "report_sha256": "326c9e1c1fedfca924ca66374a736618ca689536f021834d3f4233ca55c13356"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "report_sha256": "a7668a8e5944dcaf3dd5a10ff26606b5a2a84d8ec0a650bbc8f2c91c90eaee4a"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "report_sha256": "43e2667df8c87171f675e9d30c12317083c8c09f02660c66084c15662dc1f65e"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "cleanup": "completed",
+      "report_sha256": "6e0529475e40bfa3ac5735bca4ab11f30f08a758488294450c03f478bda2de53"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 23,
+      "failed": 0,
+      "synthetic_secrets_only": true,
+      "cleanup": "completed",
+      "report_sha256": "b6af3aa339f98b42897887841a097672f72df16d6eb8ec8bbbc77fba325aa734"
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling tests/connectors --junitxml=.runtime/0094-gate/python.xml",
+      "passed": 1252,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS",
+      "files": 376
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "result": "PASS",
+      "repository_passed": 24,
+      "dashboard_passed": 152,
+      "failed": 0,
+      "skipped": 0,
+      "documentation_check": "PASS",
+      "typecheck": "PASS",
+      "build": "PASS"
+    }
+  ],
+  "source_integrity": "All final lab source manifests match the current source; zero changes during qualified runs.",
+  "secret_checks": {
+    "configuration": "main:.gitleaks.toml unchanged",
+    "configuration_sha256": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346",
+    "pre_commit": "Staged diff scanned with gitleaks stdin before commit; result recorded on pull request.",
+    "post_commit_command": "gitleaks git --config .gitleaks.toml --log-opts=main..HEAD .",
+    "post_commit_result_location": "pull request gate record"
+  },
+  "visual_review": {
+    "fixture": "apps/dashboard/tests/measurement-preview.tsx",
+    "desktop": {
+      "viewport": "1440x980",
+      "capture_sha256": "d98deabe66e3c81a2cfcaaf996d7f803fe74220fa1efd37397cbf2448c34fcd0"
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "capture_sha256": "96d2023281842a6a107a1f8c696de848468609acb7a3d1cac4358a3212191153"
+    },
+    "finish_disposition": "ship",
+    "material_fixes": 0,
+    "incumbent_design_preserved": true
+  },
+  "development_corrections": [
+    "Updated exact schema inventory/head assertions for migration 0066; retained all role/privilege checks and added migration rollback coverage.",
+    "Rejected a source-changing run through the unchanged source-integrity guard; final database run passed 837 cases against stable source.",
+    "Corrected a new test fixture's duplicate module identity and synthetic journal keypair mismatch; journal signature checks unchanged; full delivery rerun passed 37 cases.",
+    "Sandbox cleanup gate overlapped other tracks' containers; unchanged gate passed on retry after overlap cleared; no foreign container stopped.",
+    "Preserved ignored stale Next development cache from waiting branch outside the build path; no waiting-branch source modified."
+  ],
+  "not_executed": [
+    "live GSC",
+    "live Bing",
+    "live GitHub/customer deployment",
+    "live Jev",
+    "GA4",
+    "production worker deployment",
+    "email/Slack/Telegram report delivery",
+    "release admission"
+  ],
+  "owner_inputs": [
+    "Existing verified active site and owner-selected GSC/Bing bindings with credentials held in existing private configuration.",
+    "Existing GSC page imports, with date dimension for wider windows, and matching pre-change generations imported before PR preparation.",
+    "Existing Bing site-level daily performance generations; page metrics remain unavailable.",
+    "0085 verified-live receipt and configured existing 0104 PostgreSQL/Temporal worker, current authority and unchanged delivery/admission prerequisites.",
+    "Continued existing imports through each post window and provider lag; no new measurement credential required."
+  ],
+  "merge_train": {
+    "date": "2026-10-02",
+    "pr": 16,
+    "original_head": "616958131ffb6e08f2764a0678dfae1c03fdda27",
+    "migration": "0066",
+    "down_revision": "0065",
+    "app_tables": 118,
+    "production_authority": false,
+    "checks": [
+      {
+        "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+        "exit_code": 0,
+        "summaries": [
+          "1770 passed in 49.15s"
+        ]
+      },
+      {
+        "command": ".venv/bin/python -m ruff check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": []
+      },
+      {
+        "command": ".venv/bin/python -m ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": [
+          "452 files already formatted"
+        ]
+      },
+      {
+        "command": "npm test",
+        "exit_code": 0,
+        "summaries": [
+          "# tests 43",
+          "# pass 43",
+          "# tests 176",
+          "# pass 176"
+        ]
+      },
+      {
+        "command": ".venv/bin/python scripts/run-database-tests.py",
+        "exit_code": 0,
+        "summaries": [
+          "======================= 909 passed in 462.46s (0:07:42) ========================"
+        ]
+      }
+    ]
+  },
+  "qualification_history_scope": "Original slice commands, counts, base commits and source hashes are historical; merge_train records cumulative rebased fast gates. Final-tip full gate is required before PR branch publication and recorded in PR comments and run-owned lab receipts.",
+  "train2_generation_fixture_correction": {
+    "classification": "test-only product correction",
+    "carried_by_pr": 24,
+    "cause": "Test assumed wall-clock import timestamps strictly increase with insertion order; selector already uses imported_at DESC, id DESC",
+    "historical_timestamp_tie_proven": false,
+    "explicit_timestamp_cutoff_pinning": true,
+    "equal_timestamp_insertion_orders": ["ascending UUID", "descending UUID"],
+    "repeated_reads_per_order": 20,
+    "focused_change_measurement_cases_passed": 10,
+    "focused_seconds": 9.54,
+    "production_selection_changed": false,
+    "frozen_migrations_changed": false,
+    "production_authority": false
+  }
+}

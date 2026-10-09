@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-21T02:33:13Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "0c8dcb26725af5df6e17972c7a84aa66ccff2914d38b3f02fe3290a5e51d6d48",
+    "README.md": "0b4b59b0316550141538ef9dc18160198a7b62808e0c25a49cb07b7ac3b7cea1",
+    "apps/api/README.md": "8bd1a7d4025d3845e0abad39ff1e04e6971185d2eb531da7d56d8fa0216958b6",
+    "apps/api/src/signal_api/authentication.py": "a01f745a20bdbdeac18c4121ff789ed564cd143eea3b819a523f3a3a0c509122",
+    "apps/api/src/signal_api/main.py": "4515aa56161fff7a89489f9efcc66f795cf24703e9e08400ace499ab70d39022",
+    "apps/api/src/signal_api/proposal_contracts.py": "bf822678cf63aa1a233d1c88358fb5d52565657e4cb0b8ef408635a628254eb3",
+    "apps/dashboard/README.md": "ee77ae0297c21ff7ba0a59d878b25b06e36d0ac001e0d29e1383ea2f212ae0ef",
+    "apps/dashboard/components/dashboard-view.tsx": "23ad7050144983cfa303d06c84da3e9a8fb151b8400f70d8f9dac515aac01eaa",
+    "apps/dashboard/lib/proposal-api.ts": "f735cf29d3b3d39ee958e9628e23c36b6ac3f31fc030e752bab072fbe5f736b9",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "373f788b0385fd32a1286d1b2795f69c5950afc399836e29e982efb71fb53666",
+    "apps/dashboard/tests/proposal-api.test.ts": "54cbdf10c40f2743ba3d26056e48fe453893407c494f0b281c8ef00dabf8b45b",
+    "database/README.md": "a480c8936db6bb0eab1af5ddb62a7bd23b9855cdbd5301f7e08a67fa45e18df1",
+    "database/migrations/versions/0034_verified_homepage_model_proposals.py": "3d8922dd1d2d8d71db397355b7669a66bcef323eee9d9cc6db816f9dc3e121c5",
+    "database/migrations/versions/0034_verified_homepage_model_proposals.sql": "7a0cbf9515b169d8c27475e4a248d92dd8f22cee959c09bb1a68dd38d826ee74",
+    "docs/README.md": "871d705069f930775117221fb1ec22426144ad8d31a81d2d45a485d1f29380b7",
+    "docs/adr/0058-bind-luna-drafts-to-verified-page-evidence.md": "f5d60978e64187a4815e2a0273e3224c8f463211dd479ab0050262402e1c1114",
+    "docs/adr/README.md": "7f0e98db823138f41ff939993a791ad82822c5d652a2a51208ab370176152b44",
+    "docs/implementation/0060-verified-homepage-model-proposal.md": "3d93ec089f8eb73a8ed71bff08ac3529df595be325563cd173701895426c6c4b",
+    "docs/implementation/core-v1-roadmap.md": "9ec60708d153bb8e0ff784db03077f881bd1eb82afd94a19411d02f54f0d9bf4",
+    "docs/implementation/status.md": "4b28588cd932cd43b9ecd3152cc12feea6371d9cc9914efeebb73c66885d3aef",
+    "docs/runbooks/local-pilot.md": "389134aa61b90e87bfe175989348ff5c4606e7d8e321ae5a398f694d5cedf9ce",
+    "services/control_plane/README.md": "30928fec6772ad51ccb25558a010bd93a0ee7fc3024ab2809e969721c71062f1",
+    "services/control_plane/src/signal_core/model_reasoning.py": "fa49296e84395d743a71b4ed0dfd6937fdfb55a016550de397713aa6b633c332",
+    "services/control_plane/src/signal_core/proposals.py": "ceac064f65b000eb5def38f1825adace9408ef95743baf49fd2e82536ae3531a",
+    "tests/api/test_api.py": "058be06313ea32d06f9d1ffe6644b543d14733f0ef603786784ee6e586136367",
+    "tests/api/test_proposals_http.py": "a8b70fa76387e9b82055c2d2d501291e3fe3e3ec02a9e590a235903e1de7b49c",
+    "tests/control_plane/test_database.py": "fb11c03bdb2d9a9d83bb9ce0cfa9a9132bf318fc86b506d4e2c5a4dbbf4cd1a1",
+    "tests/control_plane/test_page_observations.py": "f654b5d0a8bb6e2597ef194821c55c36d3fbc284622aac00a494c03253279544",
+    "tests/repository/dashboard.test.mjs": "9fb44e62c50dc87a0a89273c8fd0de2c0fc7385659948119ae4e949bfe7b3e9c",
+    "tests/tooling/test_model_reasoning.py": "452736cbd39e6dad744115294b9e3f8dc312900fd0c8a3cc820928ce52b14749"
+  },
+  "tests": [
+    {
+      "name": "real PostgreSQL regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 575,
+      "status": "PASS"
+    },
+    {
+      "name": "API and tooling regression",
+      "command": ".venv/bin/pytest -q tests/api tests/tooling",
+      "passed": 665,
+      "status": "PASS"
+    },
+    {
+      "name": "focused verified proposal contracts",
+      "command": "PYTHONPATH=services/control_plane/src:apps/api/src .venv/bin/pytest -q tests/tooling/test_model_reasoning.py tests/api/test_proposals_http.py",
+      "passed": 32,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 22,
+      "markdown_files": 156,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint, formatting, and dependency checks",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests",
+        ".venv/bin/pip check"
+      ],
+      "formatted_files": 153,
+      "status": "PASS"
+    },
+    {
+      "name": "production dependency audit",
+      "command": "npm audit --omit=dev",
+      "vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 4,
+      "reviewed_false_positives": "four source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    }
+  ],
+  "database_contract_changed": true,
+  "api_authority_changed": true,
+  "external_model_call_enabled": "owner-initiated bounded Luna draft in the disposable pilot",
+  "customer_evidence_used": "exact verified-homepage URL, title, first H1, and immutable identities",
+  "repository_candidate_enabled": false,
+  "external_write": false,
+  "production_authority": false
+}

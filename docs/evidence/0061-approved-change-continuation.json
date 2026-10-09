@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-21T02:52:03Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "source_sha256": {
+    "CHANGELOG.md": "05a17badfce674c01dd5e9946bca2e8d140cd74cd50ea38bd1e7beb0c85cba89",
+    "apps/dashboard/README.md": "da51b19dc22a3ebe87ac3adefb6e251edc19a76726a1a9d1b340b8a5551db86a",
+    "apps/dashboard/app/actions/decide-proposal/route.ts": "1494f823ca0472cb28d94e9cd3799cfe4d4cb6441c9ca86b5875958e260da8fb",
+    "apps/dashboard/app/globals.css": "85a4f8452385f9cfa33825ca0badc7b4a4465f9e47cacc7aaf992fc606ad2b8d",
+    "apps/dashboard/components/dashboard-view.tsx": "aa5b0824ae64f63bf7572f4ad8aff751f900e78ba3c77e137686becb3e8b4acc",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "f94f4952478d340abebf3fa2ca8c590c825e917ff7c197425eedb3e7ab6ec604",
+    "docs/README.md": "7dab63a9d4bedc5f7882657ac2c743203d0525428f771537797efc3013b486f9",
+    "docs/implementation/0061-approved-change-continuation.md": "b882802a43e98c8baf6a660f9bde7cdcd678ed1fc6f765ced8353f428d8c39a6",
+    "docs/implementation/status.md": "c1d88f89930eab869806886e3e1fcf9f67aec49b0642b01ecc8a6b822e6ac788",
+    "tests/repository/dashboard.test.mjs": "11478f15bb959b6aac1cdd845804bafbb7ffd5dbbf3280d2624da3083bbd530e"
+  },
+  "tests": [
+    {
+      "name": "dashboard regression",
+      "command": "npm test --workspace apps/dashboard",
+      "passed": 106,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 22,
+      "markdown_files": 157,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "production dependency audit",
+      "command": "npm audit --omit=dev",
+      "vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "command": "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+      "findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "live browser inspection",
+      "url": "http://localhost:3001/changes",
+      "observed": [
+        "full-viewport dashboard shell",
+        "truthful empty change ledger",
+        "delivery context rail",
+        "no invented candidate or pull request"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "database_contract_changed": false,
+  "api_authority_changed": false,
+  "approval_redirect_changed": "approved revisions continue to Changes",
+  "repository_candidate_enabled": false,
+  "external_provider_io": false,
+  "external_write": false,
+  "production_authority": false
+}

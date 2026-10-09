@@ -1,0 +1,65 @@
+{
+  "realm": "signal",
+  "enabled": true,
+  "displayName": "Signal Test",
+  "sslRequired": "all",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "rememberMe": false,
+  "loginWithEmailAllowed": false,
+  "duplicateEmailsAllowed": false,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": true,
+  "failureFactor": 5,
+  "permanentLockout": false,
+  "accessTokenLifespan": 300,
+  "ssoSessionIdleTimeout": 1800,
+  "ssoSessionMaxLifespan": 28800,
+  "defaultSignatureAlgorithm": "RS256",
+  "eventsEnabled": true,
+  "eventsExpiration": 604800,
+  "adminEventsEnabled": true,
+  "adminEventsDetailsEnabled": false,
+  "clients": [
+    {
+      "clientId": "signal-test-dashboard",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["__SIGNAL_ORIGIN__/auth/callback"],
+      "webOrigins": [],
+      "attributes": {"pkce.code.challenge.method": "S256"},
+      "defaultClientScopes": ["basic", "acr", "profile", "email"]
+    }
+  ],
+  "identityProviders": [
+    {
+      "alias": "google",
+      "providerId": "google",
+      "enabled": true,
+      "trustEmail": true,
+      "storeToken": false,
+      "addReadTokenRoleOnCreate": false,
+      "firstBrokerLoginFlowAlias": "first broker login",
+      "config": {
+        "clientId": "__GOOGLE_LOGIN_CLIENT_ID__",
+        "clientSecret": "${vault.google}",
+        "defaultScope": "openid email profile",
+        "syncMode": "IMPORT",
+        "validateSignature": "true",
+        "disableNonce": "false",
+        "pkceEnabled": "true",
+        "pkceMethod": "S256",
+        "filteredByClaim": "true",
+        "claimFilterName": "email",
+        "claimFilterValue": "__OWNER_EMAIL_REGEX__",
+        "offlineAccess": "false",
+        "storeTokenInSession": "false"
+      }
+    }
+  ]
+}

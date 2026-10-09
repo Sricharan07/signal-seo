@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "slice": "0144",
+  "classification": "security-critical",
+  "base": "cc7f318",
+  "migration": {
+    "revision": "0092",
+    "down_revision": "0091",
+    "app_tables": 177
+  },
+  "production_authority": false,
+  "new_egress_profiles": 0,
+  "gate_status": "DEFERRED_TO_MERGE_TRAIN",
+  "full_gate": {
+    "status": "DEFERRED_TO_MERGE_TRAIN",
+    "reviewer_decision": "reviewer accepted as load-induced pending the merge-train gate",
+    "required_followup": "Merge train 4 runs the single full gate alone; deterministic-clock fixes belong to a separate slice. No full-gate, Temporal or browser lab rerun for this delivery.",
+    "command": ".venv/bin/python scripts/run-full-gate.py --range main..HEAD",
+    "runs": 1,
+    "private_summary": ".runtime/full-gate/run-zlghrr89/summary.json",
+    "seconds": 2911.677,
+    "passed_steps": 20,
+    "failed_steps": 3,
+    "passed_test_executions": 4853,
+    "failed_test_executions": 4,
+    "passed_command_checks": 21,
+    "skipped": 0,
+    "lab_prefix": ".venv/bin/python scripts/gate_lab_worker.py",
+    "steps": [
+      {
+        "command": "npm test",
+        "passed": 310,
+        "failed": 0
+      },
+      {
+        "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+        "passed": 2883,
+        "failed": 0
+      },
+      {
+        "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+        "passed_checks": 1,
+        "failed": 0
+      },
+      {
+        "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+        "passed_checks": 1,
+        "failed": 0
+      },
+      {
+        "command": ".venv/bin/python -m pip check",
+        "passed_checks": 1,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-autonomy-delivery-tests.py --shard 0",
+        "passed": 63,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-autonomy-delivery-tests.py --shard 1",
+        "passed": 62,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-authority-journal-tests.py",
+        "passed_checks": 16,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-browser-worker-tests.py",
+        "passed": 34,
+        "failed": 1
+      },
+      {
+        "lab": "scripts/run-candidate-sandbox-tests.py",
+        "passed": 34,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-consumer-tests.py",
+        "passed": 3,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-crawler-network-tests.py",
+        "passed": 14,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-database-tests.py --shards 3 --repeat-brain 5",
+        "passed": 1304,
+        "failed": 2
+      },
+      {
+        "lab": "scripts/run-indexnow-tests.py",
+        "passed": 19,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-page-attempt-tests.py",
+        "passed": 1,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-self-host-tests.py",
+        "passed": 16,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-temporal-tests.py",
+        "passed": 10,
+        "failed": 1
+      },
+      {
+        "lab": "scripts/run-webflow-tests.py",
+        "passed": 44,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/run-workflow-consumer-image-tests.py",
+        "passed": 6,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/openbao_lab.py",
+        "passed": 45,
+        "failed": 0
+      },
+      {
+        "lab": "scripts/keycloak_lab.py",
+        "passed": 5,
+        "failed": 0
+      },
+      {
+        "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+        "passed_checks": 1,
+        "failed": 0
+      },
+      {
+        "command": "gitleaks git --config=<private main-gitleaks.toml> --log-opts=main..HEAD .",
+        "passed_checks": 1,
+        "failed": 0,
+        "commits_scanned": 0
+      }
+    ]
+  },
+  "slice_failure_corrected": {
+    "test": "tests/control_plane/test_weekly_skill_providers.py::test_report_queue_verified_recipients_outbox_only_atomic_replay[success]",
+    "reason": "The test assumed email was the final registry entry; now selects report_delivery by name with its exact assertion unchanged.",
+    "rerun": ".venv/bin/python -m pytest -q tests/control_plane/test_weekly_skill_providers.py -k report_queue_verified_recipients",
+    "environment": "database_lab isolated_postgres/provision and Alembic upgrade head",
+    "passed": 4,
+    "failed": 0
+  },
+  "unresolved_stop_failures": [
+    {
+      "test": "tests/browser/test_browser_worker.py::test_real_container_time_budget_exits_and_cleans_up",
+      "reason": "BROWSER_TIME_EXHAUSTED during four-second worker startup, before action",
+      "code_and_test_unchanged": true
+    },
+    {
+      "test": "tests/temporal/test_change_measurement_workflow.py::test_horizon_timer_and_reported_state_replay[7]",
+      "reason": "Temporal dev-server connection refused after five-second SDK startup wait",
+      "code_and_test_unchanged": true
+    },
+    {
+      "test": "tests/control_plane/test_technical_recipes.py::test_committed_finding_is_loaded_and_exact_build_is_sealed[slack]",
+      "reason": "Unchanged observation_backoff assertion did not raise; same case passed in IndexNow lab",
+      "code_and_test_unchanged": true,
+      "load_timing_cause": "REVIEWER_ACCEPTED_PENDING_MERGE_TRAIN_GATE"
+    }
+  ],
+  "remaining_failures_disposition": "reviewer accepted as load-induced pending the merge-train gate",
+  "staged_gitleaks": {
+    "configuration": "main:.gitleaks.toml unchanged",
+    "status": "PASS"
+  },
+  "commit_range_scan_record": "PR verification section",
+  "owned_gate_cleanup": "completed",
+  "foreign_containers_stopped": 0,
+  "visual_review": {
+    "tool": "Playwright",
+    "viewport_widths": [
+      1440,
+      390
+    ],
+    "data": "explicitly synthetic",
+    "authenticated_ui": "NOT_EXECUTED"
+  },
+  "live_providers": "NOT_EXECUTED",
+  "live_astro_compatibility": "NOT_EXECUTED",
+  "owner_sessions_created_or_borrowed": false,
+  "merge_train_4": {
+    "base": "856a996",
+    "pr": 50,
+    "migration": "0092",
+    "down_revision": "0091",
+    "app_tables": 177,
+    "fast_checks": {
+      "python": 2957,
+      "database": 1322,
+      "repository": 46,
+      "dashboard": 278
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0089",
+    "database_subprocess_timeout_seconds": 1200,
+    "integration_fix": {
+      "kind": "accumulated_sql_constraints",
+      "reason": "0092 replaced weekly stage and candidate evidence checks without 0140's internal-link cases, breaking the unchanged owner and weekly replay tests.",
+      "initial_failure_log": "train4-50/pre-union.log",
+      "initial_failures": 2,
+      "added_postgresql_cases": 12,
+      "closed_negatives": "Unknown stages and evidence, A4 internal links, A2 evidence exceptions, autonomous or missing-placement A4 keys remain rejected.",
+      "requalification": "1322 PostgreSQL cases passed; existing 0140 end-to-end owner/weekly safety and replay tests unchanged"
+    },
+    "visual_review": {
+      "scope": "Synthetic SSR of the integrated main shell, keyword ideas and weekly/Bing measurements; no authenticated journey or live readiness claim",
+      "viewport_widths": [1440, 390],
+      "horizontal_overflow": 0,
+      "text_overflow_findings": 0,
+      "topic_primary_action": "rgb(18, 20, 18)",
+      "technical_details": "Exact identifiers and evidence retained in collapsed disclosures",
+      "detector": "No findings across the four changed dashboard targets",
+      "private_quality_receipt": ".runtime/train4-visual/quality.json"
+    },
+    "full_gate": "Final-tip 0138 receipt and PR comment govern integrated qualification; historical deferral is superseded only after every gate passes",
+    "production_authority": false
+  }
+}

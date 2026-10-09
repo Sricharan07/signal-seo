@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29",
+  "base_commit": "d935bbe",
+  "slice": "0083",
+  "migration": "0053_candidate_recipe_inbox (down_revision 0052)",
+  "qualification": "LOCAL_GATES_PASS_LIVE_NOT_EXECUTED",
+  "gate": {
+    "run-authority-journal-tests.py": "10 passed, 0 failed",
+    "run-candidate-sandbox-tests.py": "10 passed, 0 failed",
+    "run-consumer-tests.py": "3 passed, 0 failed",
+    "run-crawler-network-tests.py": "13 passed, 0 failed",
+    "run-database-tests.py": "706 passed, 0 failed",
+    "run-page-attempt-tests.py": "1 passed, 0 failed",
+    "run-temporal-tests.py": "7 passed, 0 failed",
+    "run-workflow-consumer-image-tests.py": "6 passed, 0 failed",
+    "openbao_lab.py": "20 passed, 0 failed",
+    "check-gsc-provider-boundary.py": "PASS",
+    "pytest tests/api tests/identity tests/tooling tests/connectors": "1053 passed, 0 failed",
+    "ruff check": "PASS",
+    "ruff format --check": "309 files formatted",
+    "pip check": "PASS",
+    "npm test": "24 repository and 115 dashboard tests passed; 202 Markdown files; typecheck and build PASS",
+    "gitleaks git --log-opts=d935bbe..HEAD .": "1 commit, 0 leaks"
+  },
+  "conflicts": "Preserved brand documents, standing authorization, connectors, and Inbox behavior together; updated exact migration head and RLS table count.",
+  "live_customer_review": "NOT_EXECUTED",
+  "production_write_authority": false
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "slice": "0102",
+  "migration_revision": "0041",
+  "recorded_at": "2026-09-29",
+  "qualification": "internal_only",
+  "commands": {
+    "authority_journal_lab": ".venv/bin/python scripts/run-authority-journal-tests.py",
+    "openbao_lab": ".venv/bin/python scripts/openbao_lab.py",
+    "focused_python": ".venv/bin/python -m pytest tests/identity/test_authority_journal.py tests/api/test_session_lifecycle.py -q",
+    "non_database_python": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+    "postgresql": ".venv/bin/python scripts/run-database-tests.py",
+    "repository": "npm test"
+  },
+  "observed": {
+    "authority_journal_lab": "8 passed, 0 failed; two independent PostgreSQL 17.11 containers and real OpenBao 2.6.1",
+    "openbao_lab": "9 passed, 0 failed",
+    "focused_python": "70 passed, 0 failed",
+    "non_database_python": "878 passed, 0 failed",
+    "postgresql": "603 passed, 0 failed",
+    "repository": "24 repository and 106 dashboard tests passed; documentation, typecheck, and build passed",
+    "ruff_check": "passed",
+    "ruff_format": "209 files already formatted",
+    "pip_check": "no broken requirements"
+  },
+  "production_authority": false
+}

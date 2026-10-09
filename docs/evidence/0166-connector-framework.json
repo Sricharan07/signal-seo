@@ -1,0 +1,110 @@
+{
+  "slice": "0166",
+  "classification": "security-critical",
+  "base": "a519a65",
+  "migration": null,
+  "existing_test_changes": [],
+  "qualification": "PASS",
+  "full_gate": "RESERVED_FOR_STACKED_0167_TIP",
+  "not_executed": [
+    "live providers",
+    "production composition",
+    "production writes"
+  ],
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "passed": 3123,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/connectors/test_connector_framework.py -q",
+      "passed": 18,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python /tmp/signal-etrack-b-focused.py",
+      "passed": 67,
+      "failed": 0,
+      "note": "Disposable database provisioned and Alembic upgraded before targeted GSC/Bing/GA4/Docs/Slack/Telegram/provider-data pytest. Same tests re-run in final full database gate."
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 45,
+      "failed": 0,
+      "receipt": ".runtime/openbao-tests/latest.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-webflow-tests.py",
+      "passed": 60,
+      "failed": 0,
+      "receipt": ".runtime/webflow/latest.json"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-wordpress-draft-tests.py",
+      "passed": 35,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "status": "PASS",
+      "files": 689
+    },
+    {
+      "command": "npm test",
+      "repository_passed": 46,
+      "dashboard_passed": 363,
+      "status": "PASS",
+      "typecheck": "PASS",
+      "build": "PASS"
+    }
+  ],
+  "coverage": {
+    "positive": [
+      "connect/callback/resource confirmation",
+      "isolated OpenBao ACL and CAS rotation",
+      "provider-specific revocation and status",
+      "real PostgreSQL binding/import"
+    ],
+    "negative": [
+      "wrong tenant/site/current authority",
+      "wrong scope/resource/token",
+      "duplicate JSON keys",
+      "callback consumption and PKCE denial"
+    ],
+    "failure": [
+      "verifier/staging cleanup",
+      "refresh rotation restriction",
+      "upstream revoke failure",
+      "AUTHORITY_DURABILITY_PENDING preserved"
+    ]
+  },
+  "development_failures": [
+    {
+      "command": ".venv/bin/python /tmp/signal-etrack-b-focused.py",
+      "passed": 1,
+      "failed": 9,
+      "errors": 57,
+      "reason": "Temporary runner omitted Alembic migrations; fixed runner, no production code change."
+    },
+    {
+      "command": ".venv/bin/python scripts/run-webflow-tests.py",
+      "passed_tests": 60,
+      "status": "FAIL",
+      "reason": "Source-stability check detected final formatting during first run; stable-source rerun passed."
+    }
+  ],
+  "staged_scanner": {
+    "status": "PASS",
+    "configuration": "main:.gitleaks.toml unchanged"
+  }
+}

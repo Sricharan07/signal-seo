@@ -1,0 +1,40 @@
+title = "Signal secret scanning"
+
+# Keep every default gitleaks rule. The allowlists below cover only reviewed,
+# known false positives of the broad generic-api-key rule; each one names the
+# rule, the location, and the exact value shape it accepts.
+[extend]
+useDefault = true
+
+# Evidence records map source file names to SHA-256 content digests, for example
+# "pkce_secrets.py": "<64 hex characters>". A digest is not a credential.
+[[allowlists]]
+description = "SHA-256 content digests keyed by file name in evidence records"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''^docs/evidence/[^/]+\.json$''']
+regexTarget = "line"
+regexes = ['''"[A-Za-z0-9_./-]+\.(py|ts|tsx|mjs|js|json|sql|md|toml|txt|yaml|yml|sh|css)":\s*"[0-9a-f]{64}"''']
+
+# Tests and disposable local labs use clearly labelled synthetic credentials.
+[[allowlists]]
+description = "Synthetic credentials in tests and local labs"
+targetRules = ["generic-api-key"]
+condition = "AND"
+paths = ['''^(tests|scripts)/''']
+regexTarget = "secret"
+regexes = ['''^synthetic[-_]''']
+
+# Parameter names and type annotations match the rule's keyword pattern but
+# carry no literal value.
+[[allowlists]]
+description = "Identifiers and type annotations, not literal values"
+targetRules = ["generic-api-key"]
+regexTarget = "secret"
+regexes = [
+  # Ed25519 key type names in annotations.
+  '''^Ed25519(Private|Public)Key$''',
+  # A bare lowercase snake_case name, or name=name keyword passing; no digits,
+  # capitals, or quotes, so no credential can have this shape.
+  '''^[a-z][a-z_]*(=[a-z][a-z_]*)?$''',
+]

@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-13T22:57:06Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "model_request": {
+    "provider": "openai",
+    "model": "gpt-5.6-luna",
+    "api": "responses",
+    "store": false,
+    "tools": [],
+    "prompt_sha256": "6c50fef0b4d7c0f096b34a2cd7f52de346e205bae3d788a7f25a7ddce73746e0"
+  },
+  "tests": [
+    {
+      "name": "focused model, credential, and API contracts",
+      "command": ".venv/bin/python -m pytest tests/tooling/test_model_reasoning.py tests/identity/test_model_credentials.py tests/api/test_proposals_http.py tests/api/test_api.py -q",
+      "passed": 43,
+      "status": "PASS"
+    },
+    {
+      "name": "real PostgreSQL regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 568,
+      "database": "17.11",
+      "status": "PASS"
+    },
+    {
+      "name": "OpenBao model-secret contracts",
+      "command": ".venv/bin/python -m pytest tests/tooling/test_openbao_lab.py tests/tooling/test_model_reasoning.py tests/identity/test_model_credentials.py -q",
+      "passed": 25,
+      "status": "PASS"
+    },
+    {
+      "name": "real disposable OpenBao qualification",
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard regression",
+      "command": "npm run test:dashboard",
+      "passed": 100,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard typecheck",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "repository aggregate quality gate",
+      "command": "npm test",
+      "repo_tests_passed": 22,
+      "markdown_files_checked": 151,
+      "dashboard_tests_passed": 100,
+      "typecheck": "PASS",
+      "production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "non-database Python regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/connectors tests/identity tests/tooling -q",
+      "passed": 805,
+      "status": "PASS"
+    },
+    {
+      "name": "Python formatting and lint",
+      "command": ".venv/bin/ruff format --check services/control_plane/src apps/api/src scripts tests && .venv/bin/ruff check services/control_plane/src apps/api/src scripts tests",
+      "files_checked": 147,
+      "status": "PASS"
+    },
+    {
+      "name": "dependency health",
+      "commands": [
+        ".venv/bin/pip check",
+        "npm audit --omit=dev"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "command": "gitleaks git --staged --no-banner --redact",
+      "findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real disposable Luna owner journey",
+      "command": "SIGNAL_OPENAI_API_KEY=<private> npm run pilot",
+      "steps": [
+        "completed OIDC sign-in, organization selection, and disposable owner site onboarding",
+        "completed the PostgreSQL, outbox, Temporal, and synthetic fixture-finding path",
+        "committed one durable model run and Responses call intent before provider I/O",
+        "received one strict-schema gpt-5.6-luna metadata draft",
+        "sealed model receipt, usage, prompt/input/output hashes, and rationale into the exact approval revision",
+        "loaded the approval inbox without reading the configured origin or issuing an external write"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "database_contract_changed": true,
+  "api_authority_changed": true,
+  "workflow_contract_changed": false,
+  "credential_committed": false,
+  "credential_logged": false,
+  "credential_stored_in_business_database": false,
+  "credential_cleanup_bound_to_pilot": true,
+  "credential_destroyed_with_pilot": false,
+  "local_pilot_left_running_for_review": true,
+  "synthetic_identity_only": true,
+  "synthetic_fixture_findings_produced": true,
+  "model_invoked": true,
+  "approval_decision_performed": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "customer_origin_network_access": false,
+  "customer_seo_findings_produced": false,
+  "external_write": false,
+  "github_operation": false,
+  "outbox_dispatch_from_decision": false,
+  "production_authority": false
+}

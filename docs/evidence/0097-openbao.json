@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-03T01:14:33.080114+00:00",
+  "provider": "OpenBao v2.6.1 (ba7ad8861d0578cd4da4f7b9e5a6756d30484f8f), committed 2026-07-22T14:22:33Z",
+  "image": "ghcr.io/openbao/openbao:2.6.1@sha256:5b2486ab0fb90bbc788cc345b0a08616dfb375873ee8be5df3a2fd4d378a67e0",
+  "python": "3.12.14",
+  "source_sha256": {
+    "requirements.txt": "c86b807c7cc48bddefaa501655eac4cb4e786f2765c14062ec942bfe0a6d00da",
+    "scripts/openbao_lab.py": "21d204e05db28d47e5884b4f9deb8d5f2caf572d3b8ac74840c96232b6bb1fba",
+    "services/control_plane/src/signal_core/artifact_keys.py": "2ebee8497a700621a0602602858855a2098f07f46c780ed74ba94ebfd418abdc",
+    "services/control_plane/src/signal_core/assistant_credentials.py": "1ad52a63acb4bd71bc7c799a501adc040bd0675d503222103d45af190ad75ac9",
+    "services/control_plane/src/signal_core/bing_secrets.py": "6f55521626b34de4d77aee2b21d0a5f9bec9b5f2ebb294b305851bc04a6b20e9",
+    "services/control_plane/src/signal_core/ga4_secrets.py": "002b0d487f3575d5a73b9bbebbc7e0c2ad5bc01fd463eac1f8f58ddb4120dfeb",
+    "services/control_plane/src/signal_core/gsc_secrets.py": "15f2335136a56d2fd667ce16d5a93e949b62fde77bf8de6d9c6215b10bde700b",
+    "services/control_plane/src/signal_core/model_credentials.py": "e8c66af8982baced66e195bd26b1a0058b539ad7913b74c61d499e9ea00714d8",
+    "services/control_plane/src/signal_core/openbao_http.py": "43d25a3001213cdb32e903c84737621fddbc00ebe0f81fb50d8ffa91ff04e55f",
+    "services/control_plane/src/signal_core/pkce_secrets.py": "baa6cb57476dfa9e17dbddbad57d21e65837b77ddf3b6b253add6fb24eefa769",
+    "services/control_plane/src/signal_core/recovery_authority.py": "0f9dc727cd0f0bf4083ae9fbb5eb0a52ecfbf3c627bb784818d600dcbe75edf1",
+    "services/control_plane/src/signal_core/slack_protocol.py": "9f2bd6a508202104896e8f72353513632d0fe6acf7d9167aef1e673f5c67fad2",
+    "services/control_plane/src/signal_core/slack_secrets.py": "91859806aae4a869a54f953df9c94f6c59d74c9fc0fb45662f37abda14118d05",
+    "tests/identity/test_artifact_keys.py": "1f3b2c83b71596512ccc98efd32d6e4d4a2eaf909a7bced0cf97ff80f42cc544",
+    "tests/identity/test_model_credentials.py": "8466e7eb31da944826be5edcc7fbb84587b3d026fafc39f8dbf66d5cbec7f194",
+    "tests/identity/test_pkce_secrets.py": "06b8741093f75b6461153e3a7117b76e7b8081aee21e3196068e78172b0bc83e",
+    "tests/identity/test_recovery_authority.py": "3b8084c52c1b096b6d5975aee4b5df80395a17b812c6b8f4dfac395963e53ccb",
+    "tests/tooling/test_openbao_lab.py": "3a0e9cd05658ee0044af6b7c7768b6eeb311187adf1b8a2e319e88e28a689fd0"
+  },
+  "tests": [
+    {
+      "name": "TLS KV v2 bounded mount configuration",
+      "status": "PASS"
+    },
+    {
+      "name": "Slack OAuth and signing secrets read-only ACL",
+      "status": "PASS"
+    },
+    {
+      "name": "Slack bot CAS-zero immutable secret creation",
+      "status": "PASS"
+    },
+    {
+      "name": "Slack bot permanent revocation and missing-secret denial",
+      "status": "PASS"
+    },
+    {
+      "name": "single-secret model reader rejects mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "brand artifact key read-only isolation",
+      "status": "PASS"
+    },
+    {
+      "name": "independent assistant availability and missing provider",
+      "status": "PASS"
+    },
+    {
+      "name": "assistant reader rejects mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "single-secret Jev reader rejects mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "single-secret GitHub App reader rejects mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "GSC OAuth client secret is read-only",
+      "status": "PASS"
+    },
+    {
+      "name": "GSC PKCE verifier permanently consumed",
+      "status": "PASS"
+    },
+    {
+      "name": "GSC refresh rotation uses OpenBao CAS",
+      "status": "PASS"
+    },
+    {
+      "name": "GSC refresh token stays in OpenBao and is destroyed",
+      "status": "PASS"
+    },
+    {
+      "name": "GA4 isolated PKCE permanently consumed",
+      "status": "PASS"
+    },
+    {
+      "name": "GA4 refresh uses isolated OpenBao CAS",
+      "status": "PASS"
+    },
+    {
+      "name": "GA4 OpenBao ACL denies GSC namespace",
+      "status": "PASS"
+    },
+    {
+      "name": "GA4 refresh secret permanently destroyed",
+      "status": "PASS"
+    },
+    {
+      "name": "Bing OAuth client secret is read-only",
+      "status": "PASS"
+    },
+    {
+      "name": "Bing refresh rotation uses OpenBao CAS",
+      "status": "PASS"
+    },
+    {
+      "name": "Bing refresh token stays in OpenBao and is destroyed",
+      "status": "PASS"
+    },
+    {
+      "name": "read-only external recovery generation authority",
+      "status": "PASS"
+    },
+    {
+      "name": "recovery authority rejects reader mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "CAS-zero PKCE verifier creation",
+      "status": "PASS"
+    },
+    {
+      "name": "separate writer and consumer ACLs",
+      "status": "PASS"
+    },
+    {
+      "name": "confirmed permanent consume and replay rejection",
+      "status": "PASS"
+    },
+    {
+      "name": "conflicting overwrite rejected and original preserved",
+      "status": "PASS"
+    }
+  ],
+  "passed": 27,
+  "production_authority": false,
+  "synthetic_secrets_only": true,
+  "token_material_recorded": false,
+  "secret_material_recorded": false,
+  "recovery_generation_recorded": false,
+  "transport_security": "OpenBao-generated locally trusted TLS",
+  "cleanup": "completed"
+}

@@ -1,0 +1,82 @@
+{
+  admin off
+  http_port 8080
+  https_port 8443
+  auto_https disable_redirects
+  servers {
+    protocols h1 h2
+  }
+  log default {
+    output discard
+  }
+}
+
+__SIGNAL_INTEGRATION_HOST__ {
+  log signal_test {
+    output stdout
+    format filter {
+      wrap json
+      fields {
+        request delete
+        resp_headers delete
+      }
+    }
+  }
+  tls {
+    issuer acme {
+      dir https://acme-v02.api.letsencrypt.org/directory
+      disable_tlsalpn_challenge
+    }
+  }
+  request_body {
+    max_size 64KB
+  }
+  header {
+    X-Content-Type-Options nosniff
+    X-Frame-Options DENY
+    Strict-Transport-Security "max-age=86400"
+  }
+  @credential_url path /identity/* /auth/callback /auth/slack/callback /auth/gsc/callback
+  header @credential_url {
+    Referrer-Policy no-referrer
+    defer
+  }
+  @dashboard_url not path /identity/* /auth/callback /auth/slack/callback /auth/gsc/callback
+  header @dashboard_url {
+    Referrer-Policy same-origin
+    defer
+  }
+  @identity path /identity/resources/* /identity/realms/signal/protocol/openid-connect/auth /identity/realms/signal/protocol/openid-connect/logout /identity/realms/signal/broker/google/* /identity/realms/signal/broker/after-first-broker-login /identity/realms/signal/broker/after-post-broker-login /identity/realms/signal/login-actions/* /identity/realms/signal/.well-known/openid-configuration /identity/realms/signal/protocol/openid-connect/certs
+  handle @identity {
+    reverse_proxy https://identity:8443 {
+      transport http {
+        tls_trust_pool file /run/signal-tls/ca.pem
+        dial_timeout 5s
+        response_header_timeout 35s
+      }
+    }
+  }
+  @private path /identity* /admin* /metrics* /health* /api* /v1* /openapi.json /docs
+  handle @private {
+    respond 404
+  }
+  handle {
+    reverse_proxy https://dashboard:8443 {
+      transport http {
+        tls_trust_pool file /run/signal-tls/ca.pem
+        dial_timeout 5s
+        response_header_timeout 15s
+      }
+    }
+  }
+  handle_errors {
+    header Content-Type "text/html; charset=utf-8"
+    header Cache-Control "no-store"
+    header Referrer-Policy "no-referrer"
+    respond "<!doctype html><html lang='en'><title>Signal unavailable</title><h1>Signal unavailable</h1><p>Please try again shortly.</p></html>" {err.status_code}
+  }
+}
+
+http://__SIGNAL_INTEGRATION_HOST__ {
+  respond 404
+}

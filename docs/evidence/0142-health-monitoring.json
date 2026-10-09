@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "slice": "0142",
+  "classification": "security-critical",
+  "base": "7754746",
+  "migration": {
+    "revision": "0089",
+    "down_revision": "0088",
+    "app_tables": 175
+  },
+  "production_authority": false,
+  "new_egress_profiles": 0,
+  "public_health": "unchanged Caddy deny and remote/forwarded request 404 regression tests",
+  "gate_status": "PASS",
+  "focused": {
+    "health_api_tooling_passed": 110,
+    "temporal_suite_passed": 11,
+    "dashboard_suite_passed": 204,
+    "postgres_health_and_existing_gsc_lifecycle_passed": 12
+  },
+  "visual": {
+    "mode": "synthetic actual-component static render",
+    "desktop": "1440x900",
+    "mobile": "390x844",
+    "review": "ship",
+    "material_fixes": 0
+  },
+  "not_executed": [
+    "live provider health-alert delivery and inbox placement",
+    "0133 Slack/Telegram health-alert consumer registration and delivery",
+    "deployed monitor supervision and restart",
+    "dedicated-environment screened-pin refresh and expiry qualification",
+    "live disk/database growth exercises",
+    "model/assistant aggregate budget ledger composition"
+  ],
+  "recorded_at": "2026-10-04T05:29:55.612Z",
+  "gate_commands": [
+    {
+      "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling tests/connectors tests/delivery tests/page_attempt",
+      "exit_code": 0,
+      "seconds": 0.1,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling tests/connectors tests/delivery tests/page_attempt",
+      "exit_code": 0,
+      "seconds": 0.04,
+      "log_sha256": "bfc2bdd6646210f6cf3aef2cbb817d83e31f19066f26bbee1eadc20c606f4cd5"
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "exit_code": 0,
+      "seconds": 0.23,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q --junitxml=.runtime/0142-release-gate/python.xml",
+      "exit_code": 0,
+      "seconds": 38.08,
+      "passed": 2002,
+      "failed": 0,
+      "log_sha256": "8c64792caa61a7dd249f8c0b5ed752aaf7b0094795f184a7b42c21b3f5d38e98"
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "seconds": 7.35,
+      "repository_passed": 43,
+      "dashboard_passed": 204,
+      "failed": 0,
+      "log_sha256": "07e75a2c08301dd96200c292511409a002f0ebdd86b0fcefaa43be744b51ed9c"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "exit_code": 0,
+      "seconds": 10.96,
+      "passed": 15,
+      "failed": 0,
+      "log_sha256": "371950473a6090b2aa198599b4c745686a52fa6ba89623c74041bc4957eb58c7"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "exit_code": 0,
+      "seconds": 1575.98,
+      "passed": 40,
+      "failed": 0,
+      "log_sha256": "7c437be52ba8081d07b63e432ad9c2a3e0559b7b4334b52a6cb09e9363058655"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "exit_code": 0,
+      "seconds": 14.03,
+      "passed": 11,
+      "failed": 0,
+      "log_sha256": "f8b8060db32eaf41bf7245d9c52cbc92379e7c33355d22df6710b306660d78b8"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "exit_code": 0,
+      "seconds": 10.01,
+      "passed": 3,
+      "failed": 0,
+      "log_sha256": "a0d9f6da5b987c24b5a99b6a689edb08fbc448caf365ed390622ff75b7c542b5"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "exit_code": 0,
+      "seconds": 20.92,
+      "passed": 14,
+      "failed": 0,
+      "log_sha256": "9280cc1b2a49d924bff6f734fb512f06f6a8e61656b61d63fc37f7a9b41cf028"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "exit_code": 0,
+      "seconds": 673.16,
+      "passed": 973,
+      "failed": 0,
+      "log_sha256": "eec47bd45b58096693e4f2ab12baa92ee19ea4fd92fc440ec8fc425684527084"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-indexnow-tests.py",
+      "exit_code": 0,
+      "seconds": 350.56,
+      "passed": 17,
+      "failed": 0,
+      "log_sha256": "42c3560ffcc207ee643f9d21d77d20a6309b0523e3030c00af1e7f45e9e198d2"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "exit_code": 0,
+      "seconds": 10.2,
+      "passed": 1,
+      "failed": 0,
+      "log_sha256": "aa1a2debf2b6d6db8cb43a26eae0b196f9a78fdbc54de47e35505630fb41bb8c"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "exit_code": 0,
+      "seconds": 37.03,
+      "passed": 11,
+      "failed": 0,
+      "log_sha256": "3b14a7f57efc7e8c8e4957921dbcc59a1c1f719fbe7ddb307e7fdcc7eefecae4"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "exit_code": 0,
+      "seconds": 25.96,
+      "passed": 6,
+      "failed": 0,
+      "log_sha256": "c87ebe6807cf89e09e097f18e467bf419fba02b5731afc95d489e74ed9df1018"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "exit_code": 0,
+      "seconds": 4.29,
+      "passed": 34,
+      "failed": 0,
+      "log_sha256": "d1b46b6d6a10b6adce44930829fc82681444e0e4cbd79783e1c18b45e895d53b"
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "exit_code": 0,
+      "seconds": 0.37,
+      "log_sha256": "86ef9b40fe823e3003b27f8580c1c078478cb4048d709a9a305ed1ab5ac24403"
+    }
+  ],
+  "reported_test_case_executions": {
+    "passed": 3374,
+    "failed": 0,
+    "note": "Includes overlap between full PostgreSQL and focused lab commands."
+  },
+  "gitleaks": {
+    "staged_command": "gitleaks git --staged --config .gitleaks.toml --redact --no-banner",
+    "staged_result": "PASS, zero findings",
+    "commit_range_command": "gitleaks git --config .gitleaks.toml --log-opts=main..HEAD --redact --no-banner",
+    "commit_range_record": "Run after commit creation, before push; outcome recorded in the PR."
+  },
+  "source_sha256": {
+    "CHANGELOG.md": "527a8fc02a29abd126784e971433d9735f377d6c0fa58b20183c54256d3a6e15",
+    "apps/api/src/signal_api/health_http.py": "7d3d13691b434462af1a67e4a677b0d09fcdc7950e650bab30df16e442148585",
+    "apps/api/src/signal_api/main.py": "66fb854c1d85e12a181b05d83c9cacb84ff993b5556ca5caee6b6db8380b00ff",
+    "apps/dashboard/app/globals.css": "8588f46762e25e4a23964595c042fb78d2e573356a69b072f63ad5f4c5c7e87b",
+    "apps/dashboard/components/dashboard-view.tsx": "50a74c256aa4c902a4c92303ae9979668c8f3e58b62ba92d187a0e5f913778f1",
+    "apps/dashboard/components/health-panel.tsx": "c9ca559df5acdf254bd6897ae0071c61999161ea5b9508927b65c6e387fa8800",
+    "apps/dashboard/lib/dashboard-page.ts": "f9fae9d725bc07abc45cb1ada5e11077de34c798c467691415a3ea803e8ee622",
+    "apps/dashboard/lib/health-api.ts": "fe6a2b489c8ccd247a6129fc8b7d718f90e0844ef4cd9f1286d2bc89ca2a200c",
+    "apps/dashboard/tests/health.test.tsx": "240300954d758d8e3a5a622f7aa33c5a4b06b5a530762a48a3aae791cee09f60",
+    "database/migrations/versions/0089_health_monitoring.py": "4a9d40f3eda80fd3f6536505293656b6afcbcaa14c46e19b84c86c0914c76162",
+    "database/migrations/versions/0089_health_monitoring.sql": "276c2858d470c01c51e2c53be8035a8f2a1131ae9f741ed47a2c142167fa220e",
+    "docs/adr/0153-private-health-observations-and-alerts.md": "459ab437bc5c027b0da2abc0ec1518f0371e4e2e2901ad8edbba6f78a6c56b81",
+    "docs/adr/README.md": "c44a3ec33a729bec05a51d5c3377d5b7c42f32b9a508a3eadc4007dcbb50095d",
+    "docs/evidence/0142-health-desktop.png": "f773951b615c4b6b36f378eb647c8ce2924b76b93c591fce37c2adb8aadf6109",
+    "docs/evidence/0142-health-mobile.png": "060656144f1ae71d4e831118ae4c1bd9f8fc6ed1e58cac6e70479ae82b0f5bcc",
+    "docs/implementation/0142-health-monitoring.md": "963efb2f27e79ebe0ac012ae9cd69b7c2e71f09c3ac2413bc0633096bee9ddc7",
+    "docs/implementation/status.md": "4a6dde5ca529b8a11233589962090a5f3cf9ad30b0f802d568bdf2df27a1acb3",
+    "services/control_plane/src/signal_core/email_messages.py": "23503bc9f1b5c103b9f687ea6def1ab49615c109e9f4e30ded59e1c796ffdedb",
+    "services/control_plane/src/signal_core/health_monitoring.py": "2d9b639acbaa4c32c715f30e6ac1b22cb617d629c09b753ae0c83d8819a37129",
+    "services/control_plane/src/signal_core/health_probes.py": "12cc4a8f8d67771a8f13f0373442ebbe01f5dd78fc675a1b7a9065bab4e5e5db",
+    "services/control_plane/src/signal_core/weekly_delivery_runtime.py": "5ff1b5a768ef7b2b19dd1f24fe5668af4c337bfc264a70540efef082ad3c271c",
+    "tests/api/test_health_http.py": "e9fd9b8c14ea8c3c6acaa1f0b30c384bc8c2db9c2618ff2eb9a3fe0a3c06e802",
+    "tests/control_plane/test_database.py": "adccf96382b6533682364dc1f398ca3454f496329a60373fd419cefba7439c65",
+    "tests/control_plane/test_health_monitoring.py": "9cce886485520bd6951a1f26ee8e2500313887a74c3540be90c89a6173b056d3",
+    "tests/temporal/test_health_monitoring.py": "294277377b96efc48acf71acdac5a91de4a4c64a832aded3e347e16502c20090",
+    "tests/tooling/test_health_monitoring.py": "acb7021b77371e11813274378460c330f49e1bd70c34cdc65c0a3d61778cee7d"
+  },
+  "unchanged_boundaries": {
+    ".gitleaks.toml": {
+      "unchanged": true,
+      "sha256": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346"
+    },
+    "deploy/integration-test/application/Caddyfile": {
+      "unchanged": true,
+      "sha256": "43277393ed7aba25a55bde90f2b880d0aca01a96f12db25c423e7853e34b6c59"
+    },
+    "services/control_plane/src/signal_core/egress_profiles.py": {
+      "unchanged": true,
+      "sha256": "30521c3bc86ff45e6812b3afa466d448d74b3b22d5f28b2420557994bec4ec2b"
+    }
+  },
+  "cleanup": "Invocation-owned lab cleanup completed; no surviving containers from inventoried track run names. Other tracks untouched.",
+  "superseded_attempts": [
+    {
+      "result": "Source-stability guard rejection",
+      "note": "40 delivery cases passed before source guard rejection; rerun against frozen source."
+    },
+    {
+      "result": "One new fixture failure, 972 PostgreSQL cases passed",
+      "note": "Reused globally unique OAuth state; replaced test-to-test call with real existing lifecycle and fresh synthetic state. Full gate rerun passed."
+    }
+  ],
+  "final_source_verification": {
+    "database-tests": {
+      "matched": true,
+      "files": 343,
+      "cleanup": "completed"
+    },
+    "autonomy-delivery": {
+      "matched": true,
+      "files": 350,
+      "cleanup": "completed"
+    },
+    "temporal-tests": {
+      "matched": true,
+      "files": 193,
+      "cleanup": "completed"
+    },
+    "openbao-tests": {
+      "matched": true,
+      "files": 24,
+      "cleanup": "completed"
+    }
+  },
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 40,
+    "migration": "0089",
+    "down_revision": "0088",
+    "app_tables": 175,
+    "fast_checks": {
+      "python": 2867,
+      "database": 1226,
+      "repository": 46,
+      "dashboard": 262
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false,
+    "source_sha256": {
+      "CHANGELOG.md": "bea41b6c882fb3936c2f7aa57e3bbbae181744ee3d80c2d9e29dcd4c4a0283ab",
+      "apps/api/src/signal_api/health_http.py": "7d3d13691b434462af1a67e4a677b0d09fcdc7950e650bab30df16e442148585",
+      "apps/api/src/signal_api/main.py": "39986bd34a928bd6c12c4d56c0beb41531dc6b533f704ed26184cc58332c0bbd",
+      "apps/dashboard/app/globals.css": "122c751d4261abeeba8a68815450c0d733eff6fcaef1b3cc9ad7ec41dddd0a23",
+      "apps/dashboard/components/dashboard-view.tsx": "3f0935bdd4261e55aa794a47df6e53be4eb440cd18f39e7c992bb4fb8be944d2",
+      "apps/dashboard/components/health-panel.tsx": "c9ca559df5acdf254bd6897ae0071c61999161ea5b9508927b65c6e387fa8800",
+      "apps/dashboard/lib/dashboard-page.ts": "5bfad6ceb59f580ce78ef6f5783619082d5889ab7c7de159889124f952086c43",
+      "apps/dashboard/lib/health-api.ts": "fe6a2b489c8ccd247a6129fc8b7d718f90e0844ef4cd9f1286d2bc89ca2a200c",
+      "apps/dashboard/tests/health.test.tsx": "240300954d758d8e3a5a622f7aa33c5a4b06b5a530762a48a3aae791cee09f60",
+      "database/migrations/versions/0089_health_monitoring.py": "dbef72775bc5bcf9fa9b295198523f1d70045fa7b6c2fe75623d3ba998e6192c",
+      "database/migrations/versions/0089_health_monitoring.sql": "276c2858d470c01c51e2c53be8035a8f2a1131ae9f741ed47a2c142167fa220e",
+      "docs/adr/0153-private-health-observations-and-alerts.md": "1b23f4a2fb4e51ab790f10d5c68f2c61e34974ae3de4bc526c433bfff53f82e5",
+      "docs/adr/README.md": "8dcf37654b92b3c8775459d5e0fa5c5fc857c6aea25e93e6256151d8b7513403",
+      "docs/evidence/0142-health-desktop.png": "f773951b615c4b6b36f378eb647c8ce2924b76b93c591fce37c2adb8aadf6109",
+      "docs/evidence/0142-health-mobile.png": "060656144f1ae71d4e831118ae4c1bd9f8fc6ed1e58cac6e70479ae82b0f5bcc",
+      "docs/implementation/0142-health-monitoring.md": "2cf7ffd995a48a7bc61a376066aab0df27be78970c6ff0a3447226644dde951b",
+      "docs/implementation/status.md": "6e910aa16b0a5266d9598d3ac075409ceb5545527d7ab073f9ac1aaf679ba770",
+      "services/control_plane/src/signal_core/email_messages.py": "63dd33eed5a424c6d0f8ca1dd4d3653b930c4148afa00334520fcd04d86dc2cc",
+      "services/control_plane/src/signal_core/health_monitoring.py": "2d9b639acbaa4c32c715f30e6ac1b22cb617d629c09b753ae0c83d8819a37129",
+      "services/control_plane/src/signal_core/health_probes.py": "12cc4a8f8d67771a8f13f0373442ebbe01f5dd78fc675a1b7a9065bab4e5e5db",
+      "services/control_plane/src/signal_core/weekly_delivery_runtime.py": "747913891d802ce86f8d8ac31de30b151a60e0506bf54657bb109e2d98200cf1",
+      "tests/api/test_health_http.py": "e9fd9b8c14ea8c3c6acaa1f0b30c384bc8c2db9c2618ff2eb9a3fe0a3c06e802",
+      "tests/control_plane/test_database.py": "acfb7797af3f3a769ef1bf8fb26528d3dd6f9e05591cc2db375f71b99f541930",
+      "tests/control_plane/test_health_monitoring.py": "9cce886485520bd6951a1f26ee8e2500313887a74c3540be90c89a6173b056d3",
+      "tests/temporal/test_health_monitoring.py": "294277377b96efc48acf71acdac5a91de4a4c64a832aded3e347e16502c20090",
+      "tests/tooling/test_health_monitoring.py": "acb7021b77371e11813274378460c330f49e1bd70c34cdc65c0a3d61778cee7d"
+    },
+    "source_hash_scope": "Current merge qualification; top-level hashes are historical pre-merge evidence"
+  }
+}

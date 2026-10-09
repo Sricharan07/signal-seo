@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29T10:55:52Z",
+  "classification": "security-critical: owner-scoped provider binding, OpenBao secret, connector egress",
+  "tests": [
+    {
+      "name": "real PostgreSQL migration, authority, revocation, egress GET, and regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "provider": "PostgreSQL 17.11",
+      "passed": 612,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "real OpenBao KV v2 synthetic GitHub App key and read-only policy",
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "provider": "OpenBao 2.6.1",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "real isolated pinned network and connector request regression",
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "GitHub App, binding credential, shared-egress transport, qualification, and HTTP contract",
+      "command": "PYTHONPATH=services/control_plane/src .venv/bin/pytest -q tests/tooling/test_github_binding_qualification.py tests/connectors/test_github_shared_egress_transport.py tests/connectors/test_github_read_binding.py tests/connectors/test_github_app.py tests/tooling/test_crawl_http.py",
+      "passed": 93,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "API, identity, and tooling regression",
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling",
+      "passed": 875,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint, format, and dependency validation",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests database/migrations",
+        ".venv/bin/ruff format --check apps services scripts tests database/migrations",
+        ".venv/bin/python -m pip check"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "root repository and dashboard quality gate",
+      "command": "npm test",
+      "repository_tests": 24,
+      "markdown_files": 176,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    }
+  ],
+  "dedicated_github_app_live_binding": "NOT_EXECUTED",
+  "github_provider_revocation_live": "NOT_EXECUTED",
+  "browser_connector_ui": false,
+  "external_write": false,
+  "production_authority": false,
+  "release_admission": false
+}

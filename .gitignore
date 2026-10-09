@@ -1,0 +1,45 @@
+# macOS metadata
+.DS_Store
+._*
+
+# Local configuration and secrets; keep sanitized templates trackable.
+.env
+.env.*
+!.env.example
+!.env.*.example
+.secrets/
+
+# JavaScript / Next.js generated output
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Generated test output
+coverage/
+playwright-report/
+test-results/
+
+# Root-local runtime state; keep reviewed fixtures in their own source paths.
+/.runtime/
+/local-data/
+/backups/
+/logs/

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "slice": "0129",
+  "date": "2026-10-03",
+  "classification": "security-critical",
+  "local_qualification": "PASS",
+  "positive_negative_failure_paths": "PASS",
+  "provider_environment": "Synthetic doubles behind shared egress; disposable real PostgreSQL, Temporal, OpenBao and containers",
+  "checks": [
+    {
+      "command": ".venv/bin/pytest -q tests/connectors/test_bing_pages.py tests/connectors/test_bing_protocol.py tests/connectors/test_bing_secrets.py tests/tooling/test_bing_qualification.py",
+      "passed": 62,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/control_plane/test_bing_pages.py",
+      "environment": "database_lab.isolated_postgres and provision; Alembic upgraded to head; provisioned SIGNAL_TEST_*_DSN role environment",
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 36,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 879,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 23,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/api tests/identity tests/tooling tests/connectors",
+      "passed": 1710,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+      "formatted_files": 422,
+      "unformatted_files": 0,
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/pip check",
+      "status": "PASS"
+    },
+    {
+      "command": "npm test",
+      "repository_passed": 43,
+      "dashboard_passed": 154,
+      "markdown_files_checked": 249,
+      "failed": 0,
+      "typecheck": "PASS",
+      "production_build": "PASS"
+    }
+  ],
+  "secret_scan": {
+    "configuration": "main:.gitleaks.toml, unchanged",
+    "precommit_command": "gitleaks stdin --config .runtime/0129-gitleaks-main.toml --redact --no-banner (input: git diff --cached --no-ext-diff)",
+    "precommit": "PASS",
+    "precommit_findings": 0,
+    "commit_range_command": "gitleaks git --config .runtime/0129-gitleaks-main.toml --log-opts=main..HEAD .",
+    "commit_range_result": "Recorded in the PR after creating the commit; required before push"
+  },
+  "execution_notes": [
+    "The missing pinned Node image interrupted an initial lab attempt; final container labs passed after the image became available. No other track's containers were stopped.",
+    "Use python -m pytest for the shared virtual environment; the script entry point initially failed collection before tests ran.",
+    "A stale dashboard .next route cache from the prior branch was regenerated with npm run build:dashboard; the final full npm test passed without source changes.",
+    "Final runs supersede earlier development failures; no safety gate or existing Bing test was weakened. Disposable labs completed cleanup."
+  ],
+  "live_bing_consent": "NOT_EXECUTED",
+  "live_bing_page_performance": "NOT_EXECUTED",
+  "measurement_0094_integration": "NOT_EXECUTED",
+  "production_composition": "NOT_EXECUTED",
+  "production_authority": false,
+  "customer_credentials_used": false,
+  "merge_train": {
+    "base": "7754746",
+    "pr": 27,
+    "migration": "0079",
+    "down_revision": "0078",
+    "app_tables": 154,
+    "fast_checks": {
+      "python": 2209,
+      "database": 1046,
+      "repository": 43,
+      "dashboard": 227,
+      "ruff_check": "PASS",
+      "ruff_format": "PASS"
+    },
+    "frozen_migrations": "0001-0070",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "generation_fixture_fix": "9a8a85f71962fe6ff4810635fa3d8b8ece23fcc3",
+    "measurement_fix": "381306fdf83b3b59aa877ac6a76870f836f9f08d",
+    "production_authority": false
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "slice": "0118",
+  "classification": "security-critical",
+  "date": "2026-10-01",
+  "status": "IMPLEMENTED_LOCAL_QUALIFICATION_PASSED_LIVE_PENDING",
+  "migration": "0062",
+  "checks": {
+    "isolated_postgresql": {"status": "PASS", "cases": 874, "seconds": 442.99},
+    "api_identity_tooling": {"status": "PASS", "cases": 1417},
+    "repository": {"status": "PASS", "cases": 39},
+    "dashboard": {"status": "PASS", "cases": 153},
+    "typescript": "PASS",
+    "next_production_build": "PASS",
+    "changed_python_ruff": "PASS",
+    "whole_tree_ruff_format": "BASELINE_15_UNRELATED_FILES_UNFORMATTED",
+    "layout_fixtures": {"status": "PASS", "widths": [1440, 390], "renders": 6, "horizontal_overflow": false, "minimum_button_height_px": 44},
+    "interface_detection": {"status": "PASS", "findings": 0}
+  },
+  "live": {
+    "new_runtime_deployed": "NOT_EXECUTED",
+    "connector_workload_provisioning": "PENDING_OWNER_CONFIRMATION",
+    "gsc_consent_callback_property_binding": "NOT_EXECUTED_NO_ELIGIBLE_PROPERTY",
+    "github_binding": "NOT_EXECUTED_BRANCH_PROTECTION_NOT_ENFORCED",
+    "slack_installation_callback": "NOT_EXECUTED",
+    "production_writes_enabled": false,
+    "gmail_access": false
+  },
+  "complete_integration_request": "IN_PROGRESS"
+}

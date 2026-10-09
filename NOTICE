@@ -1,0 +1,16 @@
+Signal
+Copyright 2026 Sricharan (https://github.com/Sricharan07)
+
+This software is licensed under the Elastic License 2.0 (see LICENSE).
+
+You may use, copy, modify and self-host Signal, including for your own business.
+You may not provide Signal to third parties as a hosted or managed service.
+
+Attribution: you must keep this NOTICE, the LICENSE file and all copyright and
+licensing notices of the licensor in every copy or substantial portion of the
+software you distribute, including modified copies. Modified copies must carry a
+prominent notice stating that you changed the software.
+
+Signal includes third-party open-source components, each under its own license.
+Their license texts ship with the installed packages (see package-lock.json and
+requirements.txt for the exact versions).

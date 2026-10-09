@@ -1,0 +1,25 @@
+{
+  "name": "signal",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Signal SEO agent: controlled execution, evidence, and recovery",
+  "engines": { "node": ">=22 <23" },
+  "workspaces": ["apps/dashboard"],
+  "scripts": {
+    "check:docs": "node scripts/check-repository.mjs",
+    "test:repo": "node --test tests/repository/*.test.mjs",
+    "test:dashboard": "npm --workspace @signal/dashboard test",
+    "typecheck:dashboard": "npm --workspace @signal/dashboard run typecheck",
+    "build:dashboard": "npm --workspace @signal/dashboard run build",
+    "pilot": ".venv/bin/python scripts/local_pilot.py",
+    "pilot:verified-crawl": "SIGNAL_LOCAL_PILOT_VERIFIED_CRAWL=1 .venv/bin/python scripts/local_pilot.py",
+    "test:wordpress": "node scripts/run-wordpress-lab.mjs",
+    "test": "npm run test:repo && npm run check:docs && npm run test:dashboard && npm run typecheck:dashboard && npm run build:dashboard"
+  },
+  "devDependencies": {
+    "github-slugger": "2.0.0",
+    "markdown-it": "15.0.1",
+    "yaml": "2.9.0"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-12T23:21:12Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "python": "3.12.14",
+  "database": {
+    "engine": "PostgreSQL 17.11",
+    "image": "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+    "recorded_at": "2026-09-12T23:20:33.250724+00:00",
+    "cleanup": "completed"
+  },
+  "source_sha256": {
+    "database/migrations/versions/0028_origin_verification.py": "66827a2fd61b40b8b29ea97fa898f703601e4dafbb64e5d8ab7d20495f4f933a",
+    "database/migrations/versions/0028_origin_verification.sql": "5995f522d5183865fc51d62c9df3e44048a29036dff6d12953b4cb061b3bf9c2",
+    "services/control_plane/src/signal_core/crawl_http.py": "9f37e5c0f3cc3131059e04909352a60a6cb86ab24e094be9e8f96931e5b546b6",
+    "services/control_plane/src/signal_core/origin_verification.py": "04faf4e61e2b1fcfdf15061b9dc5ed723d8f528d01621bcd7ffbab8b65cb68bc",
+    "services/control_plane/src/signal_core/session_management.py": "7cd6e5dde0276fd399bd130f93e9d4d55c15391fa48105678e778620d21bd255",
+    "apps/api/src/signal_api/authentication.py": "c8d2165a64974ebe6f80589fc3e9f41bcc8cdf422e61ec1b2c32627e5f175c14",
+    "apps/api/src/signal_api/main.py": "58957e3bd36738053780cd2c7c4c868a24db185008f92c4b13a28313204f27c6",
+    "apps/api/src/signal_api/session_contracts.py": "3ceb69994d2f2e508166c7ef2372f480eb52f53c7dd62fb3a2983975e4e36985",
+    "deploy/crawler-network/server.py": "069e97e2c6ac4876d9da6507291a905904c718ec6d10db9212a4c8bdb4566ee6",
+    "tests/api/test_api.py": "805c3104960da12bd15c5c38c286161c973ab70d2f77dab3408b695b2b407650",
+    "tests/api/test_authentication.py": "dac7f96f58c15965866301fc32ae31d9fe4936ee6ba2da03d1f229639023a54d",
+    "tests/api/test_origin_verification.py": "7d4a99619486ec54ed897963594b6c81b866868377afa358f24fe5bfb2716344",
+    "tests/control_plane/test_database.py": "0272798c7e5c5e3df98e18cdd4f33ea7ec7d159e9c0bc1b3c4b11f453acc7d9b",
+    "tests/control_plane/test_origin_verification.py": "bc5dfeba2955a835004efd5c58071fc6ac5a0bf73627afeee2209fa05be35b14",
+    "tests/crawler/test_pinned_http_boundary.py": "a15e3a19c3ca71398b6af3bf134db4217e37da05c4b25bb51de3a96c5e167d4c",
+    "tests/tooling/test_crawl_http.py": "d94f47a056b536260b8385060492514d80080e051d2b9a221790c8a2a1cb0a12",
+    "tests/tooling/test_origin_verification_policy.py": "f0f1f515f2912eaf78d733d6253a54dbea26718d9e7e51f8d2d3e6786fc5be2c",
+    "docs/adr/0048-exact-public-origin-verification.md": "146dce5041880fe0c0c332e29927e1fe580b007208cbc27c8816dcdcd3dfffc4",
+    "docs/implementation/0048-origin-verification.md": "80df0c84e9aea48c04eab7952d3329088aa4ea0c5532771059b16a0c6e7982ae",
+    "docs/runbooks/origin-verification.md": "3e4e581cbb591605f127be4f75a5129cc937fb5ba72987857a43a76ed9929c09",
+    "apps/api/README.md": "72747b3df9fb3343b6af271b386baabdc35651ee52466e64edbb9ab2cbccab3f",
+    "database/README.md": "03276f3ea2b90057c3e16d3a06641bf67ed4a80e6ef49f821d21cc320ffa61ea",
+    "docs/README.md": "5e527fd19d0bb9d46ba78d6acf61d17853b63b2b5a96a6d8e170cb85063d39cd",
+    "docs/adr/README.md": "b91e6b9af13be9f364068263ecfe63bd72f653b5b3025baf6477c86edafaa6ba",
+    "services/control_plane/README.md": "0f6e770a2e02b7fbe21ad91e287df3168d85c09dace98cbc963860d609273069",
+    "README.md": "bfc97a29d06a0e06e26c12544a7f0815756fb2de171a4e47a7d848b79952846a",
+    "CHANGELOG.md": "4e65ea2882af28a38cc942386762bd5dd1ad730b5d6e6ff92e1842c2abe88cbd",
+    "docs/implementation/status.md": "616a3bcf94db7d5719884ce05efd0908f5038d364aa9d44c7fa7b4511b8208ec",
+    "docs/implementation/core-v1-roadmap.md": "2894f0e6c42b3c8607e04f48ee9862712e757eb60e43ee45bcbc8a891224cff2"
+  },
+  "tests": [
+    {
+      "name": "real PostgreSQL migration, authority, replay, concurrency, attempt-budget, and failure regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 547,
+      "status": "PASS"
+    },
+    {
+      "name": "API, identity, and tooling regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+      "passed": 712,
+      "status": "PASS"
+    },
+    {
+      "name": "real pinned-network synthetic origin proof and crawler regression",
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 8,
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 21,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and format",
+      "commands": [
+        ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+        ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling"
+      ],
+      "formatted_files": 163,
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        ".venv/bin/python -m pip check",
+        "npm audit --omit=dev"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 3,
+      "reviewed_false_positives": "three source SHA-256 values in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "resolved_qualification_findings": [
+    {
+      "finding": "Failed proof outcomes were initially translated to typed exceptions before their database transaction committed.",
+      "resolution": "Commit the immutable sanitized observation first, then raise its closed public error outside the transaction."
+    },
+    {
+      "finding": "Preparation releases its transaction before network I/O, so multiple prepared requests could otherwise exceed the ten-attempt budget when recorded later.",
+      "resolution": "Recheck the challenge attempt count under the record transaction's locked site row and test an already-prepared eleventh request."
+    },
+    {
+      "finding": "Adding a plaintext proof fetch risked changing the existing HTML fetch call signature.",
+      "resolution": "Keep the established HTML exchange path unchanged and add a separate exact text/plain entry point with compatibility regression coverage."
+    }
+  ],
+  "provider_fixture": {
+    "kind": "disposable Docker internal network with a synthetic plaintext proof origin",
+    "public_port": false,
+    "customer_data": false,
+    "credential": false,
+    "production_authority": false
+  },
+  "raw_proof_content_recorded": false,
+  "raw_session_recorded": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "external_write": false,
+  "production_authority": false
+}

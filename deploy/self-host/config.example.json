@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "project": "signal-self-host",
+  "origin": "https://signal.example.invalid",
+  "owner_username": "owner",
+  "workspace_name": "Owner workspace",
+  "home_region": "self-host",
+  "images": {
+    "api": "registry.example.invalid/signal/api@sha256:REPLACE_WITH_REVIEWED_DIGEST",
+    "dashboard": "registry.example.invalid/signal/dashboard@sha256:REPLACE_WITH_REVIEWED_DIGEST",
+    "identity": "registry.example.invalid/signal/identity@sha256:REPLACE_WITH_REVIEWED_DIGEST",
+    "ingress": "registry.example.invalid/signal/ingress@sha256:REPLACE_WITH_REVIEWED_DIGEST",
+    "workflow": "registry.example.invalid/signal/workflow-consumer@sha256:REPLACE_WITH_REVIEWED_DIGEST"
+  }
+}

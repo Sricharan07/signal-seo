@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-12T19:41:42Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "python": "3.12.14",
+  "framework": "Next.js 16.3.4",
+  "source_sha256": {
+    "apps/dashboard/app/globals.css": "198b74f5eb0be7cf4fab0cddf15e494e0a6f6b2c94da709d3b519b580f4695fb",
+    "apps/dashboard/components/dashboard-view.tsx": "a0181956515ab90d026a5a175d920b521bd625dbc611814aa28b2adb8b7ac5fd",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "690866b732cd3c19e61dbe674e8f855e86311014b70673b435a01b674e34e6a9",
+    "tests/repository/dashboard.test.mjs": "afd36a02629edc978a8bb188ba68532f32eb6ad7ca03184427f7ddee0cd703d7",
+    "docs/adr/0047-full-viewport-evidence-first-dashboard.md": "758c5130270dccf8a31667eff3e96871fea369f38f6257cc2bc0757a03bc323d",
+    "docs/implementation/0047-full-viewport-dashboard-polish.md": "3966acda9517d6a77c81342a400221ba0bd7ad1667c6675395c4e3bc666f3d7b",
+    "DESIGN.md": "20a76b876e160f61c91a5251575b27150e25308da6bdede2b4c4eb0fecca9af0",
+    ".impeccable/design.json": "f91a8aee256359393f9dd348288df38a126c175282a6e3999b5ee89f822aa376",
+    "README.md": "c6549cba7d7c6801067709c6b24c25f46aeb72f67425c446ca8e01c8ff0a35d9",
+    "apps/dashboard/README.md": "9b6b47d2d1ea21e31a18dffc11bb343569122870266a76e23eba6b0405694efc",
+    "CHANGELOG.md": "54aa1d09d3dd77d2e93ed5c92954fc76805b1150f3a86e9e55de69b8c6e46768",
+    "docs/implementation/status.md": "f6e60ec8f845aa4ed240ee42df0f4077e76aef0fbbb20c0d1e34ce86dfd081de",
+    "docs/implementation/core-v1-roadmap.md": "51a63ba3c689076327c78762cdfd29fa09d1cf673f03bdd1c7d3f48fc0c0fc74",
+    "docs/adr/README.md": "cfa58070f31b6f610c9e2d305e36fb3009b57b242d90988477f69a531283140c"
+  },
+  "visual_audit": {
+    "initial_findings": [
+      "desktop application nested inside an outer rounded frame",
+      "pale semantic color washes",
+      "repetitive circular icon holders",
+      "no chart structure on overview, analytics, or usage",
+      "passive sidebar release metadata",
+      "undocumented color and radius drift"
+    ],
+    "final_static_command": "node <impeccable-skill>/scripts/detect.mjs --json apps/dashboard/app/globals.css apps/dashboard/components/dashboard-view.tsx",
+    "final_findings": 0,
+    "status": "PASS"
+  },
+  "tests": [
+    {
+      "name": "aggregate repository dashboard and documentation gate",
+      "command": "npm test",
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard rendering and boundary contracts",
+      "command": "npm run test:dashboard",
+      "passed": 64,
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 20,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "markdown_files": 129,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard TypeScript contract",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production build",
+      "command": "npm run build:dashboard",
+      "routes": [
+        "/",
+        "/_not-found",
+        "/[section]",
+        "/auth/callback",
+        "/auth/clear-browser-state",
+        "/auth/create-site",
+        "/auth/login",
+        "/auth/logout",
+        "/auth/select-organization",
+        "/auth/select-site"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        ".venv/bin/python -m pip check",
+        "npm audit --omit=dev"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "command": "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+      "findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "all fourteen dashboard destinations",
+      "viewport": "1440x900",
+      "full_viewport_shell": true,
+      "shell_x": 0,
+      "shell_width": 1440,
+      "horizontal_overflow": false,
+      "gradients": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "evidence-empty chart placement",
+      "viewport": "1440x900",
+      "routes_with_charts": ["/", "/analytics", "/usage"],
+      "overview_chart_width": 824,
+      "overview_chart_height": 354.1953125,
+      "synthetic_observations": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "analytics stacked-detail layout",
+      "viewport": "980x900",
+      "horizontal_overflow": false,
+      "main_width": 758,
+      "chart_width": 710,
+      "detail_rail_stacked": true,
+      "status": "PASS"
+    },
+    {
+      "name": "all fourteen dashboard destinations",
+      "viewport": "390x844",
+      "horizontal_overflow": false,
+      "main_width": 390,
+      "mobile_bar_visible": true,
+      "desktop_toolbar_hidden": true,
+      "visible_controls_at_least_44px": true,
+      "status": "PASS"
+    },
+    {
+      "name": "mobile settings and navigation",
+      "viewport": "390x844",
+      "navigation_links": 14,
+      "minimum_navigation_height": 44,
+      "all_settings_tabs_visible": true,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "browser diagnostics",
+      "viewports": ["1440x900", "980x900", "390x844"],
+      "warnings": 0,
+      "errors": 0,
+      "status": "PASS"
+    }
+  ],
+  "reference_data_used": false,
+  "database_change": false,
+  "provider_call": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "external_write": false,
+  "production_authority": false
+}

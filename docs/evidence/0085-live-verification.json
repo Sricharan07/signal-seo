@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29",
+  "classification": "security-critical: current read authority, egress and delivery evidence",
+  "qualification_status": "LOCAL_GATES_PASS_LIVE_NOT_EXECUTED",
+  "base_commit": "b8db63c",
+  "tests": [
+    {"command": ".venv/bin/python scripts/run-database-tests.py", "provider": "PostgreSQL 17.11", "passed": 648, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/python scripts/run-authority-journal-tests.py", "passed": 12, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py", "passed": 10, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/python scripts/run-consumer-tests.py", "passed": 1, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/python scripts/run-crawler-network-tests.py", "passed": 11, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/python scripts/run-page-attempt-tests.py", "passed": 1, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/python scripts/run-temporal-tests.py", "passed": 3, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py", "passed": 6, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/python scripts/openbao_lab.py", "provider": "OpenBao 2.6.1", "passed": 10, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling tests/connectors", "passed": 1078, "failed": 0, "status": "PASS"},
+    {"command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network", "status": "PASS"},
+    {"command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network", "formatted_files": 273, "status": "PASS"},
+    {"command": ".venv/bin/python -m pip check", "status": "PASS"},
+    {"command": "npm test", "repository_tests": 24, "markdown_files": 190, "dashboard_tests": 120, "dashboard_typecheck": "PASS", "dashboard_production_build": "PASS", "status": "PASS"},
+    {"command": "gitleaks git --pre-commit --staged .", "leaks": 0, "status": "PASS"}
+  ],
+  "local_failure_accounting": [
+    "Initial migration used public.digest under a pg_catalog search path; replaced with built-in sha256 without changing migration execution.",
+    "Real PostgreSQL failures caught the updated RLS table count, UUID4 egress identity, and required live frontier lease; fixed the implementation and assertions.",
+    "New fixture failures caught a missing dataclasses import and unacknowledged outbox replay; fixed the fixture to acknowledge admitted messages.",
+    "An inherited instantaneous fetch double reported five milliseconds before wall time elapsed; the extended fixture now waits its declared elapsed time, preserving the temporal gate.",
+    "The new crawler-network test initially expected a redirect exception; the gateway correctly returns redirect_rejected evidence. The test now requires that outcome, no body, and no second origin resolution.",
+    "One repeated page-attempt lab invocation failed during disposable Docker setup before collecting tests. Docker remained healthy; a standalone repeat of the unchanged lab passed 1/0. No lab, test, or safety gate was weakened."
+  ],
+  "ui_review": {
+    "status": "SHIP_AT_NARROW_EXTENSION_SCOPE",
+    "viewports": ["desktop 1800 CSS pixels", "mobile 390x844 CSS pixels, top/timeline/recovery captures"],
+    "synthetic_data_only": true,
+    "inconclusive_recovery_evidence_visible": true,
+    "mechanical_findings": "One warning and four advisories, all pre-existing outside scoped CSS changes; existing design artifacts preserved.",
+    "capture_limit": "Native browser captures; a failed full-page DevTools capture was not used. Expanded receipt and keyboard interaction were not visually exercised."
+  },
+  "delivery_certified": false,
+  "live_github_app_and_repository": "NOT_EXECUTED",
+  "live_customer_site": "NOT_EXECUTED",
+  "signed_deployment_receipt_contract": "NOT_EXECUTED_UNAVAILABLE",
+  "production_observation_composition": "UNAVAILABLE",
+  "production_write_authority": false,
+  "release_admission": false
+}

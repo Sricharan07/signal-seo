@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-13T08:07:30Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "58db84fcf76e36d1f117b7d84936868cb4bdce6bb4eb0060289ec2580b4bdd32",
+    "README.md": "d973a4a5724f5a6c2a9fe27d1a0d3df7a9288b00d55d4c33ff53c42032e1bc6d",
+    "deploy/local-pilot/keycloak-realm.json": "bd7af77072f9d454419eb8f5bce9de46773d43c025a9206801c5ae3300823f9c",
+    "docs/README.md": "2038713e7f522a17a1d27b8a2346411318e3a455cac915ada485428ae3bfce53",
+    "docs/implementation/0055-collision-safe-local-pilot-port.md": "962dceb949983153869468ce543d883c66a40932282ba3786b4d83b3669e3626",
+    "docs/implementation/status.md": "84eb6a0ef73fbbe0908000165a2b83dc70d1dc48ae2c2914a259c732b1a40e7e",
+    "docs/runbooks/local-pilot.md": "ad7f0dd08dc0a7ff6dec921b6b5f5865996c0ba7f93a787f71d6df3000087c4f",
+    "scripts/local_pilot.py": "f5a53ec26a1270c397328c95fa8bc4bf317c5e6fb55c1b7279a0c27dd5d20aff",
+    "tests/tooling/test_local_pilot.py": "62b4d75debe273aea0b0455a24a07e189a46a89d0904e79c7bc1985218b0c750"
+  },
+  "tests": [
+    {
+      "name": "focused local pilot contract",
+      "command": ".venv/bin/pytest -q tests/tooling/test_local_pilot.py",
+      "passed": 16,
+      "status": "PASS"
+    },
+    {
+      "name": "non-database Python regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/connectors tests/identity tests/tooling -q",
+      "passed": 769,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and formatting",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests"
+      ],
+      "formatted_files": 142,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 22,
+      "markdown_files": 147,
+      "dashboard_tests": 93,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "staged secret scan",
+      "commands": [
+        "gitleaks git --staged --report-format json --report-path <temporary> --no-banner --redact",
+        "gitleaks git --staged --baseline-path <reviewed-report> --no-banner --redact"
+      ],
+      "initial_findings": 1,
+      "reviewed_false_positives": "one source SHA-256 value in this evidence record",
+      "remaining_findings": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real fallback-port browser journey",
+      "command": "npm run pilot",
+      "steps": [
+        "observed an unrelated node listener on 127.0.0.1:3000",
+        "selected the exact pre-registered dashboard origin http://localhost:3001",
+        "completed OIDC sign-in through local Keycloak on the 3001 callback",
+        "selected the synthetic organization and created one disposable site",
+        "completed the PostgreSQL/outbox/Temporal audit flow",
+        "persisted and displayed the durable fixture finding",
+        "confirmed the unrelated port 3000 listener remained present"
+      ],
+      "browser_console_warnings_or_errors": 0,
+      "status": "PASS"
+    }
+  ],
+  "database_contract_changed": false,
+  "api_authority_changed": false,
+  "workflow_contract_changed": false,
+  "identity_redirect_allowlist_changed": true,
+  "preexisting_dashboard_port": 3000,
+  "selected_dashboard_port": 3001,
+  "browser_origin": "http://localhost:3001",
+  "browser_result_path": "/pages?analysis=complete",
+  "local_pilot_left_running_for_review": true,
+  "unrelated_listener_stopped_or_modified": false,
+  "synthetic_identity_only": true,
+  "synthetic_work_result_only": true,
+  "customer_identity": false,
+  "customer_data": false,
+  "customer_origin_network_access": false,
+  "external_write": false,
+  "production_authority": false
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-08T07:54:17.853038+00:00",
+  "provider": "Keycloak 26.7.3",
+  "image": "quay.io/keycloak/keycloak:26.7.3@sha256:ff4257d0d64efbe99ed1ddfaf07765cc3c36dc7518bf8324d41961327f441c54",
+  "python": "3.12.14",
+  "source_sha256": {
+    "experiments/keycloak-feasibility/realm.json": "0218e0cad74c7bcd6fb76c57f8e62d058abb684c737f1b45a9335bb62e42ae6f",
+    "requirements.txt": "d28d6a008537cba43ce801520add2c8e4767ce5a4dd86fac09354ac73f42a08d",
+    "scripts/keycloak_lab.py": "8b6d0d0ed2262f919e19539fbaaad0d8c596c719df197afd049af487a8df5e82",
+    "services/control_plane/src/signal_core/oidc_login.py": "015cdd6d64154453d4f8c3469f8d43bfcb425a62035dd247262b1b3376014fb9",
+    "services/control_plane/src/signal_core/oidc_protocol.py": "807d42c32babaf7a6955c028f53f1683dffaf1f8ea52cfdc22819de950de1b72",
+    "tests/identity/test_oidc_protocol.py": "d0bf451ccaaea61813cb996a4219d9cb2e781dd2014ddb196b87654ca253f963",
+    "tests/tooling/test_keycloak_lab.py": "c501f2051d2b47cbf899c1beb2560148c68596de0b0a697e51599d51a39ebac4"
+  },
+  "tests": [
+    {
+      "name": "exact discovery and public RS256 JWKS",
+      "status": "PASS"
+    },
+    {
+      "name": "authorization code PKCE and signed ID token",
+      "status": "PASS"
+    },
+    {
+      "name": "authorization code replay rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong PKCE verifier rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong ID-token nonce rejected",
+      "status": "PASS"
+    }
+  ],
+  "passed": 5,
+  "production_authority": false,
+  "synthetic_identity_only": true,
+  "token_material_recorded": false,
+  "transport_security": "ephemeral locally trusted TLS",
+  "cleanup": "completed"
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29",
+  "classification": "security-critical: candidate repository changes and release authority",
+  "qualification_status": "LOCAL_GATES_PASS_LIVE_NOT_EXECUTED",
+  "tests": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "provider": "PostgreSQL 17.11",
+      "passed": 644,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "provider": "Docker with pinned Node 22.18.0 image",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 9,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "provider": "OpenBao 2.6.1",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "command": "PYTHONPATH=services/control_plane/src .venv/bin/pytest -q tests/connectors/test_github_checkout.py tests/connectors/test_github_app.py tests/connectors/test_github_read_binding.py tests/connectors/test_github_shared_egress_transport.py",
+      "passed": 57,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling",
+      "passed": 927,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests database/migrations",
+        ".venv/bin/ruff format --check apps services scripts tests database/migrations",
+        ".venv/bin/python -m pip check"
+      ],
+      "formatted_files": 249,
+      "status": "PASS"
+    },
+    {
+      "command": "npm test",
+      "repository_tests": 24,
+      "markdown_files": 186,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "command": "gitleaks git --log-opts=\"8a2ebc5..HEAD\" .",
+      "commits_scanned": 1,
+      "leaks": 0,
+      "status": "PASS"
+    }
+  ],
+  "live_customer_repository": "NOT_EXECUTED",
+  "production_write_authority": false
+}

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-09T23:15:59Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "python": "3.12.14",
+  "framework": "Next.js 16.3.4",
+  "database": {
+    "engine": "PostgreSQL 17.11",
+    "image": "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+    "recorded_at": "2026-09-09T22:50:20.194890+00:00",
+    "cleanup": "completed"
+  },
+  "source_sha256": {
+    "database/migrations/versions/0026_active_site_context.py": "05ec7b7c40e9e280493a529701159b351f5fd15c3e64235eff49e8b4381881be",
+    "database/migrations/versions/0026_active_site_context.sql": "2464d40cc187c13d710ef851437a315900323c72f14f55b204d5716f445b68cf",
+    "services/control_plane/src/signal_core/session_management.py": "7c4209db743e508ef926ea9f33304d0fe3dda574bcdc353ec73913f99a0ea121",
+    "apps/api/src/signal_api/authentication.py": "75b6fd7cfa437bce5bc40dbbb9a372a3291ab2e70a946ba78c7198ec0a995343",
+    "apps/api/src/signal_api/main.py": "396e2209ad1cf6ff19f65664a31a0caa5a606a8c2acb186eb5a880c9f50aeae1",
+    "apps/api/src/signal_api/session_contracts.py": "f804ef0924a6cf570cde5a866f5bc85fc9d4d5251fd60c0a3744d692420b829e",
+    "apps/dashboard/app/auth/select-site/route.ts": "a0abf0e1b5f49e3e31af50b23cf3e13ac80c07ec3b8d4b305d5bdc763ce5236b",
+    "apps/dashboard/app/page.tsx": "b35b51c64de89397ae11b15ad6f085e9709f0b5029d65e3c2dda56930992fa58",
+    "apps/dashboard/components/dashboard-view.tsx": "ebac5a687617a486b9b39b62a8655f3c6e38ff2aaebe931dfb1bdba9fbb7df72",
+    "apps/dashboard/app/globals.css": "12b591530a0a75494198aaeccbfeb3cf5968cac9fb7de20f917c8598e94b01b2",
+    "apps/dashboard/lib/auth-route.ts": "92de236c82ed732aa921184e3bf4e8c49b2d192b5e162164a1b660d11dc72626",
+    "apps/dashboard/lib/browser-auth.ts": "fb1b197ea36f595b625901b00b8b335467a0d74e22141bcc5171156c92319e5b",
+    "apps/dashboard/lib/session-api.ts": "369708061dbc2edda59714e2776248e221c68290078df44abb4bee71fee4bf5d",
+    "apps/dashboard/lib/site-api.ts": "dccaff5f982f36c56b200c8c300bafe89391e0ccbe0155797d4d25e6cd78e4bd",
+    "tests/control_plane/test_site_selection.py": "b520fead6d24af1b84108a6e4eb6dda3524d2a569abf41ec18c0b32d01c4b5e4",
+    "tests/control_plane/test_human_commands.py": "1b3d84e12c7a56d65637d3e2ad97a46e65dc0ea7ebb88b8a7d190d28e021c94b",
+    "tests/api/test_authentication.py": "1eab5fd9a6b06948b2e523e3de7a017b1b24aed10532238a6693b774060b3b3a",
+    "tests/api/test_session_lifecycle.py": "ded637c79aacebc6900d2f0d88a21ff0138b24f0f5db085d4dc4eac61fdffa08",
+    "tests/api/test_api.py": "400238be56f2918726a9ac217f71124633cbab3eaf7bfd8ec30cc7eecccc9020",
+    "apps/dashboard/tests/browser-auth.test.ts": "6c6dec834552ae5939a65296639fbab2f73af762851f23b4bb448d4134d3ca55",
+    "apps/dashboard/tests/site-route.test.ts": "e3b2bb934756e987c417490e6186c90adea3effa5631f4e50e8ed528fb846b9b",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "b1db1f153d3c24e21233049c338d52be0f38982a49976606d1950765f8ab2625",
+    "tests/repository/dashboard.test.mjs": "467fafc963bb6264be387ea65bacd17f5ef3c4c09ab10c204c8299747169659d",
+    "docs/adr/0044-server-owned-active-site-context.md": "b37f3e4179a5791fffccd3791249bdf5ce8b4da4cb9fec7a7f5560a742f1d6aa",
+    "docs/implementation/0044-active-site-context.md": "d2cdc851433943f366b4ea40cbce7b004ef0c0f71363266790f4acb8e07a53db",
+    "docs/runbooks/active-site-context.md": "75f4d5a75576b0ec97d7c44909cca3c769db21c1ef5dea32b2e2802218616686",
+    "DESIGN.md": "01ccaad107dc6b9e64a66446e5c667deeb9e3a8a545990c1dceb614f578ff868",
+    ".impeccable/design.json": "38d193d743c64ea492941f3759a822f0872a7de61720d635554c41c4bfb52b2f"
+  },
+  "tests": [
+    {
+      "name": "real PostgreSQL migration, authority, concurrency, and failure regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 508,
+      "status": "PASS"
+    },
+    {
+      "name": "API contracts",
+      "command": ".venv/bin/python -m pytest tests/api -q",
+      "passed": 207,
+      "status": "PASS"
+    },
+    {
+      "name": "API identity and tooling regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+      "passed": 660,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard identity, site-selection, read, and rendering contracts",
+      "command": "npm run test:dashboard",
+      "passed": 55,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard TypeScript contract",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production build",
+      "command": "npm run build:dashboard",
+      "routes": [
+        "/",
+        "/_not-found",
+        "/auth/callback",
+        "/auth/clear-browser-state",
+        "/auth/login",
+        "/auth/logout",
+        "/auth/select-organization",
+        "/auth/select-site"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 20,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "markdown_files": 122,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and format",
+      "commands": [
+        ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+        ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling"
+      ],
+      "formatted_files": 155,
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        ".venv/bin/python -m pip check",
+        "npm audit --omit=dev"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "working-tree whitespace validation",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "synthetic authenticated active-site desktop overview",
+      "viewport": "1280x720",
+      "site_rows": 2,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic authenticated active-site mobile overview",
+      "viewport": "390x844",
+      "site_rows": 2,
+      "horizontal_overflow": false,
+      "status": "PASS"
+    }
+  ],
+  "browser_fixture": {
+    "kind": "disposable loopback API transport fixture",
+    "removed_after_check": true,
+    "temporary_profile_removed": true,
+    "customer_data": false,
+    "credential": false,
+    "production_authority": false
+  },
+  "resolved_qualification_findings": [
+    {
+      "finding": "Current-session capability, schema, and OpenAPI expectations still described response schema version 1.",
+      "resolution": "Advanced every producer and consumer to strict schema version 2 and added closed regression expectations."
+    },
+    {
+      "finding": "A command for a non-selected site could reach idempotency lookup before selected-site denial.",
+      "resolution": "Snapshot authority now requires the requested site to equal the server-selected site before command lookup, returning a closed authorization denial."
+    },
+    {
+      "finding": "Locking the previous immutable event with FOR SHARE required UPDATE row-policy visibility and hid the prior hash from the function-only identity role.",
+      "resolution": "The exact session row remains locked for the full transition and serializes the per-session chain; the immutable prior event is read without an unnecessary row lock under its exact historical site scope."
+    }
+  ],
+  "raw_session_recorded": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "external_write": false,
+  "production_authority": false
+}

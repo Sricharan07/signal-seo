@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "slice": "0076",
+  "classification": "security-critical",
+  "recorded_date": "2026-10-02",
+  "base_commit": "404eeb9e19031a2136eb561e9f29de3cd92275f4",
+  "migration": {
+    "revision": "0064",
+    "down_revision": "0063"
+  },
+  "adrs": [
+    "0104",
+    "0105"
+  ],
+  "production_authority": false,
+  "synthetic_secrets_only": true,
+  "secret_material_recorded": false,
+  "checks": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "status": "PASS",
+      "passed": 846,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "status": "PASS",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "status": "PASS",
+      "passed": 36,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "status": "PASS",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "status": "PASS",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "status": "PASS",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "status": "PASS",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "status": "PASS",
+      "passed": 7,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "status": "PASS",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "status": "PASS",
+      "passed": 24,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "status": "PASS",
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "status": "PASS",
+      "passed": 1289,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "status": "PASS",
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests",
+      "status": "PASS",
+      "files": 375,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "status": "PASS",
+      "failed": 0
+    },
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "repository_tests": 24,
+      "dashboard_tests": 153,
+      "failed": 0,
+      "documentation_files": 218,
+      "typecheck": "PASS",
+      "build": "PASS"
+    },
+    {
+      "command": "gitleaks git --pre-commit --staged --config .gitleaks.toml --redact --no-banner",
+      "status": "PASS",
+      "findings": 0,
+      "note": "Uses unchanged main configuration. The post-commit base..HEAD range scan is reported in the pull request."
+    }
+  ],
+  "full_gate_tests_and_lab_checks_passed": 2427,
+  "full_gate_failures": 0,
+  "disposable_lab_cleanup": "completed",
+  "coverage": [
+    "EC-138 unconfigured feature availability and independent API health",
+    "Real PostgreSQL owner-only setup, tenant/site isolation, recovery fencing, immutable tables and receipts",
+    "Concurrent monthly reservations, exact replay/conflict, cap exhaustion, actual-cost settlement and unknown-cost holds",
+    "Real OpenBao site ACLs, CAS-zero immutable generation, reader mutation denials and permanent removal",
+    "Stored credentials absent from SQL business rows, fixed errors, repr and dashboard projections",
+    "Closed Basic-auth profile origin/endpoint/method/media/bounds negatives; no generic profile on DataForSEO origin",
+    "Strict three result kinds, malformed identities/types/costs/duplicates, oversize, credential echoes and transport unknown outcomes",
+    "Typed result records linked to observed shared-egress response digest; replay does not repeat paid I/O",
+    "Dashboard closed command/read projections, same-origin BFF and server-side session CSRF"
+  ],
+  "not_executed": [
+    {
+      "name": "live_dataforseo",
+      "status": "NOT_EXECUTED",
+      "reason": "Owner has not supplied a dedicated account, credits or Backlinks API entitlement."
+    },
+    {
+      "name": "production_composition_and_automated_research",
+      "status": "NOT_EXECUTED",
+      "reason": "Default API remains unavailable; private executor composition and live qualification are not established by this slice."
+    },
+    {
+      "name": "desktop_mobile_browser_visual_qa",
+      "status": "NOT_EXECUTED",
+      "reason": "CUA initialization failed with native pipe startup failure and no browser/app surfaces; Playwright is not installed. Finish review disposition: recapture, no rendered UI approval. Static design detector returned no findings; read-only documentation review found no new design system."
+    }
+  ],
+  "owner_inputs": [
+    "Dedicated disposable DataForSEO login/password, paid credits and Backlinks API entitlement; enter only in dashboard secret form",
+    "Verified disposable site, current owner session, independent recovery authority and reviewed monthly USD cap/estimate",
+    "Private TLS OpenBao KV-v2 signal-dataforseo mount with CAS required, one retained version, site-scoped writer/read-only executor ACLs",
+    "Private API/executor composition and connector-purpose shared-egress run with current official-origin robots/policy evidence"
+  ],
+  "merge_train": {
+    "date": "2026-10-02",
+    "pr": 14,
+    "original_head": "3fa1a9d3737ab39eeba7725cf259d7a7748abeb7",
+    "migration": "0064",
+    "down_revision": "0063",
+    "app_tables": 110,
+    "production_authority": false,
+    "checks": [
+      {
+        "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+        "exit_code": 0,
+        "summaries": [
+          "1717 passed in 33.02s"
+        ]
+      },
+      {
+        "command": ".venv/bin/python -m ruff check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": []
+      },
+      {
+        "command": ".venv/bin/python -m ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": [
+          "434 files already formatted"
+        ]
+      },
+      {
+        "command": "npm test",
+        "exit_code": 0,
+        "summaries": [
+          "# tests 43",
+          "# pass 43",
+          "# tests 169",
+          "# pass 169"
+        ]
+      },
+      {
+        "command": ".venv/bin/python scripts/run-database-tests.py",
+        "exit_code": 0,
+        "summaries": [
+          "======================= 896 passed in 461.20s (0:07:41) ========================"
+        ]
+      }
+    ]
+  },
+  "qualification_history_scope": "Original slice commands, counts, base commits and source hashes are historical; merge_train records cumulative rebased fast gates. Final-tip full gate is required before PR branch publication and recorded in PR comments and run-owned lab receipts."
+}

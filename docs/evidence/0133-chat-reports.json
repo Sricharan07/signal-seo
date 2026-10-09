@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "slice": "0133",
+  "classification": "security-critical",
+  "base_commit": "775474608f2f75e21838c079e655e3336f1fad3e",
+  "migration": {
+    "revision": "0085",
+    "down_revision": "0084",
+    "app_tables": 167
+  },
+  "production_authority": false,
+  "live_slack": "NOT_EXECUTED",
+  "live_telegram": "NOT_EXECUTED",
+  "deployed_report_pump": "NOT_EXECUTED",
+  "customer_receipt": "NOT_EXECUTED",
+  "qualification": "LOCAL_GATE_PASS",
+  "recorded_at": "2026-10-03T10:29:42Z",
+  "gate_totals": {
+    "python_test_or_check_executions": 3038,
+    "javascript_tests": 248,
+    "openbao_checks": 34,
+    "failed": 0
+  },
+  "counting": "Final full-gate executions, not unique test cases; overlapping lab suites and focused reruns are not deduplicated. Focused reruns are excluded from gate totals.",
+  "owned_lab_resources": "CLEANED_UP; other tracks' processes and containers left untouched",
+  "focused": [
+    {
+      "command": "PYTEST_ADDOPTS='-k chat_report' .venv/bin/python scripts/run-database-tests.py",
+      "passed": 42,
+      "failed": 0,
+      "deselected": 962
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api/test_chat_reports_http.py tests/identity/test_chat_messages.py -q",
+      "passed": 25,
+      "failed": 0
+    },
+    {
+      "command": "npm run test:dashboard",
+      "passed": 205,
+      "failed": 0
+    }
+  ],
+  "gates": [
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 1004,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 15,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 40,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-indexnow-tests.py",
+      "passed": 17,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 34,
+      "failed": 0,
+      "cleanup": "completed"
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+      "passed": 1917,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling tests/connectors tests/delivery tests/page_attempt",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/temporal tests/tooling tests/connectors tests/delivery tests/page_attempt",
+      "formatted_files": 482,
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "status": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "npm test",
+      "repository_tests_passed": 43,
+      "dashboard_tests_passed": 205,
+      "failed": 0,
+      "documentation": "PASS",
+      "typecheck": "PASS",
+      "build": "PASS"
+    },
+    {
+      "command": "git diff --cached | gitleaks stdin --config .gitleaks.toml --redact --no-banner",
+      "leaks": 0,
+      "exit_code": 0
+    }
+  ],
+  "corrected_failures": [
+    "First broad Python run: 1916 passed, 1 failed because the reviewed mutation inventory omitted the new preference endpoint. Added that endpoint without widening the API surface; rerun 1917 passed, 0 failed."
+  ],
+  "ui": {
+    "capture_scope": "Synthetic component-only SSR using the shipped component and current stylesheet; not whole-app or live-provider qualification.",
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "horizontal_overflow": false,
+    "review": "PASS; no material fixes; incumbent system preserved",
+    "captures": [
+      "0133-chat-owner-desktop.png",
+      "0133-chat-owner-mobile.png",
+      "0133-chat-unavailable-desktop.png",
+      "0133-chat-unavailable-mobile.png"
+    ],
+    "inherited_drift": "Pre-existing global stylesheet and design-record drift was reported, not modified."
+  },
+  "source_sha256": {
+    "database/migrations/versions/0085_chat_reports.sql": "33794f6a748c80017c4ceff4a44c98cbad4df50fe8ad5bbfa4fda5df08cb9546",
+    "services/control_plane/src/signal_core/chat_messages.py": "51df955e2e920ae95dbdafc7339a4eebe253e9fe7bd1430cd044cd4ca9e2f44b",
+    "services/control_plane/src/signal_core/chat_reports.py": "95dd7e98ee2927403d2d1ecf023d3cefcdc68ac5b1c70166980a59933e7c2d89",
+    "services/control_plane/src/signal_core/email_messages.py": "e8221326361819f4f77241616b38348e96dc755d67f9f047b705ce470a5ed86b",
+    "apps/api/src/signal_api/chat_reports_http.py": "4e978350ef3654753b7aa1d6df22ebadd12abb5b18510c8c36d2d602ba0b341e",
+    "apps/dashboard/components/chat-report-preferences.tsx": "94f1ec0d9e2ee50be48d1d31224a73a79be371410309cb288d2858614a417510",
+    ".gitleaks.toml": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346"
+  },
+  "merge_train_3": {
+    "base": "168510b",
+    "pr": 33,
+    "migration": "0085",
+    "down_revision": "0084",
+    "app_tables": 167,
+    "fast_checks": {
+      "python": 2664,
+      "database": 1137,
+      "repository": 46,
+      "dashboard": 251
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS",
+    "frozen_migrations": "0001-0079",
+    "database_subprocess_timeout_seconds": 1200,
+    "full_gate": "FINAL_TIP_PENDING",
+    "production_authority": false
+  }
+}

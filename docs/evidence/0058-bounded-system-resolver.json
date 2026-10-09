@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-21T01:06:39Z",
+  "python": "3.12.14",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "ruff": "0.16.6",
+  "source_sha256": {
+    "CHANGELOG.md": "7606ca8dc79d3050191abf5194a598572aedf30b80286a7d4b0016d15a8b4bd2",
+    "README.md": "b8cf6845375c3a06a102790a389f77b42c7591193c519d560e5e86ccc1e92f5d",
+    "docs/README.md": "33a480c28357247e2fd43ae0c83ea95f01b79c6641d5c4c4f5209fdf1346a5e6",
+    "docs/implementation/0058-bounded-system-resolver.md": "e2eec632f9beb866bd54529ee53453272c8f02f856aafbc125612fdceb9175f4",
+    "docs/implementation/status.md": "1f729524cce4046ed70c25871f597c980eb004449142e5447fc4c5f8d914ce1f",
+    "docs/runbooks/local-pilot.md": "f122774345e502b3ebdb33f3c7ecbd576f46109bc6bdb80e9ea8244541314a8d",
+    "scripts/local_pilot.py": "5ddd8969215543d42572dcede04b8b644ecfbd3a4c8870ddfee4166b3778ed73",
+    "services/control_plane/src/signal_core/crawl_http.py": "0ce8bca5228f67e94a73eed7a72e945680bcc091854654db79cd71a9e7172c06",
+    "tests/tooling/test_crawl_http.py": "8591beaf5fa49ffe850398871e785b05d48eef6ac58738edc6fe60a06effbe2c",
+    "tests/tooling/test_local_pilot.py": "141eda3437fb3461c96953b7844cabb0d48afea090dacea000f3a7fc80e4c49d"
+  },
+  "tests": [
+    {
+      "name": "focused resolver and pilot contracts",
+      "command": ".venv/bin/pytest -q tests/tooling/test_crawl_http.py tests/tooling/test_local_pilot.py",
+      "passed": 59,
+      "status": "PASS"
+    },
+    {
+      "name": "tooling regression",
+      "command": ".venv/bin/pytest -q tests/tooling",
+      "passed": 366,
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 22,
+      "markdown_files": 152,
+      "dashboard_tests": 100,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint, formatting, and dependency checks",
+      "commands": [
+        ".venv/bin/ruff check apps services scripts tests",
+        ".venv/bin/ruff format --check apps services scripts tests",
+        ".venv/bin/pip check"
+      ],
+      "formatted_files": 150,
+      "status": "PASS"
+    }
+  ],
+  "database_contract_changed": false,
+  "api_authority_changed": false,
+  "external_network_read_enabled": "owner-initiated exact public-origin proof GET in disposable pilot only",
+  "customer_crawl_enabled": false,
+  "external_write": false,
+  "production_authority": false
+}

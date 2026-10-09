@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "slice": "0086",
+  "classification": "security-critical",
+  "recorded_at": "2026-10-03",
+  "base_commit": "404eeb9",
+  "migration": "0065",
+  "down_revision": "0064",
+  "historical_migrations_modified": false,
+  "qualification": "PASS_LOCAL",
+  "current_source_fully_qualified": true,
+  "production_authority": false,
+  "live_indexnow": "NOT_EXECUTED",
+  "live_key_pr": "NOT_EXECUTED",
+  "gate_logs": ".runtime/0086",
+  "commands": [
+    {
+      "command": ".venv/bin/python scripts/run-indexnow-tests.py",
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-authority-journal-tests.py",
+      "passed": 14,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-autonomy-delivery-tests.py",
+      "passed": 36,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-candidate-sandbox-tests.py",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-consumer-tests.py",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 838,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-page-attempt-tests.py",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/run-workflow-consumer-image-tests.py",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "passed": 24,
+      "failed": 0
+    },
+    {
+      "command": ".venv/bin/python scripts/check-gsc-provider-boundary.py",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling tests/connectors --junitxml=.runtime/0086/python.xml",
+      "passed": 1287,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": ".venv/bin/ruff check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+      "result": "PASS",
+      "formatted_files": 378
+    },
+    {
+      "command": ".venv/bin/python -m pip check",
+      "result": "PASS"
+    },
+    {
+      "command": "npm test",
+      "result": "PASS",
+      "repository_passed": 24,
+      "dashboard_passed": 151,
+      "failed": 0,
+      "markdown_files": 218,
+      "typecheck": "PASS",
+      "build": "PASS"
+    }
+  ],
+  "gitleaks": {
+    "configuration": "Unchanged main:.gitleaks.toml copied to .runtime/0086/main-gitleaks.toml",
+    "configuration_sha256": "04d30e49df5ba5a6913668cc3d08fc8df82fb0fd69dfd908eac1e9fd14704346",
+    "staged_scan": "PASS",
+    "staged_scan_leaks": 0,
+    "staged_command": "gitleaks git --pre-commit --staged --config .runtime/0086/main-gitleaks.toml --redact --report-format json --report-path .runtime/0086/gitleaks-staged.json .",
+    "commit_range_scan": "POST_COMMIT_REQUIRED",
+    "commit_range_receipt": "Recorded after commit in the PR qualification summary and .runtime/0086/gitleaks-range.json, not predicted by this pre-commit record.",
+    "commit_range_command": "gitleaks git --config .runtime/0086/main-gitleaks.toml --log-opts=\"main..HEAD\" --redact --report-format json --report-path .runtime/0086/gitleaks-range.json ."
+  },
+  "qualified_artifacts": [
+    {
+      "path": ".runtime/indexnow-tests/latest.json",
+      "sha256": "97c9b40a36cab50dc08dece09e3da5c050ccb77f1bf42cafc8c18d57b6160041",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/database-tests/latest.json",
+      "sha256": "8f18ecc4ce1f0cc9ff337aafd102a57e6b5927a781cc07d91507a88ab4b50a56",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/autonomy-delivery/latest.json",
+      "sha256": "40ba2e42e34911f1133bf0c70556de9325f9bcbdd3da61c3f91e43352c7878e5",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/openbao-tests/latest.json",
+      "sha256": "fb7031d10f69bf1a3bdc1437dc3736d241dbbc9d0c90c03d2e537d4b7fde3559",
+      "cleanup": "completed"
+    },
+    {
+      "path": ".runtime/0086/python.xml",
+      "sha256": "9f5166930be9e504e2fa6b4b339c0d0ead64a855facd2c1708f8bca5e6984ecc"
+    }
+  ],
+  "source_sha256": {
+    "database/migrations/versions/0065_indexnow.py": "c791eafd8a4376a57407f6f97670ce6a4559c0583b1e42e6ea81a6e27458e227",
+    "database/migrations/versions/0065_indexnow.sql": "00b314fdfcec06287ede19691f304399bd4c3476a00a9a642736f91c97bc36db",
+    "services/control_plane/src/signal_core/indexnow.py": "22afe183ddc5fdabe732eef7b7e0f56c8e637e70efd47766f1308f7a1d50908b",
+    "services/control_plane/src/signal_core/indexnow_protocol.py": "93b79917425b37857c0d7ac46dea0f746bc2c9e82bab7dfe6201bcb1399f6e5d",
+    "services/control_plane/src/signal_core/indexnow_recipe.py": "21f3ce575f9c82baebc19e3d4441edd2ef93c840527ae75e9b2159f381865839",
+    "services/control_plane/src/signal_core/indexnow_secrets.py": "c6d93bca8023389fcab7e8a3072a631859eff2b9c44ee2380a450de1fbc424d2"
+  },
+  "qualification_scope": {
+    "database": "Real disposable PostgreSQL, forced RLS, non-owner roles, physically separate encrypted write-intent journal, replay and ambiguous-response protection.",
+    "providers": "Synthetic IndexNow and key-file responses behind actual shared egress; real TLS OpenBao CAS and scoped ACL checks. No live IndexNow or key GitHub PR.",
+    "sandbox": "Real non-root no-network static-output build; exactly one root key file with exact key bytes. Existing reviewed recipe and Inbox authorization; no technical A2 enlargement.",
+    "retry": "Definite 429/5xx through bounded outbox attempts; terminal/replayed operations do no additional POST. Ambiguous outcomes are not retried.",
+    "negative_paths": "Wrong host/origin/method/body/size, missing/mismatched/type/redirect keys, unverified site, revoked/current authority, cross-tenant/site/role, retired generation and restored-primary replay.",
+    "cleanup": "Invocation-owned lab containers and synthetic local preview stopped; unrelated tracks' resources preserved."
+  },
+  "ui_verification": {
+    "scope": "Actual DashboardView SSR and CSS, labelled synthetic fixtures, no provider capability; not authenticated production qualification.",
+    "available_and_unavailable": true,
+    "desktop": "1440x1000; no horizontal overflow",
+    "mobile": "390x844; no horizontal overflow",
+    "captures_inspected": 4,
+    "desktop_sha256": "995284a7256b3fd74932a183b76f73f98fdd8454484925fdcdc7c2fef6c093dc",
+    "mobile_sha256": "aff6b61e6e79efec2ceb61dc1ae5608f9ce747d5cf89001216e4e6bb51fcf36a",
+    "unavailable_desktop_sha256": "03b397d6f01fdac277dbec0f3ba1eb1fdb56cef173929ffaf63b207123192af2",
+    "unavailable_mobile_sha256": "b64f68acb10655a3a1b05856b16ef648b0b01748eb1a2acee87cc06a37101b7b"
+  },
+  "development_corrections": [
+    "Migration head and forced-RLS table-count assertions were updated from 0060/103 to 0065/116; all original safety assertions remain.",
+    "Initial page-attempt Docker provisioning failed before tests; the unchanged runner retried successfully without touching other tracks' containers.",
+    "Focused lab corrections covered exact crawl-frontier key leases, fixture media classification, fresh MFA, consistent independent journal keys and unambiguous receipt conflict handling. No safety gate was weakened.",
+    "Three gitleaks false positives were public SQL error-code literals. Equivalent scalar parentheses disambiguate them; main's allowlist is unchanged. Every full-gate command then passed again against final frozen code."
+  ],
+  "operational_limits": [
+    "Internal dispatch and recipe-sealing entrypoints only: deployed poller and public key-create action remain unavailable; unconfigured owner API explicitly returns unavailable.",
+    "Current 0085 verified static-homepage coverage only; no historical backfill or unchanged-URL bulk notification.",
+    "Authoritative key storage is OpenBao. The reviewed public key-file patch and exact public key URL in egress metadata necessarily contain the publication bytes.",
+    "Rotation retires the old generation when the new proposal is sealed; no deletion or merge/deploy authority is added.",
+    "Live IndexNow, live key-file GitHub PR, customer deployment, certified delivery and production worker composition are NOT_EXECUTED."
+  ],
+  "merge_train": {
+    "date": "2026-10-02",
+    "pr": 19,
+    "original_head": "b013d9d9d2e24421d14355c090eff8cecc3cb9c1",
+    "migration": "0065",
+    "down_revision": "0064",
+    "app_tables": 116,
+    "production_authority": false,
+    "checks": [
+      {
+        "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling tests/connectors -q",
+        "exit_code": 0,
+        "summaries": [
+          "1761 passed in 28.98s"
+        ]
+      },
+      {
+        "command": ".venv/bin/python -m ruff check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": []
+      },
+      {
+        "command": ".venv/bin/python -m ruff format --check apps services scripts tests database/migrations deploy/crawler-network",
+        "exit_code": 0,
+        "summaries": [
+          "444 files already formatted"
+        ]
+      },
+      {
+        "command": "npm test",
+        "exit_code": 0,
+        "summaries": [
+          "# tests 43",
+          "# pass 43",
+          "# tests 172",
+          "# pass 172"
+        ]
+      },
+      {
+        "command": ".venv/bin/python scripts/run-database-tests.py",
+        "exit_code": 0,
+        "summaries": [
+          "======================= 903 passed in 497.56s (0:08:17) ========================"
+        ]
+      }
+    ]
+  },
+  "qualification_history_scope": "Original slice commands, counts, base commits and source hashes are historical; merge_train records cumulative rebased fast gates. Final-tip full gate is required before PR branch publication and recorded in PR comments and run-owned lab receipts."
+}

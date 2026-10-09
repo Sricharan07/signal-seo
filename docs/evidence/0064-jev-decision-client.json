@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-26T21:41:25Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "tests": [
+    {
+      "name": "real PostgreSQL database lab",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "provider": "PostgreSQL 17.11",
+      "passed": 582,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "API, identity, and tooling regression",
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling",
+      "passed": 844,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real TLS OpenBao lab",
+      "command": ".venv/bin/python scripts/openbao_lab.py",
+      "provider": "OpenBao 2.6.1",
+      "passed": 9,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint",
+      "command": ".venv/bin/ruff check apps services scripts tests",
+      "status": "PASS"
+    },
+    {
+      "name": "Python format",
+      "command": ".venv/bin/ruff format --check apps services scripts tests",
+      "formatted_files": 161,
+      "status": "PASS"
+    },
+    {
+      "name": "Python dependency validation",
+      "command": ".venv/bin/pip check",
+      "status": "PASS"
+    },
+    {
+      "name": "root quality gate",
+      "command": "npm test",
+      "repository_tests": 24,
+      "markdown_files": 167,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "production dependency audit",
+      "command": "npm audit --omit=dev",
+      "vulnerabilities": 0,
+      "status": "PASS"
+    }
+  ],
+  "live_typesafe_qualification": "NOT_EXECUTED",
+  "live_typesafe_reason": "No TypeSafe API key has been supplied.",
+  "shared_egress_proxy": false,
+  "authority_created": false,
+  "external_write": false,
+  "production_authority": false
+}

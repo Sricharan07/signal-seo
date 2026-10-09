@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-09T21:54:08Z",
+  "node": "22.22.3",
+  "npm": "10.9.8",
+  "framework": "Next.js 16.3.4",
+  "database": {
+    "engine": "PostgreSQL 17.11",
+    "image": "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+    "recorded_at": "2026-09-09T21:48:39.709598+00:00",
+    "cleanup": "completed"
+  },
+  "provider": {
+    "name": "Keycloak 26.7.3",
+    "image": "quay.io/keycloak/keycloak:26.7.3@sha256:ff4257d0d64efbe99ed1ddfaf07765cc3c36dc7518bf8324d41961327f441c54",
+    "recorded_at": "2026-09-09T21:47:14.123973+00:00",
+    "transport": "ephemeral locally trusted TLS",
+    "synthetic_identity_only": true,
+    "cleanup": "completed"
+  },
+  "source_sha256": {
+    "apps/api/src/signal_api/browser_security.py": "92c45185a1f2165d0babb7a5cd1d0490207f8f2ce2c7ea930bec4a927adee20e",
+    "apps/api/src/signal_api/main.py": "a8617c2d1371e2f5846fc3dac6f48545c9af7d57e24a40b76e2f6d05d7735bf1",
+    "apps/dashboard/app/globals.css": "b8a485967035e1890a64ff349159c786f5a5b898de5ff7a6ad48e142a36b18ac",
+    "apps/dashboard/app/page.tsx": "dad5a67c5395bd1dfdecaa9b3282712aa1bace54985fc1d6da451b8da7702e96",
+    "apps/dashboard/components/dashboard-view.tsx": "2a056c832f48d8b33e8a8c96cd3a3d91682464e5b25e620f7f6c75bb172a4c84",
+    "apps/dashboard/lib/auth-route.ts": "98d03ba470ee1305bdeee9f8110e12422428bb3bce057aff925ae635f014f7a7",
+    "apps/dashboard/lib/browser-auth.ts": "1af286690d261fc5a7b574dd177b9990cbb1c7976fa88ffd723472fa10554f55",
+    "apps/dashboard/lib/organization-api.ts": "ebadb2a1c7ba603ee981ecd1871032f060ff4e34df90e361b2dac104b130b6d7",
+    "apps/dashboard/tests/auth-route.test.ts": "e39e3579b16caecdbb38879d0afabbf66a705e88093c21e2993f3e1de7c4cd18",
+    "apps/dashboard/tests/browser-auth.test.ts": "353e5857c9e0d1192b1cd78f2e424db408190ac2a8efe680480c5b9a023a3878",
+    "apps/dashboard/tests/dashboard-view.test.tsx": "19ad045ba38a20758d675d8882b72a19a5dc90cb835c94112563b46b299c8624",
+    "apps/dashboard/tests/organization-api.test.ts": "ab31dabf86316028233a5dca57bb2bff6abc8326cae01cbedcb72b2259c523d8",
+    "tests/api/test_browser_security.py": "9d4c8c9331929a7e6eccef28de39e17aad53337a87ddb5baa2dff5263a79a295",
+    "tests/api/test_session_lifecycle.py": "a8c741bce057f1be7a940c0aaca42e685edea492e97d304e3a7de6862f22998f",
+    "tests/repository/dashboard.test.mjs": "e1f29715aafdb7213fcc3b0f5e05887d5cd2d1d4edfaf1bf6e00e777f014cfce",
+    "docs/adr/0043-same-origin-dashboard-identity-bff.md": "1805c841cd571694b39a91619a6ef5bc5f20327904187a4a03d607664a8754ae",
+    "docs/implementation/0043-dashboard-identity-bff.md": "89da30130034934f498b611af6e24b59f3dee595da90d6fcd9122ed44075b07d",
+    "docs/runbooks/dashboard-identity.md": "d889b6354e54e21e9502836b6d3779784f5078655bd3ef4de43841d39bbd50ba",
+    "DESIGN.md": "12bbf7bc5dde69280754b9fb8a06750a234b8114be608d185e16482e9802c519",
+    ".impeccable/design.json": "3e0093f6251bb01e4771d781d2e356bb113b9c757d36386e4f0f5c7a323dbaa0"
+  },
+  "tests": [
+    {
+      "name": "focused browser-security and session-lifecycle API contracts",
+      "command": ".venv/bin/python -m pytest tests/api/test_browser_security.py tests/api/test_session_lifecycle.py -q",
+      "passed": 65,
+      "status": "PASS"
+    },
+    {
+      "name": "API contracts",
+      "command": ".venv/bin/python -m pytest tests/api -q",
+      "passed": 192,
+      "status": "PASS"
+    },
+    {
+      "name": "API identity and tooling regression",
+      "command": ".venv/bin/python -m pytest tests/api tests/identity tests/tooling -q",
+      "passed": 645,
+      "status": "PASS"
+    },
+    {
+      "name": "real PostgreSQL authority regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "passed": 492,
+      "status": "PASS"
+    },
+    {
+      "name": "real Keycloak protocol regression",
+      "command": ".venv/bin/python scripts/keycloak_lab.py",
+      "passed": 5,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard identity/read/render contracts",
+      "command": "npm run test:dashboard",
+      "passed": 48,
+      "status": "PASS"
+    },
+    {
+      "name": "dashboard TypeScript contract",
+      "command": "npm run typecheck:dashboard",
+      "status": "PASS"
+    },
+    {
+      "name": "optimized production build",
+      "command": "npm run build:dashboard",
+      "routes": [
+        "/",
+        "/_not-found",
+        "/auth/callback",
+        "/auth/clear-browser-state",
+        "/auth/login",
+        "/auth/logout",
+        "/auth/select-organization"
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "repository contracts",
+      "command": "npm run test:repo",
+      "passed": 20,
+      "status": "PASS"
+    },
+    {
+      "name": "documentation graph and protected baselines",
+      "command": "npm run check:docs",
+      "markdown_files": 119,
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint and format",
+      "commands": [
+        ".venv/bin/python -m ruff check apps/api services/control_plane scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+        ".venv/bin/python -m ruff format --check apps/api services/control_plane scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling"
+      ],
+      "formatted_files": 125,
+      "status": "PASS"
+    },
+    {
+      "name": "dependency integrity and production audit",
+      "commands": [
+        ".venv/bin/python -m pip check",
+        "npm audit --omit=dev"
+      ],
+      "npm_vulnerabilities": 0,
+      "status": "PASS"
+    }
+  ],
+  "browser_checks": [
+    {
+      "name": "signed-out identity command",
+      "viewport": "1280x720",
+      "status": "PASS"
+    },
+    {
+      "name": "signed-out mobile identity command",
+      "viewport": "390x844",
+      "horizontal_overflow": false,
+      "status": "PASS"
+    },
+    {
+      "name": "safe callback rejection notice",
+      "viewport": "1280x720",
+      "status": "PASS"
+    }
+  ],
+  "browser_fixture": {
+    "kind": "disposable loopback API transport fixture",
+    "removed_after_check": true,
+    "customer_data": false,
+    "credential": false,
+    "production_authority": false
+  },
+  "provider_scope": "unchanged Keycloak protocol adapter only; no joint deployed BFF journey claim",
+  "raw_session_recorded": false,
+  "authorization_code_recorded": false,
+  "customer_identity": false,
+  "customer_data": false,
+  "provider_credentials": false,
+  "production_authority": false
+}

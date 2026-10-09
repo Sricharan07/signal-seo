@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-29T10:29:08Z",
+  "classification": "security-critical: new function-only internal evidence grant",
+  "tests": [
+    {
+      "name": "deterministic crawl-audit domain rules",
+      "command": ".venv/bin/pytest -q tests/tooling/test_crawl_audit.py",
+      "passed": 5,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real PostgreSQL migration, tenant isolation, replay, evidence, and regression",
+      "command": ".venv/bin/python scripts/run-database-tests.py",
+      "provider": "PostgreSQL 17.11",
+      "passed": 605,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "API, identity, and tooling regression",
+      "command": ".venv/bin/pytest -q tests/api tests/identity tests/tooling",
+      "passed": 873,
+      "failed": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "real isolated crawler network lab",
+      "command": ".venv/bin/python scripts/run-crawler-network-tests.py",
+      "provider": "Docker Engine 28.5.1",
+      "passed": 10,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "real Temporal lab",
+      "command": ".venv/bin/python scripts/run-temporal-tests.py",
+      "provider": "Temporal Server 1.31.2",
+      "passed": 3,
+      "failed": 0,
+      "cleanup": "completed",
+      "status": "PASS"
+    },
+    {
+      "name": "Python lint, format, and dependency validation",
+      "commands": [
+        ".venv/bin/python -m ruff check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+        ".venv/bin/python -m ruff format --check apps/api services/control_plane database/migrations deploy/crawler-network scripts tests/api tests/consumer tests/container tests/control_plane tests/crawler tests/identity tests/page_attempt tests/temporal tests/tooling",
+        ".venv/bin/python -m pip check"
+      ],
+      "formatted_files": 209,
+      "status": "PASS"
+    },
+    {
+      "name": "root repository and dashboard quality gate",
+      "command": "npm test",
+      "repository_tests": 24,
+      "markdown_files": 174,
+      "dashboard_tests": 106,
+      "dashboard_typecheck": "PASS",
+      "dashboard_production_build": "PASS",
+      "status": "PASS"
+    }
+  ],
+  "sitemap_content": "NOT_ASSESSED",
+  "owner_controlled_origin_end_to_end": "NOT_EXECUTED",
+  "customer_facing_projection": false,
+  "external_write": false,
+  "production_authority": false,
+  "release_admission": false
+}

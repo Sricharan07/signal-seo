@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-30T03:23:26.856383+00:00",
+  "python": "3.12.14",
+  "database": "17.11",
+  "database_image": "postgres:17.11-alpine@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+  "crawler_base_image": "python:3.12.14-slim-bookworm@sha256:782412e85d0f0984994c290652577d4018aff08145c85b262bb63dc0c7522254",
+  "crawler_image_id": "sha256:806eedc21f7962bcfa00bbc4e89501deab3d4ab638de6c6ef3649efea636cf4b",
+  "network": {
+    "internal": true,
+    "ip_masquerade": false,
+    "subnet": "93.184.216.0/24"
+  },
+  "source_sha256": {
+    ".github/workflows/quality.yml": "283314fd8da99cfc7acd8b710e5bfddfff25b5f5d8f6d2e8b73c0455b11d338b",
+    "database/migrations/versions/0024_crawl_page_attempts.py": "8e064bf8c579d0f33c685c691e7c04634fede62e7943b525912554c2d999842b",
+    "database/migrations/versions/0024_crawl_page_attempts.sql": "20b21d3fcacbfa278edd22899f52bc771eb4852e92d668d4ffeb08e1b94ab35e",
+    "deploy/crawler-network/Dockerfile": "711e43778fae54f7dbb19168578dfc8dce1e2f9758443cbb656971a131d4b477",
+    "deploy/crawler-network/server.py": "4624caf11450eb24392bd38c92741efb4e5d00357ef81f6300c0c877750aabfb",
+    "scripts/crawler_network_lab.py": "b77ab4d1f003962e7c88f2646a94d8529e5ed8a96533cc7e1af912eae056a733",
+    "scripts/database_lab.py": "0bb20f2c66b31cf2c2988ea3ffa95362b0aa55c22630bd6df9e6d92980f65b2b",
+    "scripts/page_attempt_lab.py": "88a27b5cb39da836f203839310a204f7069fe4580a484c5a895785baa0c4dbf3",
+    "scripts/run-page-attempt-tests.py": "ea76376d889c56f83c14239fab6007ff00e09569cd532b3c284086ea97c436a3",
+    "services/control_plane/src/signal_core/crawl_admission.py": "d93b9081ac3eb6efcd56359ee218e240aef297141e3d5ae18146992a20cd55d8",
+    "services/control_plane/src/signal_core/crawl_artifacts.py": "5e0a5d4c8fadc99f47fe0866e73a70dd957f36463783fb8732aa273101f7cc94",
+    "services/control_plane/src/signal_core/crawl_frontier.py": "54e3d1b7d62547c9fbe3f67920b93ed33acffea66c07c479eeb888ce385ad95e",
+    "services/control_plane/src/signal_core/crawl_http.py": "3ec81433eae99ccd230a51a3dac3e79925e8a18fc2d5f6a373c01c19983b0e88",
+    "services/control_plane/src/signal_core/crawl_page.py": "38c590aa89458eb81fbad798729749327efad620a12bb13eda4699bdf59ae809",
+    "services/control_plane/src/signal_core/crawl_robots.py": "08c2b96d986c1edd75488d333f2207931688c26590a1efc6fee2416e0998fdae",
+    "services/control_plane/src/signal_core/crawl_urls.py": "578e16aea258e84c37be93a862ca7c1483959b6dcba820df7aa7212406b762be",
+    "tests/page_attempt/conftest.py": "b4cb2c52ea56b65e1d6316e9a72dec91875dd0adc5ec27a2a14d487bdc43cb24",
+    "tests/page_attempt/test_real_page_attempt.py": "043b121cb46247c998bef73bb2752f72c0ac201c9b5005266974a9dbdea20961"
+  },
+  "production_authority": false,
+  "cleanup": "completed",
+  "tests": [
+    {
+      "name": "test_real_network_fetch_is_durably_authorized_observed_and_not_repeated",
+      "status": "PASS"
+    }
+  ],
+  "passed": 1
+}

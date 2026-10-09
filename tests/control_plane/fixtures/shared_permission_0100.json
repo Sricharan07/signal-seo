@@ -1,0 +1,3319 @@
+{
+  "groups": [
+    {
+      "owner": "model_budget_dispatch",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "model_budget_dispatch",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea"
+        },
+        {
+          "name": "assistant_budget_dispatch",
+          "actor": "assistant",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea"
+        },
+        {
+          "name": "weekly_skill_model_budget_dispatch",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea"
+        }
+      ]
+    },
+    {
+      "owner": "model_budget_finish",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "model_budget_finish",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb"
+        },
+        {
+          "name": "assistant_budget_finish",
+          "actor": "assistant",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb"
+        },
+        {
+          "name": "weekly_skill_model_budget_finish",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb"
+        }
+      ]
+    },
+    {
+      "owner": "model_budget_read",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "model_budget_read",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "assistant_budget_read",
+          "actor": "assistant",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_skill_model_budget_read",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "model_budget_reserve",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "model_budget_reserve",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint"
+        },
+        {
+          "name": "assistant_budget_reserve",
+          "actor": "assistant",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint"
+        },
+        {
+          "name": "weekly_skill_model_budget_reserve",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint"
+        }
+      ]
+    },
+    {
+      "owner": "dispatch_before_dependencies",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "dispatch_before_dependencies",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid"
+        },
+        {
+          "name": "internal_link_skill_dispatch_before_dependencies",
+          "actor": "internal_link_skill",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "dispatch_candidate_build",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "dispatch_candidate_build",
+          "actor": "owner",
+          "arguments": "p_session bytea, p_site uuid, p_generation text, p_build uuid"
+        },
+        {
+          "name": "internal_link_skill_dispatch_candidate_build",
+          "actor": "internal_link_skill",
+          "arguments": "p_session bytea, p_site uuid, p_generation text, p_build uuid"
+        },
+        {
+          "name": "weekly_dispatch_candidate_build",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "finish_before_dependencies",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "finish_before_dependencies",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid, p_exit_class text, p_exit_code integer, p_logs_sha256 text, p_log_bytes integer, p_artifacts jsonb"
+        },
+        {
+          "name": "internal_link_skill_finish_before_dependencies",
+          "actor": "internal_link_skill",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid, p_exit_class text, p_exit_code integer, p_logs_sha256 text, p_log_bytes integer, p_artifacts jsonb"
+        }
+      ]
+    },
+    {
+      "owner": "finish_candidate_build",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "finish_candidate_build",
+          "actor": "owner",
+          "arguments": "p_session bytea, p_site uuid, p_generation text, p_build uuid, p_exit text, p_code integer, p_logs text, p_bytes integer, p_artifacts jsonb"
+        },
+        {
+          "name": "internal_link_skill_finish_candidate_build",
+          "actor": "internal_link_skill",
+          "arguments": "p_session bytea, p_site uuid, p_generation text, p_build uuid, p_exit text, p_code integer, p_logs text, p_bytes integer, p_artifacts jsonb"
+        },
+        {
+          "name": "weekly_finish_candidate_build",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid, p_exit_class text, p_exit_code integer, p_logs_sha256 text, p_log_bytes integer, p_artifacts jsonb"
+        }
+      ]
+    },
+    {
+      "owner": "internal_link_sources",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "internal_link_sources",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "internal_link_skill_internal_link_sources",
+          "actor": "internal_link_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_skill_link_graph",
+          "actor": "weekly_strategy",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "prepare_candidate_build",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "prepare_candidate_build",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid, p_build_id uuid, p_request_id uuid, p_request_hash bytea, p_base_sha text, p_tree_sha text, p_patch_sha256 text, p_toolchain text, p_build_command text, p_artifact_root text"
+        },
+        {
+          "name": "internal_link_skill_prepare_candidate_build",
+          "actor": "internal_link_skill",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid, p_build_id uuid, p_request_id uuid, p_request_hash bytea, p_base_sha text, p_tree_sha text, p_patch_sha256 text, p_toolchain text, p_build_command text, p_artifact_root text"
+        },
+        {
+          "name": "weekly_prepare_candidate_build",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid, p_build_id uuid, p_request_id uuid, p_request_hash bytea, p_base_sha text, p_tree_sha text, p_patch_sha256 text, p_toolchain text, p_build_command text, p_artifact_root text"
+        }
+      ]
+    },
+    {
+      "owner": "read_candidate_build",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "read_candidate_build",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid"
+        },
+        {
+          "name": "internal_link_skill_read_candidate_build",
+          "actor": "internal_link_skill",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid"
+        },
+        {
+          "name": "weekly_read_candidate_build",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "read_github_base_risk",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "read_github_base_risk",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid"
+        },
+        {
+          "name": "internal_link_skill_read_github_base_risk",
+          "actor": "internal_link_skill",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid"
+        },
+        {
+          "name": "weekly_read_github_base_risk",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "read_github_pr_extension",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "read_github_pr_extension",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid"
+        },
+        {
+          "name": "internal_link_skill_read_github_pr_extension",
+          "actor": "internal_link_skill",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid"
+        },
+        {
+          "name": "weekly_read_github_pr_extension",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "read_github_read_binding",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "read_github_read_binding",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid"
+        },
+        {
+          "name": "internal_link_skill_read_github_read_binding",
+          "actor": "internal_link_skill",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid"
+        },
+        {
+          "name": "weekly_read_github_read_binding",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "record_github_binding_state",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "record_github_binding_state",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid, p_repository bigint, p_full_name text, p_installation bigint, p_default_branch text, p_base_branch text, p_protected boolean, p_permissions bytea"
+        },
+        {
+          "name": "internal_link_skill_record_github_binding_state",
+          "actor": "internal_link_skill",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid, p_repository bigint, p_full_name text, p_installation bigint, p_default_branch text, p_base_branch text, p_protected boolean, p_permissions bytea"
+        },
+        {
+          "name": "weekly_record_github_binding_state",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid, p_repository bigint, p_full_name text, p_installation bigint, p_default_branch text, p_base_branch text, p_protected boolean, p_permissions bytea"
+        }
+      ]
+    },
+    {
+      "owner": "seal_internal_link_revision",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "seal_internal_link_revision",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_key uuid, p_canonical bytea"
+        },
+        {
+          "name": "internal_link_skill_seal_internal_link_revision",
+          "actor": "internal_link_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_key uuid, p_canonical bytea"
+        }
+      ]
+    },
+    {
+      "owner": "acknowledge_github_pr_intent",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "acknowledge_github_pr_intent",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_journal_generation uuid, p_position bigint, p_body_hash bytea"
+        },
+        {
+          "name": "weekly_acknowledge_github_pr_intent",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_journal_generation uuid, p_position bigint, p_body_hash bytea"
+        }
+      ]
+    },
+    {
+      "owner": "begin_github_delivery_observation",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "begin_github_delivery_observation",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_attempt_id uuid, p_environment text, p_actor_id bigint"
+        },
+        {
+          "name": "weekly_begin_github_delivery_observation",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_attempt_id uuid, p_environment text, p_actor_id bigint"
+        }
+      ]
+    },
+    {
+      "owner": "begin_github_pr_step",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "begin_github_pr_step",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text"
+        },
+        {
+          "name": "weekly_begin_github_pr_step",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text"
+        }
+      ]
+    },
+    {
+      "owner": "bind_github_pr_operation_tree",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "bind_github_pr_operation_tree",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_tree_sha text, p_commit_sha text"
+        },
+        {
+          "name": "weekly_bind_github_pr_operation_tree",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_tree_sha text, p_commit_sha text"
+        }
+      ]
+    },
+    {
+      "owner": "claim_github_pr_operation",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "claim_github_pr_operation",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid"
+        },
+        {
+          "name": "weekly_claim_github_pr_operation",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "finish_github_delivery_observation",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "finish_github_delivery_observation",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid, p_canonical_receipt bytea, p_receipt_sha256 bytea"
+        },
+        {
+          "name": "weekly_finish_github_delivery_observation",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid, p_canonical_receipt bytea, p_receipt_sha256 bytea"
+        }
+      ]
+    },
+    {
+      "owner": "finish_github_pr_step",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "finish_github_pr_step",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_result text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text"
+        },
+        {
+          "name": "weekly_finish_github_pr_step",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_result text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text"
+        }
+      ]
+    },
+    {
+      "owner": "github_delivery_read_authority",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "github_delivery_read_authority",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid"
+        },
+        {
+          "name": "weekly_github_delivery_read_authority",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "github_delivery_read_permit",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "github_delivery_read_permit",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid"
+        },
+        {
+          "name": "weekly_github_delivery_read_permit",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "github_pr_dispatch_permit",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "github_pr_dispatch_permit",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text"
+        },
+        {
+          "name": "weekly_github_pr_dispatch_permit",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text"
+        }
+      ]
+    },
+    {
+      "owner": "github_pr_operation_eligible",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "github_pr_operation_eligible",
+          "actor": "owner",
+          "arguments": "p_token bytea, p_site uuid, p_generation text, p_revision uuid"
+        },
+        {
+          "name": "weekly_github_pr_operation_eligible",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "load_candidate_recipe_evidence",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "load_candidate_recipe_evidence",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_report_id uuid, p_finding_id uuid"
+        },
+        {
+          "name": "weekly_load_candidate_recipe_evidence",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_report_id uuid, p_finding_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "prepare_github_pr_operation",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "prepare_github_pr_operation",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_site uuid, p_generation text, p_revision uuid, p_digest bytea, p_operation uuid, p_intent bytea"
+        },
+        {
+          "name": "weekly_prepare_github_pr_operation",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid, p_revision_sha256 bytea, p_operation_id uuid, p_intent_sha256 bytea"
+        }
+      ]
+    },
+    {
+      "owner": "read_authenticated_candidate_recipe_inbox",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "read_authenticated_candidate_recipe_inbox",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text"
+        },
+        {
+          "name": "weekly_read_authenticated_candidate_recipe_inbox",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text"
+        }
+      ]
+    },
+    {
+      "owner": "read_authenticated_github_delivery_observations",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "read_authenticated_github_delivery_observations",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text"
+        },
+        {
+          "name": "weekly_read_authenticated_github_delivery_observations",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text"
+        }
+      ]
+    },
+    {
+      "owner": "read_authenticated_github_pr_operations",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "read_authenticated_github_pr_operations",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text"
+        },
+        {
+          "name": "weekly_read_authenticated_github_pr_operations",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text"
+        }
+      ]
+    },
+    {
+      "owner": "read_github_pr_operation_authorities",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "read_github_pr_operation_authorities",
+          "actor": "owner",
+          "arguments": "p_session bytea, p_site uuid, p_generation text"
+        },
+        {
+          "name": "weekly_read_github_pr_operation_authorities",
+          "actor": "weekly_delivery",
+          "arguments": "p_handle bytea, p_site uuid, p_generation text"
+        }
+      ]
+    },
+    {
+      "owner": "reconcile_github_pr_step",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "reconcile_github_pr_step",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text"
+        },
+        {
+          "name": "weekly_reconcile_github_pr_step",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text"
+        }
+      ]
+    },
+    {
+      "owner": "seal_candidate_recipe_revision",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "seal_candidate_recipe_revision",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid, p_extension_id uuid, p_build_id uuid, p_report_id uuid, p_finding_id uuid, p_release_id uuid, p_release_hash bytea, p_idempotency_key uuid, p_canonical bytea, p_revision_hash bytea"
+        },
+        {
+          "name": "weekly_seal_candidate_recipe_revision",
+          "actor": "weekly_delivery",
+          "arguments": "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid, p_extension_id uuid, p_build_id uuid, p_report_id uuid, p_finding_id uuid, p_release_id uuid, p_release_hash bytea, p_idempotency_key uuid, p_canonical bytea, p_revision_hash bytea"
+        }
+      ]
+    },
+    {
+      "owner": "approved_business_brain_facts",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "approved_business_brain_facts",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid"
+        },
+        {
+          "name": "weekly_skill_approved_business_brain_facts",
+          "actor": "weekly_skill",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "business_brain_begin_extraction",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "business_brain_begin_extraction",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_source_kind text, p_source_id uuid, p_start integer, p_end integer, p_version text, p_input_hash bytea, p_decision_id uuid, p_model_id uuid"
+        },
+        {
+          "name": "weekly_skill_business_brain_begin_extraction",
+          "actor": "weekly_skill",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_source_kind text, p_source_id uuid, p_start integer, p_end integer, p_version text, p_input_hash bytea, p_decision_id uuid, p_model_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "business_brain_finish_extraction",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "business_brain_finish_extraction",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_page_type text, p_canonical_output bytea, p_output_hash bytea, p_response_id text, p_model text, p_usage jsonb, p_reason text"
+        },
+        {
+          "name": "weekly_skill_business_brain_finish_extraction",
+          "actor": "weekly_skill",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_page_type text, p_canonical_output bytea, p_output_hash bytea, p_response_id text, p_model text, p_usage jsonb, p_reason text"
+        }
+      ]
+    },
+    {
+      "owner": "business_brain_page_source",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "business_brain_page_source",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_page_id uuid"
+        },
+        {
+          "name": "weekly_skill_business_brain_page_source",
+          "actor": "weekly_skill",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_page_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "business_brain_read",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "business_brain_read",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid"
+        },
+        {
+          "name": "weekly_skill_business_brain_read",
+          "actor": "weekly_skill",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "content_writer_create_brief",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "content_writer_create_brief",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_payload jsonb, p_origin text, p_supersedes uuid"
+        },
+        {
+          "name": "weekly_skill_content_writer_create_brief",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_payload jsonb, p_origin text, p_supersedes uuid"
+        }
+      ]
+    },
+    {
+      "owner": "content_writer_inventory",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "content_writer_inventory",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_skill_content_writer_inventory",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "content_writer_read",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "content_writer_read",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_skill_content_writer_read",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "content_writer_read_0082",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "content_writer_read_0082",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_skill_content_writer_read_0082",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "current_bing_binding",
+      "shared_body": false,
+      "extra": true,
+      "variants": [
+        {
+          "name": "current_bing_binding",
+          "actor": "owner",
+          "arguments": "p_tenant_id uuid, p_site_id uuid"
+        },
+        {
+          "name": "weekly_skill_current_bing_binding",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "current_gsc_binding",
+      "shared_body": false,
+      "extra": true,
+      "variants": [
+        {
+          "name": "current_gsc_binding",
+          "actor": "owner",
+          "arguments": "p_tenant_id uuid, p_site_id uuid"
+        },
+        {
+          "name": "weekly_skill_current_gsc_binding",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "finish_pagespeed",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "finish_pagespeed",
+          "actor": "owner",
+          "arguments": "p_session bytea, p_generation text, p_site uuid, p_sample uuid, p_observation jsonb, p_hash bytea, p_reason text"
+        },
+        {
+          "name": "weekly_skill_finish_pagespeed",
+          "actor": "weekly_skill",
+          "arguments": "p_session bytea, p_generation text, p_site uuid, p_sample uuid, p_observation jsonb, p_hash bytea, p_reason text"
+        }
+      ]
+    },
+    {
+      "owner": "ga4_owner_binding",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "ga4_owner_binding",
+          "actor": "owner",
+          "arguments": "p_session bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_skill_ga4_owner_binding",
+          "actor": "weekly_skill",
+          "arguments": "p_session bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "ga4_owner_reauth",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "ga4_owner_reauth",
+          "actor": "owner",
+          "arguments": "p_session bytea, p_generation text, p_site uuid, p_binding uuid, p_event uuid, p_egress uuid"
+        },
+        {
+          "name": "weekly_skill_ga4_owner_reauth",
+          "actor": "weekly_skill",
+          "arguments": "p_session bytea, p_generation text, p_site uuid, p_binding uuid, p_event uuid, p_egress uuid"
+        }
+      ]
+    },
+    {
+      "owner": "list_business_brain_facts",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "list_business_brain_facts",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_status text"
+        },
+        {
+          "name": "weekly_skill_list_business_brain_facts",
+          "actor": "weekly_skill",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_status text"
+        }
+      ]
+    },
+    {
+      "owner": "mark_bing_reauth_required",
+      "shared_body": false,
+      "extra": true,
+      "variants": [
+        {
+          "name": "mark_bing_reauth_required",
+          "actor": "owner",
+          "arguments": "p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid"
+        },
+        {
+          "name": "weekly_skill_mark_bing_reauth_required",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "mark_gsc_reauth_required",
+      "shared_body": false,
+      "extra": true,
+      "variants": [
+        {
+          "name": "mark_gsc_reauth_required",
+          "actor": "owner",
+          "arguments": "p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid"
+        },
+        {
+          "name": "weekly_skill_mark_gsc_reauth_required",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "read_brand_document_artifact",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "read_brand_document_artifact",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid"
+        },
+        {
+          "name": "weekly_skill_read_brand_document_artifact",
+          "actor": "weekly_skill",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "record_bing_import_generation",
+      "shared_body": false,
+      "extra": true,
+      "variants": [
+        {
+          "name": "record_bing_import_generation",
+          "actor": "owner",
+          "arguments": "p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid"
+        },
+        {
+          "name": "weekly_skill_record_bing_import_generation",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "record_bing_page_import_generation",
+      "shared_body": false,
+      "extra": true,
+      "variants": [
+        {
+          "name": "record_bing_page_import_generation",
+          "actor": "owner",
+          "arguments": "p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid"
+        },
+        {
+          "name": "weekly_skill_record_bing_page_import_generation",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "record_ga4_owner_import",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "record_ga4_owner_import",
+          "actor": "owner",
+          "arguments": "p_session bytea, p_generation text, p_site uuid, p_id uuid, p_binding uuid, p_property text, p_start date, p_end date, p_rows jsonb, p_coverage jsonb, p_receipts jsonb"
+        },
+        {
+          "name": "weekly_skill_record_ga4_owner_import",
+          "actor": "weekly_skill",
+          "arguments": "p_session bytea, p_generation text, p_site uuid, p_id uuid, p_binding uuid, p_property text, p_start date, p_end date, p_rows jsonb, p_coverage jsonb, p_receipts jsonb"
+        }
+      ]
+    },
+    {
+      "owner": "record_gsc_import_generation",
+      "shared_body": false,
+      "extra": true,
+      "variants": [
+        {
+          "name": "record_gsc_import_generation",
+          "actor": "owner",
+          "arguments": "p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_search_type text, p_dimensions jsonb, p_start_date date, p_end_date date, p_data_state text, p_aggregation_type text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid"
+        },
+        {
+          "name": "weekly_skill_record_gsc_import_generation",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_search_type text, p_dimensions jsonb, p_start_date date, p_end_date date, p_data_state text, p_aggregation_type text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid"
+        }
+      ]
+    },
+    {
+      "owner": "seo_strategy_base_sources",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "seo_strategy_base_sources",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_skill_seo_strategy_base_sources",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "seo_strategy_read",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "seo_strategy_read",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid"
+        },
+        {
+          "name": "weekly_skill_seo_strategy_read",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid"
+        }
+      ]
+    },
+    {
+      "owner": "seo_strategy_record",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "seo_strategy_record",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_canonical bytea"
+        },
+        {
+          "name": "weekly_skill_seo_strategy_record",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_canonical bytea"
+        }
+      ]
+    },
+    {
+      "owner": "strategy_learning_sources",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "strategy_learning_sources",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_strategy_learning_sources",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "strategy_link_sources",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "strategy_link_sources",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_strategy_link_sources",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "strategy_topic_sources",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "strategy_topic_sources",
+          "actor": "owner",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_strategy_topic_sources",
+          "actor": "weekly_skill",
+          "arguments": "p_hash bytea, p_generation text, p_site uuid"
+        }
+      ]
+    },
+    {
+      "owner": "begin_owner_connector_egress",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "begin_owner_connector_egress",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_kind text, p_profile text, p_method text, p_request_url text, p_target_url text, p_origin text, p_request_sha256 bytea, p_body_sha256 bytea, p_request_bytes integer, p_max_response_bytes integer, p_credentialed boolean, p_robots_operation_id uuid, p_min_delay_ms integer"
+        },
+        {
+          "name": "weekly_skill_begin_pagespeed_egress",
+          "actor": "weekly_skill",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_kind text, p_profile text, p_method text, p_request_url text, p_target_url text, p_origin text, p_request_sha256 bytea, p_body_sha256 bytea, p_request_bytes integer, p_max_response_bytes integer, p_credentialed boolean, p_robots_operation_id uuid, p_min_delay_ms integer"
+        },
+        {
+          "name": "weekly_skill_begin_dataforseo_egress",
+          "actor": "strategy_provider",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_kind text, p_profile text, p_method text, p_request_url text, p_target_url text, p_origin text, p_request_sha256 bytea, p_body_sha256 bytea, p_request_bytes integer, p_max_response_bytes integer, p_credentialed boolean, p_robots_operation_id uuid, p_min_delay_ms integer"
+        }
+      ]
+    },
+    {
+      "owner": "finish_owner_connector_egress",
+      "shared_body": false,
+      "extra": false,
+      "variants": [
+        {
+          "name": "finish_owner_connector_egress",
+          "actor": "owner",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_evidence jsonb, p_completion text, p_retry_after_ms integer, p_robots_allowed boolean, p_rules_sha256 bytea, p_crawl_delay_ms integer"
+        },
+        {
+          "name": "weekly_skill_finish_pagespeed_egress",
+          "actor": "weekly_skill",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_evidence jsonb, p_completion text, p_retry_after_ms integer, p_robots_allowed boolean, p_rules_sha256 bytea, p_crawl_delay_ms integer"
+        },
+        {
+          "name": "weekly_skill_finish_dataforseo_egress",
+          "actor": "strategy_provider",
+          "arguments": "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_evidence jsonb, p_completion text, p_retry_after_ms integer, p_robots_allowed boolean, p_rules_sha256 bytea, p_crawl_delay_ms integer"
+        }
+      ]
+    },
+    {
+      "owner": "schedule_pagespeed_sample",
+      "shared_body": true,
+      "extra": false,
+      "variants": [
+        {
+          "name": "schedule_pagespeed_sample",
+          "actor": "owner",
+          "arguments": "p_session bytea, p_generation text, p_site uuid"
+        },
+        {
+          "name": "weekly_pagespeed_plan",
+          "actor": "weekly_plan",
+          "arguments": "p_tenant uuid, p_site uuid"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    [
+      "assistant_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "CREATE OR REPLACE FUNCTION control.assistant_budget_read(p_hash bytea, p_generation text, p_site uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v record; cap bigint; used bigint; BEGIN\n SELECT * INTO v FROM control.assistant_scope(p_hash,p_generation,p_site);\n IF v.tenant_id IS NULL THEN RETURN NULL; END IF;\n SELECT c.cap_micros INTO cap FROM app.model_budget_caps c WHERE c.tenant_id=v.tenant_id AND c.site_id=p_site\n ORDER BY c.recorded_at DESC,c.id DESC LIMIT 1; cap:=coalesce(cap,25000000);\n SELECT coalesce(sum(coalesce(r.cost_micros,c.reserved_micros)),0) INTO used\n FROM app.model_budget_calls c LEFT JOIN app.model_budget_receipts r\n ON r.tenant_id=c.tenant_id AND r.site_id=c.site_id AND r.call_id=c.id\n WHERE c.tenant_id=v.tenant_id AND c.site_id=p_site AND c.month=date_trunc('month',transaction_timestamp() AT TIME ZONE 'UTC')::date;\n RETURN jsonb_build_object('tenant_id',v.tenant_id,'site_id',p_site,'cap_micros',cap,'used_micros',used,'warning',used*5>=cap*4,\n 'state',CASE WHEN used>=cap THEN 'unavailable' ELSE 'available' END,\n 'month',date_trunc('month',transaction_timestamp() AT TIME ZONE 'UTC')::date);\nEND; $function$\n"
+    ],
+    [
+      "content_writer_inventory",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "CREATE OR REPLACE FUNCTION control.content_writer_inventory(p_hash bytea, p_generation text, p_site uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v record; BEGIN\n SELECT * INTO v FROM control.business_brain_owner(p_hash,p_generation,p_site);\n IF v.tenant_id IS NULL THEN RETURN NULL; END IF;\n RETURN coalesce((SELECT jsonb_agg(jsonb_build_object('source_id',p.id,'url',o.final_url,'title',coalesce(p.title,'')))\n FROM app.crawl_page_records p JOIN app.fetch_observations o ON o.tenant_id=p.tenant_id AND o.site_id=p.site_id AND o.id=p.observation_id\n JOIN app.crawl_frontier_settlements s ON s.tenant_id=p.tenant_id AND s.site_id=p.site_id AND s.page_record_id=p.id AND s.terminal_state='fetched'\n JOIN app.crawl_manifests m ON m.tenant_id=p.tenant_id AND m.site_id=p.site_id AND m.crawl_run_id=p.crawl_run_id\n WHERE p.tenant_id=v.tenant_id AND p.site_id=p_site AND p.http_status BETWEEN 200 AND 299),'[]'::jsonb);\nEND; $function$\n"
+    ],
+    [
+      "internal_link_skill_read_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "CREATE OR REPLACE FUNCTION control.internal_link_skill_read_candidate_build(p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid)\n RETURNS TABLE(build_status text, base_sha text, patch_sha256 text, toolchain text, build_command text, exit_class text, exit_code integer, logs_sha256 text, log_bytes integer, artifacts jsonb, outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_authority record;\nBEGIN PERFORM control.assert_internal_link_skill_resource(p_session_hash,p_site_id,p_generation,'build_id',p_build_id);\n    SELECT * INTO v_authority FROM control.resolve_internal_link_skill_authority(\n        p_session_hash, p_site_id, p_generation);\n    IF v_authority.outcome <> 'authorized' THEN\n        RETURN QUERY SELECT NULL::text, NULL::text, NULL::text, NULL::text,\n            NULL::text, NULL::text, NULL::integer, NULL::text, NULL::integer,\n            NULL::jsonb, v_authority.outcome; RETURN;\n    END IF;\n    IF v_authority.role_key <> 'workload' THEN\n        RETURN QUERY SELECT NULL::text, NULL::text, NULL::text, NULL::text,\n            NULL::text, NULL::text, NULL::integer, NULL::text, NULL::integer,\n            NULL::jsonb, 'permission_denied'::text; RETURN;\n    END IF;\n    RETURN QUERY SELECT intent.status, intent.base_sha, intent.patch_sha256,\n        intent.toolchain, intent.build_command, receipt.exit_class,\n        receipt.exit_code, receipt.logs_sha256, receipt.log_bytes,\n        receipt.artifacts, 'found'::text\n      FROM app.candidate_build_intents AS intent\n      LEFT JOIN app.candidate_build_receipts AS receipt\n        ON receipt.tenant_id = intent.tenant_id AND receipt.site_id = intent.site_id\n       AND receipt.build_id = intent.id\n     WHERE intent.tenant_id = v_authority.tenant_id AND intent.site_id = p_site_id\n       AND intent.id = p_build_id AND intent.requested_by_user_id = v_authority.user_id;\n    IF NOT FOUND THEN\n        RETURN QUERY SELECT NULL::text, NULL::text, NULL::text, NULL::text,\n            NULL::text, NULL::text, NULL::integer, NULL::text, NULL::integer,\n            NULL::jsonb, 'build_not_found'::text;\n    END IF;\nEND; $function$\n"
+    ],
+    [
+      "internal_link_skill_read_github_base_risk",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "CREATE OR REPLACE FUNCTION control.internal_link_skill_read_github_base_risk(p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE a record; b app.github_read_bindings%ROWTYPE;\nBEGIN PERFORM control.assert_internal_link_skill_resource(p_session_hash,p_site_id,p_generation,'binding_id',p_binding_id);\n    SELECT * INTO a FROM control.resolve_internal_link_skill_authority(p_session_hash,p_site_id,p_generation);\n    IF a.outcome IS DISTINCT FROM 'authorized' THEN RETURN NULL; END IF;\n    SELECT * INTO b FROM app.github_read_bindings WHERE tenant_id=a.tenant_id AND site_id=p_site_id AND id=p_binding_id;\n    IF NOT FOUND THEN RETURN NULL; END IF;\n    RETURN jsonb_build_object('protected',b.protected,'default_branch',b.default_branch,\n        'risk_monitored',b.risk_monitored,'owner_accepted',\n        b.recovery_generation=p_generation AND control.github_unprotected_base_accepted(b,p_generation));\nEND $function$\n"
+    ],
+    [
+      "internal_link_skill_read_github_pr_extension",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid",
+      "CREATE OR REPLACE FUNCTION control.internal_link_skill_read_github_pr_extension(p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid)\n RETURNS TABLE(extension_id uuid, extension_status text, binding_id uuid, repository_id bigint, base_sha text, tree_sha text, framework text, content_format text, coverage text, content_sha text, marker_evidence jsonb, outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_authority record;\nBEGIN PERFORM control.assert_internal_link_skill_resource(p_session_hash,p_site_id,p_generation,'extension_id',p_extension_id);\n    SELECT * INTO v_authority FROM control.resolve_internal_link_skill_authority(\n        p_session_hash, p_site_id, p_generation);\n    IF v_authority.outcome <> 'authorized' THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::uuid, NULL::bigint,\n          NULL::text, NULL::text, NULL::text, NULL::text, NULL::text,\n          NULL::text, NULL::jsonb, v_authority.outcome; RETURN;\n    END IF;\n    IF NOT control.current_github_site_proof(v_authority.tenant_id, p_site_id) THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::uuid, NULL::bigint,\n          NULL::text, NULL::text, NULL::text, NULL::text, NULL::text,\n          NULL::text, NULL::jsonb, 'site_not_verified'::text; RETURN;\n    END IF;\n    RETURN QUERY SELECT extension.id, extension.status, extension.binding_id,\n        extension.repository_id, extension.base_sha, extension.tree_sha,\n        extension.framework, extension.content_format, extension.coverage,\n        extension.content_sha, extension.marker_evidence, 'found'::text\n      FROM app.github_pr_extensions AS extension\n      JOIN app.github_read_bindings AS binding\n        ON binding.tenant_id = extension.tenant_id AND binding.site_id = extension.site_id\n       AND binding.id = extension.binding_id AND binding.status = 'active'\n     WHERE extension.tenant_id = v_authority.tenant_id AND extension.site_id = p_site_id\n       AND extension.id = p_extension_id;\n    IF NOT FOUND THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::uuid, NULL::bigint,\n          NULL::text, NULL::text, NULL::text, NULL::text, NULL::text,\n          NULL::text, NULL::jsonb, 'extension_not_found'::text;\n    END IF;\nEND; $function$\n"
+    ],
+    [
+      "internal_link_skill_read_github_read_binding",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "CREATE OR REPLACE FUNCTION control.internal_link_skill_read_github_read_binding(p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid)\n RETURNS TABLE(binding_id uuid, binding_status text, installation_id bigint, repository_owner text, repository_name text, base_branch text, content_path text, repository_id bigint, observed_full_name text, base_sha text, outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_authority record;\nBEGIN PERFORM control.assert_internal_link_skill_resource(p_session_hash,p_site_id,p_generation,'binding_id',p_binding_id);\n    SELECT * INTO v_authority FROM control.resolve_internal_link_skill_authority(\n        p_session_hash, p_site_id, p_generation);\n    IF v_authority.outcome <> 'authorized' THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::bigint, NULL::text,\n          NULL::text, NULL::text, NULL::text, NULL::bigint, NULL::text, NULL::text,\n          v_authority.outcome; RETURN;\n    END IF;\n    IF NOT EXISTS (\n        SELECT 1 FROM app.site_origin_verifications AS verification\n        JOIN control.public_origin_claims AS claim\n          ON claim.origin = verification.origin\n         AND claim.tenant_id = verification.tenant_id\n         AND claim.site_id = verification.site_id\n         AND claim.verification_id = verification.id\n        JOIN app.sites AS site ON site.tenant_id = verification.tenant_id\n         AND site.id = verification.site_id AND site.primary_origin = verification.origin\n        WHERE verification.tenant_id = v_authority.tenant_id\n          AND verification.site_id = p_site_id AND site.ownership_status = 'verified'\n          AND verification.recheck_at > transaction_timestamp()\n          AND claim.recheck_at > transaction_timestamp()\n    ) THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::bigint, NULL::text,\n          NULL::text, NULL::text, NULL::text, NULL::bigint, NULL::text, NULL::text,\n          'site_not_verified'::text; RETURN;\n    END IF;\n    RETURN QUERY SELECT binding.id, binding.status, binding.installation_id,\n        binding.repository_owner, binding.repository_name, binding.base_branch,\n        binding.content_path, binding.repository_id, binding.observed_full_name,\n        binding.base_sha, 'found'::text\n      FROM app.github_read_bindings AS binding\n     WHERE binding.tenant_id = v_authority.tenant_id AND binding.site_id = p_site_id\n       AND binding.id = p_binding_id;\n    IF NOT FOUND THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::bigint, NULL::text,\n          NULL::text, NULL::text, NULL::text, NULL::bigint, NULL::text, NULL::text,\n          'binding_not_found'::text;\n    END IF;\nEND; $function$\n"
+    ],
+    [
+      "model_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "CREATE OR REPLACE FUNCTION control.model_budget_read(p_hash bytea, p_generation text, p_site uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v record; cap bigint; used bigint; BEGIN\n SELECT * INTO v FROM control.business_brain_owner(p_hash,p_generation,p_site);\n IF v.tenant_id IS NULL THEN RETURN NULL; END IF;\n SELECT c.cap_micros INTO cap FROM app.model_budget_caps c WHERE c.tenant_id=v.tenant_id AND c.site_id=p_site\n ORDER BY c.recorded_at DESC,c.id DESC LIMIT 1; cap:=coalesce(cap,25000000);\n SELECT coalesce(sum(coalesce(r.cost_micros,c.reserved_micros)),0) INTO used\n FROM app.model_budget_calls c LEFT JOIN app.model_budget_receipts r\n ON r.tenant_id=c.tenant_id AND r.site_id=c.site_id AND r.call_id=c.id\n WHERE c.tenant_id=v.tenant_id AND c.site_id=p_site AND c.month=date_trunc('month',transaction_timestamp() AT TIME ZONE 'UTC')::date;\n RETURN jsonb_build_object('tenant_id',v.tenant_id,'site_id',p_site,'cap_micros',cap,'used_micros',used,'warning',used*5>=cap*4,\n 'state',CASE WHEN used>=cap THEN 'unavailable' ELSE 'available' END,\n 'month',date_trunc('month',transaction_timestamp() AT TIME ZONE 'UTC')::date);\nEND; $function$\n"
+    ],
+    [
+      "read_brand_document_artifact",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid",
+      "CREATE OR REPLACE FUNCTION control.read_brand_document_artifact(p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid)\n RETURNS TABLE(tenant_id uuid, artifact_id uuid, object_key text, object_version text, artifact_hash bytea, byte_length bigint, media_type text, encryption_key_ref text, artifact_created_at timestamp with time zone, retain_until timestamp with time zone, legal_hold boolean, durability_state text, text_hash bytea, injection_signal boolean, secret_signal boolean)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_owner record;\nBEGIN\n    SELECT * INTO v_owner FROM control.brand_document_owner(p_session_hash, p_generation, p_site_id);\n    IF v_owner.tenant_id IS NULL THEN RETURN; END IF;\n    RETURN QUERY SELECT d.tenant_id, a.id, a.object_key, a.object_version, a.sha256,\n        a.byte_length, a.media_type, a.encryption_key_ref, a.created_at,\n        a.retain_until, a.legal_hold, a.durability_state, d.text_sha256,\n        d.injection_signal, d.secret_signal\n      FROM app.brand_documents d JOIN app.artifacts a ON a.tenant_id = d.tenant_id\n        AND a.site_id = d.site_id AND a.id = d.artifact_id\n     WHERE d.tenant_id = v_owner.tenant_id AND d.site_id = p_site_id AND d.id = p_document_id\n       AND NOT EXISTS (SELECT 1 FROM app.brand_document_events e\n         WHERE e.tenant_id = d.tenant_id AND e.site_id = d.site_id AND e.document_id = d.id\n           AND e.event_type = 'deleted')\n       AND NOT control.docs_document_withdrawn(d.tenant_id,d.site_id,d.id) AND NOT EXISTS (SELECT 1 FROM app.brand_documents next\n         WHERE next.tenant_id = d.tenant_id AND next.site_id = d.site_id\n           AND next.supersedes_id = d.id);\nEND;\n$function$\n"
+    ],
+    [
+      "read_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "CREATE OR REPLACE FUNCTION control.read_candidate_build(p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid)\n RETURNS TABLE(build_status text, base_sha text, patch_sha256 text, toolchain text, build_command text, exit_class text, exit_code integer, logs_sha256 text, log_bytes integer, artifacts jsonb, outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_authority record;\nBEGIN\n    SELECT * INTO v_authority FROM control.resolve_snapshot_authority(\n        p_session_hash, p_site_id, p_generation);\n    IF v_authority.outcome <> 'authorized' THEN\n        RETURN QUERY SELECT NULL::text, NULL::text, NULL::text, NULL::text,\n            NULL::text, NULL::text, NULL::integer, NULL::text, NULL::integer,\n            NULL::jsonb, v_authority.outcome; RETURN;\n    END IF;\n    IF v_authority.role_key <> 'owner' THEN\n        RETURN QUERY SELECT NULL::text, NULL::text, NULL::text, NULL::text,\n            NULL::text, NULL::text, NULL::integer, NULL::text, NULL::integer,\n            NULL::jsonb, 'permission_denied'::text; RETURN;\n    END IF;\n    RETURN QUERY SELECT intent.status, intent.base_sha, intent.patch_sha256,\n        intent.toolchain, intent.build_command, receipt.exit_class,\n        receipt.exit_code, receipt.logs_sha256, receipt.log_bytes,\n        receipt.artifacts, 'found'::text\n      FROM app.candidate_build_intents AS intent\n      LEFT JOIN app.candidate_build_receipts AS receipt\n        ON receipt.tenant_id = intent.tenant_id AND receipt.site_id = intent.site_id\n       AND receipt.build_id = intent.id\n     WHERE intent.tenant_id = v_authority.tenant_id AND intent.site_id = p_site_id\n       AND intent.id = p_build_id AND intent.requested_by_user_id = v_authority.user_id;\n    IF NOT FOUND THEN\n        RETURN QUERY SELECT NULL::text, NULL::text, NULL::text, NULL::text,\n            NULL::text, NULL::text, NULL::integer, NULL::text, NULL::integer,\n            NULL::jsonb, 'build_not_found'::text;\n    END IF;\nEND; $function$\n"
+    ],
+    [
+      "read_github_base_risk",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "CREATE OR REPLACE FUNCTION control.read_github_base_risk(p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE a record; b app.github_read_bindings%ROWTYPE;\nBEGIN\n    SELECT * INTO a FROM control.resolve_snapshot_authority(p_session_hash,p_site_id,p_generation);\n    IF a.outcome IS DISTINCT FROM 'authorized' THEN RETURN NULL; END IF;\n    SELECT * INTO b FROM app.github_read_bindings WHERE tenant_id=a.tenant_id AND site_id=p_site_id AND id=p_binding_id;\n    IF NOT FOUND THEN RETURN NULL; END IF;\n    RETURN jsonb_build_object('protected',b.protected,'default_branch',b.default_branch,\n        'risk_monitored',b.risk_monitored,'owner_accepted',\n        b.recovery_generation=p_generation AND control.github_unprotected_base_accepted(b,p_generation));\nEND $function$\n"
+    ],
+    [
+      "read_github_pr_extension",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid",
+      "CREATE OR REPLACE FUNCTION control.read_github_pr_extension(p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid)\n RETURNS TABLE(extension_id uuid, extension_status text, binding_id uuid, repository_id bigint, base_sha text, tree_sha text, framework text, content_format text, coverage text, content_sha text, marker_evidence jsonb, outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_authority record;\nBEGIN\n    SELECT * INTO v_authority FROM control.resolve_snapshot_authority(\n        p_session_hash, p_site_id, p_generation);\n    IF v_authority.outcome <> 'authorized' THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::uuid, NULL::bigint,\n          NULL::text, NULL::text, NULL::text, NULL::text, NULL::text,\n          NULL::text, NULL::jsonb, v_authority.outcome; RETURN;\n    END IF;\n    IF NOT control.current_github_site_proof(v_authority.tenant_id, p_site_id) THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::uuid, NULL::bigint,\n          NULL::text, NULL::text, NULL::text, NULL::text, NULL::text,\n          NULL::text, NULL::jsonb, 'site_not_verified'::text; RETURN;\n    END IF;\n    RETURN QUERY SELECT extension.id, extension.status, extension.binding_id,\n        extension.repository_id, extension.base_sha, extension.tree_sha,\n        extension.framework, extension.content_format, extension.coverage,\n        extension.content_sha, extension.marker_evidence, 'found'::text\n      FROM app.github_pr_extensions AS extension\n      JOIN app.github_read_bindings AS binding\n        ON binding.tenant_id = extension.tenant_id AND binding.site_id = extension.site_id\n       AND binding.id = extension.binding_id AND binding.status = 'active'\n     WHERE extension.tenant_id = v_authority.tenant_id AND extension.site_id = p_site_id\n       AND extension.id = p_extension_id;\n    IF NOT FOUND THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::uuid, NULL::bigint,\n          NULL::text, NULL::text, NULL::text, NULL::text, NULL::text,\n          NULL::text, NULL::jsonb, 'extension_not_found'::text;\n    END IF;\nEND; $function$\n"
+    ],
+    [
+      "read_github_read_binding",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "CREATE OR REPLACE FUNCTION control.read_github_read_binding(p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid)\n RETURNS TABLE(binding_id uuid, binding_status text, installation_id bigint, repository_owner text, repository_name text, base_branch text, content_path text, repository_id bigint, observed_full_name text, base_sha text, outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_authority record;\nBEGIN\n    SELECT * INTO v_authority FROM control.resolve_snapshot_authority(\n        p_session_hash, p_site_id, p_generation);\n    IF v_authority.outcome <> 'authorized' THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::bigint, NULL::text,\n          NULL::text, NULL::text, NULL::text, NULL::bigint, NULL::text, NULL::text,\n          v_authority.outcome; RETURN;\n    END IF;\n    IF NOT EXISTS (\n        SELECT 1 FROM app.site_origin_verifications AS verification\n        JOIN control.public_origin_claims AS claim\n          ON claim.origin = verification.origin\n         AND claim.tenant_id = verification.tenant_id\n         AND claim.site_id = verification.site_id\n         AND claim.verification_id = verification.id\n        JOIN app.sites AS site ON site.tenant_id = verification.tenant_id\n         AND site.id = verification.site_id AND site.primary_origin = verification.origin\n        WHERE verification.tenant_id = v_authority.tenant_id\n          AND verification.site_id = p_site_id AND site.ownership_status = 'verified'\n          AND verification.recheck_at > transaction_timestamp()\n          AND claim.recheck_at > transaction_timestamp()\n    ) THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::bigint, NULL::text,\n          NULL::text, NULL::text, NULL::text, NULL::bigint, NULL::text, NULL::text,\n          'site_not_verified'::text; RETURN;\n    END IF;\n    RETURN QUERY SELECT binding.id, binding.status, binding.installation_id,\n        binding.repository_owner, binding.repository_name, binding.base_branch,\n        binding.content_path, binding.repository_id, binding.observed_full_name,\n        binding.base_sha, 'found'::text\n      FROM app.github_read_bindings AS binding\n     WHERE binding.tenant_id = v_authority.tenant_id AND binding.site_id = p_site_id\n       AND binding.id = p_binding_id;\n    IF NOT FOUND THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::bigint, NULL::text,\n          NULL::text, NULL::text, NULL::text, NULL::bigint, NULL::text, NULL::text,\n          'binding_not_found'::text;\n    END IF;\nEND; $function$\n"
+    ],
+    [
+      "seo_strategy_read",
+      "p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid",
+      "CREATE OR REPLACE FUNCTION control.seo_strategy_read(p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v record; s app.seo_strategy_snapshots%ROWTYPE;\nBEGIN\n    SELECT * INTO v FROM control.business_brain_owner(p_hash,p_generation,p_site);\n    IF v.tenant_id IS NULL THEN RETURN NULL; END IF;\n    SELECT * INTO s FROM app.seo_strategy_snapshots x WHERE x.tenant_id=v.tenant_id AND x.site_id=p_site AND (p_snapshot IS NULL OR x.id=p_snapshot) ORDER BY x.version DESC LIMIT 1;\n    RETURN jsonb_build_object('snapshot',CASE WHEN s.id IS NOT NULL THEN jsonb_build_object('id',s.id,'version',s.version,'created_at',s.created_at,'sha256',encode(s.sha256,'hex'),'payload',s.payload) END,\n        'decisions',coalesce((SELECT jsonb_agg(jsonb_build_object('item_id',d.item_id,'decision',d.decision,'target_id',d.target_id,'target_kind',d.target_kind,'decided_at',d.decided_at) ORDER BY d.item_id) FROM app.seo_strategy_item_decisions d WHERE d.tenant_id=v.tenant_id AND d.site_id=p_site AND EXISTS(SELECT 1 FROM jsonb_array_elements(s.payload->'strategy'->'items') i WHERE i->>'id'=d.item_id::text)),'[]'::jsonb));\nEND; $function$\n"
+    ],
+    [
+      "weekly_read_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "CREATE OR REPLACE FUNCTION control.weekly_read_candidate_build(p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid)\n RETURNS TABLE(build_status text, base_sha text, patch_sha256 text, toolchain text, build_command text, exit_class text, exit_code integer, logs_sha256 text, log_bytes integer, artifacts jsonb, outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_authority record;\nBEGIN\n    PERFORM control.assert_weekly_delivery_scope(p_session_hash,p_site_id,p_generation,jsonb_build_object('build_id',p_build_id::text));\n    SELECT * INTO v_authority FROM control.resolve_weekly_delivery_authority(p_session_hash,p_site_id,p_generation,'read');\n    IF v_authority.outcome <> 'authorized' THEN\n        RETURN QUERY SELECT NULL::text, NULL::text, NULL::text, NULL::text,\n            NULL::text, NULL::text, NULL::integer, NULL::text, NULL::integer,\n            NULL::jsonb, v_authority.outcome; RETURN;\n    END IF;\n    IF v_authority.role_key <> 'workload' THEN\n        RETURN QUERY SELECT NULL::text, NULL::text, NULL::text, NULL::text,\n            NULL::text, NULL::text, NULL::integer, NULL::text, NULL::integer,\n            NULL::jsonb, 'permission_denied'::text; RETURN;\n    END IF;\n    RETURN QUERY SELECT intent.status, intent.base_sha, intent.patch_sha256,\n        intent.toolchain, intent.build_command, receipt.exit_class,\n        receipt.exit_code, receipt.logs_sha256, receipt.log_bytes,\n        receipt.artifacts, 'found'::text\n      FROM app.candidate_build_intents AS intent\n      LEFT JOIN app.candidate_build_receipts AS receipt\n        ON receipt.tenant_id = intent.tenant_id AND receipt.site_id = intent.site_id\n       AND receipt.build_id = intent.id\n     WHERE intent.tenant_id = v_authority.tenant_id AND intent.site_id = p_site_id\n       AND intent.id = p_build_id AND intent.requested_by_user_id = v_authority.user_id;\n    IF NOT FOUND THEN\n        RETURN QUERY SELECT NULL::text, NULL::text, NULL::text, NULL::text,\n            NULL::text, NULL::text, NULL::integer, NULL::text, NULL::integer,\n            NULL::jsonb, 'build_not_found'::text;\n    END IF;\nEND; $function$\n"
+    ],
+    [
+      "weekly_read_github_base_risk",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "CREATE OR REPLACE FUNCTION control.weekly_read_github_base_risk(p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE a record; b app.github_read_bindings%ROWTYPE;\nBEGIN\n    PERFORM control.assert_weekly_delivery_scope(p_session_hash,p_site_id,p_generation,jsonb_build_object('binding_id',p_binding_id::text));\n    SELECT * INTO a FROM control.resolve_weekly_delivery_authority(p_session_hash,p_site_id,p_generation,'read');\n    IF a.outcome IS DISTINCT FROM 'authorized' THEN RETURN NULL; END IF;\n    SELECT * INTO b FROM app.github_read_bindings WHERE tenant_id=a.tenant_id AND site_id=p_site_id AND id=p_binding_id;\n    IF NOT FOUND THEN RETURN NULL; END IF;\n    RETURN jsonb_build_object('protected',b.protected,'default_branch',b.default_branch,\n        'risk_monitored',b.risk_monitored,'owner_accepted',\n        b.recovery_generation=p_generation AND control.github_unprotected_base_accepted(b,p_generation));\nEND $function$\n"
+    ],
+    [
+      "weekly_read_github_pr_extension",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid",
+      "CREATE OR REPLACE FUNCTION control.weekly_read_github_pr_extension(p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid)\n RETURNS TABLE(extension_id uuid, extension_status text, binding_id uuid, repository_id bigint, base_sha text, tree_sha text, framework text, content_format text, coverage text, content_sha text, marker_evidence jsonb, outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_authority record;\nBEGIN\n    PERFORM control.assert_weekly_delivery_scope(p_session_hash,p_site_id,p_generation,jsonb_build_object('extension_id',p_extension_id::text));\n    SELECT * INTO v_authority FROM control.resolve_weekly_delivery_authority(p_session_hash,p_site_id,p_generation,'read');\n    IF v_authority.outcome <> 'authorized' THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::uuid, NULL::bigint,\n          NULL::text, NULL::text, NULL::text, NULL::text, NULL::text,\n          NULL::text, NULL::jsonb, v_authority.outcome; RETURN;\n    END IF;\n    IF NOT control.current_github_site_proof(v_authority.tenant_id, p_site_id) THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::uuid, NULL::bigint,\n          NULL::text, NULL::text, NULL::text, NULL::text, NULL::text,\n          NULL::text, NULL::jsonb, 'site_not_verified'::text; RETURN;\n    END IF;\n    RETURN QUERY SELECT extension.id, extension.status, extension.binding_id,\n        extension.repository_id, extension.base_sha, extension.tree_sha,\n        extension.framework, extension.content_format, extension.coverage,\n        extension.content_sha, extension.marker_evidence, 'found'::text\n      FROM app.github_pr_extensions AS extension\n      JOIN app.github_read_bindings AS binding\n        ON binding.tenant_id = extension.tenant_id AND binding.site_id = extension.site_id\n       AND binding.id = extension.binding_id AND binding.status = 'active'\n     WHERE extension.tenant_id = v_authority.tenant_id AND extension.site_id = p_site_id\n       AND extension.id = p_extension_id;\n    IF NOT FOUND THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::uuid, NULL::bigint,\n          NULL::text, NULL::text, NULL::text, NULL::text, NULL::text,\n          NULL::text, NULL::jsonb, 'extension_not_found'::text;\n    END IF;\nEND; $function$\n"
+    ],
+    [
+      "weekly_read_github_read_binding",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "CREATE OR REPLACE FUNCTION control.weekly_read_github_read_binding(p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid)\n RETURNS TABLE(binding_id uuid, binding_status text, installation_id bigint, repository_owner text, repository_name text, base_branch text, content_path text, repository_id bigint, observed_full_name text, base_sha text, outcome text)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_authority record;\nBEGIN\n    PERFORM control.assert_weekly_delivery_scope(p_session_hash,p_site_id,p_generation,jsonb_build_object('binding_id',p_binding_id::text));\n    SELECT * INTO v_authority FROM control.resolve_weekly_delivery_authority(p_session_hash,p_site_id,p_generation,'read');\n    IF v_authority.outcome <> 'authorized' THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::bigint, NULL::text,\n          NULL::text, NULL::text, NULL::text, NULL::bigint, NULL::text, NULL::text,\n          v_authority.outcome; RETURN;\n    END IF;\n    IF NOT EXISTS (\n        SELECT 1 FROM app.site_origin_verifications AS verification\n        JOIN control.public_origin_claims AS claim\n          ON claim.origin = verification.origin\n         AND claim.tenant_id = verification.tenant_id\n         AND claim.site_id = verification.site_id\n         AND claim.verification_id = verification.id\n        JOIN app.sites AS site ON site.tenant_id = verification.tenant_id\n         AND site.id = verification.site_id AND site.primary_origin = verification.origin\n        WHERE verification.tenant_id = v_authority.tenant_id\n          AND verification.site_id = p_site_id AND site.ownership_status = 'verified'\n          AND verification.recheck_at > transaction_timestamp()\n          AND claim.recheck_at > transaction_timestamp()\n    ) THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::bigint, NULL::text,\n          NULL::text, NULL::text, NULL::text, NULL::bigint, NULL::text, NULL::text,\n          'site_not_verified'::text; RETURN;\n    END IF;\n    RETURN QUERY SELECT binding.id, binding.status, binding.installation_id,\n        binding.repository_owner, binding.repository_name, binding.base_branch,\n        binding.content_path, binding.repository_id, binding.observed_full_name,\n        binding.base_sha, 'found'::text\n      FROM app.github_read_bindings AS binding\n     WHERE binding.tenant_id = v_authority.tenant_id AND binding.site_id = p_site_id\n       AND binding.id = p_binding_id;\n    IF NOT FOUND THEN\n        RETURN QUERY SELECT NULL::uuid, NULL::text, NULL::bigint, NULL::text,\n          NULL::text, NULL::text, NULL::text, NULL::bigint, NULL::text, NULL::text,\n          'binding_not_found'::text;\n    END IF;\nEND; $function$\n"
+    ],
+    [
+      "weekly_skill_content_writer_inventory",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "CREATE OR REPLACE FUNCTION control.weekly_skill_content_writer_inventory(p_hash bytea, p_generation text, p_site uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v record; BEGIN PERFORM control.assert_weekly_skill_stage(p_hash,p_generation,p_site,'{strategy_rebuild,brief_proposals}'::text[]);\n SELECT * INTO v FROM control.weekly_skill_context(p_hash,p_generation,p_site);\n IF v.tenant_id IS NULL THEN RETURN NULL; END IF;\n RETURN coalesce((SELECT jsonb_agg(jsonb_build_object('source_id',p.id,'url',o.final_url,'title',coalesce(p.title,'')))\n FROM app.crawl_page_records p JOIN app.fetch_observations o ON o.tenant_id=p.tenant_id AND o.site_id=p.site_id AND o.id=p.observation_id\n JOIN app.crawl_frontier_settlements s ON s.tenant_id=p.tenant_id AND s.site_id=p.site_id AND s.page_record_id=p.id AND s.terminal_state='fetched'\n JOIN app.crawl_manifests m ON m.tenant_id=p.tenant_id AND m.site_id=p.site_id AND m.crawl_run_id=p.crawl_run_id\n WHERE p.tenant_id=v.tenant_id AND p.site_id=p_site AND p.http_status BETWEEN 200 AND 299),'[]'::jsonb);\nEND; $function$\n"
+    ],
+    [
+      "weekly_skill_model_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "CREATE OR REPLACE FUNCTION control.weekly_skill_model_budget_read(p_hash bytea, p_generation text, p_site uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v record; cap bigint; used bigint; BEGIN PERFORM control.assert_weekly_skill_stage(p_hash,p_generation,p_site,'{brain_refresh,strategy_rebuild,brief_proposals}'::text[]);\n SELECT * INTO v FROM control.weekly_skill_context(p_hash,p_generation,p_site);\n IF v.tenant_id IS NULL THEN RETURN NULL; END IF;\n SELECT c.cap_micros INTO cap FROM app.model_budget_caps c WHERE c.tenant_id=v.tenant_id AND c.site_id=p_site\n ORDER BY c.recorded_at DESC,c.id DESC LIMIT 1; cap:=coalesce(cap,25000000);\n SELECT coalesce(sum(coalesce(r.cost_micros,c.reserved_micros)),0) INTO used\n FROM app.model_budget_calls c LEFT JOIN app.model_budget_receipts r\n ON r.tenant_id=c.tenant_id AND r.site_id=c.site_id AND r.call_id=c.id\n WHERE c.tenant_id=v.tenant_id AND c.site_id=p_site AND c.month=date_trunc('month',transaction_timestamp() AT TIME ZONE 'UTC')::date;\n RETURN jsonb_build_object('tenant_id',v.tenant_id,'site_id',p_site,'cap_micros',cap,'used_micros',used,'warning',used*5>=cap*4,\n 'state',CASE WHEN used>=cap THEN 'unavailable' ELSE 'available' END,\n 'month',date_trunc('month',transaction_timestamp() AT TIME ZONE 'UTC')::date);\nEND; $function$\n"
+    ],
+    [
+      "weekly_skill_read_brand_document_artifact",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid",
+      "CREATE OR REPLACE FUNCTION control.weekly_skill_read_brand_document_artifact(p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid)\n RETURNS TABLE(tenant_id uuid, artifact_id uuid, object_key text, object_version text, artifact_hash bytea, byte_length bigint, media_type text, encryption_key_ref text, artifact_created_at timestamp with time zone, retain_until timestamp with time zone, legal_hold boolean, durability_state text, text_hash bytea, injection_signal boolean, secret_signal boolean)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v_owner record;\nBEGIN PERFORM control.assert_weekly_skill_stage(p_session_hash,p_generation,p_site_id,'{brain_refresh}'::text[]);PERFORM control.assert_weekly_skill_resource(p_session_hash,p_generation,p_site_id,'source_id',p_document_id);\n    SELECT * INTO v_owner FROM control.weekly_skill_context(p_session_hash, p_generation, p_site_id);\n    IF v_owner.tenant_id IS NULL THEN RETURN; END IF;\n    RETURN QUERY SELECT d.tenant_id, a.id, a.object_key, a.object_version, a.sha256,\n        a.byte_length, a.media_type, a.encryption_key_ref, a.created_at,\n        a.retain_until, a.legal_hold, a.durability_state, d.text_sha256,\n        d.injection_signal, d.secret_signal\n      FROM app.brand_documents d JOIN app.artifacts a ON a.tenant_id = d.tenant_id\n        AND a.site_id = d.site_id AND a.id = d.artifact_id\n     WHERE d.tenant_id = v_owner.tenant_id AND d.site_id = p_site_id AND d.id = p_document_id\n       AND NOT EXISTS (SELECT 1 FROM app.brand_document_events e\n         WHERE e.tenant_id = d.tenant_id AND e.site_id = d.site_id AND e.document_id = d.id\n           AND e.event_type = 'deleted')\n       AND NOT control.docs_document_withdrawn(d.tenant_id,d.site_id,d.id) AND NOT EXISTS (SELECT 1 FROM app.brand_documents next\n         WHERE next.tenant_id = d.tenant_id AND next.site_id = d.site_id\n           AND next.supersedes_id = d.id);\nEND;\n$function$\n"
+    ],
+    [
+      "weekly_skill_seo_strategy_read",
+      "p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid",
+      "CREATE OR REPLACE FUNCTION control.weekly_skill_seo_strategy_read(p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE v record; s app.seo_strategy_snapshots%ROWTYPE;\nBEGIN PERFORM control.assert_weekly_skill_stage(p_hash,p_generation,p_site,'{brief_proposals}'::text[]);\n    SELECT * INTO v FROM control.weekly_skill_context(p_hash,p_generation,p_site);\n    IF v.tenant_id IS NULL THEN RETURN NULL; END IF;\n    SELECT * INTO s FROM app.seo_strategy_snapshots x WHERE x.tenant_id=v.tenant_id AND x.site_id=p_site AND (p_snapshot IS NULL OR x.id=p_snapshot) ORDER BY x.version DESC LIMIT 1;\n    RETURN jsonb_build_object('snapshot',CASE WHEN s.id IS NOT NULL THEN jsonb_build_object('id',s.id,'version',s.version,'created_at',s.created_at,'sha256',encode(s.sha256,'hex'),'payload',s.payload) END,\n        'decisions',coalesce((SELECT jsonb_agg(jsonb_build_object('item_id',d.item_id,'decision',d.decision,'target_id',d.target_id,'target_kind',d.target_kind,'decided_at',d.decided_at) ORDER BY d.item_id) FROM app.seo_strategy_item_decisions d WHERE d.tenant_id=v.tenant_id AND d.site_id=p_site AND EXISTS(SELECT 1 FROM jsonb_array_elements(s.payload->'strategy'->'items') i WHERE i->>'id'=d.item_id::text)),'[]'::jsonb));\nEND; $function$\n"
+    ]
+  ],
+  "acl": [
+    [
+      "acknowledge_github_pr_intent",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_journal_generation uuid, p_position bigint, p_body_hash bytea",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "acknowledge_github_pr_intent",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_journal_generation uuid, p_position bigint, p_body_hash bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "approved_business_brain_facts",
+      "p_session_hash bytea, p_generation text, p_site_id uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "approved_business_brain_facts",
+      "p_session_hash bytea, p_generation text, p_site_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_dispatch",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_dispatch",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_dispatch",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_finish",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_finish",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_finish",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_reserve",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_reserve",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "assistant_budget_reserve",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "begin_github_delivery_observation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_attempt_id uuid, p_environment text, p_actor_id bigint",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "begin_github_delivery_observation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_attempt_id uuid, p_environment text, p_actor_id bigint",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "begin_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "begin_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "begin_owner_connector_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_kind text, p_profile text, p_method text, p_request_url text, p_target_url text, p_origin text, p_request_sha256 bytea, p_body_sha256 bytea, p_request_bytes integer, p_max_response_bytes integer, p_credentialed boolean, p_robots_operation_id uuid, p_min_delay_ms integer",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "begin_owner_connector_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_kind text, p_profile text, p_method text, p_request_url text, p_target_url text, p_origin text, p_request_sha256 bytea, p_body_sha256 bytea, p_request_bytes integer, p_max_response_bytes integer, p_credentialed boolean, p_robots_operation_id uuid, p_min_delay_ms integer",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "bind_github_pr_operation_tree",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_tree_sha text, p_commit_sha text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "bind_github_pr_operation_tree",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_tree_sha text, p_commit_sha text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "business_brain_begin_extraction",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_source_kind text, p_source_id uuid, p_start integer, p_end integer, p_version text, p_input_hash bytea, p_decision_id uuid, p_model_id uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "business_brain_begin_extraction",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_source_kind text, p_source_id uuid, p_start integer, p_end integer, p_version text, p_input_hash bytea, p_decision_id uuid, p_model_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "business_brain_finish_extraction",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_page_type text, p_canonical_output bytea, p_output_hash bytea, p_response_id text, p_model text, p_usage jsonb, p_reason text",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "business_brain_finish_extraction",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_page_type text, p_canonical_output bytea, p_output_hash bytea, p_response_id text, p_model text, p_usage jsonb, p_reason text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "business_brain_page_source",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_page_id uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "business_brain_page_source",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_page_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "business_brain_read",
+      "p_session_hash bytea, p_generation text, p_site_id uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "business_brain_read",
+      "p_session_hash bytea, p_generation text, p_site_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "claim_github_pr_operation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "claim_github_pr_operation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "content_writer_create_brief",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_payload jsonb, p_origin text, p_supersedes uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "content_writer_create_brief",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_payload jsonb, p_origin text, p_supersedes uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "content_writer_inventory",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "content_writer_inventory",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "content_writer_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "content_writer_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "content_writer_read_0082",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "current_bing_binding",
+      "p_tenant_id uuid, p_site_id uuid",
+      "signal_crawl_ingest",
+      "EXECUTE",
+      false
+    ],
+    [
+      "current_bing_binding",
+      "p_tenant_id uuid, p_site_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "current_gsc_binding",
+      "p_tenant_id uuid, p_site_id uuid",
+      "signal_crawl_ingest",
+      "EXECUTE",
+      false
+    ],
+    [
+      "current_gsc_binding",
+      "p_tenant_id uuid, p_site_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "dispatch_before_dependencies",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "dispatch_candidate_build",
+      "p_session bytea, p_site uuid, p_generation text, p_build uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "dispatch_candidate_build",
+      "p_session bytea, p_site uuid, p_generation text, p_build uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_before_dependencies",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid, p_exit_class text, p_exit_code integer, p_logs_sha256 text, p_log_bytes integer, p_artifacts jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_candidate_build",
+      "p_session bytea, p_site uuid, p_generation text, p_build uuid, p_exit text, p_code integer, p_logs text, p_bytes integer, p_artifacts jsonb",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_candidate_build",
+      "p_session bytea, p_site uuid, p_generation text, p_build uuid, p_exit text, p_code integer, p_logs text, p_bytes integer, p_artifacts jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_github_delivery_observation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid, p_canonical_receipt bytea, p_receipt_sha256 bytea",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_github_delivery_observation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid, p_canonical_receipt bytea, p_receipt_sha256 bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_result text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_result text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_owner_connector_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_evidence jsonb, p_completion text, p_retry_after_ms integer, p_robots_allowed boolean, p_rules_sha256 bytea, p_crawl_delay_ms integer",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_owner_connector_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_evidence jsonb, p_completion text, p_retry_after_ms integer, p_robots_allowed boolean, p_rules_sha256 bytea, p_crawl_delay_ms integer",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_pagespeed",
+      "p_session bytea, p_generation text, p_site uuid, p_sample uuid, p_observation jsonb, p_hash bytea, p_reason text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "finish_pagespeed",
+      "p_session bytea, p_generation text, p_site uuid, p_sample uuid, p_observation jsonb, p_hash bytea, p_reason text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "ga4_owner_binding",
+      "p_session bytea, p_generation text, p_site uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "ga4_owner_binding",
+      "p_session bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "ga4_owner_reauth",
+      "p_session bytea, p_generation text, p_site uuid, p_binding uuid, p_event uuid, p_egress uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "ga4_owner_reauth",
+      "p_session bytea, p_generation text, p_site uuid, p_binding uuid, p_event uuid, p_egress uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "github_delivery_read_authority",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "github_delivery_read_permit",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "github_delivery_read_permit",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "github_pr_dispatch_permit",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "github_pr_dispatch_permit",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "github_pr_operation_eligible",
+      "p_token bytea, p_site uuid, p_generation text, p_revision uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "github_pr_operation_eligible",
+      "p_token bytea, p_site uuid, p_generation text, p_revision uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_dispatch_before_dependencies",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_dispatch_candidate_build",
+      "p_session bytea, p_site uuid, p_generation text, p_build uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_dispatch_candidate_build",
+      "p_session bytea, p_site uuid, p_generation text, p_build uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_finish_before_dependencies",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid, p_exit_class text, p_exit_code integer, p_logs_sha256 text, p_log_bytes integer, p_artifacts jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_finish_candidate_build",
+      "p_session bytea, p_site uuid, p_generation text, p_build uuid, p_exit text, p_code integer, p_logs text, p_bytes integer, p_artifacts jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_finish_candidate_build",
+      "p_session bytea, p_site uuid, p_generation text, p_build uuid, p_exit text, p_code integer, p_logs text, p_bytes integer, p_artifacts jsonb",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_internal_link_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_internal_link_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_prepare_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid, p_build_id uuid, p_request_id uuid, p_request_hash bytea, p_base_sha text, p_tree_sha text, p_patch_sha256 text, p_toolchain text, p_build_command text, p_artifact_root text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_prepare_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid, p_build_id uuid, p_request_id uuid, p_request_hash bytea, p_base_sha text, p_tree_sha text, p_patch_sha256 text, p_toolchain text, p_build_command text, p_artifact_root text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_read_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_read_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_read_github_base_risk",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_read_github_base_risk",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_read_github_pr_extension",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_read_github_pr_extension",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_read_github_read_binding",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_read_github_read_binding",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_record_github_binding_state",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid, p_repository bigint, p_full_name text, p_installation bigint, p_default_branch text, p_base_branch text, p_protected boolean, p_permissions bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_record_github_binding_state",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid, p_repository bigint, p_full_name text, p_installation bigint, p_default_branch text, p_base_branch text, p_protected boolean, p_permissions bytea",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_seal_internal_link_revision",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_key uuid, p_canonical bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_skill_seal_internal_link_revision",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_key uuid, p_canonical bytea",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "internal_link_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "list_business_brain_facts",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_status text",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "list_business_brain_facts",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_status text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "load_candidate_recipe_evidence",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_report_id uuid, p_finding_id uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "load_candidate_recipe_evidence",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_report_id uuid, p_finding_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "mark_bing_reauth_required",
+      "p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid",
+      "signal_crawl_ingest",
+      "EXECUTE",
+      false
+    ],
+    [
+      "mark_bing_reauth_required",
+      "p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "mark_gsc_reauth_required",
+      "p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid",
+      "signal_crawl_ingest",
+      "EXECUTE",
+      false
+    ],
+    [
+      "mark_gsc_reauth_required",
+      "p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_dispatch",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_dispatch",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_dispatch",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_finish",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_finish",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_finish",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_reserve",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_reserve",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "model_budget_reserve",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "prepare_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid, p_build_id uuid, p_request_id uuid, p_request_hash bytea, p_base_sha text, p_tree_sha text, p_patch_sha256 text, p_toolchain text, p_build_command text, p_artifact_root text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "prepare_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid, p_build_id uuid, p_request_id uuid, p_request_hash bytea, p_base_sha text, p_tree_sha text, p_patch_sha256 text, p_toolchain text, p_build_command text, p_artifact_root text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "prepare_github_pr_operation",
+      "p_hash bytea, p_site uuid, p_generation text, p_revision uuid, p_digest bytea, p_operation uuid, p_intent bytea",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "prepare_github_pr_operation",
+      "p_hash bytea, p_site uuid, p_generation text, p_revision uuid, p_digest bytea, p_operation uuid, p_intent bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_authenticated_candidate_recipe_inbox",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_authenticated_candidate_recipe_inbox",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_authenticated_github_delivery_observations",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_authenticated_github_delivery_observations",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_authenticated_github_pr_operations",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_authenticated_github_pr_operations",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_brand_document_artifact",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_brand_document_artifact",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_github_base_risk",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_github_base_risk",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_github_pr_extension",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_github_pr_extension",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_github_pr_operation_authorities",
+      "p_session bytea, p_site uuid, p_generation text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_github_pr_operation_authorities",
+      "p_session bytea, p_site uuid, p_generation text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_github_read_binding",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "read_github_read_binding",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "reconcile_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "reconcile_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_bing_import_generation",
+      "p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_crawl_ingest",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_bing_import_generation",
+      "p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_bing_page_import_generation",
+      "p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_crawl_ingest",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_bing_page_import_generation",
+      "p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_ga4_owner_import",
+      "p_session bytea, p_generation text, p_site uuid, p_id uuid, p_binding uuid, p_property text, p_start date, p_end date, p_rows jsonb, p_coverage jsonb, p_receipts jsonb",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_ga4_owner_import",
+      "p_session bytea, p_generation text, p_site uuid, p_id uuid, p_binding uuid, p_property text, p_start date, p_end date, p_rows jsonb, p_coverage jsonb, p_receipts jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_github_binding_state",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid, p_repository bigint, p_full_name text, p_installation bigint, p_default_branch text, p_base_branch text, p_protected boolean, p_permissions bytea",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_github_binding_state",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid, p_repository bigint, p_full_name text, p_installation bigint, p_default_branch text, p_base_branch text, p_protected boolean, p_permissions bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_gsc_import_generation",
+      "p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_search_type text, p_dimensions jsonb, p_start_date date, p_end_date date, p_data_state text, p_aggregation_type text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_crawl_ingest",
+      "EXECUTE",
+      false
+    ],
+    [
+      "record_gsc_import_generation",
+      "p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_search_type text, p_dimensions jsonb, p_start_date date, p_end_date date, p_data_state text, p_aggregation_type text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "schedule_pagespeed_sample",
+      "p_session bytea, p_generation text, p_site uuid",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "schedule_pagespeed_sample",
+      "p_session bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "seal_candidate_recipe_revision",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid, p_extension_id uuid, p_build_id uuid, p_report_id uuid, p_finding_id uuid, p_release_id uuid, p_release_hash bytea, p_idempotency_key uuid, p_canonical bytea, p_revision_hash bytea",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "seal_candidate_recipe_revision",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid, p_extension_id uuid, p_build_id uuid, p_report_id uuid, p_finding_id uuid, p_release_id uuid, p_release_hash bytea, p_idempotency_key uuid, p_canonical bytea, p_revision_hash bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "seal_internal_link_revision",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_key uuid, p_canonical bytea",
+      "signal_identity",
+      "EXECUTE",
+      false
+    ],
+    [
+      "seal_internal_link_revision",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_key uuid, p_canonical bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "seo_strategy_base_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "seo_strategy_read",
+      "p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "seo_strategy_read",
+      "p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "seo_strategy_record",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_canonical bytea",
+      "signal_api",
+      "EXECUTE",
+      false
+    ],
+    [
+      "seo_strategy_record",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_canonical bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "strategy_learning_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "strategy_link_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "strategy_topic_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_acknowledge_github_pr_intent",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_journal_generation uuid, p_position bigint, p_body_hash bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_acknowledge_github_pr_intent",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_journal_generation uuid, p_position bigint, p_body_hash bytea",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_begin_github_delivery_observation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_attempt_id uuid, p_environment text, p_actor_id bigint",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_begin_github_delivery_observation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_attempt_id uuid, p_environment text, p_actor_id bigint",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_begin_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_begin_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_bind_github_pr_operation_tree",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_tree_sha text, p_commit_sha text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_bind_github_pr_operation_tree",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_tree_sha text, p_commit_sha text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_claim_github_pr_operation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_claim_github_pr_operation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_dispatch_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_dispatch_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_finish_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid, p_exit_class text, p_exit_code integer, p_logs_sha256 text, p_log_bytes integer, p_artifacts jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_finish_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid, p_exit_class text, p_exit_code integer, p_logs_sha256 text, p_log_bytes integer, p_artifacts jsonb",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_finish_github_delivery_observation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid, p_canonical_receipt bytea, p_receipt_sha256 bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_finish_github_delivery_observation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid, p_canonical_receipt bytea, p_receipt_sha256 bytea",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_finish_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_result text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_finish_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_result text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_github_delivery_read_authority",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_github_delivery_read_authority",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_github_delivery_read_permit",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_github_delivery_read_permit",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_attempt_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_github_pr_dispatch_permit",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_github_pr_dispatch_permit",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_github_pr_operation_eligible",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_github_pr_operation_eligible",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_load_candidate_recipe_evidence",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_report_id uuid, p_finding_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_load_candidate_recipe_evidence",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_report_id uuid, p_finding_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_pagespeed_plan",
+      "p_tenant uuid, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_prepare_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid, p_build_id uuid, p_request_id uuid, p_request_hash bytea, p_base_sha text, p_tree_sha text, p_patch_sha256 text, p_toolchain text, p_build_command text, p_artifact_root text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_prepare_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid, p_build_id uuid, p_request_id uuid, p_request_hash bytea, p_base_sha text, p_tree_sha text, p_patch_sha256 text, p_toolchain text, p_build_command text, p_artifact_root text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_prepare_github_pr_operation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid, p_revision_sha256 bytea, p_operation_id uuid, p_intent_sha256 bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_prepare_github_pr_operation",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid, p_revision_sha256 bytea, p_operation_id uuid, p_intent_sha256 bytea",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_authenticated_candidate_recipe_inbox",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_authenticated_candidate_recipe_inbox",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_authenticated_github_delivery_observations",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_authenticated_github_delivery_observations",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_authenticated_github_pr_operations",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_authenticated_github_pr_operations",
+      "p_session_hash bytea, p_site_id uuid, p_generation text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_candidate_build",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_build_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_github_base_risk",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_github_base_risk",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_github_pr_extension",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_github_pr_extension",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_extension_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_github_pr_operation_authorities",
+      "p_handle bytea, p_site uuid, p_generation text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_github_pr_operation_authorities",
+      "p_handle bytea, p_site uuid, p_generation text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_github_read_binding",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_read_github_read_binding",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_reconcile_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_reconcile_github_pr_step",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_operation_id uuid, p_worker_id uuid, p_fence bigint, p_step text, p_evidence_sha256 bytea, p_pr_number bigint, p_pr_url text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_record_github_binding_state",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid, p_repository bigint, p_full_name text, p_installation bigint, p_default_branch text, p_base_branch text, p_protected boolean, p_permissions bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_record_github_binding_state",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_binding_id uuid, p_repository bigint, p_full_name text, p_installation bigint, p_default_branch text, p_base_branch text, p_protected boolean, p_permissions bytea",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_seal_candidate_recipe_revision",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid, p_extension_id uuid, p_build_id uuid, p_report_id uuid, p_finding_id uuid, p_release_id uuid, p_release_hash bytea, p_idempotency_key uuid, p_canonical bytea, p_revision_hash bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_seal_candidate_recipe_revision",
+      "p_session_hash bytea, p_site_id uuid, p_generation text, p_revision_id uuid, p_extension_id uuid, p_build_id uuid, p_report_id uuid, p_finding_id uuid, p_release_id uuid, p_release_hash bytea, p_idempotency_key uuid, p_canonical bytea, p_revision_hash bytea",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_approved_business_brain_facts",
+      "p_session_hash bytea, p_generation text, p_site_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_approved_business_brain_facts",
+      "p_session_hash bytea, p_generation text, p_site_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_begin_dataforseo_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_kind text, p_profile text, p_method text, p_request_url text, p_target_url text, p_origin text, p_request_sha256 bytea, p_body_sha256 bytea, p_request_bytes integer, p_max_response_bytes integer, p_credentialed boolean, p_robots_operation_id uuid, p_min_delay_ms integer",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_begin_dataforseo_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_kind text, p_profile text, p_method text, p_request_url text, p_target_url text, p_origin text, p_request_sha256 bytea, p_body_sha256 bytea, p_request_bytes integer, p_max_response_bytes integer, p_credentialed boolean, p_robots_operation_id uuid, p_min_delay_ms integer",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_begin_pagespeed_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_kind text, p_profile text, p_method text, p_request_url text, p_target_url text, p_origin text, p_request_sha256 bytea, p_body_sha256 bytea, p_request_bytes integer, p_max_response_bytes integer, p_credentialed boolean, p_robots_operation_id uuid, p_min_delay_ms integer",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_begin_pagespeed_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_kind text, p_profile text, p_method text, p_request_url text, p_target_url text, p_origin text, p_request_sha256 bytea, p_body_sha256 bytea, p_request_bytes integer, p_max_response_bytes integer, p_credentialed boolean, p_robots_operation_id uuid, p_min_delay_ms integer",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_business_brain_begin_extraction",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_source_kind text, p_source_id uuid, p_start integer, p_end integer, p_version text, p_input_hash bytea, p_decision_id uuid, p_model_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_business_brain_begin_extraction",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_source_kind text, p_source_id uuid, p_start integer, p_end integer, p_version text, p_input_hash bytea, p_decision_id uuid, p_model_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_business_brain_finish_extraction",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_page_type text, p_canonical_output bytea, p_output_hash bytea, p_response_id text, p_model text, p_usage jsonb, p_reason text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_business_brain_finish_extraction",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_id uuid, p_page_type text, p_canonical_output bytea, p_output_hash bytea, p_response_id text, p_model text, p_usage jsonb, p_reason text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_business_brain_page_source",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_page_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_business_brain_page_source",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_page_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_business_brain_read",
+      "p_session_hash bytea, p_generation text, p_site_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_business_brain_read",
+      "p_session_hash bytea, p_generation text, p_site_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_content_writer_create_brief",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_payload jsonb, p_origin text, p_supersedes uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_content_writer_create_brief",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_payload jsonb, p_origin text, p_supersedes uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_content_writer_inventory",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_content_writer_inventory",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_content_writer_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_content_writer_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_content_writer_read_0082",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_content_writer_read_0082",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_current_bing_binding",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_current_bing_binding",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_current_gsc_binding",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_current_gsc_binding",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_finish_dataforseo_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_evidence jsonb, p_completion text, p_retry_after_ms integer, p_robots_allowed boolean, p_rules_sha256 bytea, p_crawl_delay_ms integer",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_finish_dataforseo_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_evidence jsonb, p_completion text, p_retry_after_ms integer, p_robots_allowed boolean, p_rules_sha256 bytea, p_crawl_delay_ms integer",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_finish_pagespeed",
+      "p_session bytea, p_generation text, p_site uuid, p_sample uuid, p_observation jsonb, p_hash bytea, p_reason text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_finish_pagespeed",
+      "p_session bytea, p_generation text, p_site uuid, p_sample uuid, p_observation jsonb, p_hash bytea, p_reason text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_finish_pagespeed_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_evidence jsonb, p_completion text, p_retry_after_ms integer, p_robots_allowed boolean, p_rules_sha256 bytea, p_crawl_delay_ms integer",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_finish_pagespeed_egress",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_operation_id uuid, p_evidence jsonb, p_completion text, p_retry_after_ms integer, p_robots_allowed boolean, p_rules_sha256 bytea, p_crawl_delay_ms integer",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_ga4_owner_binding",
+      "p_session bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_ga4_owner_binding",
+      "p_session bytea, p_generation text, p_site uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_ga4_owner_reauth",
+      "p_session bytea, p_generation text, p_site uuid, p_binding uuid, p_event uuid, p_egress uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_ga4_owner_reauth",
+      "p_session bytea, p_generation text, p_site uuid, p_binding uuid, p_event uuid, p_egress uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_link_graph",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_list_business_brain_facts",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_status text",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_list_business_brain_facts",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_status text",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_mark_bing_reauth_required",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_mark_bing_reauth_required",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_mark_gsc_reauth_required",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_mark_gsc_reauth_required",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_binding_id uuid, p_event_id uuid, p_reason text, p_egress_operation_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_model_budget_dispatch",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_model_budget_dispatch",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_model_budget_finish",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_model_budget_finish",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_cost bigint, p_digest bytea, p_receipt jsonb",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_model_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_model_budget_read",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_model_budget_reserve",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_model_budget_reserve",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_digest bytea, p_role text, p_release jsonb, p_amount bigint",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_read_brand_document_artifact",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_read_brand_document_artifact",
+      "p_session_hash bytea, p_generation text, p_site_id uuid, p_document_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_record_bing_import_generation",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_record_bing_import_generation",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_record_bing_page_import_generation",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_record_bing_page_import_generation",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_kind text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_record_ga4_owner_import",
+      "p_session bytea, p_generation text, p_site uuid, p_id uuid, p_binding uuid, p_property text, p_start date, p_end date, p_rows jsonb, p_coverage jsonb, p_receipts jsonb",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_record_ga4_owner_import",
+      "p_session bytea, p_generation text, p_site uuid, p_id uuid, p_binding uuid, p_property text, p_start date, p_end date, p_rows jsonb, p_coverage jsonb, p_receipts jsonb",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_record_gsc_import_generation",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_search_type text, p_dimensions jsonb, p_start_date date, p_end_date date, p_data_state text, p_aggregation_type text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_record_gsc_import_generation",
+      "p_hash bytea, p_generation text, p_tenant_id uuid, p_site_id uuid, p_id uuid, p_binding_id uuid, p_property text, p_search_type text, p_dimensions jsonb, p_start_date date, p_end_date date, p_data_state text, p_aggregation_type text, p_rows jsonb, p_coverage jsonb, p_response_sha256 bytea, p_egress_operation_id uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_seo_strategy_base_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_seo_strategy_read",
+      "p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_seo_strategy_read",
+      "p_hash bytea, p_generation text, p_site uuid, p_snapshot uuid",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_seo_strategy_record",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_canonical bytea",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_skill_seo_strategy_record",
+      "p_hash bytea, p_generation text, p_site uuid, p_id uuid, p_canonical bytea",
+      "signal_workflow",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_strategy_learning_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_strategy_link_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ],
+    [
+      "weekly_strategy_topic_sources",
+      "p_hash bytea, p_generation text, p_site uuid",
+      "signal_migrator",
+      "EXECUTE",
+      false
+    ]
+  ]
+}
